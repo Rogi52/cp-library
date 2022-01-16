@@ -1,3 +1,5 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
+
 #include "src/cp-template.hpp"
 #include "src/graph/shortest_path.hpp"
 
