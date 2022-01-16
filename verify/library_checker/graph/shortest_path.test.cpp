@@ -1,5 +1,5 @@
-#include "cp-template.hpp"
-#include "graph/shortest_path.hpp"
+#include "src/cp-template.hpp"
+#include "src/graph/shortest_path.hpp"
 
 int main(){
     cin.tie(0);
