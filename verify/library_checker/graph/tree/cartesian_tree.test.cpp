@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/cartesian_tree"
 
 #include "src/cp-template.hpp"
-#include "src/graph/cartesian_tree.hpp"
+#include "src/graph/tree/cartesian_tree.hpp"
 
 int main(){
     cin.tie(0);
