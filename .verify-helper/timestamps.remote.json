@@ -2,5 +2,5 @@
 "example.test.cpp": "2022-01-02 19:20:25 +0900",
 "verify/library_checker/graph/shortest_path.test.cpp": "2022-01-17 01:29:09 +0900",
 "verify/library_checker/graph/tree/cartesian_tree.test.cpp": "2022-01-17 23:34:48 +0900",
-"verify/library_checker/graph/tree/tree_diameter.test.cpp": "2022-01-18 00:32:59 +0900"
+"verify/library_checker/graph/tree/tree_diameter.test.cpp": "2022-01-18 00:46:33 +0900"
 }
