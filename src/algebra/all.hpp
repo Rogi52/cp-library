@@ -9,7 +9,7 @@ template < class T > class Plus {
     static constexpr bool commute = true;
 };
 
-template < class T > class Plus {
+template < class T > class Xor {
   public:
     using set = T;
     static constexpr T op(const T &l, const T &r) { return l ^ r; }
