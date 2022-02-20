@@ -49,13 +49,17 @@ template < class AbelGroup > class FenwickTree2D {
         return s;
     }
 
+    T get(int x, int y) {
+        return fold(x, x + 1, y, y + 1);
+    }
+
   private:
     void sub_add(int f, int g, int x, int y, T v) {
         for(int i = x + 1; i <= h; i += i & -i)
             for(int j = y + 1; j <= w; j += j & -j)
                 data[f][g][i - 1][j - 1] = AbelGroup::op(data[f][g][i - 1][j - 1], v);
     }
-    
+
     T sub_fold(int f, int g, int x, int y) {
         T s = AbelGroup::id;
         for(int i = x; i > 0; i -= i & -i)
