@@ -1,18 +1,32 @@
-#pragma once
+// g <- pair < v , cost > 
+template < class T >
+vector< T > dijkstra(vector<vector<pair<int, T>>> &graph, int s) {
+    T INF = numeric_limits< T >::max();
+    vector<T> dist(graph.size(), INF);
+    priority_queue<pair<T,int>, vector<pair<T,int>>, greater<pair<T,int>>> q;
+    q.push({dist[s] = T(0), s});
+    while(!q.empty()){
+        auto [uc, ui] = q.top(); q.pop();
+        if(uc != dist[ui]) continue;
+        for(auto [vi, vc] : graph[ui]) if(dist[vi] > uc + vc) 
+            q.push({dist[vi] = uc + vc, vi});
+    }
+    return dist;
+}
 
 // g <- pair < v , cost > 
 template < class T >
-pair< T, vector<int> > shortest_path(vector<vector<pair<int, T>>> &g, int s, int t) {
+pair< T, vector<int> > shortest_path(vector<vector<pair<int, T>>> &graph, int s, int t) {
     T INF = numeric_limits< T >::max();
-    vector<T> dist(g.size(), INF);
-    vector<int> prev(g.size(), -1);
-    priority_queue<pair<T,int>, vector<pair<T,int>>, greater<pair<T,int>>> Q;
-    Q.push({dist[s] = T(0), s});
-    while(!Q.empty()){
-        auto [uc, ui] = Q.top(); Q.pop();
+    vector<T> dist(graph.size(), INF);
+    vector<int> prev(graph.size(), -1);
+    priority_queue<pair<T,int>, vector<pair<T,int>>, greater<pair<T,int>>> q;
+    q.push({dist[s] = T(0), s});
+    while(!q.empty()){
+        auto [uc, ui] = q.top(); q.pop();
         if(uc != dist[ui]) continue;
-        for(auto [vi, vc] : g[ui]) if(dist[vi] > uc + vc) 
-            Q.push({dist[vi] = uc + vc, vi}), prev[vi] = ui;
+        for(auto [vi, vc] : graph[ui]) if(dist[vi] > uc + vc) 
+            q.push({dist[vi] = uc + vc, vi}), prev[vi] = ui;
     }
 
     vector<int> path;
