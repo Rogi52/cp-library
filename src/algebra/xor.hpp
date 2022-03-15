@@ -1,6 +1,6 @@
 namespace algebra {
 
-template < class T > class Xor {
+template < class T > class XOR {
   public:
     using set = T;
     static constexpr T op(const T &l, const T &r) { return l ^ r; }
