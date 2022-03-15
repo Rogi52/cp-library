@@ -1,4 +1,4 @@
-template < class AbelGroup > class FenwickTree {
+template < class abel_group > class fenwick_tree {
   public:
     using T = typename AbelGroup::set;
 
