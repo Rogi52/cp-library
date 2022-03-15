@@ -1,4 +1,4 @@
-namespace Algebra {
+namespace algebra {
 
 template < class T > class Plus {
    public:
