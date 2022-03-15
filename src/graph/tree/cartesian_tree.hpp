@@ -9,7 +9,7 @@ pair< vector<vector<int>>, int > cartesian_tree(vector< T > &a) {
     for(int i = 0; i < n; i++) {
         int prev = -1;
         while(!st.empty() && a[i] < a[st.top()]) { prev = st.top(); st.pop(); }
-        if(prev != -1) p[prev] = i;
+        if(prev != -1) parent[prev] = i;
         if(!st.empty()) p[i] = st.top();
         st.push(i);
     }
