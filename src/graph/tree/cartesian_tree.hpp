@@ -16,7 +16,7 @@ pair< vector<vector<int>>, int > cartesian_tree(vector< T > &a) {
 
     int root = -1;
     for(int i = 0; i < n; i++) {
-        if(p[i] == -1) root = i;
+        if(parent[i] == -1) root = i;
         else graph[p[i]].push_back(i);
     }
     return {graph, root};
