@@ -38,6 +38,6 @@ template < class abel_group > class fenwick_tree {
     }
 
     void set(int i, T x) {
-        add(i, AbelGroup::op(AbelGroup::inv(get(i)), x));
+        add(i, abel_group::op(abel_group::inv(get(i)), x));
     }
 };
