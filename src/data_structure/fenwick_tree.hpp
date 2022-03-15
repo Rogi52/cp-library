@@ -30,7 +30,7 @@ template < class abel_group > class fenwick_tree {
 
     // [l, r)
     T fold(int l, int r) {
-        return AbelGroup::op(AbelGroup::inv(fold(l)), fold(r));
+        return abel_group::op(abel_group::inv(fold(l)), fold(r));
     }
 
     T get(int i) {
