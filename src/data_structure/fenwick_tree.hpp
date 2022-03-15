@@ -18,7 +18,7 @@ template < class abel_group > class fenwick_tree {
     }
 
     void add(int i, T x) {
-        for(int p = i + 1; p <= n; p += p & -p) data[p - 1] = AbelGroup::op(data[p - 1], x);
+        for(int p = i + 1; p <= n; p += p & -p) data[p - 1] = abel_group::op(data[p - 1], x);
     }
 
     // [0, r)
