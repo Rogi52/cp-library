@@ -4,7 +4,7 @@ template < class T >
 pair< vector<vector<int>>, int > cartesian_tree(vector< T > &a) {
     int n = a.size();
     vector<vector<int>> graph(n);
-    vector<int> p(n, -1);
+    vector<int> parent(n, -1);
     stack<int> st;
     for(int i = 0; i < n; i++) {
         int prev = -1;
