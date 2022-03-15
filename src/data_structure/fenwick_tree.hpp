@@ -23,8 +23,8 @@ template < class abel_group > class fenwick_tree {
 
     // [0, r)
     T fold(int r) {
-        T s = AbelGroup::id;
-        for(int p = r; p > 0; p -= p & -p) s = AbelGroup::op(data[p - 1], s);
+        T s = abel_group::id;
+        for(int p = r; p > 0; p -= p & -p) s = abel_group::op(data[p - 1], s);
         return s;
     }
 
