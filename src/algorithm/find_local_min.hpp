@@ -12,3 +12,8 @@ template < class T, class func > pair< int, T > find_local_min(func f, int n) {
     }
     return {b, f(b)};
 };
+
+// f: [0, p) -> T, f(x) = f(x + p)
+template < class T, class func > pair< int, T > find_min(func f, int p) {
+    return find_local_min< T, func >(f, 2 * p - 1);
+}
