@@ -8,7 +8,7 @@ template < class abel_group > class fenwick_tree {
 
   public:
     fenwick_tree() : n(0) {}
-    FenwickTree(int n) : n(n), data(n, AbelGroup::id) { assert(AbelGroup::commute); }
+    fenwick_tree(int n) : n(n), data(n, abel_group::id) { assert(abel_group::commute); }
     FenwickTree(vector< T > a) : n(a.size()), data(a) {
         assert(AbelGroup::commute);
         for(int i = 1; i <= n; i++) {
