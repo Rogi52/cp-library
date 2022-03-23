@@ -1,6 +1,6 @@
 namespace Algebra {
 
-template < class T > class Plus {
+template < class T > class PLUS {
   public:
     using set = T;
     static constexpr T op(const T &l, const T &r) { return l + r; }
