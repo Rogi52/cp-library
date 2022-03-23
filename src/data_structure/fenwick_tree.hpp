@@ -9,11 +9,11 @@ template < class abel_group > class fenwick_tree {
   public:
     fenwick_tree() : n(0) {}
     fenwick_tree(int n) : n(n), data(n, abel_group::id) { assert(abel_group::commute); }
-    FenwickTree(vector< T > a) : n(a.size()), data(a) {
-        assert(AbelGroup::commute);
+    fenwick_tree(vector< T > a) : n(a.size()), data(a) {
+        assert(abel_group::commute);
         for(int i = 1; i <= n; i++) {
             int p = i + (i & -i);
-            if(p <= n) data[p - 1] = AbelGroup::op(data[i - 1], data[p - 1]);
+            if(p <= n) data[p - 1] = abel_group::op(data[i - 1], data[p - 1]);
         }
     }
 
