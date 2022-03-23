@@ -1,6 +1,6 @@
 template < class abel_group > class fenwick_tree {
   public:
-    using T = typename AbelGroup::set;
+    using T = typename abel_group::set;
 
   private:
     int n;
