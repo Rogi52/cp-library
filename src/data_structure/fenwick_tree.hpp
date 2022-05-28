@@ -49,8 +49,7 @@ template < class comm_monoid > class fenwick_tree {
         int i = 0, k = n2;
         while(k >>= 1) {
             int p = i | k;
-            if(p <= n && !f(comm_monoid::op(s, data[p])))
-                s = comm_monoid::op(s, data[i = p]);
+            if(p <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);
         }
         return i;
     }
