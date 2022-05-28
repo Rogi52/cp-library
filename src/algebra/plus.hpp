@@ -7,7 +7,7 @@ template < class T > class PLUS {
      static constexpr T id = T(0);
      static constexpr T inv(const T &x) { return -x; }
      static constexpr T pow(const T &x, const int n) { return x * n; }
-     static constexpr bool commute = true;
+     static constexpr bool comm = true;
  };
   
 }
