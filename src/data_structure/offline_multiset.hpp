@@ -9,7 +9,7 @@ template < class T, class U > class offline_multiset {
 
   public:
     offline_multiset() {}
-    offline_multiset(vector< T > x) : v(x) {
+    offline_multiset(const vector< T > &x) : v(x) {
         sort(v.begin(), v.end());
         v.erase(unique(v.begin(), v.end()), v.end());
         n = v.size();
