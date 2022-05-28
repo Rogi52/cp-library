@@ -17,7 +17,7 @@ template < class comm_monoid > class fenwick_tree {
     fenwick_tree(int n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id) { assert(comm_monoid::comm); }
     fenwick_tree(const vector< T > &a) : n(a.size()), n2(ceil_pow2(n)), data(a) {
         assert(comm_monoid::comm);
-        data.insert(a.begin(), {comm_monoid::id});
+        data.insert(data.begin(), {comm_monoid::id});
         for(int i = 1; i <= n; i++) {
             int p = i + (i & -i);
             if(p <= n) data[p] = comm_monoid::op(data[i], data[p]);
