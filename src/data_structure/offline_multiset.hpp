@@ -1,4 +1,4 @@
-#inlcude "src/data_structure/fenwick_tree.hpp"
+#include "src/data_structure/fenwick_tree.hpp"
 #include "src/algebra/plus.hpp"
 
 template < class T, class U > class offline_multiset {
