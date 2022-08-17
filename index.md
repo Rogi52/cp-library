@@ -69,11 +69,6 @@ data:
       path: src/number/quotient_range.hpp
       title: src/number/quotient_range.hpp
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':x:'
-      path: example.test.cpp
-      title: example.test.cpp
   - name: verify/library_checker/data_structure
     pages:
     - icon: ':heavy_check_mark:'
