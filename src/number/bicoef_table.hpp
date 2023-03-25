@@ -4,9 +4,8 @@ vector< vector< T > > bicoef_table(int N) {
     table[0][0] = 1;
     for(int i = 1; i <= N; i++) {
         table[i][0] = 1;
-        for(int j = 1; j <= N; j++) {
+        for(int j = 1; j <= N; j++)
             table[i][j] = table[i - 1][j - 1] + table[i - 1][j];
-        }
     }
     return table;
 }
