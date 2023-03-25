@@ -16,8 +16,8 @@ struct modint {
     modint operator*(const modint& rhs) const { return modint(*this) *= rhs; }
     modint operator/(const modint& rhs) const { return modint(*this) /= rhs; }
     modint pow(ll n) const { modint res(1), x(*this); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }
-    modint inv() const { return pow(mod - 2); }
-    //modint inv() const { int a = v, b = mod, x = 1, y = 0, t; while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); } return modint(x); }
+    modint inv() const { int a = v, b = mod, x = 1, y = 0, t; while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); } return modint(x); }
+    // modint inv() const { return pow(mod - 2); }
     friend modint operator+(int x, const modint& y) { return modint(x) + y; }
     friend modint operator-(int x, const modint& y) { return modint(x) - y; }
     friend modint operator*(int x, const modint& y) { return modint(x) * y; }
