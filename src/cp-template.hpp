@@ -3,5 +3,5 @@
 using namespace std;
 using ll = long long;
 using ld = long double;
-using uint = unsigned;
+using uint = unsigned int;
 using ull  = unsigned long long;
