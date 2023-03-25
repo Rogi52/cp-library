@@ -70,8 +70,7 @@ data:
   verifiedWith: []
 documentation_of: src/number/modint.hpp
 layout: document
-redirect_from:
-- /library/src/number/modint.hpp
-- /library/src/number/modint.hpp.html
-title: src/number/modint.hpp
+title: modint
 ---
+
+自動でmodを取る構造体

@@ -79,7 +79,7 @@ data:
       title: src/number/bicoef_table.hpp
     - icon: ':warning:'
       path: src/number/modint.hpp
-      title: src/number/modint.hpp
+      title: modint
   verificationCategories:
   - name: .
     pages:
