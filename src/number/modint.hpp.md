@@ -73,5 +73,4 @@ layout: document
 title: modint
 ---
 
-## うおおお
 自動でmodを取る構造体
