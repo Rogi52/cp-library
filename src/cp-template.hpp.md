@@ -34,7 +34,13 @@ data:
 
     using namespace std;
 
-    typedef long long ll;
+    using ll = long long;
+
+    using ld = long double;
+
+    using uint = unsigned int;
+
+    using ull  = unsigned long long;
 
     '
   code: '#include <bits/stdc++.h>
@@ -43,21 +49,27 @@ data:
 
     using namespace std;
 
-    typedef long long ll;
+    using ll = long long;
+
+    using ld = long double;
+
+    using uint = unsigned int;
+
+    using ull  = unsigned long long;
 
     '
   dependsOn: []
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy: []
-  timestamp: '2022-01-17 01:28:13+09:00'
+  timestamp: '2023-03-26 03:29:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
 documentation_of: src/cp-template.hpp
 layout: document

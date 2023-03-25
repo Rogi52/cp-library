@@ -20,8 +20,9 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/graph/tree/cartesian_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/cartesian_tree\"\n\n#line\
     \ 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
-    \ i = 0; i < (n); i++)\nusing namespace std;\ntypedef long long ll;\n#line 2 \"\
-    src/graph/tree/cartesian_tree.hpp\"\n\ntemplate < class T >\npair< vector<vector<int>>,\
+    \ i = 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\nusing ld\
+    \ = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
+    #line 2 \"src/graph/tree/cartesian_tree.hpp\"\n\ntemplate < class T >\npair< vector<vector<int>>,\
     \ int > cartesian_tree(vector< T > &a) {\n    int n = a.size();\n    vector<vector<int>>\
     \ tree(n);\n    vector<int> parent(n, -1);\n    stack<int> st;\n    for(int i\
     \ = 0; i < n; i++) {\n        int prev = -1;\n        while(!st.empty() && a[i]\
@@ -47,7 +48,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-03-22 17:10:45+09:00'
+  timestamp: '2023-03-26 03:29:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/tree/cartesian_tree.test.cpp

@@ -20,14 +20,16 @@ data:
   bundledCode: "#line 1 \"verify/library_checker/data_structure/union_find.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#line 1 \"\
     src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int i =\
-    \ 0; i < (n); i++)\nusing namespace std;\ntypedef long long ll;\n#line 1 \"src/data_structure/union_find.hpp\"\
-    \nclass union_find {\n  public:\n    union_find(int n) : data(n, -1) {}\n    int\
-    \ unite(int x, int y) {\n        x = root(x), y = root(y);\n        if(x != y)\
-    \ {\n            if(size(x) < size(y)) swap(x, y);\n            data[x] += data[y];\n\
-    \            return data[y] = x;\n        }\n        return -1;\n    }\n    int\
-    \ root(int x) { return data[x] < 0 ? x : data[x] = root(data[x]); }\n    int size(int\
-    \ x) { return -data[root(x)]; }\n    bool same(int x, int y) { return root(x)\
-    \ == root(y); }\n\n  private:\n    vector<int> data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
+    \ 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\nusing ld = long\
+    \ double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n#line\
+    \ 1 \"src/data_structure/union_find.hpp\"\nclass union_find {\n  public:\n   \
+    \ union_find(int n) : data(n, -1) {}\n    int unite(int x, int y) {\n        x\
+    \ = root(x), y = root(y);\n        if(x != y) {\n            if(size(x) < size(y))\
+    \ swap(x, y);\n            data[x] += data[y];\n            return data[y] = x;\n\
+    \        }\n        return -1;\n    }\n    int root(int x) { return data[x] <\
+    \ 0 ? x : data[x] = root(data[x]); }\n    int size(int x) { return -data[root(x)];\
+    \ }\n    bool same(int x, int y) { return root(x) == root(y); }\n\n  private:\n\
+    \    vector<int> data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    union_find uf(N);\n\n    rep(_,Q) {\n        int t,\
     \ u, v; cin >> t >> u >> v;\n        switch(t) {\n            case 0: {\n    \
@@ -48,7 +50,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/union_find.test.cpp
   requiredBy: []
-  timestamp: '2022-08-17 22:30:06+09:00'
+  timestamp: '2023-03-26 03:29:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/union_find.test.cpp

@@ -20,6 +20,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
+    - icon: ':warning:'
+      path: src/algorithm/mo.hpp
+      title: src/algorithm/mo.hpp
   - name: src
     pages:
     - icon: ':heavy_check_mark:'
@@ -45,9 +48,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
-    - icon: ':warning:'
-      path: src/data_structure/union_fold.hpp
-      title: src/data_structure/union_fold.hpp
   - name: src/geometry
     pages:
     - icon: ':warning:'
@@ -55,9 +55,15 @@ data:
       title: src/geometry/convex_hull.hpp
   - name: src/graph
     pages:
+    - icon: ':warning:'
+      path: src/graph/bfs.hpp
+      title: src/graph/bfs.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
+    - icon: ':warning:'
+      path: src/graph/topological_sort.hpp
+      title: src/graph/topological_sort.hpp
   - name: src/graph/tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -66,9 +72,20 @@ data:
   - name: src/number
     pages:
     - icon: ':warning:'
-      path: src/number/quotient_range.hpp
-      title: src/number/quotient_range.hpp
+      path: src/number/bicoef.hpp
+      title: src/number/bicoef.hpp
+    - icon: ':warning:'
+      path: src/number/bicoef_table.hpp
+      title: src/number/bicoef_table.hpp
+    - icon: ':warning:'
+      path: src/number/modint.hpp
+      title: src/number/modint.hpp
   verificationCategories:
+  - name: .
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: example.test.cpp
+      title: example.test.cpp
   - name: verify/library_checker/data_structure
     pages:
     - icon: ':heavy_check_mark:'
