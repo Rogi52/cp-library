@@ -3,6 +3,7 @@
 #include "src/cp-template.hpp"
 #include "src/data_structure/segtree.hpp"
 #include "src/algebra/affine.hpp"
+#include "src/number/modint.hpp"
 
 int main(){
     cin.tie(0);
