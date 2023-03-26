@@ -11,7 +11,7 @@ template < class A > struct lazy_segtree {
     void update(int k) { d[k] = V::op(d[2 * k], d[2 * k + 1]); }
     void all_apply(int k, F f) {
         d[k] = A::op(d[k], f);
-        if(k < size) lz[k] = O::op(f, lz[k]);
+        if(k < size) lz[k] = O::op(lz[k], f);
     }
     void push(int k) {
         all_apply(2 * k, lz[k]);
@@ -69,7 +69,7 @@ template < class A > struct lazy_segtree {
         assert(0 <= i && i < _n);
         i += size;
         for(int p = log; p >= 1; p--) push(i >> p);
-        d[i] = O::mapping(f, d[i]);
+        d[i] = O::op(d[i], f);
         for(int p = 1; p <= log; p++) update(i >> p);
     }
     void apply(int l, int r, F f) {
