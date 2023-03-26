@@ -7,11 +7,17 @@ data:
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
+    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/segtree.test.cpp
+    title: verify/library_checker/data_structure/segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
@@ -67,6 +73,8 @@ data:
   verifiedWith:
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp

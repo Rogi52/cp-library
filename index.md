@@ -3,12 +3,18 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':warning:'
-      path: src/algebra/all.hpp
-      title: src/algebra/all.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/affine.hpp
+      title: src/algebra/affine.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/cartesian_product_monoid.hpp
+      title: src/algebra/cartesian_product_monoid.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/plus.hpp
       title: src/algebra/plus.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/range_affine_range_sum.hpp
+      title: src/algebra/range_affine_range_sum.hpp
     - icon: ':warning:'
       path: src/algebra/xor.hpp
       title: src/algebra/xor.hpp
@@ -42,9 +48,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/lazy_segtree.hpp
+      title: src/data_structure/lazy_segtree.hpp
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/segtree.hpp
+      title: src/data_structure/segtree.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
@@ -77,7 +89,7 @@ data:
     - icon: ':warning:'
       path: src/number/bicoef_table.hpp
       title: src/number/bicoef_table.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/number/modint.hpp
       title: modint
   verificationCategories:
@@ -92,11 +104,17 @@ data:
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/lazy_segtree.test.cpp
+      title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/line_add_get_min.test.cpp
       title: verify/library_checker/data_structure/line_add_get_min.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
       title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/segtree.test.cpp
+      title: verify/library_checker/data_structure/segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/union_find.test.cpp
       title: verify/library_checker/data_structure/union_find.test.cpp

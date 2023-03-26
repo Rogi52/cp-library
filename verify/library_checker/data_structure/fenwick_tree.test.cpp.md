@@ -46,29 +46,28 @@ data:
     \  T s = comm_monoid::id;\n        if(f(s)) return 0;\n        int i = 0, k =\
     \ n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
     \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\nnamespace\
-    \ algebra {\n\ntemplate < class T > class PLUS {\n   public:\n     using set =\
-    \ T;\n     static constexpr T op(const T &l, const T &r) { return l + r; }\n \
-    \    static constexpr T id = T(0);\n     static constexpr T inv(const T &x) {\
-    \ return -x; }\n     static constexpr T pow(const T &x, const int n) { return\
-    \ x * n; }\n     static constexpr bool comm = true;\n };\n  \n}\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
+    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\ntemplate\
+    \ < class T > class PLUS {\n   public:\n     using set = T;\n     static constexpr\
+    \ T op(const T &l, const T &r) { return l + r; }\n     static constexpr T id =\
+    \ T(0);\n     static constexpr T inv(const T &x) { return -x; }\n     static constexpr\
+    \ T pow(const T &x, const int n) { return x * n; }\n     static constexpr bool\
+    \ comm = true;\n };\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    vector<ll> a(N);\n    rep(i,N) cin >> a[i];\n    fenwick_tree<\
-    \ algebra::PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int t; cin >> t;\n\
-    \        switch(t) {\n            case 0: {\n                int p,x; cin >> p\
-    \ >> x;\n                tree.add(p, x);\n            } break;\n\n           \
-    \ case 1: {\n                int l,r; cin >> l >> r;\n                cout <<\
-    \ tree.fold(l, r) << '\\n';\n            }\n        }\n    }\n}\n"
+    \ PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int t; cin >> t;\n        switch(t)\
+    \ {\n            case 0: {\n                int p,x; cin >> p >> x;\n        \
+    \        tree.add(p, x);\n            } break;\n\n            case 1: {\n    \
+    \            int l,r; cin >> l >> r;\n                cout << tree.fold(l, r)\
+    \ << '\\n';\n            }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include \"src/cp-template.hpp\"\n#include \"src/data_structure/fenwick_tree.hpp\"\
     \n#include \"src/algebra/plus.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
     \    \n    int N,Q; cin >> N >> Q;\n    vector<ll> a(N);\n    rep(i,N) cin >>\
-    \ a[i];\n    fenwick_tree< algebra::PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n\
-    \        int t; cin >> t;\n        switch(t) {\n            case 0: {\n      \
-    \          int p,x; cin >> p >> x;\n                tree.add(p, x);\n        \
-    \    } break;\n\n            case 1: {\n                int l,r; cin >> l >> r;\n\
-    \                cout << tree.fold(l, r) << '\\n';\n            }\n        }\n\
-    \    }\n}\n"
+    \ a[i];\n    fenwick_tree< PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int\
+    \ t; cin >> t;\n        switch(t) {\n            case 0: {\n                int\
+    \ p,x; cin >> p >> x;\n                tree.add(p, x);\n            } break;\n\
+    \n            case 1: {\n                int l,r; cin >> l >> r;\n           \
+    \     cout << tree.fold(l, r) << '\\n';\n            }\n        }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/data_structure/fenwick_tree.hpp
@@ -76,7 +75,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 03:29:33+09:00'
+  timestamp: '2023-03-26 20:48:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp

@@ -35,23 +35,23 @@ data:
     \  T s = comm_monoid::id;\n        if(f(s)) return 0;\n        int i = 0, k =\
     \ n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
     \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\nnamespace\
-    \ algebra {\n\ntemplate < class T > class PLUS {\n   public:\n     using set =\
-    \ T;\n     static constexpr T op(const T &l, const T &r) { return l + r; }\n \
-    \    static constexpr T id = T(0);\n     static constexpr T inv(const T &x) {\
-    \ return -x; }\n     static constexpr T pow(const T &x, const int n) { return\
-    \ x * n; }\n     static constexpr bool comm = true;\n };\n  \n}\n#line 3 \"src/data_structure/offline_multiset.hpp\"\
-    \n\ntemplate < class T, class U > class offline_multiset {\n  private:\n    int\
-    \ n;\n    vector< T > v;\n    fenwick_tree< algebra::PLUS< U > > ft;\n\n  public:\n\
-    \    offline_multiset() {}\n    offline_multiset(const vector< T > &x) : v(x)\
-    \ {\n        sort(v.begin(), v.end());\n        v.erase(unique(v.begin(), v.end()),\
-    \ v.end());\n        n = v.size();\n        ft = fenwick_tree< algebra::PLUS<\
-    \ U > >(n);\n    }\n\n    void insert(T x, U cnt = 1) {\n        int i = lower_bound(v.begin(),\
-    \ v.end(), x) - v.begin();\n        assert(v[i] == x);\n        ft.add(i, +cnt);\n\
-    \    }\n    void erase(T x, U cnt = 1) {\n        int i = lower_bound(v.begin(),\
-    \ v.end(), x) - v.begin();\n        assert(v[i] == x);\n        ft.add(i, -cnt);\n\
-    \    }\n    T get_kth(U k) {\n        return v[ft.search([k](U s){ return s >=\
-    \ k; })];\n    }\n};\n"
+    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\ntemplate\
+    \ < class T > class PLUS {\n   public:\n     using set = T;\n     static constexpr\
+    \ T op(const T &l, const T &r) { return l + r; }\n     static constexpr T id =\
+    \ T(0);\n     static constexpr T inv(const T &x) { return -x; }\n     static constexpr\
+    \ T pow(const T &x, const int n) { return x * n; }\n     static constexpr bool\
+    \ comm = true;\n };\n#line 3 \"src/data_structure/offline_multiset.hpp\"\n\ntemplate\
+    \ < class T, class U > class offline_multiset {\n  private:\n    int n;\n    vector<\
+    \ T > v;\n    fenwick_tree< algebra::PLUS< U > > ft;\n\n  public:\n    offline_multiset()\
+    \ {}\n    offline_multiset(const vector< T > &x) : v(x) {\n        sort(v.begin(),\
+    \ v.end());\n        v.erase(unique(v.begin(), v.end()), v.end());\n        n\
+    \ = v.size();\n        ft = fenwick_tree< algebra::PLUS< U > >(n);\n    }\n\n\
+    \    void insert(T x, U cnt = 1) {\n        int i = lower_bound(v.begin(), v.end(),\
+    \ x) - v.begin();\n        assert(v[i] == x);\n        ft.add(i, +cnt);\n    }\n\
+    \    void erase(T x, U cnt = 1) {\n        int i = lower_bound(v.begin(), v.end(),\
+    \ x) - v.begin();\n        assert(v[i] == x);\n        ft.add(i, -cnt);\n    }\n\
+    \    T get_kth(U k) {\n        return v[ft.search([k](U s){ return s >= k; })];\n\
+    \    }\n};\n"
   code: "#include \"src/data_structure/fenwick_tree.hpp\"\n#include \"src/algebra/plus.hpp\"\
     \n\ntemplate < class T, class U > class offline_multiset {\n  private:\n    int\
     \ n;\n    vector< T > v;\n    fenwick_tree< algebra::PLUS< U > > ft;\n\n  public:\n\
@@ -70,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/offline_multiset.hpp
   requiredBy: []
-  timestamp: '2022-05-28 15:46:26+09:00'
+  timestamp: '2023-03-26 20:47:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/offline_multiset.hpp
