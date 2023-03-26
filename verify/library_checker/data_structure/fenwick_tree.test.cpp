@@ -11,7 +11,7 @@ int main(){
     int N,Q; cin >> N >> Q;
     vector<ll> a(N);
     rep(i,N) cin >> a[i];
-    fenwick_tree< algebra::PLUS< ll > > tree(a);
+    fenwick_tree< PLUS< ll > > tree(a);
 
     rep(_,Q) {
         int t; cin >> t;
