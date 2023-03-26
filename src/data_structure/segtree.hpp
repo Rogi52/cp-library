@@ -85,6 +85,6 @@ template < class monoid > struct segtree {
   private:
     int _n, size, log;
     vector< S > d;
-    int ceil_pow2(int n) { int x = 1; while(x < n) x <<= 1; return x; }
+    int ceil_pow2(int n) { int x = 0; while((1U << x) < uint(n)) x++; return x; }
     void update(int k) { d[k] = monoid::op(d[2 * k], d[2 * k + 1]); }
 };
