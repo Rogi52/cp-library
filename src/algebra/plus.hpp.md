@@ -21,22 +21,22 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/plus.hpp\"\ntemplate < class T > class PLUS\
-    \ {\n   public:\n     using set = T;\n     static constexpr T op(const T &l, const\
-    \ T &r) { return l + r; }\n     static constexpr T id = T(0);\n     static constexpr\
-    \ T inv(const T &x) { return -x; }\n     static constexpr T pow(const T &x, const\
-    \ int n) { return x * n; }\n     static constexpr bool comm = true;\n };\n"
-  code: "template < class T > class PLUS {\n   public:\n     using set = T;\n    \
-    \ static constexpr T op(const T &l, const T &r) { return l + r; }\n     static\
-    \ constexpr T id = T(0);\n     static constexpr T inv(const T &x) { return -x;\
-    \ }\n     static constexpr T pow(const T &x, const int n) { return x * n; }\n\
-    \     static constexpr bool comm = true;\n };\n"
+    \ {\n  public:\n    using set = T;\n    static constexpr T op(const T &l, const\
+    \ T &r) { return l + r; }\n    static constexpr T id = T(0);\n    static constexpr\
+    \ T inv(const T &x) { return -x; }\n    static constexpr T pow(const T &x, const\
+    \ int n) { return x * n; }\n    static constexpr bool comm = true;\n};\n"
+  code: "template < class T > class PLUS {\n  public:\n    using set = T;\n    static\
+    \ constexpr T op(const T &l, const T &r) { return l + r; }\n    static constexpr\
+    \ T id = T(0);\n    static constexpr T inv(const T &x) { return -x; }\n    static\
+    \ constexpr T pow(const T &x, const int n) { return x * n; }\n    static constexpr\
+    \ bool comm = true;\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: src/algebra/plus.hpp
   requiredBy:
   - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
-  timestamp: '2023-03-26 20:47:52+09:00'
+  timestamp: '2023-03-26 22:09:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/lazy_segtree.test.cpp

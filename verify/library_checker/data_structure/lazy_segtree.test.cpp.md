@@ -138,10 +138,10 @@ data:
     \    static constexpr T op(const T &l, const T &r) {\n        return T(M::op(l.first,\
     \ r.first), N::op(l.second, r.second));\n    }\n    static constexpr T id{M::id,\
     \ N::id};\n};\n#line 1 \"src/algebra/plus.hpp\"\ntemplate < class T > class PLUS\
-    \ {\n   public:\n     using set = T;\n     static constexpr T op(const T &l, const\
-    \ T &r) { return l + r; }\n     static constexpr T id = T(0);\n     static constexpr\
-    \ T inv(const T &x) { return -x; }\n     static constexpr T pow(const T &x, const\
-    \ int n) { return x * n; }\n     static constexpr bool comm = true;\n };\n#line\
+    \ {\n  public:\n    using set = T;\n    static constexpr T op(const T &l, const\
+    \ T &r) { return l + r; }\n    static constexpr T id = T(0);\n    static constexpr\
+    \ T inv(const T &x) { return -x; }\n    static constexpr T pow(const T &x, const\
+    \ int n) { return x * n; }\n    static constexpr bool comm = true;\n};\n#line\
     \ 4 \"src/algebra/range_affine_range_sum.hpp\"\n\ntemplate < class T > class range_affine_range_sum\
     \ {\n  public:\n    using value_structure = cartesian_product_monoid< PLUS< T\
     \ >, PLUS< T > >;\n    using operator_structure = affine_composite_monoid< T >;\n\
@@ -179,7 +179,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:47:52+09:00'
+  timestamp: '2023-03-26 22:09:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp

@@ -47,11 +47,11 @@ data:
     \ n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
     \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
     \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\ntemplate\
-    \ < class T > class PLUS {\n   public:\n     using set = T;\n     static constexpr\
-    \ T op(const T &l, const T &r) { return l + r; }\n     static constexpr T id =\
-    \ T(0);\n     static constexpr T inv(const T &x) { return -x; }\n     static constexpr\
-    \ T pow(const T &x, const int n) { return x * n; }\n     static constexpr bool\
-    \ comm = true;\n };\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
+    \ < class T > class PLUS {\n  public:\n    using set = T;\n    static constexpr\
+    \ T op(const T &l, const T &r) { return l + r; }\n    static constexpr T id =\
+    \ T(0);\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
+    \ T pow(const T &x, const int n) { return x * n; }\n    static constexpr bool\
+    \ comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    vector<ll> a(N);\n    rep(i,N) cin >> a[i];\n    fenwick_tree<\
     \ PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int t; cin >> t;\n        switch(t)\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:48:23+09:00'
+  timestamp: '2023-03-26 22:09:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp

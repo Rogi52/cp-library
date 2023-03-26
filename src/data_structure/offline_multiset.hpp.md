@@ -36,11 +36,11 @@ data:
     \ n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
     \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
     \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/plus.hpp\"\ntemplate\
-    \ < class T > class PLUS {\n   public:\n     using set = T;\n     static constexpr\
-    \ T op(const T &l, const T &r) { return l + r; }\n     static constexpr T id =\
-    \ T(0);\n     static constexpr T inv(const T &x) { return -x; }\n     static constexpr\
-    \ T pow(const T &x, const int n) { return x * n; }\n     static constexpr bool\
-    \ comm = true;\n };\n#line 3 \"src/data_structure/offline_multiset.hpp\"\n\ntemplate\
+    \ < class T > class PLUS {\n  public:\n    using set = T;\n    static constexpr\
+    \ T op(const T &l, const T &r) { return l + r; }\n    static constexpr T id =\
+    \ T(0);\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
+    \ T pow(const T &x, const int n) { return x * n; }\n    static constexpr bool\
+    \ comm = true;\n};\n#line 3 \"src/data_structure/offline_multiset.hpp\"\n\ntemplate\
     \ < class T, class U > class offline_multiset {\n  private:\n    int n;\n    vector<\
     \ T > v;\n    fenwick_tree< algebra::PLUS< U > > ft;\n\n  public:\n    offline_multiset()\
     \ {}\n    offline_multiset(const vector< T > &x) : v(x) {\n        sort(v.begin(),\
@@ -70,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/offline_multiset.hpp
   requiredBy: []
-  timestamp: '2023-03-26 20:47:52+09:00'
+  timestamp: '2023-03-26 22:09:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/offline_multiset.hpp
