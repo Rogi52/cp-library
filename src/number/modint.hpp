@@ -3,9 +3,9 @@ template < modinfo const &ref >
 struct modint {
     static constexpr uint const &mod = ref.mod;
     static modint root() { return modint(ref.root); }
-    uint v;
-    modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this; }
-    modint(ll v = 0) { s(v % mod + mod); }
+    uint v = 0;
+    constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this; }
+    constexpr modint(ll v = 0) { s(v % mod + mod); }
     modint operator-() const { return modint() - *this; }
     modint& operator+=(const modint& rhs) { return s(v + rhs.v); }
     modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }

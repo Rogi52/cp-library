@@ -1,5 +1,3 @@
-namespace algebra {
-
 template < class T > class PLUS {
    public:
      using set = T;
@@ -9,5 +7,3 @@ template < class T > class PLUS {
      static constexpr T pow(const T &x, const int n) { return x * n; }
      static constexpr bool comm = true;
  };
-  
-}

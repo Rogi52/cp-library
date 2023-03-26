@@ -1,5 +1,3 @@
-namespace algebra {
-
 template < class T > class XOR {
   public:
     using set = T;
@@ -9,5 +7,3 @@ template < class T > class XOR {
     static constexpr T pow(const T &x, const int n) { return n & 1 ? x : 0; }
     static constexpr bool comm = true;
 };
-
-}
