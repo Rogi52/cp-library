@@ -1,3 +1,7 @@
+#include "src/algebra/affine.hpp"
+#include "src/algebra/cartesian_product_monoid.hpp"
+#include "src/algebra/plus.hpp"
+
 template < class T > class range_affine_range_sum {
   public:
     using value_structure = cartesian_product_monoid< PLUS< T >, PLUS< T > >;
