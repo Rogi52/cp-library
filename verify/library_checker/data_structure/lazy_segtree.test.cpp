@@ -1,9 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
-#include "src/cp-template/hpp"
+#include "src/cp-template.hpp"
 #include "src/number/modint.hpp"
 #include "src/data_structure/lazy_segtree.hpp"
-#include "src/algebra/range_affine_range_sum"
+#include "src/algebra/range_affine_range_sum.hpp"
 
 int main(){
     cin.tie(0);
