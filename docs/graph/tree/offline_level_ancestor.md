@@ -1,6 +1,6 @@
 ---
 title: offline level ancestor
-documentation_of: src/grpah/tree/offline_level_ancestor.hpp
+documentation_of: src/graph/tree/offline_level_ancestor.hpp
 ---
 
 参考: https://noshi91.hatenablog.com/entry/2019/09/22/114149
