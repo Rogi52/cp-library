@@ -1,5 +1,5 @@
 ---
-title: modint
+title: offline level ancestor
 documentation_of: src/grpah/tree/offline_level_ancestor.hpp
 ---
 
