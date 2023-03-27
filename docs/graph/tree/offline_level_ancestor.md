@@ -1,5 +1,5 @@
 ---
-title: offline level ancestor
+title: Offline Level Ancestor
 documentation_of: src/graph/tree/offline_level_ancestor.hpp
 ---
 
