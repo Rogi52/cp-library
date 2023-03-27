@@ -83,7 +83,7 @@ data:
       title: src/graph/tree/cartesian_tree.hpp
     - icon: ':warning:'
       path: src/graph/tree/offline_level_ancestor.hpp
-      title: src/graph/tree/offline_level_ancestor.hpp
+      title: Offline Level Ancestor
   - name: src/number
     pages:
     - icon: ':warning:'
