@@ -81,6 +81,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/tree/cartesian_tree.hpp
       title: src/graph/tree/cartesian_tree.hpp
+    - icon: ':warning:'
+      path: src/graph/tree/offline_level_ancestor.hpp
+      title: src/graph/tree/offline_level_ancestor.hpp
   - name: src/number
     pages:
     - icon: ':warning:'
