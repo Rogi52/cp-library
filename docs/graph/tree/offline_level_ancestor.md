@@ -20,9 +20,16 @@ off_la::func up = [&](int i, vector<int> &path, vector<int> &pos) {
 };
 ```
 
-$u$ は $v$ の祖先とし、距離を $d$ とする。 $u$ と $v$ を結ぶパス上の頂点を順に $u = x_0, x_1, \dots, x_d = v$ とするときの $x_k$
+$u$ は $v$ の祖先とし、距離を $d$ とする。 $u$ と $v$ を結ぶパス上の頂点を順に $u = x_0, x_1, \dots, x_d = v$ とするときの $x_k$  
+
 ```cpp
 off_la::func get_ans = [&](int i, vector<int> &path, vector<int> &pos) {
-    ans[i] = path[pos[u[i]] + k[i]];
+  ans[i] = path[pos[u[i]] + k[i]];
 };
 ```
+
+## 参考
+<details>
+  <summary>ネタバレ注意</summary>
+  <a href="https://atcoder.jp/contests/pakencamp-2022-day1/tasks/pakencamp_2022_day1_g">パ研合宿2022 第1日「Jikka」G - Ancestor Query</a>
+</details>
