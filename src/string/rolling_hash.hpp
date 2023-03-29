@@ -30,7 +30,7 @@ struct rolling_hash {
 
     vector< hash > pb, hs;
     rolling_hash() {}
-    rolling_hash(const string &s) {
+    rolling_hash(const string& s) {
         int n = s.size();
         hs.resize(n + 1); hs[0].fill(0);
         pb.resize(n + 1); pb[0].fill(1);
@@ -56,14 +56,12 @@ struct rolling_hash {
     }
 
     template < int n >
-    static int cmp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2, int r2) {
+    static int cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int r1,
+                   const string& s2, const rolling_hash< n >& rh2, int l2, int r2) {
         int len = lcp(rh1, l1, r1, rh2, l2, r2);
         if(len == r1 - l1 && len == r2 - l2) return 0;
         if(len == r1 - l1) return -1;
         if(len == r2 - l2) return +1;
-        if((rh1.hs[l1 + len + 1] - rh1.hs[l1 + len] * rh1.BASE)[0] < (rh2.hs[l2 + len + 1] - rh2.hs[l2 + len] * rh2.BASE)[0])
-            return -1;
-        else
-            return +1;
+        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);
     }
 };
