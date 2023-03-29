@@ -95,6 +95,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/modint.hpp
       title: modint
+  - name: src/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/string/rolling_hash.hpp
+      title: Rolling Hash
   verificationCategories:
   - name: .
     pages:
@@ -131,5 +136,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
       title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
+  - name: verify/library_checker/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/string/rolling_hash.test.cpp
+      title: verify/library_checker/string/rolling_hash.test.cpp
 layout: toppage
 ---

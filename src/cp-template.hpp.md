@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/string/rolling_hash.test.cpp
+    title: verify/library_checker/string/rolling_hash.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -71,6 +74,7 @@ data:
   timestamp: '2023-03-26 03:29:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
