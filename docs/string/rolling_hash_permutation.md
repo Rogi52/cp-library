@@ -26,3 +26,9 @@ documentation_of: src/string/rolling_hash_perm.hpp
 
 長さが $O(N)$ の文字列 $s_1, s_2$ のハッシュテーブルをそれぞれ ${rh}_1, {rh}_2$ とする。
 -  $\mathrm{lcp}({rh}_ 1, l_1, r_1, {rh}_ 2, l_2, r_2)$ : $s_{1[l_1, r_1)}$ と $s_{2[l_2, r_2)}$の最長共通接頭辞の長さを返す。 $O(k \log k \log N)$。
+
+## 参考
+<details>
+  <summary>ネタバレ注意</summary>
+       <a href="https://atcoder.jp/contests/pakencamp-2022-day3/tasks/pakencamp_2022_day3_c">パ研合宿2022 第3日「teamwork」C - Permutation of Length 26</a>
+</details>
