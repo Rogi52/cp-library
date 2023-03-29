@@ -50,8 +50,8 @@ data:
     \ * y; }\n        bool operator==(const hash& rhs) { rep(i,n) if((*this)[i] !=\
     \ rhs[i]) return false; return true ; }\n        bool operator!=(const hash& rhs)\
     \ { rep(i,n) if((*this)[i] != rhs[i]) return true ; return false; }\n    };\n\n\
-    \    vector< hash > pb, hs;\n    rolling_hash() {}\n    rolling_hash(const string\
-    \ &s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
+    \    vector< hash > pb, hs;\n    rolling_hash() {}\n    rolling_hash(const string&\
+    \ s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
     \        pb.resize(n + 1); pb[0].fill(1);\n        rep(i,n) {\n            hs[i\
     \ + 1] = hs[i] * BASE + s[i];\n            pb[i + 1] = pb[i] * BASE;\n       \
     \ }\n    }\n\n    // [l, r)\n    hash get(int l, int r) const {\n        return\
@@ -61,32 +61,31 @@ data:
     \      while(hi - lo > 1) {\n            int mid = (lo + hi) / 2;\n          \
     \  (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n       \
     \ }\n        return lo;\n    }\n\n    template < int n >\n    static int cmp(const\
-    \ rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2,\
-    \ int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len\
-    \ == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n\
-    \        if(len == r2 - l2) return +1;\n        if((rh1.hs[l1 + len + 1] - rh1.hs[l1\
-    \ + len] * rh1.BASE)[0] < (rh2.hs[l2 + len + 1] - rh2.hs[l2 + len] * rh2.BASE)[0])\n\
-    \            return -1;\n        else\n            return +1;\n    }\n};\n#line\
-    \ 5 \"verify/library_checker/string/rolling_hash.test.cpp\"\n\nint main(){\n \
-    \   cin.tie(0);\n    ios::sync_with_stdio(0);\n\n    string s; cin >> s;\n   \
-    \ int n = s.size();\n    rolling_hash< 1 > rh(s);\n    vector<int> I(n);\n   \
-    \ iota(I.begin(), I.end(), 0);\n    sort(I.begin(), I.end(), [&](int i, int j)\
-    \ {\n        return rolling_hash< 1 >::cmp(rh, i, n, rh, j, n) < 0;\n    });\n\
-    \    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
+    \ string& s1, const rolling_hash< n >& rh1, int l1, int r1,\n                \
+    \   const string& s2, const rolling_hash< n >& rh2, int l2, int r2) {\n      \
+    \  int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len == r1 - l1 && len\
+    \ == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n        if(len\
+    \ == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);\n\
+    \    }\n};\n#line 5 \"verify/library_checker/string/rolling_hash.test.cpp\"\n\n\
+    int main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\n    string s; cin\
+    \ >> s;\n    int n = s.size();\n    rolling_hash< 1 > rh(s);\n    vector<int>\
+    \ I(n);\n    iota(I.begin(), I.end(), 0);\n    sort(I.begin(), I.end(), [&](int\
+    \ i, int j) {\n        return rolling_hash< 1 >::cmp(s, rh, i, n, s, rh, j, n)\
+    \ < 0;\n    });\n    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\n\n#include\
     \ \"src/cp-template.hpp\"\n#include \"src/string/rolling_hash.hpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n\n    string s; cin >> s;\n  \
     \  int n = s.size();\n    rolling_hash< 1 > rh(s);\n    vector<int> I(n);\n  \
     \  iota(I.begin(), I.end(), 0);\n    sort(I.begin(), I.end(), [&](int i, int j)\
-    \ {\n        return rolling_hash< 1 >::cmp(rh, i, n, rh, j, n) < 0;\n    });\n\
-    \    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
+    \ {\n        return rolling_hash< 1 >::cmp(s, rh, i, n, s, rh, j, n) < 0;\n  \
+    \  });\n    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/string/rolling_hash.hpp
   isVerificationFile: true
   path: verify/library_checker/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 21:46:59+09:00'
+  timestamp: '2023-03-29 22:45:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/string/rolling_hash.test.cpp

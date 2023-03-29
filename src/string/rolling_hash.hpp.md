@@ -40,7 +40,7 @@ data:
     \ if((*this)[i] != rhs[i]) return false; return true ; }\n        bool operator!=(const\
     \ hash& rhs) { rep(i,n) if((*this)[i] != rhs[i]) return true ; return false; }\n\
     \    };\n\n    vector< hash > pb, hs;\n    rolling_hash() {}\n    rolling_hash(const\
-    \ string &s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
+    \ string& s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
     \        pb.resize(n + 1); pb[0].fill(1);\n        rep(i,n) {\n            hs[i\
     \ + 1] = hs[i] * BASE + s[i];\n            pb[i + 1] = pb[i] * BASE;\n       \
     \ }\n    }\n\n    // [l, r)\n    hash get(int l, int r) const {\n        return\
@@ -50,12 +50,12 @@ data:
     \      while(hi - lo > 1) {\n            int mid = (lo + hi) / 2;\n          \
     \  (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n       \
     \ }\n        return lo;\n    }\n\n    template < int n >\n    static int cmp(const\
-    \ rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2,\
-    \ int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len\
-    \ == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n\
-    \        if(len == r2 - l2) return +1;\n        if((rh1.hs[l1 + len + 1] - rh1.hs[l1\
-    \ + len] * rh1.BASE)[0] < (rh2.hs[l2 + len + 1] - rh2.hs[l2 + len] * rh2.BASE)[0])\n\
-    \            return -1;\n        else\n            return +1;\n    }\n};\n"
+    \ string& s1, const rolling_hash< n >& rh1, int l1, int r1,\n                \
+    \   const string& s2, const rolling_hash< n >& rh2, int l2, int r2) {\n      \
+    \  int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len == r1 - l1 && len\
+    \ == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n        if(len\
+    \ == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);\n\
+    \    }\n};\n"
   code: "template< int num_of_mod = 2 >\nstruct rolling_hash {\n    static constexpr\
     \ ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n    static constexpr\
     \ ll BASE = 9973;\n    \n    struct hash : array<ll, num_of_mod> {\n        using\
@@ -84,7 +84,7 @@ data:
     \ hash& rhs) { rep(i,n) if((*this)[i] != rhs[i]) return false; return true ; }\n\
     \        bool operator!=(const hash& rhs) { rep(i,n) if((*this)[i] != rhs[i])\
     \ return true ; return false; }\n    };\n\n    vector< hash > pb, hs;\n    rolling_hash()\
-    \ {}\n    rolling_hash(const string &s) {\n        int n = s.size();\n       \
+    \ {}\n    rolling_hash(const string& s) {\n        int n = s.size();\n       \
     \ hs.resize(n + 1); hs[0].fill(0);\n        pb.resize(n + 1); pb[0].fill(1);\n\
     \        rep(i,n) {\n            hs[i + 1] = hs[i] * BASE + s[i];\n          \
     \  pb[i + 1] = pb[i] * BASE;\n        }\n    }\n\n    // [l, r)\n    hash get(int\
@@ -94,18 +94,17 @@ data:
     \ - l1, r2 - l2) + 1;\n        while(hi - lo > 1) {\n            int mid = (lo\
     \ + hi) / 2;\n            (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo\
     \ : hi) = mid;\n        }\n        return lo;\n    }\n\n    template < int n >\n\
-    \    static int cmp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash<\
-    \ n >& rh2, int l2, int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n\
-    \        if(len == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1\
-    \ - l1) return -1;\n        if(len == r2 - l2) return +1;\n        if((rh1.hs[l1\
-    \ + len + 1] - rh1.hs[l1 + len] * rh1.BASE)[0] < (rh2.hs[l2 + len + 1] - rh2.hs[l2\
-    \ + len] * rh2.BASE)[0])\n            return -1;\n        else\n            return\
-    \ +1;\n    }\n};\n"
+    \    static int cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int\
+    \ r1,\n                   const string& s2, const rolling_hash< n >& rh2, int\
+    \ l2, int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len\
+    \ == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n\
+    \        if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 +\
+    \ len] ? -1 : +1);\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-03-29 21:44:30+09:00'
+  timestamp: '2023-03-29 22:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/rolling_hash.test.cpp
