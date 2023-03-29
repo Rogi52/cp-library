@@ -100,6 +100,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
+    - icon: ':warning:'
+      path: src/string/rolling_hash_permutation.hpp
+      title: src/string/rolling_hash_permutation.hpp
   verificationCategories:
   - name: .
     pages:
