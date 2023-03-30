@@ -2,7 +2,7 @@ template < class T, class Cmp >
 tuple< vector< T >, vector<int>, vector<int> > l_s(const vector< T >& a, Cmp cmp) {
     int n = a.size();
     vector< T > lis;
-    vector<int> rank(n), st(n, -1), nt(n, -1);
+    vector<int> st(n, -1), nt(n, -1), rank(n);
     rep(i,n) {
         int pos = lower_bound(lis.begin(), lis.end(), a[i], cmp) - lis.begin();
         st[pos] = i;
