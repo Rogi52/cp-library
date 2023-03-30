@@ -21,14 +21,16 @@ data:
     #define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#line 1 \"\
     src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int i =\
     \ 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\nusing ld = long\
-    \ double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n#line\
-    \ 1 \"src/graph/shortest_path.hpp\"\n// g <- pair < v , cost > \ntemplate < class\
-    \ T >\nvector< T > dijkstra(vector<vector<pair<int, T>>> &graph, int s) {\n  \
-    \  T INF = numeric_limits< T >::max();\n    vector<T> dist(graph.size(), INF);\n\
-    \    priority_queue<pair<T,int>, vector<pair<T,int>>, greater<pair<T,int>>> q;\n\
-    \    q.push({dist[s] = T(0), s});\n    while(!q.empty()){\n        auto [uc, ui]\
-    \ = q.top(); q.pop();\n        if(uc != dist[ui]) continue;\n        for(auto\
-    \ [vi, vc] : graph[ui]) if(dist[vi] > uc + vc) \n            q.push({dist[vi]\
+    \ double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\ntemplate\
+    \ < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return\
+    \ false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return\
+    \ true; } return false; }\n#line 1 \"src/graph/shortest_path.hpp\"\n// g <- pair\
+    \ < v , cost > \ntemplate < class T >\nvector< T > dijkstra(vector<vector<pair<int,\
+    \ T>>> &graph, int s) {\n    T INF = numeric_limits< T >::max();\n    vector<T>\
+    \ dist(graph.size(), INF);\n    priority_queue<pair<T,int>, vector<pair<T,int>>,\
+    \ greater<pair<T,int>>> q;\n    q.push({dist[s] = T(0), s});\n    while(!q.empty()){\n\
+    \        auto [uc, ui] = q.top(); q.pop();\n        if(uc != dist[ui]) continue;\n\
+    \        for(auto [vi, vc] : graph[ui]) if(dist[vi] > uc + vc) \n            q.push({dist[vi]\
     \ = uc + vc, vi});\n    }\n    return dist;\n}\n\n// g <- pair < v , cost > \n\
     template < class T >\nvector< T > dijkstra(vector<vector<pair<int, T>>> &graph,\
     \ vector<int> &starts) {\n    T INF = numeric_limits< T >::max();\n    vector<T>\
@@ -70,7 +72,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/graph/shortest_path.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 03:29:33+09:00'
+  timestamp: '2023-03-31 01:57:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/shortest_path.test.cpp

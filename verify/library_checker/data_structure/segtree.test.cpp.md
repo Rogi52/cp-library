@@ -28,16 +28,18 @@ data:
     \n\n#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n)\
     \ for(int i = 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long\
-    \ long;\n#line 1 \"src/data_structure/segtree.hpp\"\ntemplate < class monoid >\
-    \ struct segtree {\n    using S = typename monoid::set;\n\n    segtree() : segtree(0)\
-    \ {}\n    segtree(int n) : segtree(vector< S >(n, monoid::id)) {}\n    segtree(const\
-    \ vector< S >& v) : _n(int(v.size())) {\n        log = ceil_pow2(_n);\n      \
-    \  size = 1 << log;\n        d = vector< S >(2 * size, monoid::id);\n        for(int\
-    \ i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size - 1; i >=\
-    \ 1; i--) update(i);\n    }\n    // a[i] <- x\n    void set(int i, S x) {\n  \
-    \      assert(0 <= i && i < _n);\n        i += size;\n        d[i] = x;\n    \
-    \    for(int p = 1; p <= log; p++) update(i >> p);\n    }\n    // a[i]\n    S\
-    \ get(int i) {\n        assert(0 <= i && i < _n);\n        return d[i + size];\n\
+    \ long;\ntemplate < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return\
+    \ true; } return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a <\
+    \ b) { a = b; return true; } return false; }\n#line 1 \"src/data_structure/segtree.hpp\"\
+    \ntemplate < class monoid > struct segtree {\n    using S = typename monoid::set;\n\
+    \n    segtree() : segtree(0) {}\n    segtree(int n) : segtree(vector< S >(n, monoid::id))\
+    \ {}\n    segtree(const vector< S >& v) : _n(int(v.size())) {\n        log = ceil_pow2(_n);\n\
+    \        size = 1 << log;\n        d = vector< S >(2 * size, monoid::id);\n  \
+    \      for(int i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size\
+    \ - 1; i >= 1; i--) update(i);\n    }\n    // a[i] <- x\n    void set(int i, S\
+    \ x) {\n        assert(0 <= i && i < _n);\n        i += size;\n        d[i] =\
+    \ x;\n        for(int p = 1; p <= log; p++) update(i >> p);\n    }\n    // a[i]\n\
+    \    S get(int i) {\n        assert(0 <= i && i < _n);\n        return d[i + size];\n\
     \    }\n    // [l, r)\n    S prod(int l, int r) {\n        assert(0 <= l && l\
     \ <= r && r <= _n);\n        S sml = monoid::id, smr = monoid::id;\n        l\
     \ += size, r += size;\n        while(l < r) {\n            if(l & 1) sml = monoid::op(sml,\
@@ -129,7 +131,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:20:39+09:00'
+  timestamp: '2023-03-31 01:57:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp

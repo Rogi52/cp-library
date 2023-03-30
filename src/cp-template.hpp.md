@@ -57,6 +57,12 @@ data:
 
     using ull  = unsigned long long;
 
+    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }
+    return false; }
+
+    template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; }
+    return false; }
+
     '
   code: '#include <bits/stdc++.h>
 
@@ -72,12 +78,18 @@ data:
 
     using ull  = unsigned long long;
 
+    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }
+    return false; }
+
+    template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; }
+    return false; }
+
     '
   dependsOn: []
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy: []
-  timestamp: '2023-03-26 03:29:33+09:00'
+  timestamp: '2023-03-31 01:57:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/rolling_hash.test.cpp

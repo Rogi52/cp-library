@@ -37,71 +37,74 @@ data:
     \n#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n)\
     \ for(int i = 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long\
-    \ long;\n#line 1 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root; };\n\
-    template < modinfo const &ref >\nstruct modint {\n    static constexpr uint const\
-    \ &mod = ref.mod;\n    static modint root() { return modint(ref.root); }\n   \
-    \ uint v = 0;\n    constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod;\
-    \ return *this; }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint\
-    \ operator-() const { return modint() - *this; }\n    modint& operator+=(const\
-    \ modint& rhs) { return s(v + rhs.v); }\n    modint& operator-=(const modint&\
-    \ rhs) { return s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs)\
-    \ { v = ull(v) * rhs.v % mod; return *this; }\n    modint& operator/=(const modint&\
-    \ rhs) { return *this *= rhs.inv(); }\n    modint operator+(const modint& rhs)\
-    \ const { return modint(*this) += rhs; }\n    modint operator-(const modint& rhs)\
-    \ const { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs)\
-    \ const { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs)\
-    \ const { return modint(*this) /= rhs; }\n    modint pow(ll n) const { modint\
-    \ res(1), x(*this); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return\
-    \ res; }\n    modint inv() const { int a = v, b = mod, x = 1, y = 0, t; while(b\
-    \ > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); } return modint(x);\
-    \ }\n    // modint inv() const { return pow(mod - 2); }\n    friend modint operator+(int\
-    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
-    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
-    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
-    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
-    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
-    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
-    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n};\n\nconstexpr modinfo base { 998244353, 3 };\n\
-    //constexpr modinfo base { 1000000007, 0 };\nusing mint = modint< base >;\n#line\
-    \ 1 \"src/data_structure/lazy_segtree.hpp\"\ntemplate < class A > struct lazy_segtree\
-    \ {\n  public:\n    using V = typename A::value_structure;\n    using S = typename\
-    \ V::set;\n    using O = typename A::operator_structure;\n    using F = typename\
-    \ O::set;\n    int _n, size, log;\n    vector< S > d;\n    vector< F > lz;\n\n\
-    \    void update(int k) { d[k] = V::op(d[2 * k], d[2 * k + 1]); }\n    void all_apply(int\
-    \ k, F f) {\n        d[k] = A::op(d[k], f);\n        if(k < size) lz[k] = O::op(lz[k],\
-    \ f);\n    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n     \
-    \   all_apply(2 * k + 1, lz[k]);\n        lz[k] = O::id;\n    }\n    int ceil_pow2(int\
-    \ n) {\n        int x = 0;\n        while((1U << x) < uint(n)) x++;\n        return\
-    \ x;\n    }\n\n    lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int n)\
-    \ : lazy_segtree(vector< S >(n, S::id)) {}\n    lazy_segtree(const vector< S >&\
-    \ v) : _n(int(v.size())) {\n        log = ceil_pow2(_n);\n        size = 1 <<\
-    \ log;\n        d = vector< S >(2 * size, V::id);\n        lz = vector< F >(size,\
-    \ O::id);\n        for(int i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int\
-    \ i = size - 1; i >= 1; i--) update(i);\n    }\n\n    void set(int i, S x) {\n\
-    \        assert(0 <= i && i < _n);\n        i += size;\n        for(int p = log;\
-    \ p >= 1; p--) push(i >> p);\n        d[i] = x;\n        for(int p = 1; p <= log;\
-    \ p++) update(i >> p);\n    }\n    S get(int i) {\n        assert(0 <= i && i\
-    \ < _n);\n        i += size;\n        for(int p = log; p >= 1; p--) push(i >>\
-    \ p);\n        return d[i];\n    }\n    S prod(int l, int r) {\n        assert(0\
-    \ <= l && l <= r && r <= _n);\n        if(l == r) return V::id;\n        l +=\
-    \ size, r += size;\n        for(int i = log; i >= 1; i--) {\n            if(((l\
-    \ >> i) << i) != l) push(l >> i);\n            if(((r >> i) << i) != r) push(r\
-    \ >> i);\n        }\n        S sml = V::id, smr = V::id;\n        while(l < r)\
-    \ {\n            if(l & 1) sml = V::op(sml, d[l++]);\n            if(r & 1) smr\
-    \ = V::op(d[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n        return\
-    \ V::op(sml, smr);\n    }\n    S all_prod() { return d[1]; }\n    void apply(int\
-    \ i, F f) {\n        assert(0 <= i && i < _n);\n        i += size;\n        for(int\
-    \ p = log; p >= 1; p--) push(i >> p);\n        d[i] = O::op(d[i], f);\n      \
-    \  for(int p = 1; p <= log; p++) update(i >> p);\n    }\n    void apply(int l,\
-    \ int r, F f) {\n        assert(0 <= l && l <= r && r <= _n);\n        if(l ==\
-    \ r) return;\n        l += size, r += size;\n        for(int i = log; i >= 1;\
-    \ i--) {\n            if(((l >> i) << i) != l) push(l >> i);\n            if(((r\
-    \ >> i) << i) != r) push((r - 1) >> i);\n        }\n        {\n            int\
-    \ l2 = l, r2 = r;\n            while(l < r) {\n                if(l & 1) all_apply(l++,\
-    \ f);\n                if(r & 1) all_apply(--r, f);\n                l >>= 1,\
-    \ r >>= 1;\n            }\n            l = l2, r = r2;\n        }\n        for(int\
-    \ i = 1; i <= log; i++) {\n            if(((l >> i) << i) != l) update(l >> i);\n\
+    \ long;\ntemplate < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return\
+    \ true; } return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a <\
+    \ b) { a = b; return true; } return false; }\n#line 1 \"src/number/modint.hpp\"\
+    \nstruct modinfo { uint mod, root; };\ntemplate < modinfo const &ref >\nstruct\
+    \ modint {\n    static constexpr uint const &mod = ref.mod;\n    static modint\
+    \ root() { return modint(ref.root); }\n    uint v = 0;\n    constexpr modint&\
+    \ s(uint v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr\
+    \ modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-() const { return\
+    \ modint() - *this; }\n    modint& operator+=(const modint& rhs) { return s(v\
+    \ + rhs.v); }\n    modint& operator-=(const modint& rhs) { return s(v + mod -\
+    \ rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v %\
+    \ mod; return *this; }\n    modint& operator/=(const modint& rhs) { return *this\
+    \ *= rhs.inv(); }\n    modint operator+(const modint& rhs) const { return modint(*this)\
+    \ += rhs; }\n    modint operator-(const modint& rhs) const { return modint(*this)\
+    \ -= rhs; }\n    modint operator*(const modint& rhs) const { return modint(*this)\
+    \ *= rhs; }\n    modint operator/(const modint& rhs) const { return modint(*this)\
+    \ /= rhs; }\n    modint pow(ll n) const { modint res(1), x(*this); while(n > 0)\
+    \ { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n    modint inv() const\
+    \ { int a = v, b = mod, x = 1, y = 0, t; while(b > 0) { t = a / b; swap(a -= t\
+    \ * b, b); swap(x -= t * y, y); } return modint(x); }\n    // modint inv() const\
+    \ { return pow(mod - 2); }\n    friend modint operator+(int x, const modint& y)\
+    \ { return modint(x) + y; }\n    friend modint operator-(int x, const modint&\
+    \ y) { return modint(x) - y; }\n    friend modint operator*(int x, const modint&\
+    \ y) { return modint(x) * y; }\n    friend modint operator/(int x, const modint&\
+    \ y) { return modint(x) / y; }\n    friend istream& operator>>(istream& is, modint&\
+    \ m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream& operator<<(ostream&\
+    \ os, const modint& m) { return os << m.v; }\n    bool operator==(const modint&\
+    \ r) const { return v == r.v; }\n    bool operator!=(const modint& r) const {\
+    \ return v != r.v; }\n};\n\nconstexpr modinfo base { 998244353, 3 };\n//constexpr\
+    \ modinfo base { 1000000007, 0 };\nusing mint = modint< base >;\n#line 1 \"src/data_structure/lazy_segtree.hpp\"\
+    \ntemplate < class A > struct lazy_segtree {\n  public:\n    using V = typename\
+    \ A::value_structure;\n    using S = typename V::set;\n    using O = typename\
+    \ A::operator_structure;\n    using F = typename O::set;\n    int _n, size, log;\n\
+    \    vector< S > d;\n    vector< F > lz;\n\n    void update(int k) { d[k] = V::op(d[2\
+    \ * k], d[2 * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k] = A::op(d[k],\
+    \ f);\n        if(k < size) lz[k] = O::op(lz[k], f);\n    }\n    void push(int\
+    \ k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n\
+    \        lz[k] = O::id;\n    }\n    int ceil_pow2(int n) {\n        int x = 0;\n\
+    \        while((1U << x) < uint(n)) x++;\n        return x;\n    }\n\n    lazy_segtree()\
+    \ : lazy_segtree(0) {}\n    lazy_segtree(int n) : lazy_segtree(vector< S >(n,\
+    \ S::id)) {}\n    lazy_segtree(const vector< S >& v) : _n(int(v.size())) {\n \
+    \       log = ceil_pow2(_n);\n        size = 1 << log;\n        d = vector< S\
+    \ >(2 * size, V::id);\n        lz = vector< F >(size, O::id);\n        for(int\
+    \ i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size - 1; i >=\
+    \ 1; i--) update(i);\n    }\n\n    void set(int i, S x) {\n        assert(0 <=\
+    \ i && i < _n);\n        i += size;\n        for(int p = log; p >= 1; p--) push(i\
+    \ >> p);\n        d[i] = x;\n        for(int p = 1; p <= log; p++) update(i >>\
+    \ p);\n    }\n    S get(int i) {\n        assert(0 <= i && i < _n);\n        i\
+    \ += size;\n        for(int p = log; p >= 1; p--) push(i >> p);\n        return\
+    \ d[i];\n    }\n    S prod(int l, int r) {\n        assert(0 <= l && l <= r &&\
+    \ r <= _n);\n        if(l == r) return V::id;\n        l += size, r += size;\n\
+    \        for(int i = log; i >= 1; i--) {\n            if(((l >> i) << i) != l)\
+    \ push(l >> i);\n            if(((r >> i) << i) != r) push(r >> i);\n        }\n\
+    \        S sml = V::id, smr = V::id;\n        while(l < r) {\n            if(l\
+    \ & 1) sml = V::op(sml, d[l++]);\n            if(r & 1) smr = V::op(d[--r], smr);\n\
+    \            l >>= 1, r >>= 1;\n        }\n        return V::op(sml, smr);\n \
+    \   }\n    S all_prod() { return d[1]; }\n    void apply(int i, F f) {\n     \
+    \   assert(0 <= i && i < _n);\n        i += size;\n        for(int p = log; p\
+    \ >= 1; p--) push(i >> p);\n        d[i] = O::op(d[i], f);\n        for(int p\
+    \ = 1; p <= log; p++) update(i >> p);\n    }\n    void apply(int l, int r, F f)\
+    \ {\n        assert(0 <= l && l <= r && r <= _n);\n        if(l == r) return;\n\
+    \        l += size, r += size;\n        for(int i = log; i >= 1; i--) {\n    \
+    \        if(((l >> i) << i) != l) push(l >> i);\n            if(((r >> i) << i)\
+    \ != r) push((r - 1) >> i);\n        }\n        {\n            int l2 = l, r2\
+    \ = r;\n            while(l < r) {\n                if(l & 1) all_apply(l++, f);\n\
+    \                if(r & 1) all_apply(--r, f);\n                l >>= 1, r >>=\
+    \ 1;\n            }\n            l = l2, r = r2;\n        }\n        for(int i\
+    \ = 1; i <= log; i++) {\n            if(((l >> i) << i) != l) update(l >> i);\n\
     \            if(((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\
     \    template < class G > int max_right(int l, G g) {\n        assert(0 <= l &&\
     \ l <= _n);\n        assert(g(V::id));\n        if(l == _n) return _n;\n     \
@@ -179,7 +182,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 22:09:46+09:00'
+  timestamp: '2023-03-31 01:57:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp
