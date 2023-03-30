@@ -40,6 +40,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
+    - icon: ':warning:'
+      path: src/pointll.hpp
+      title: src/pointll.hpp
   - name: src/data_structure
     pages:
     - icon: ':warning:'
