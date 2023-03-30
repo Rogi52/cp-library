@@ -26,7 +26,7 @@ data:
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/lis.hpp
       title: src/algorithm/lis.hpp
     - icon: ':warning:'
@@ -112,6 +112,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: example.test.cpp
       title: example.test.cpp
+  - name: verify/library_checker/algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/algorithm/lis.test.cpp
+      title: verify/library_checker/algorithm/lis.test.cpp
   - name: verify/library_checker/data_structure
     pages:
     - icon: ':heavy_check_mark:'

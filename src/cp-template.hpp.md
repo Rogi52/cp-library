@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/algorithm/lis.test.cpp
+    title: verify/library_checker/algorithm/lis.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -77,6 +80,7 @@ data:
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp

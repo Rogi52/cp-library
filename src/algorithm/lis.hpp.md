@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/algorithm/lis.test.cpp
+    title: verify/library_checker/algorithm/lis.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algorithm/lis.hpp\"\ntemplate < class T, class Cmp >\n\
@@ -31,8 +34,9 @@ data:
   path: src/algorithm/lis.hpp
   requiredBy: []
   timestamp: '2023-03-30 23:30:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/library_checker/algorithm/lis.test.cpp
 documentation_of: src/algorithm/lis.hpp
 layout: document
 redirect_from:
