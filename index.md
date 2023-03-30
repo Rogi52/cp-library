@@ -102,7 +102,7 @@ data:
       title: Rolling Hash
     - icon: ':warning:'
       path: src/string/rolling_hash_permutation.hpp
-      title: src/string/rolling_hash_permutation.hpp
+      title: Rolling Hash for Alphabet Permutation
   verificationCategories:
   - name: .
     pages:
