@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/count_subseq.hpp
     title: src/algorithm/count_subseq.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'

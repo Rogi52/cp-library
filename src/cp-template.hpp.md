@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/geometry/angle_sort.test.hpp
+    title: verify/library_checker/geometry/angle_sort.test.hpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
@@ -36,9 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 1 "src/cp-template.hpp"
@@ -90,11 +93,12 @@ data:
   path: src/cp-template.hpp
   requiredBy: []
   timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/geometry/angle_sort.test.hpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp

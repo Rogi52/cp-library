@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
