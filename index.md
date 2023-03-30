@@ -23,6 +23,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algorithm/count_subseq.hpp
+      title: src/algorithm/count_subseq.hpp
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
@@ -106,6 +109,9 @@ data:
     - icon: ':warning:'
       path: src/string/rolling_hash_permutation.hpp
       title: Rolling Hash for Alphabet Permutation
+    - icon: ':warning:'
+      path: src/string/str_util.hpp
+      title: src/string/str_util.hpp
   verificationCategories:
   - name: .
     pages:
@@ -114,6 +120,9 @@ data:
       title: example.test.cpp
   - name: verify/library_checker/algorithm
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/algorithm/count_subseq.test.cpp
+      title: verify/library_checker/algorithm/count_subseq.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/lis.test.cpp
       title: verify/library_checker/algorithm/lis.test.cpp

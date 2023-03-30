@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/algorithm/count_subseq.test.cpp
+    title: verify/library_checker/algorithm/count_subseq.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,7 @@ data:
   timestamp: '2023-03-26 14:42:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/number/modint.hpp
