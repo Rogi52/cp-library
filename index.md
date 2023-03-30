@@ -27,6 +27,9 @@ data:
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
     - icon: ':warning:'
+      path: src/algorithm/lis.hpp
+      title: src/algorithm/lis.hpp
+    - icon: ':warning:'
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
   - name: src
