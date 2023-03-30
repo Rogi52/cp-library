@@ -6,7 +6,7 @@ documentation_of: src/algorithm/lis.hpp
 ## 使い方
 長さ $N$ の列 $A$ と比較関数 $\mathrm{cmp} : T \times T \to \lbrace	\mathrm{True}, \mathrm{False}\rbrace$ がある。 $A$ の部分列 $B$ が $\mathrm{Longest \  ? \  Subsequence} \ (\mathrm{L?S})$ であることを次のように定める。
 
-> $B$ の長さを $M$ とする。任意の $i, j \ (1 \leq i < j < M)$ について $\mathrm{cmp}(B_i, B_j) = \mathrm{True}$ が成り立つ。
+> $B$ の長さを $M$ とする。任意の $i, j \ (1 \leq i < j \leq M)$ について $\mathrm{cmp}(B_i, B_j) = \mathrm{True}$ が成り立つ。
 
 $O(N \log N)$ 時間の計算により、次の組を返す。
 - $\mathrm{l?s}$ : $A$ の $\mathrm{cmp}$ における $\mathrm{L?S}$ 
