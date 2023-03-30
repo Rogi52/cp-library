@@ -1,6 +1,6 @@
 ---
 title: Rolling Hash for Alphabet Permutation
-documentation_of: src/string/rolling_hash_perm.hpp
+documentation_of: src/string/rolling_hash_permutation.hpp
 ---
 
 ## 概要
