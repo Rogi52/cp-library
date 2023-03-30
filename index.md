@@ -69,6 +69,9 @@ data:
   - name: src/geometry
     pages:
     - icon: ':warning:'
+      path: src/geometry/angle_sort.hpp
+      title: src/geometry/angle_sort.hpp
+    - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
     - icon: ':warning:'
