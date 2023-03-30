@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/lis.hpp
-    title: src/algorithm/lis.hpp
+    title: Longest Increasing Subsequence
   - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp

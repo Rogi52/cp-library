@@ -39,8 +39,10 @@ data:
   - verify/library_checker/algorithm/lis.test.cpp
 documentation_of: src/algorithm/lis.hpp
 layout: document
-redirect_from:
-- /library/src/algorithm/lis.hpp
-- /library/src/algorithm/lis.hpp.html
-title: src/algorithm/lis.hpp
+title: Longest Increasing Subsequence
 ---
+
+## 概要
+列 $A \in T^{N}$ と比較関数 $\mathrm{cmp} : T \times T \to \lbrace	\mathrm{True}, \mathrm{False}\rbrace$ が与えられたとき次を返す。
+
+- $\mathrm{lis}$ : $A$ の

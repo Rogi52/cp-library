@@ -28,7 +28,7 @@ data:
       title: src/algorithm/find_local_min.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/lis.hpp
-      title: src/algorithm/lis.hpp
+      title: Longest Increasing Subsequence
     - icon: ':warning:'
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
