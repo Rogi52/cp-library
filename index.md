@@ -40,9 +40,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
-    - icon: ':warning:'
-      path: src/pointll.hpp
-      title: src/pointll.hpp
   - name: src/data_structure
     pages:
     - icon: ':warning:'
@@ -74,6 +71,9 @@ data:
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
+    - icon: ':warning:'
+      path: src/geometry/pointll.hpp
+      title: src/geometry/pointll.hpp
   - name: src/graph
     pages:
     - icon: ':warning:'
