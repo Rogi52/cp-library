@@ -17,3 +17,10 @@ vector<int> angle_argsort(vector<pointll>& P) {
     I.insert(I.end(), upper .begin(), upper .end());
     return I;
 }
+
+void angle_sort(vector<pointll>& P) {
+    auto I = angle_argsort(P);
+    vector<pointll> Q(P.size());
+    rep(i,int(P.size())) Q[i] = P[I[i]];
+    swap(P, Q);
+}
