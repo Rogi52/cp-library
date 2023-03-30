@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/geometry/angle_sort.test.hpp
-    title: verify/library_checker/geometry/angle_sort.test.hpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/geometry/angle_sort.test.cpp
+    title: verify/library_checker/geometry/angle_sort.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/geometry/angle_sort.hpp\"\nvector<int> angle_argsort(vector<pointll>&\
@@ -36,9 +36,9 @@ data:
   path: src/geometry/angle_sort.hpp
   requiredBy: []
   timestamp: '2023-03-31 03:18:51+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/geometry/angle_sort.test.hpp
+  - verify/library_checker/geometry/angle_sort.test.cpp
 documentation_of: src/geometry/angle_sort.hpp
 layout: document
 redirect_from:

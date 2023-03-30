@@ -37,7 +37,7 @@ data:
       title: src/algorithm/mo.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -68,13 +68,13 @@ data:
       title: src/data_structure/union_find.hpp
   - name: src/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/angle_sort.hpp
       title: src/geometry/angle_sort.hpp
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/pointll.hpp
       title: src/geometry/pointll.hpp
   - name: src/graph
@@ -154,9 +154,9 @@ data:
       title: verify/library_checker/data_structure/union_find.test.cpp
   - name: verify/library_checker/geometry
     pages:
-    - icon: ':x:'
-      path: verify/library_checker/geometry/angle_sort.test.hpp
-      title: verify/library_checker/geometry/angle_sort.test.hpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/geometry/angle_sort.test.cpp
+      title: verify/library_checker/geometry/angle_sort.test.cpp
   - name: verify/library_checker/graph
     pages:
     - icon: ':heavy_check_mark:'

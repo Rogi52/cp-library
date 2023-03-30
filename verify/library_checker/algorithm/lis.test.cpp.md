@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/lis.hpp
     title: Longest Increasing Subsequence
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   _extendedRequiredBy: []

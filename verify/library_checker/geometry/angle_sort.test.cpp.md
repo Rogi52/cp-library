@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/angle_sort.hpp
     title: src/geometry/angle_sort.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/pointll.hpp
     title: src/geometry/pointll.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
-  _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
     links:
     - https://judge.yosupo.jp/problem/sort_points_by_argument
-  bundledCode: "#line 1 \"verify/library_checker/geometry/angle_sort.test.hpp\"\n\
+  bundledCode: "#line 1 \"verify/library_checker/geometry/angle_sort.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\n\
     #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
     \ i = 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\nusing ld\
@@ -41,7 +41,7 @@ data:
     \ [&](int i, int j) { return det(P[i], P[j]) > 0; });\n    vector<int> I;\n  \
     \  I.insert(I.end(), lower .begin(), lower .end());\n    I.insert(I.end(), origin.begin(),\
     \ origin.end());\n    I.insert(I.end(), upper .begin(), upper .end());\n    return\
-    \ I;\n}\n#line 6 \"verify/library_checker/geometry/angle_sort.test.hpp\"\n\nint\
+    \ I;\n}\n#line 6 \"verify/library_checker/geometry/angle_sort.test.cpp\"\n\nint\
     \ main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N; cin\
     \ >> N;\n    vector<pointll> P(N);\n    rep(i,N) cin >> P[i].x >> P[i].y;\n  \
     \  auto I = angle_argsort(P);\n    for(int i : I) cout << P[i].x << \" \" << P[i].y\
@@ -57,15 +57,15 @@ data:
   - src/geometry/pointll.hpp
   - src/geometry/angle_sort.hpp
   isVerificationFile: true
-  path: verify/library_checker/geometry/angle_sort.test.hpp
+  path: verify/library_checker/geometry/angle_sort.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 03:20:17+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-31 03:45:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/geometry/angle_sort.test.hpp
+documentation_of: verify/library_checker/geometry/angle_sort.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/geometry/angle_sort.test.hpp
-- /verify/verify/library_checker/geometry/angle_sort.test.hpp.html
-title: verify/library_checker/geometry/angle_sort.test.hpp
+- /verify/verify/library_checker/geometry/angle_sort.test.cpp
+- /verify/verify/library_checker/geometry/angle_sort.test.cpp.html
+title: verify/library_checker/geometry/angle_sort.test.cpp
 ---
