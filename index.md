@@ -118,6 +118,11 @@ data:
     - icon: ':warning:'
       path: src/string/str_util.hpp
       title: src/string/str_util.hpp
+  - name: src/utility
+    pages:
+    - icon: ':warning:'
+      path: src/utility/io.hpp
+      title: src/utility/io.hpp
   verificationCategories:
   - name: .
     pages:

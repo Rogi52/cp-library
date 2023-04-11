@@ -34,13 +34,13 @@ data:
   isVerificationFile: false
   path: src/algebra/plus.hpp
   requiredBy:
-  - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
+  - src/algebra/range_affine_range_sum.hpp
   timestamp: '2023-03-26 22:09:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/algebra/plus.hpp
 layout: document
 redirect_from:

@@ -99,14 +99,14 @@ data:
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - verify/library_checker/data_structure/line_add_get_min.test.cpp
 documentation_of: src/cp-template.hpp
 layout: document
 redirect_from:
