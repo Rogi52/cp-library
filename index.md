@@ -82,6 +82,9 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs.hpp
       title: src/graph/bfs.hpp
+    - icon: ':warning:'
+      path: src/graph/dijkstra.hpp
+      title: src/graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
