@@ -1,8 +1,9 @@
-struct modinfo { uint mod, root; };
+struct modinfo { uint mod, root, isprime; };
 template < modinfo const &ref >
 struct modint {
     static constexpr uint const &mod = ref.mod;
-    static modint root() { return modint(ref.root); }
+    static constexpr uint const &root = ref.root;
+    static constexpr uint const &isprime = ref.isprime;
     uint v = 0;
     constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this; }
     constexpr modint(ll v = 0) { s(v % mod + mod); }
@@ -10,14 +11,21 @@ struct modint {
     modint& operator+=(const modint& rhs) { return s(v + rhs.v); }
     modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }
     modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return *this; }
-    modint& operator/=(const modint& rhs) { return *this *= rhs.inv(); }
+    modint& operator/=(const modint& rhs) { return *this *= modinv(rhs); }
     modint operator+(const modint& rhs) const { return modint(*this) += rhs; }
     modint operator-(const modint& rhs) const { return modint(*this) -= rhs; }
     modint operator*(const modint& rhs) const { return modint(*this) *= rhs; }
     modint operator/(const modint& rhs) const { return modint(*this) /= rhs; }
-    modint pow(ll n) const { modint res(1), x(*this); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }
-    modint inv() const { int a = v, b = mod, x = 1, y = 0, t; while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); } return modint(x); }
-    // modint inv() const { return pow(mod - 2); }
+    friend modint pow(modint x, ll n) { modint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }
+    friend modint inv(modint v) {
+        if(isprime) {
+            return pow(v, mod - 2);
+        } else {
+            ll a = v.v, b = modint::mod, x = 1, y = 0, t;
+            while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); }
+            return modint(x);
+        }
+    }
     friend modint operator+(int x, const modint& y) { return modint(x) + y; }
     friend modint operator-(int x, const modint& y) { return modint(x) - y; }
     friend modint operator*(int x, const modint& y) { return modint(x) * y; }
@@ -27,7 +35,7 @@ struct modint {
     bool operator==(const modint& r) const { return v == r.v; }
     bool operator!=(const modint& r) const { return v != r.v; }
 };
-
-constexpr modinfo base { 998244353, 3 };
-//constexpr modinfo base { 1000000007, 0 };
-using mint = modint< base >;
+constexpr modinfo base998244353 { 998244353, 3, 1 };
+constexpr modinfo base1000000007 { 1000000007, 0, 1 };
+using mint = modint< base998244353 >;
+//using mint = modint< base1000000007 >;
