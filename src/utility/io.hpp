@@ -48,12 +48,12 @@ template < class head, class... tail > int print(head&& h, tail&&... t) {
 }
 template < class T > int print(vector< T >& a, char sep = ' ') {
     int n = a.size();
-    rep(i,n) cout << a[i] << (i != n - 1 ? sep : '\n');
+    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\n');
     return 0;
 }
 template < class T > int print(vector< vector< T > >& a) {
     if(a.empty()) return 0;
     int h = a.size(), w = a[0].size();
-    rep(i,h)rep(j,w) cout << a[i][j] << (j != w - 1 ? ' ' : '\n');
+    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' ' : '\n');
     return 0;
 }
