@@ -11,7 +11,7 @@ struct modint {
     modint& operator+=(const modint& rhs) { return s(v + rhs.v); }
     modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }
     modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return *this; }
-    modint& operator/=(const modint& rhs) { return *this *= modinv(rhs); }
+    modint& operator/=(const modint& rhs) { return *this *= inv(rhs); }
     modint operator+(const modint& rhs) const { return modint(*this) += rhs; }
     modint operator-(const modint& rhs) const { return modint(*this) -= rhs; }
     modint operator*(const modint& rhs) const { return modint(*this) *= rhs; }
