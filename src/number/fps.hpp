@@ -26,8 +26,8 @@ template < class mint > struct formal_power_series : vector<mint> {
     fps operator/(const mint& v) const { return fps(*this) /= v; }
     fps operator<<(int x) const { return fps(*this) <<= x; }
     fps operator>>(int x) const { return fps(*this) >>= x; }
-    fps& operator+=(const fps&  r) { ups(r.size()); rep(i,r.size()) (*this)[i] += r[i]; return *this; }
-    fps& operator-=(const fps&  r) { ups(r.size()); rep(i,r.size()) (*this)[i] -= r[i]; return *this; }
+    fps& operator+=(const fps&  r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i] += r[i]; return *this; }
+    fps& operator-=(const fps&  r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }
     fps& operator*=(const fps&  r) { return *this = ntt::mul(*this, r); }
     template < class T > fps& operator+=(T v) { ups(1); (*this)[0] += v; return *this; }
     template < class T > fps& operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }
@@ -47,13 +47,13 @@ template < class mint > struct formal_power_series : vector<mint> {
     friend fps diff(const fps& f) {
         int n = f.size();
         fps g(n - 1);
-        for(int i = 1; i < n; i++) g[i - 1] = f[i] * i;
+        for(int i : rep(1, n)) g[i - 1] = f[i] * i;
         return g;
     }
     friend fps integral(const fps& f) {
         int n = f.size();
         fps g(n + 1, 0);
-        for(int i = 0; i < n; i++) g[i + 1] = f[i] / (i + 1);
+        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);
         return g;
     }
     friend fps inv(const fps& f, int deg) {
@@ -103,17 +103,17 @@ template < class mint > struct formal_power_series : vector<mint> {
     }
     friend fps sqrt(const fps& f, int deg) {
         int n = f.size(), d = n;
-        for(int i = n - 1; i >= 0; i--) if(f[i] != 0) d = i;
+        for(int i : revrep(0, n)) if(f[i] != 0) d = i;
         if(d == n) return f;
         if(d % 2 == 1) return {};
         mint y = f[d], x = modsqrt(y);
         if(x * x != y) return {};
         mint c = mint(1) / y;
         fps g(n - d);
-        rep(i,n-d) g[i] = f[d + i] * c;
+        for(int i : rep(n - d)) g[i] = f[d + i] * c;
         g = inner_sqrt(g, deg);
-        rep(i,g.size()) g[i] *= x;
-        for(int i = deg - 1; i >= 0; i--) g[i] = (i >= d / 2 ? g[i - d / 2] : 0);
+        for(int i : rep(g.size())) g[i] *= x;
+        for(int i : revrep(0, deg)) g[i] = (i >= d / 2 ? g[i - d / 2] : 0);
         return g;
     }
 
