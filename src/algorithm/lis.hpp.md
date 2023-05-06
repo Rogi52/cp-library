@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/algorithm/lis.test.cpp
-    title: verify/library_checker/algorithm/lis.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algorithm/lis.hpp\"\ntemplate < class T, class Cmp >\n\
@@ -34,9 +31,8 @@ data:
   path: src/algorithm/lis.hpp
   requiredBy: []
   timestamp: '2023-03-31 00:03:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/algorithm/lis.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algorithm/lis.hpp
 layout: document
 title: Longest Increasing Subsequence

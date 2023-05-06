@@ -2,19 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/segtree.test.cpp
-    title: verify/library_checker/data_structure/segtree.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -43,10 +37,8 @@ data:
   requiredBy:
   - src/algebra/range_affine_range_sum.hpp
   timestamp: '2023-03-26 14:34:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algebra/affine.hpp
 layout: document
 redirect_from:

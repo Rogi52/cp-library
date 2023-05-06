@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
   _extendedRequiredBy: []

@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/lazy_segtree.hpp\"\ntemplate < class\
@@ -135,9 +132,8 @@ data:
   path: src/data_structure/lazy_segtree.hpp
   requiredBy: []
   timestamp: '2023-03-26 20:40:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data_structure/lazy_segtree.hpp
 layout: document
 redirect_from:

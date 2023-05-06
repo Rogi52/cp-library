@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/geometry/angle_sort.test.cpp
-    title: verify/library_checker/geometry/angle_sort.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/geometry/pointll.hpp\"\nstruct pointll {\n    ll x,y;\n\
@@ -25,9 +22,8 @@ data:
   path: src/geometry/pointll.hpp
   requiredBy: []
   timestamp: '2023-03-31 03:18:00+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/geometry/angle_sort.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/geometry/pointll.hpp
 layout: document
 redirect_from:

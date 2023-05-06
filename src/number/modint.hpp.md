@@ -2,19 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/algorithm/count_subseq.test.cpp
-    title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/segtree.test.cpp
-    title: verify/library_checker/data_structure/segtree.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root;\
@@ -76,11 +67,8 @@ data:
   path: src/number/modint.hpp
   requiredBy: []
   timestamp: '2023-03-26 14:42:07+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/number/modint.hpp
 layout: document
 title: modint

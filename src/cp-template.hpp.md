@@ -2,75 +2,26 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/algorithm/count_subseq.test.cpp
-    title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/algorithm/lis.test.cpp
-    title: verify/library_checker/algorithm/lis.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/fenwick_tree.test.cpp
-    title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/line_add_get_min.test.cpp
-    title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-    title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/segtree.test.cpp
-    title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/union_find.test.cpp
-    title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/geometry/angle_sort.test.cpp
-    title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/graph/shortest_path.test.cpp
-    title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-    title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/string/rolling_hash.test.cpp
-    title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: '#line 1 "src/cp-template.hpp"
-
-    #include <bits/stdc++.h>
-
-    #define rep(i,n) for(int i = 0; i < (n); i++)
-
-    using namespace std;
-
-    using ll = long long;
-
-    using ld = long double;
-
-    using uint = unsigned int;
-
-    using ull  = unsigned long long;
-
-    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }
-    return false; }
-
-    template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; }
-    return false; }
-
-    '
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
+    \ File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: src/utility/rep_itr.hpp:\
+    \ line -1: no such header\n"
   code: '#include <bits/stdc++.h>
 
-    #define rep(i,n) for(int i = 0; i < (n); i++)
-
     using namespace std;
 
     using ll = long long;
@@ -86,27 +37,20 @@ data:
 
     template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; }
     return false; }
+
+
+    #include "src/utility/io.hpp"
+
+    #include "src/utility/rep_itr.hpp"
 
     '
   dependsOn: []
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/graph/shortest_path.test.cpp
-  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - verify/library_checker/geometry/angle_sort.test.cpp
-  - verify/library_checker/string/rolling_hash.test.cpp
-  - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - verify/library_checker/algorithm/lis.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/cp-template.hpp
 layout: document
 redirect_from:

@@ -1,63 +1,37 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':x:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':x:'
-    path: src/geometry/angle_sort.hpp
-    title: src/geometry/angle_sort.hpp
-  - icon: ':x:'
-    path: src/geometry/pointll.hpp
-    title: src/geometry/pointll.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes: {}
-  bundledCode: "#line 1 \"verify/library_checker/geometry/angle_sort.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\n\
-    #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
-    \ i = 0; i < (n); i++)\nusing namespace std;\nusing ll = long long;\nusing ld\
-    \ = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
-    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }\
-    \ return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a\
-    \ = b; return true; } return false; }\n#line 1 \"src/geometry/pointll.hpp\"\n\
-    struct pointll {\n    ll x,y;\n    pointll(ll x = 0, ll y = 0) : x(x), y(y) {}\n\
-    \    bool operator==(pointll p) const { return x == p.x && y == p.y; }\n};\n\n\
-    ll det(pointll p, pointll q) { return p.x * q.y - p.y * q.x; }\nll dot(pointll\
-    \ p, pointll q) { return p.x * q.x + p.y * q.y; }\n#line 1 \"src/geometry/angle_sort.hpp\"\
-    \nvector<int> angle_argsort(const vector<pointll>& P) {\n    vector<int> lower,\
-    \ origin, upper;\n    pointll O(0, 0);\n    rep(i,int(P.size())) {\n        if(P[i]\
-    \ == O)\n            origin.push_back(i);\n        else if(P[i].y < 0 || (P[i].y\
-    \ == 0 && P[i].x > 0))\n            lower .push_back(i);\n        else\n     \
-    \       upper .push_back(i);\n    }\n    sort(lower.begin(), lower.end(), [&](int\
-    \ i, int j) { return det(P[i], P[j]) > 0; });\n    sort(upper.begin(), upper.end(),\
-    \ [&](int i, int j) { return det(P[i], P[j]) > 0; });\n    vector<int> I;\n  \
-    \  I.insert(I.end(), lower .begin(), lower .end());\n    I.insert(I.end(), origin.begin(),\
-    \ origin.end());\n    I.insert(I.end(), upper .begin(), upper .end());\n    return\
-    \ I;\n}\n\nvoid angle_sort(vector<pointll>& P) {\n    auto I = angle_argsort(P);\n\
-    \    vector<pointll> Q(P.size());\n    rep(i,int(P.size())) Q[i] = P[I[i]];\n\
-    \    swap(P, Q);\n}\n#line 6 \"verify/library_checker/geometry/angle_sort.test.cpp\"\
-    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N; cin >> N;\n    vector<pointll> P(N);\n    for(int i : rep(N)) cin >> P[i].x\
-    \ >> P[i].y;\n    auto I = angle_argsort(P);\n    for(int i : I) cout << P[i].x\
-    \ << \" \" << P[i].y << \"\\n\";\n}\n"
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
+    \ File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: src/utility/rep_itr.hpp:\
+    \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/geometry/pointll.hpp\"\n\
     #include \"src/geometry/angle_sort.hpp\"\n\nint main(){\n    cin.tie(0);\n   \
     \ ios::sync_with_stdio(0);\n    \n    int N; cin >> N;\n    vector<pointll> P(N);\n\
     \    for(int i : rep(N)) cin >> P[i].x >> P[i].y;\n    auto I = angle_argsort(P);\n\
     \    for(int i : I) cout << P[i].x << \" \" << P[i].y << \"\\n\";\n}\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/geometry/pointll.hpp
-  - src/geometry/angle_sort.hpp
+  dependsOn: []
   isVerificationFile: true
   path: verify/library_checker/geometry/angle_sort.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 10:24:36+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/geometry/angle_sort.test.cpp

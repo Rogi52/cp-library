@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/string/rolling_hash.test.cpp
-    title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/string/rolling_hash.hpp\"\ntemplate< int num_of_mod\
@@ -105,9 +102,8 @@ data:
   path: src/string/rolling_hash.hpp
   requiredBy: []
   timestamp: '2023-03-29 22:44:36+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/string/rolling_hash.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/string/rolling_hash.hpp
 layout: document
 title: Rolling Hash
