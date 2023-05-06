@@ -13,7 +13,7 @@ int main(){
 
     vector<tuple<ll,ll,ll>> query(Q);
     vector<ll> xs;
-    rep(i,Q) {
+    for(int i : rep(Q)) {
         int t; cin >> t;
         if(t == 0) {
             ll a,b; cin >> a >> b;
@@ -27,7 +27,7 @@ int main(){
 
     CHT_offline_get_min<ll> cht(xs);
     for(auto [a, b] : lines) cht.add_line(a, b);
-    rep(i,Q) {
+    for(int i : rep(Q)) {
         auto [t, a, b] = query[i];
         if(t == 0) {
             cht.add_line(a, b);
