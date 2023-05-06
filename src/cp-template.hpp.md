@@ -3,45 +3,45 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/lis.test.cpp
     title: verify/library_checker/algorithm/lis.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: '#line 1 "src/cp-template.hpp"
@@ -93,20 +93,20 @@ data:
   path: src/cp-template.hpp
   requiredBy: []
   timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/string/rolling_hash.test.cpp
-  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
+  - verify/library_checker/string/rolling_hash.test.cpp
+  - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
+  - verify/library_checker/algorithm/count_subseq.test.cpp
 documentation_of: src/cp-template.hpp
 layout: document
 redirect_from:

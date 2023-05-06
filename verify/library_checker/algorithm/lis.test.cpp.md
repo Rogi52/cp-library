@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algorithm/lis.hpp
     title: Longest Increasing Subsequence
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -34,26 +34,22 @@ data:
     \ = pos + 1;\n    }\n    int len = l_s.size();\n    vector<int> idx(len);\n  \
     \  for(int i = st[len - 1]; i >= 0; i = nt[i]) idx[--len] = i;\n    return {l_s,\
     \ idx, rank};\n}\n#line 5 \"verify/library_checker/algorithm/lis.test.cpp\"\n\n\
-    int main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N; cin\
-    \ >> N;\n    vector<int> A(N);\n    rep(i,N) cin >> A[i];\n\n    auto [lis, idx,\
-    \ rank] = l_s(A, [&](int a, int b) { return a < b; });\n    int K = idx.size();\n\
-    \    cout << K << \"\\n\";\n    rep(i,K) cout << idx[i] << \" \\n\"[i == K - 1];\n\
-    }\n"
+    int main(){\n    int N = in();\n    vector<int> A = in(N);\n\n    auto [lis, idx,\
+    \ rank] = l_s(A, [&](int a, int b) { return a < b; });\n    print(idx.size());\n\
+    \    print(idx);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/algorithm/lis.hpp\"\n\nint\
-    \ main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N; cin\
-    \ >> N;\n    vector<int> A(N);\n    rep(i,N) cin >> A[i];\n\n    auto [lis, idx,\
-    \ rank] = l_s(A, [&](int a, int b) { return a < b; });\n    int K = idx.size();\n\
-    \    cout << K << \"\\n\";\n    rep(i,K) cout << idx[i] << \" \\n\"[i == K - 1];\n\
-    }\n"
+    \ main(){\n    int N = in();\n    vector<int> A = in(N);\n\n    auto [lis, idx,\
+    \ rank] = l_s(A, [&](int a, int b) { return a < b; });\n    print(idx.size());\n\
+    \    print(idx);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/algorithm/lis.hpp
   isVerificationFile: true
   path: verify/library_checker/algorithm/lis.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:20:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/lis.test.cpp
 layout: document

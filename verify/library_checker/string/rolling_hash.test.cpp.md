@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
@@ -73,22 +73,22 @@ data:
     \ cin >> s;\n    int n = s.size();\n    rolling_hash< 1 > rh(s);\n    vector<int>\
     \ I(n);\n    iota(I.begin(), I.end(), 0);\n    sort(I.begin(), I.end(), [&](int\
     \ i, int j) {\n        return rolling_hash< 1 >::cmp(s, rh, i, n, s, rh, j, n)\
-    \ < 0;\n    });\n    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
+    \ < 0;\n    });\n    print(I);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\n\n#include\
     \ \"src/cp-template.hpp\"\n#include \"src/string/rolling_hash.hpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n\n    string s; cin >> s;\n  \
     \  int n = s.size();\n    rolling_hash< 1 > rh(s);\n    vector<int> I(n);\n  \
     \  iota(I.begin(), I.end(), 0);\n    sort(I.begin(), I.end(), [&](int i, int j)\
     \ {\n        return rolling_hash< 1 >::cmp(s, rh, i, n, s, rh, j, n) < 0;\n  \
-    \  });\n    rep(i,n) cout << I[i] << \" \\n\"[i == n - 1];\n}\n"
+    \  });\n    print(I);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/string/rolling_hash.hpp
   isVerificationFile: true
   path: verify/library_checker/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:25:56+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/rolling_hash.test.cpp
 layout: document

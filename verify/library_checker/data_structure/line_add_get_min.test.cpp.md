@@ -1,22 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/cht_offline_get_min.hpp
     title: src/data_structure/cht_offline_get_min.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/line_add_get_min
-    links:
-    - https://judge.yosupo.jp/problem/line_add_get_min
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/data_structure/line_add_get_min.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n#line\
     \ 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
@@ -54,35 +50,35 @@ data:
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    vector<pair<ll,ll>> lines(N);\n    for(auto &[a, b]\
     \ : lines) cin >> a >> b;\n\n    vector<tuple<ll,ll,ll>> query(Q);\n    vector<ll>\
-    \ xs;\n    rep(i,Q) {\n        int t; cin >> t;\n        if(t == 0) {\n      \
-    \      ll a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n        } else\
-    \ {\n            ll x; cin >> x;\n            query[i] = {t, x, 0};\n        \
-    \    xs.push_back(x);\n        }\n    }\n\n    CHT_offline_get_min<ll> cht(xs);\n\
-    \    for(auto [a, b] : lines) cht.add_line(a, b);\n    rep(i,Q) {\n        auto\
-    \ [t, a, b] = query[i];\n        if(t == 0) {\n            cht.add_line(a, b);\n\
-    \        } else {\n            cout << cht.query(a) << '\\n';\n        }\n   \
-    \ }\n}\n"
+    \ xs;\n    for(int i : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0)\
+    \ {\n            ll a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n \
+    \       } else {\n            ll x; cin >> x;\n            query[i] = {t, x, 0};\n\
+    \            xs.push_back(x);\n        }\n    }\n\n    CHT_offline_get_min<ll>\
+    \ cht(xs);\n    for(auto [a, b] : lines) cht.add_line(a, b);\n    for(int i :\
+    \ rep(Q)) {\n        auto [t, a, b] = query[i];\n        if(t == 0) {\n      \
+    \      cht.add_line(a, b);\n        } else {\n            cout << cht.query(a)\
+    \ << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include \"src/cp-template.hpp\"\n#include \"src/data_structure/cht_offline_get_min.hpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    vector<pair<ll,ll>> lines(N);\n    for(auto &[a, b]\
     \ : lines) cin >> a >> b;\n\n    vector<tuple<ll,ll,ll>> query(Q);\n    vector<ll>\
-    \ xs;\n    rep(i,Q) {\n        int t; cin >> t;\n        if(t == 0) {\n      \
-    \      ll a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n        } else\
-    \ {\n            ll x; cin >> x;\n            query[i] = {t, x, 0};\n        \
-    \    xs.push_back(x);\n        }\n    }\n\n    CHT_offline_get_min<ll> cht(xs);\n\
-    \    for(auto [a, b] : lines) cht.add_line(a, b);\n    rep(i,Q) {\n        auto\
-    \ [t, a, b] = query[i];\n        if(t == 0) {\n            cht.add_line(a, b);\n\
-    \        } else {\n            cout << cht.query(a) << '\\n';\n        }\n   \
-    \ }\n}\n"
+    \ xs;\n    for(int i : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0)\
+    \ {\n            ll a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n \
+    \       } else {\n            ll x; cin >> x;\n            query[i] = {t, x, 0};\n\
+    \            xs.push_back(x);\n        }\n    }\n\n    CHT_offline_get_min<ll>\
+    \ cht(xs);\n    for(auto [a, b] : lines) cht.add_line(a, b);\n    for(int i :\
+    \ rep(Q)) {\n        auto [t, a, b] = query[i];\n        if(t == 0) {\n      \
+    \      cht.add_line(a, b);\n        } else {\n            cout << cht.query(a)\
+    \ << '\\n';\n        }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/data_structure/cht_offline_get_min.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/line_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:23:02+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/line_add_get_min.test.cpp
 layout: document

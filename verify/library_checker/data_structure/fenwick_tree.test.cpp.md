@@ -1,25 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
-    links:
-    - https://judge.yosupo.jp/problem/point_add_range_sum
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
     #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
@@ -54,22 +50,22 @@ data:
     \ T(0);\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
     \ T pow(const T &x, const int n) { return x * n; }\n    static constexpr bool\
     \ comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
-    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N,Q; cin >> N >> Q;\n    vector<ll> a(N);\n    rep(i,N) cin >> a[i];\n    fenwick_tree<\
-    \ PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int t; cin >> t;\n        switch(t)\
-    \ {\n            case 0: {\n                int p,x; cin >> p >> x;\n        \
-    \        tree.add(p, x);\n            } break;\n\n            case 1: {\n    \
-    \            int l,r; cin >> l >> r;\n                cout << tree.fold(l, r)\
-    \ << '\\n';\n            }\n        }\n    }\n}\n"
+    \n\nint main(){\n    int N = in();\n    int Q = in();\n    vector<ll> a = in(N);\n\
+    \    fenwick_tree< PLUS< ll > > tree(a);\n\n    for(int _ : rep(Q)) {\n      \
+    \  int t = in();\n        switch(t) {\n            case 0: {\n               \
+    \ int p = in();\n                int x = in();\n                tree.add(p, x);\n\
+    \            } break;\n\n            case 1: {\n                int l = in();\n\
+    \                int r = in();\n                print(tree.fold(l, r));\n    \
+    \        }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include \"src/cp-template.hpp\"\n#include \"src/data_structure/fenwick_tree.hpp\"\
-    \n#include \"src/algebra/plus.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    \n    int N,Q; cin >> N >> Q;\n    vector<ll> a(N);\n    rep(i,N) cin >>\
-    \ a[i];\n    fenwick_tree< PLUS< ll > > tree(a);\n\n    rep(_,Q) {\n        int\
-    \ t; cin >> t;\n        switch(t) {\n            case 0: {\n                int\
-    \ p,x; cin >> p >> x;\n                tree.add(p, x);\n            } break;\n\
-    \n            case 1: {\n                int l,r; cin >> l >> r;\n           \
-    \     cout << tree.fold(l, r) << '\\n';\n            }\n        }\n    }\n}\n"
+    \n#include \"src/algebra/plus.hpp\"\n\nint main(){\n    int N = in();\n    int\
+    \ Q = in();\n    vector<ll> a = in(N);\n    fenwick_tree< PLUS< ll > > tree(a);\n\
+    \n    for(int _ : rep(Q)) {\n        int t = in();\n        switch(t) {\n    \
+    \        case 0: {\n                int p = in();\n                int x = in();\n\
+    \                tree.add(p, x);\n            } break;\n\n            case 1:\
+    \ {\n                int l = in();\n                int r = in();\n          \
+    \      print(tree.fold(l, r));\n            }\n        }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/data_structure/fenwick_tree.hpp
@@ -77,8 +73,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:21:49+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp
 layout: document

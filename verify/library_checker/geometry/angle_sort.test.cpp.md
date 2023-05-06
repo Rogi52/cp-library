@@ -1,25 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/geometry/angle_sort.hpp
     title: src/geometry/angle_sort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/geometry/pointll.hpp
     title: src/geometry/pointll.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
-    links:
-    - https://judge.yosupo.jp/problem/sort_points_by_argument
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/geometry/angle_sort.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\n\
     #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
@@ -45,15 +41,15 @@ data:
     \    vector<pointll> Q(P.size());\n    rep(i,int(P.size())) Q[i] = P[I[i]];\n\
     \    swap(P, Q);\n}\n#line 6 \"verify/library_checker/geometry/angle_sort.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N; cin >> N;\n    vector<pointll> P(N);\n    rep(i,N) cin >> P[i].x >> P[i].y;\n\
-    \    auto I = angle_argsort(P);\n    for(int i : I) cout << P[i].x << \" \" <<\
-    \ P[i].y << \"\\n\";\n}\n"
+    \ N; cin >> N;\n    vector<pointll> P(N);\n    for(int i : rep(N)) cin >> P[i].x\
+    \ >> P[i].y;\n    auto I = angle_argsort(P);\n    for(int i : I) cout << P[i].x\
+    \ << \" \" << P[i].y << \"\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/geometry/pointll.hpp\"\n\
     #include \"src/geometry/angle_sort.hpp\"\n\nint main(){\n    cin.tie(0);\n   \
     \ ios::sync_with_stdio(0);\n    \n    int N; cin >> N;\n    vector<pointll> P(N);\n\
-    \    rep(i,N) cin >> P[i].x >> P[i].y;\n    auto I = angle_argsort(P);\n    for(int\
-    \ i : I) cout << P[i].x << \" \" << P[i].y << \"\\n\";\n}\n"
+    \    for(int i : rep(N)) cin >> P[i].x >> P[i].y;\n    auto I = angle_argsort(P);\n\
+    \    for(int i : I) cout << P[i].x << \" \" << P[i].y << \"\\n\";\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/geometry/pointll.hpp
@@ -61,8 +57,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/geometry/angle_sort.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 04:57:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:24:36+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/geometry/angle_sort.test.cpp
 layout: document

@@ -1,22 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/shortest_path.hpp
     title: src/graph/shortest_path.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
-    links:
-    - https://judge.yosupo.jp/problem/shortest_path
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/graph/shortest_path.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#line 1 \"\
     src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int i =\
@@ -51,29 +47,29 @@ data:
     \        reverse(path.begin(), path.end());\n    }\n    return {dist[t], path};\n\
     }\n#line 5 \"verify/library_checker/graph/shortest_path.test.cpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,M,s,t; cin >>\
-    \ N >> M >> s >> t;\n    vector<vector<pair<int,ll>>> G(N);\n    rep(_,M) {\n\
-    \        int a,b,c; cin >> a >> b >> c;\n        G[a].push_back({b, c});\n   \
-    \ }\n\n    auto [dist, path] = shortest_path(G, s, t);\n    if(dist == numeric_limits<ll>::max())\
+    \ N >> M >> s >> t;\n    vector<vector<pair<int,ll>>> G(N);\n    for(int _ : rep(M))\
+    \ {\n        int a,b,c; cin >> a >> b >> c;\n        G[a].push_back({b, c});\n\
+    \    }\n\n    auto [dist, path] = shortest_path(G, s, t);\n    if(dist == numeric_limits<ll>::max())\
     \ {\n        cout << -1 << endl;\n    } else {\n        int n = path.size();\n\
-    \        cout << dist << \" \" << n - 1 << endl;\n        rep(i,n-1) cout << path[i]\
-    \ << \" \" << path[i + 1] << '\\n';\n    }\n}\n"
+    \        cout << dist << \" \" << n - 1 << endl;\n        for(int i : rep(n-1))\
+    \ cout << path[i] << \" \" << path[i + 1] << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
     \ \"src/cp-template.hpp\"\n#include \"src/graph/shortest_path.hpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,M,s,t; cin >>\
-    \ N >> M >> s >> t;\n    vector<vector<pair<int,ll>>> G(N);\n    rep(_,M) {\n\
-    \        int a,b,c; cin >> a >> b >> c;\n        G[a].push_back({b, c});\n   \
-    \ }\n\n    auto [dist, path] = shortest_path(G, s, t);\n    if(dist == numeric_limits<ll>::max())\
+    \ N >> M >> s >> t;\n    vector<vector<pair<int,ll>>> G(N);\n    for(int _ : rep(M))\
+    \ {\n        int a,b,c; cin >> a >> b >> c;\n        G[a].push_back({b, c});\n\
+    \    }\n\n    auto [dist, path] = shortest_path(G, s, t);\n    if(dist == numeric_limits<ll>::max())\
     \ {\n        cout << -1 << endl;\n    } else {\n        int n = path.size();\n\
-    \        cout << dist << \" \" << n - 1 << endl;\n        rep(i,n-1) cout << path[i]\
-    \ << \" \" << path[i + 1] << '\\n';\n    }\n}\n"
+    \        cout << dist << \" \" << n - 1 << endl;\n        for(int i : rep(n-1))\
+    \ cout << path[i] << \" \" << path[i + 1] << '\\n';\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/graph/shortest_path.hpp
   isVerificationFile: true
   path: verify/library_checker/graph/shortest_path.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:25:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/shortest_path.test.cpp
 layout: document

@@ -1,22 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/cartesian_tree.hpp
     title: src/graph/tree/cartesian_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/cartesian_tree
-    links:
-    - https://judge.yosupo.jp/problem/cartesian_tree
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/graph/tree/cartesian_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/cartesian_tree\"\n\n#line\
     \ 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n) for(int\
@@ -35,23 +31,24 @@ data:
     \   else tree[parent[i]].push_back(i);\n    }\n    return {tree, root};\n}\n#line\
     \ 5 \"verify/library_checker/graph/tree/cartesian_tree.test.cpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int n; cin >> n;\n \
-    \   vector<int> a(n);\n    rep(i,n) cin >> a[i];\n    auto [G, r] = cartesian_tree<int>(a);\n\
-    \    vector<int> ans(n);\n    ans[r] = r;\n    rep(i,n) for(int v : G[i]) ans[v]\
-    \ = i;\n    for(int p : ans) cout << p << \" \"; cout << endl;\n};\n"
+    \   vector<int> a = in(n);\n    auto [G, r] = cartesian_tree<int>(a);\n    vector<int>\
+    \ ans(n);\n    ans[r] = r;\n    for(int i : rep(n)) for(int v : G[i]) ans[v] =\
+    \ i;\n    for(int p : ans) cout << p << \" \"; cout << endl;\n};\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cartesian_tree\"\n\n#include\
     \ \"src/cp-template.hpp\"\n#include \"src/graph/tree/cartesian_tree.hpp\"\n\n\
     int main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int n; cin\
-    \ >> n;\n    vector<int> a(n);\n    rep(i,n) cin >> a[i];\n    auto [G, r] = cartesian_tree<int>(a);\n\
-    \    vector<int> ans(n);\n    ans[r] = r;\n    rep(i,n) for(int v : G[i]) ans[v]\
-    \ = i;\n    for(int p : ans) cout << p << \" \"; cout << endl;\n};\n"
+    \ >> n;\n    vector<int> a = in(n);\n    auto [G, r] = cartesian_tree<int>(a);\n\
+    \    vector<int> ans(n);\n    ans[r] = r;\n    for(int i : rep(n)) for(int v :\
+    \ G[i]) ans[v] = i;\n    for(int p : ans) cout << p << \" \"; cout << endl;\n\
+    };\n"
   dependsOn:
   - src/cp-template.hpp
   - src/graph/tree/cartesian_tree.hpp
   isVerificationFile: true
   path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:25:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/tree/cartesian_tree.test.cpp
 layout: document

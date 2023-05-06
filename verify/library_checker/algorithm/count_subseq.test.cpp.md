@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algorithm/count_subseq.hpp
     title: src/algorithm/count_subseq.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/modint.hpp
     title: modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_subsequences
@@ -61,13 +61,13 @@ data:
     \        if(mp.count(a[i])) dp[i + 1] -= dp[mp[a[i]]];\n        mp[a[i]] = i;\n\
     \    }\n    return dp[n];\n}\n#line 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N; cin >> N;\n    vector<int> A(N);\n    rep(i,N) cin >> A[i];\n    cout <<\
-    \ count_subseq<mint>(A) - 1 << endl;\n}\n"
+    \ N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint>(A) - 1);\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/modint.hpp\"\n#include\
     \ \"src/algorithm/count_subseq.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    \n    int N; cin >> N;\n    vector<int> A(N);\n    rep(i,N) cin >> A[i];\n\
-    \    cout << count_subseq<mint>(A) - 1 << endl;\n}\n"
+    \    \n    int N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint>(A)\
+    \ - 1);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/number/modint.hpp
@@ -75,8 +75,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/count_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:19:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/count_subseq.test.cpp
 layout: document

@@ -1,28 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/segtree.hpp
     title: src/data_structure/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/modint.hpp
     title: modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
-    links:
-    - https://judge.yosupo.jp/problem/point_set_range_composite
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/data_structure/segtree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,n)\
@@ -105,24 +101,24 @@ data:
     //constexpr modinfo base { 1000000007, 0 };\nusing mint = modint< base >;\n#line\
     \ 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,Q; cin >> N >>\
-    \ Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    rep(i,N) {\n   \
-    \     mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree<\
-    \ affine_composite_monoid<mint> > seg(f);\n    rep(_,Q) {\n        int t; cin\
-    \ >> t;\n        if(t == 0) {\n            int p; mint c,d; cin >> p >> c >> d;\n\
-    \            seg.set(p, F(c, d));\n        }\n\n        if(t == 1) {\n       \
-    \     int l,r; mint x; cin >> l >> r >> x;\n            cout << seg.prod(l, r).eval(x)\
-    \ << \"\\n\";\n        }\n    }\n}\n"
+    \ Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    for(int i : rep(N))\
+    \ {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree<\
+    \ affine_composite_monoid<mint> > seg(f);\n    for(int _ : rep(Q)) {\n       \
+    \ int t; cin >> t;\n        if(t == 0) {\n            int p; mint c,d; cin >>\
+    \ p >> c >> d;\n            seg.set(p, F(c, d));\n        }\n\n        if(t ==\
+    \ 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n            cout <<\
+    \ seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/data_structure/segtree.hpp\"\
     \n#include \"src/algebra/affine.hpp\"\n#include \"src/number/modint.hpp\"\n\n\
     int main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,Q;\
-    \ cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    rep(i,N)\
-    \ {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree<\
-    \ affine_composite_monoid<mint> > seg(f);\n    rep(_,Q) {\n        int t; cin\
-    \ >> t;\n        if(t == 0) {\n            int p; mint c,d; cin >> p >> c >> d;\n\
-    \            seg.set(p, F(c, d));\n        }\n\n        if(t == 1) {\n       \
-    \     int l,r; mint x; cin >> l >> r >> x;\n            cout << seg.prod(l, r).eval(x)\
-    \ << \"\\n\";\n        }\n    }\n}\n"
+    \ cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    for(int\
+    \ i : rep(N)) {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n \
+    \   }\n\n    segtree< affine_composite_monoid<mint> > seg(f);\n    for(int _ :\
+    \ rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n            int p;\
+    \ mint c,d; cin >> p >> c >> d;\n            seg.set(p, F(c, d));\n        }\n\
+    \n        if(t == 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n   \
+    \         cout << seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/data_structure/segtree.hpp
@@ -131,8 +127,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 01:57:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-06 10:23:59+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp
 layout: document

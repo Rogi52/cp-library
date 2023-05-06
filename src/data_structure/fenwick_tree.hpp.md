@@ -6,12 +6,12 @@ data:
     path: src/data_structure/offline_multiset.hpp
     title: src/data_structure/offline_multiset.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/fenwick_tree.hpp\"\ntemplate < class\
@@ -63,7 +63,7 @@ data:
   requiredBy:
   - src/data_structure/offline_multiset.hpp
   timestamp: '2022-05-28 15:46:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
 documentation_of: src/data_structure/fenwick_tree.hpp
