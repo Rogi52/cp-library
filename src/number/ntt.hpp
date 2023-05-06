@@ -1,7 +1,7 @@
 namespace ntt {
 
 template < class mint >
-void trans(vector<mint>& v, bool inv) {
+void trans(vector<mint>& v, bool is_inv) {
     if(v.empty()) return;
     int n = v.size();
     uint mod = mint::mod, root = mint::root;
@@ -31,7 +31,7 @@ void trans(vector<mint>& v, bool inv) {
             }
         }
     }
-    if(inv) {
+    if(is_inv) {
         mint iv = inv(mint(n));
         for(int i : rep(n)) v[i] *= iv;
     }
