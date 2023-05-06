@@ -8,11 +8,10 @@ int main(){
     ios::sync_with_stdio(0);
     
     int N; cin >> N;
-    vector<int> A(N);
-    rep(i,N) cin >> A[i];
+    vector<int> A = in(N);
 
     auto [lis, idx, rank] = l_s(A, [&](int a, int b) { return a < b; });
     int K = idx.size();
     cout << K << "\n";
-    rep(i,K) cout << idx[i] << " \n"[i == K - 1];
+    print(idx);
 }
