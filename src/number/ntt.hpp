@@ -19,7 +19,7 @@ void trans(vector<mint>& v, bool is_inv) {
         if(i > j) swap(v[i], v[j]);
     }
     for(int k = 0, t = 2; t <= n; ++k, t <<= 1) {
-        mint bw = (inv ? vibw[k] : vbw[k]);
+        mint bw = (is_inv ? vibw[k] : vbw[k]);
         for (int i = 0; i < n; i += t) {
             mint w = 1;
             for (int j = 0; j < t / 2; ++j) {
