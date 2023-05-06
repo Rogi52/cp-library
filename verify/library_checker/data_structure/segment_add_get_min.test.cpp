@@ -14,7 +14,7 @@ int main(){
 
     vector< pair< int, Line > > query(Q);
     vector< ll > xs;
-    rep(i,Q) {
+    for(int i : rep(Q)) {
         int t; cin >> t;
         if(t == 0) {
             ll l, r, a, b; cin >> l >> r >> a >> b;
@@ -28,7 +28,7 @@ int main(){
 
     CHT_offline_get_min<ll> cht(xs);
     for(auto [l, r, a, b] : lines) cht.add_segment(a, b, l, r);
-    rep(i,Q) {
+    for(int i : rep(Q)) {
         int t = query[i].first;
         if(t == 0) {
             auto [l, r, a, b] = query[i].second;
