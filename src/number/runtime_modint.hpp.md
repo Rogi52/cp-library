@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/number/bicoef.test.cpp
+    title: verify/library_checker/number/bicoef.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n\
@@ -74,8 +77,9 @@ data:
   path: src/number/runtime_modint.hpp
   requiredBy: []
   timestamp: '2023-05-06 07:57:26+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/number/bicoef.test.cpp
 documentation_of: src/number/runtime_modint.hpp
 layout: document
 redirect_from:

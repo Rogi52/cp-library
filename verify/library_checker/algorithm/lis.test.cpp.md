@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/lis.hpp
     title: Longest Increasing Subsequence
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
