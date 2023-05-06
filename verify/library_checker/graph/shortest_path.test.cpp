@@ -9,7 +9,7 @@ int main(){
     
     int N,M,s,t; cin >> N >> M >> s >> t;
     vector<vector<pair<int,ll>>> G(N);
-    rep(_,M) {
+    for(int _ : rep(M)) {
         int a,b,c; cin >> a >> b >> c;
         G[a].push_back({b, c});
     }
@@ -20,6 +20,6 @@ int main(){
     } else {
         int n = path.size();
         cout << dist << " " << n - 1 << endl;
-        rep(i,n-1) cout << path[i] << " " << path[i + 1] << '\n';
+        for(int i : rep(n-1)) cout << path[i] << " " << path[i + 1] << '\n';
     }
 }
