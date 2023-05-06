@@ -44,10 +44,10 @@ data:
     \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
     \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
     \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
-    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint = modint< base998244353 >;\n//using mint =\
-    \ modint< base1000000007 >;\n"
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
+    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
+    using mint = modint< base998244353 >;\n//using mint = modint< base1000000007 >;\n"
   code: "struct modinfo { uint mod, root, isprime; };\ntemplate < modinfo const &ref\
     \ >\nstruct modint {\n    static constexpr uint const &mod = ref.mod;\n    static\
     \ constexpr uint const &root = ref.root;\n    static constexpr uint const &isprime\
@@ -75,14 +75,15 @@ data:
     \ x; m = modint(x); return is; }\n    friend ostream& operator<<(ostream& os,\
     \ const modint& m) { return os << m.v; }\n    bool operator==(const modint& r)\
     \ const { return v == r.v; }\n    bool operator!=(const modint& r) const { return\
-    \ v != r.v; }\n};\nconstexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr\
-    \ modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint = modint< base998244353\
-    \ >;\n//using mint = modint< base1000000007 >;\n"
+    \ v != r.v; }\n    static uint get_mod() { return mod; }\n};\nconstexpr modinfo\
+    \ base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007,\
+    \ 0, 1 };\nusing mint = modint< base998244353 >;\n//using mint = modint< base1000000007\
+    \ >;\n"
   dependsOn: []
   isVerificationFile: false
   path: src/number/modint.hpp
   requiredBy: []
-  timestamp: '2023-05-06 07:51:42+09:00'
+  timestamp: '2023-05-07 03:34:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/lazy_segtree.test.cpp

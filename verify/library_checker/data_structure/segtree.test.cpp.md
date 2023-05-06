@@ -147,18 +147,18 @@ data:
     \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
     \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
     \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n};\nconstexpr modinfo base998244353 { 998244353,\
-    \ 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint\
-    \ = modint< base998244353 >;\n//using mint = modint< base1000000007 >;\n#line\
-    \ 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\n\nint main(){\n\
-    \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,Q; cin >> N >>\
-    \ Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    for(int i : rep(N))\
-    \ {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree<\
-    \ affine_composite_monoid<mint> > seg(f);\n    for(int _ : rep(Q)) {\n       \
-    \ int t; cin >> t;\n        if(t == 0) {\n            int p; mint c,d; cin >>\
-    \ p >> c >> d;\n            seg.set(p, F(c, d));\n        }\n\n        if(t ==\
-    \ 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n            cout <<\
-    \ seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
+    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
+    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
+    \ { 1000000007, 0, 1 };\nusing mint = modint< base998244353 >;\n//using mint =\
+    \ modint< base1000000007 >;\n#line 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\
+    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
+    \ N,Q; cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n  \
+    \  for(int i : rep(N)) {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a,\
+    \ b);\n    }\n\n    segtree< affine_composite_monoid<mint> > seg(f);\n    for(int\
+    \ _ : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n            int\
+    \ p; mint c,d; cin >> p >> c >> d;\n            seg.set(p, F(c, d));\n       \
+    \ }\n\n        if(t == 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n\
+    \            cout << seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/data_structure/segtree.hpp\"\
     \n#include \"src/algebra/affine.hpp\"\n#include \"src/number/modint.hpp\"\n\n\
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 10:51:50+09:00'
+  timestamp: '2023-05-07 03:34:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp

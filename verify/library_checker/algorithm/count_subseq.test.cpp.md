@@ -98,18 +98,18 @@ data:
     \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
     \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
     \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
-    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint = modint< base998244353 >;\n//using mint =\
-    \ modint< base1000000007 >;\n#line 1 \"src/algorithm/count_subseq.hpp\"\ntemplate\
-    \ < class mint, class T >\nmint count_subseq(const vector< T >& a) {\n    int\
-    \ n = a.size();\n    unordered_map< T, int > mp;\n    vector<mint> dp(n + 1);\n\
-    \    dp[0] = 1;\n    for(int i : rep(n)) {\n        dp[i + 1] = dp[i] + dp[i];\n\
-    \        if(mp.count(a[i])) dp[i + 1] -= dp[mp[a[i]]];\n        mp[a[i]] = i;\n\
-    \    }\n    return dp[n];\n}\n#line 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\
-    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint>(A) - 1);\n\
-    }\n"
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
+    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
+    using mint = modint< base998244353 >;\n//using mint = modint< base1000000007 >;\n\
+    #line 1 \"src/algorithm/count_subseq.hpp\"\ntemplate < class mint, class T >\n\
+    mint count_subseq(const vector< T >& a) {\n    int n = a.size();\n    unordered_map<\
+    \ T, int > mp;\n    vector<mint> dp(n + 1);\n    dp[0] = 1;\n    for(int i : rep(n))\
+    \ {\n        dp[i + 1] = dp[i] + dp[i];\n        if(mp.count(a[i])) dp[i + 1]\
+    \ -= dp[mp[a[i]]];\n        mp[a[i]] = i;\n    }\n    return dp[n];\n}\n#line\
+    \ 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\n\nint main(){\n\
+    \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N = in();\n    vector<int>\
+    \ A = in(N);\n    print(count_subseq<mint>(A) - 1);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/modint.hpp\"\n#include\
     \ \"src/algorithm/count_subseq.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
@@ -124,7 +124,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/count_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 11:14:03+09:00'
+  timestamp: '2023-05-07 03:34:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/count_subseq.test.cpp
