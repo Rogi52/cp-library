@@ -1,7 +1,7 @@
 vector<int> str_to_vec(const string& s, char base) {
     int n = s.size();
     vector<int> a(n);
-    rep(i,n) a[i] = s[i] - base;
+    for(int i : rep(n)) a[i] = s[i] - base;
     return a;
 }
 
