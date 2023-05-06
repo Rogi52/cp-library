@@ -12,13 +12,13 @@ int main(){
     int N,Q; cin >> N >> Q;
     using F = affine<mint>;
     vector< F > f(N);
-    rep(i,N) {
+    for(int i : rep(N)) {
         mint a,b; cin >> a >> b;
         f[i] = F(a, b);
     }
 
     segtree< affine_composite_monoid<mint> > seg(f);
-    rep(_,Q) {
+    for(int _ : rep(Q)) {
         int t; cin >> t;
         if(t == 0) {
             int p; mint c,d; cin >> p >> c >> d;
