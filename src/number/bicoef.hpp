@@ -14,7 +14,10 @@ class bicoef {
     mint fact(int n) { assert(0 <= n && n <= N); return fact_[n]; }
     mint inv (int n) { assert(0 <= n && n <= N); return inv_ [n]; }
     mint finv(int n) { assert(0 <= n && n <= N); return finv_[n]; }
-    mint comb(int n, int k) { return fact(n) * finv(k) * finv(n - k); }
+    mint comb(int n, int k) {
+        if(k < 0 || n < k) return mint(0);
+        return fact(n) * finv(k) * finv(n - k);
+    }
     mint perm(int n, int k) { return fact(n) * finv(n - k); }
     mint homo(int n, int k) { return comb(n + k - 1, k); }
 };
