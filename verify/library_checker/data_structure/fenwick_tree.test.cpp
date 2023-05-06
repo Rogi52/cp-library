@@ -9,11 +9,10 @@ int main(){
     ios::sync_with_stdio(0);
     
     int N,Q; cin >> N >> Q;
-    vector<ll> a(N);
-    rep(i,N) cin >> a[i];
+    vector<ll> a = in(N);
     fenwick_tree< PLUS< ll > > tree(a);
 
-    rep(_,Q) {
+    for(int _ : rep(Q)) {
         int t; cin >> t;
         switch(t) {
             case 0: {
