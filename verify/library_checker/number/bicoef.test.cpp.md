@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/bicoef.hpp
     title: src/number/bicoef.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -110,13 +110,13 @@ data:
     \ = finv_[i - 1] * inv_[i];\n        }\n    }\n    mint fact(int n) { assert(0\
     \ <= n && n <= N); return fact_[n]; }\n    mint inv (int n) { assert(0 <= n &&\
     \ n <= N); return inv_ [n]; }\n    mint finv(int n) { assert(0 <= n && n <= N);\
-    \ return finv_[n]; }\n    mint comb(int n, int k) { return fact(n) * finv(k) *\
-    \ finv(n - k); }\n    mint perm(int n, int k) { return fact(n) * finv(n - k);\
-    \ }\n    mint homo(int n, int k) { return comb(n + k - 1, k); }\n};\n#line 6 \"\
-    verify/library_checker/number/bicoef.test.cpp\"\n\nint main() {\n    int T = in();\n\
-    \    int m = in();\n    mint::set_mod(m);\n    bicoef<mint> c(min(m, 10'000'000));\n\
-    \    for(int i : rep(T)) {\n        int n = in();\n        int k = in();\n   \
-    \     print(c.comb(n, k));\n    }\n}\n"
+    \ return finv_[n]; }\n    mint comb(int n, int k) {\n        if(k < 0 || n < k)\
+    \ return mint(0);\n        return fact(n) * finv(k) * finv(n - k);\n    }\n  \
+    \  mint perm(int n, int k) { return fact(n) * finv(n - k); }\n    mint homo(int\
+    \ n, int k) { return comb(n + k - 1, k); }\n};\n#line 6 \"verify/library_checker/number/bicoef.test.cpp\"\
+    \n\nint main() {\n    int T = in();\n    int m = in();\n    mint::set_mod(m);\n\
+    \    bicoef<mint> c(min(m, 10'000'000));\n    for(int i : rep(T)) {\n        int\
+    \ n = in();\n        int k = in();\n        print(c.comb(n, k));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/runtime_modint.hpp\"\
     \n#include \"src/number/bicoef.hpp\"\n\nint main() {\n    int T = in();\n    int\
@@ -132,8 +132,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/bicoef.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 04:08:23+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-07 04:24:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/bicoef.test.cpp
 layout: document

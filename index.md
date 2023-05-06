@@ -37,7 +37,7 @@ data:
       title: src/algorithm/mo.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -101,7 +101,7 @@ data:
       title: Offline Level Ancestor
   - name: src/number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/bicoef.hpp
       title: src/number/bicoef.hpp
     - icon: ':warning:'
@@ -122,7 +122,7 @@ data:
     - icon: ':warning:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
   - name: src/string
@@ -138,10 +138,10 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
   verificationCategories:
@@ -195,7 +195,7 @@ data:
       title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - name: verify/library_checker/number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
   - name: verify/library_checker/string
