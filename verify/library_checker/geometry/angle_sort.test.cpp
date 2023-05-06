@@ -10,7 +10,7 @@ int main(){
     
     int N; cin >> N;
     vector<pointll> P(N);
-    rep(i,N) cin >> P[i].x >> P[i].y;
+    for(int i : rep(N)) cin >> P[i].x >> P[i].y;
     auto I = angle_argsort(P);
     for(int i : I) cout << P[i].x << " " << P[i].y << "\n";
 }
