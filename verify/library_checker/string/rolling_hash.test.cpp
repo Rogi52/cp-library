@@ -15,5 +15,5 @@ int main(){
     sort(I.begin(), I.end(), [&](int i, int j) {
         return rolling_hash< 1 >::cmp(s, rh, i, n, s, rh, j, n) < 0;
     });
-    rep(i,n) cout << I[i] << " \n"[i == n - 1];
+    print(I);
 }
