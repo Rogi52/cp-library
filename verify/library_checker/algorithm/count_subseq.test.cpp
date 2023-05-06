@@ -9,7 +9,6 @@ int main(){
     ios::sync_with_stdio(0);
     
     int N; cin >> N;
-    vector<int> A(N);
-    rep(i,N) cin >> A[i];
+    vector<int> A = in(N);
     cout << count_subseq<mint>(A) - 1 << endl;
 }
