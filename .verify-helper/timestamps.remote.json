@@ -11,5 +11,6 @@
 "verify/library_checker/geometry/angle_sort.test.cpp": "2023-05-06 10:55:47 +0900",
 "verify/library_checker/graph/shortest_path.test.cpp": "2023-05-06 10:51:50 +0900",
 "verify/library_checker/graph/tree/cartesian_tree.test.cpp": "2023-05-06 10:51:50 +0900",
+"verify/library_checker/number/bicoef.test.cpp": "2023-05-07 04:24:43 +0900",
 "verify/library_checker/string/rolling_hash.test.cpp": "2023-05-06 11:06:53 +0900"
 }
