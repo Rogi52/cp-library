@@ -1,7 +1,7 @@
 vector<int> angle_argsort(const vector<pointll>& P) {
     vector<int> lower, origin, upper;
     pointll O(0, 0);
-    rep(i,int(P.size())) {
+    for(int i : rep(P.size())) {
         if(P[i] == O)
             origin.push_back(i);
         else if(P[i].y < 0 || (P[i].y == 0 && P[i].x > 0))
@@ -21,6 +21,6 @@ vector<int> angle_argsort(const vector<pointll>& P) {
 void angle_sort(vector<pointll>& P) {
     auto I = angle_argsort(P);
     vector<pointll> Q(P.size());
-    rep(i,int(P.size())) Q[i] = P[I[i]];
+    for(int i : rep(P.size())) Q[i] = P[I[i]];
     swap(P, Q);
 }
