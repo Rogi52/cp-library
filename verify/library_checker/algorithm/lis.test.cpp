@@ -4,14 +4,10 @@
 #include "src/algorithm/lis.hpp"
 
 int main(){
-    cin.tie(0);
-    ios::sync_with_stdio(0);
-    
-    int N; cin >> N;
+    int N = in();
     vector<int> A = in(N);
 
     auto [lis, idx, rank] = l_s(A, [&](int a, int b) { return a < b; });
-    int K = idx.size();
-    cout << K << "\n";
+    print(idx.size());
     print(idx);
 }
