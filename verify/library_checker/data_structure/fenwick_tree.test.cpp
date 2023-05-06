@@ -5,25 +5,24 @@
 #include "src/algebra/plus.hpp"
 
 int main(){
-    cin.tie(0);
-    ios::sync_with_stdio(0);
-    
-    int N,Q; cin >> N >> Q;
-    vector<ll> a(N);
-    rep(i,N) cin >> a[i];
+    int N = in();
+    int Q = in();
+    vector<ll> a = in(N);
     fenwick_tree< PLUS< ll > > tree(a);
 
-    rep(_,Q) {
-        int t; cin >> t;
+    for(int _ : rep(Q)) {
+        int t = in();
         switch(t) {
             case 0: {
-                int p,x; cin >> p >> x;
+                int p = in();
+                int x = in();
                 tree.add(p, x);
             } break;
 
             case 1: {
-                int l,r; cin >> l >> r;
-                cout << tree.fold(l, r) << '\n';
+                int l = in();
+                int r = in();
+                print(tree.fold(l, r));
             }
         }
     }
