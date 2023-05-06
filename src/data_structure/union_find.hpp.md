@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/union_find.test.cpp
+    title: verify/library_checker/data_structure/union_find.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/union_find.hpp\"\nclass union_find {\n\
@@ -28,8 +31,9 @@ data:
   path: src/data_structure/union_find.hpp
   requiredBy: []
   timestamp: '2022-06-27 17:48:10+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/union_find.test.cpp
 documentation_of: src/data_structure/union_find.hpp
 layout: document
 redirect_from:

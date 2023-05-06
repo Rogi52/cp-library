@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/segtree.test.cpp
+    title: verify/library_checker/data_structure/segtree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/segtree.hpp\"\ntemplate < class monoid\
@@ -86,8 +89,9 @@ data:
   path: src/data_structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-26 20:20:39+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/segtree.test.cpp
 documentation_of: src/data_structure/segtree.hpp
 layout: document
 redirect_from:

@@ -2,16 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
   - icon: ':warning:'
     path: src/data_structure/offline_multiset.hpp
     title: src/data_structure/offline_multiset.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/fenwick_tree.test.cpp
+    title: verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
+    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/plus.hpp\"\ntemplate < class T > class PLUS\
@@ -31,8 +37,10 @@ data:
   - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
   timestamp: '2023-03-26 22:09:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/algebra/plus.hpp
 layout: document
 redirect_from:
