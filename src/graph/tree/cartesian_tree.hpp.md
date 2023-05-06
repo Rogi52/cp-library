@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/graph/tree/cartesian_tree.hpp\"\n\ntemplate < class\
@@ -33,7 +33,7 @@ data:
   path: src/graph/tree/cartesian_tree.hpp
   requiredBy: []
   timestamp: '2022-03-22 17:10:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
 documentation_of: src/graph/tree/cartesian_tree.hpp

@@ -2,90 +2,104 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/lis.test.cpp
     title: verify/library_checker/algorithm/lis.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    static int\
-    \ sz = -1;\n    static int first = 1;\n    struct input {\n        template <\
-    \ class T > operator T() const {\n            if(first) {\n                first\
-    \ = 0;\n                cin.tie(0);\n                ios::sync_with_stdio(0);\n\
-    \            }\n            if(sz == -1) {\n                T t; cin >> t; return\
-    \ t;\n            } else {\n                T t(sz); sz = -1; cin >> t; return\
-    \ t;\n            }\n        }\n    };\n\n    template < class T > istream& operator>>(istream&\
-    \ is, vector< T >& a) {\n        for(auto& x : a) cin >> x; return is;\n    }\n\
-    }\nscanner::input input() { return scanner::input(); }\nscanner::input input(int\
-    \ sz) { scanner::sz = sz; return scanner::input(); }\n\nnamespace printer {\n\
-    \    void precision(int d) {\n        cout << fixed << setprecision(d);\n    }\n\
-    }\nint print() { cout << \"\\n\"; return 0; }\ntemplate < class head, class...\
-    \ tail >\nint print(head&& h, tail&&... t) {\n    cout << h;\n    if(sizeof...(tail))\
-    \ cout << \" \";\n    return print(forward<tail>(t)...);\n}\ntemplate < class\
-    \ T > int print(vector< T >& a, char sep = ' ') {\n    int n = a.size();\n   \
-    \ rep(i,n) cout << a[i] << (i < n - 1 ? sep : '\\n');\n    return 0;\n}\n"
-  code: "namespace scanner {\n    static int sz = -1;\n    static int first = 1;\n\
-    \    struct input {\n        template < class T > operator T() const {\n     \
-    \       if(first) {\n                first = 0;\n                cin.tie(0);\n\
-    \                ios::sync_with_stdio(0);\n            }\n            if(sz ==\
-    \ -1) {\n                T t; cin >> t; return t;\n            } else {\n    \
-    \            T t(sz); sz = -1; cin >> t; return t;\n            }\n        }\n\
-    \    };\n\n    template < class T > istream& operator>>(istream& is, vector< T\
-    \ >& a) {\n        for(auto& x : a) cin >> x; return is;\n    }\n}\nscanner::input\
-    \ input() { return scanner::input(); }\nscanner::input input(int sz) { scanner::sz\
-    \ = sz; return scanner::input(); }\n\nnamespace printer {\n    void precision(int\
-    \ d) {\n        cout << fixed << setprecision(d);\n    }\n}\nint print() { cout\
-    \ << \"\\n\"; return 0; }\ntemplate < class head, class... tail >\nint print(head&&\
-    \ h, tail&&... t) {\n    cout << h;\n    if(sizeof...(tail)) cout << \" \";\n\
-    \    return print(forward<tail>(t)...);\n}\ntemplate < class T > int print(vector<\
-    \ T >& a, char sep = ' ') {\n    int n = a.size();\n    rep(i,n) cout << a[i]\
-    \ << (i < n - 1 ? sep : '\\n');\n    return 0;\n}\n"
+  bundledCode: "#line 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
+    \ {\n        template < class T > operator T() {\n            T s; cin >> s; return\
+    \ s;\n        }\n    };\n    struct vec {\n        int n;\n        vec(int n)\
+    \ : n(n) {}\n        template < class T > operator vector< T >() {\n         \
+    \   vector< T > v(n);\n            for(T& x : v) cin >> x;\n            return\
+    \ v;\n        }\n    };\n    struct mat {\n        int h,w;\n        mat(int h,\
+    \ int w) : h(h), w(w) {}\n        template < class T > operator vector< vector<\
+    \ T > >() {\n            vector m(h, vector< T >(w));\n            for(vector<\
+    \ T >& v : m) for(T& x : v) cin >> x;\n            return m;\n        }\n    };\n\
+    \    struct speedup {\n        speedup() {\n            cin.tie(0);\n        \
+    \    ios::sync_with_stdio(0);\n        }\n    } su;\n}\nscanner::sca in() { return\
+    \ scanner::sca(); }\nscanner::vec in(int n) { return scanner::vec(n); }\nscanner::mat\
+    \ in(int h, int w) { return scanner::mat(h, w); }\n\nnamespace printer {\n   \
+    \ void precision(int d) {\n        cout << fixed << setprecision(d);\n    }\n\
+    \    void flush() {\n        cout.flush();\n    }\n}\nint print() { cout << '\\\
+    n'; return 0; }\ntemplate < class head, class... tail > int print(head&& h, tail&&...\
+    \ t) {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
+    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
+    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
+    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
+    \ ' ' : '\\n');\n    return 0;\n}\n"
+  code: "namespace scanner {\n    struct sca {\n        template < class T > operator\
+    \ T() {\n            T s; cin >> s; return s;\n        }\n    };\n    struct vec\
+    \ {\n        int n;\n        vec(int n) : n(n) {}\n        template < class T\
+    \ > operator vector< T >() {\n            vector< T > v(n);\n            for(T&\
+    \ x : v) cin >> x;\n            return v;\n        }\n    };\n    struct mat {\n\
+    \        int h,w;\n        mat(int h, int w) : h(h), w(w) {}\n        template\
+    \ < class T > operator vector< vector< T > >() {\n            vector m(h, vector<\
+    \ T >(w));\n            for(vector< T >& v : m) for(T& x : v) cin >> x;\n    \
+    \        return m;\n        }\n    };\n    struct speedup {\n        speedup()\
+    \ {\n            cin.tie(0);\n            ios::sync_with_stdio(0);\n        }\n\
+    \    } su;\n}\nscanner::sca in() { return scanner::sca(); }\nscanner::vec in(int\
+    \ n) { return scanner::vec(n); }\nscanner::mat in(int h, int w) { return scanner::mat(h,\
+    \ w); }\n\nnamespace printer {\n    void precision(int d) {\n        cout << fixed\
+    \ << setprecision(d);\n    }\n    void flush() {\n        cout.flush();\n    }\n\
+    }\nint print() { cout << '\\n'; return 0; }\ntemplate < class head, class... tail\
+    \ > int print(head&& h, tail&&... t) {\n    cout << h; if(sizeof...(tail)) cout\
+    \ << ' ';\n    return print(forward<tail>(t)...);\n}\ntemplate < class T > int\
+    \ print(vector< T >& a, char sep = ' ') {\n    int n = a.size();\n    for(int\
+    \ i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\n');\n    return 0;\n}\n\
+    template < class T > int print(vector< vector< T > >& a) {\n    if(a.empty())\
+    \ return 0;\n    int h = a.size(), w = a[0].size();\n    for(int i : rep(h)) for(int\
+    \ j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' ' : '\\n');\n    return 0;\n\
+    }\n"
   dependsOn: []
   isVerificationFile: false
   path: src/utility/io.hpp
   requiredBy:
   - src/cp-template.hpp
-  timestamp: '2023-04-12 08:09:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-06 07:15:59+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
