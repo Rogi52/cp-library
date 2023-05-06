@@ -4,7 +4,7 @@ class bicoef {
     vector<mint> fact_, inv_, finv_;
   public:
     bicoef(int N) : N(N), fact_(N+1, 1), inv_(N+1, 1), finv_(N+1, 1) {
-        uint mod = mint::mod;
+        uint mod = mint::get_mod();
         for(int i = 2; i <= N; i++) {
             fact_[i] = fact_[i - 1] * i;
             inv_ [i] = - inv_[mod % i] * (mod / i);
