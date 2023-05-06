@@ -34,6 +34,7 @@ struct modint {
     friend ostream& operator<<(ostream& os, const modint& m) { return os << m.v; }
     bool operator==(const modint& r) const { return v == r.v; }
     bool operator!=(const modint& r) const { return v != r.v; }
+    static uint get_mod() { return mod; }
 };
 constexpr modinfo base998244353 { 998244353, 3, 1 };
 constexpr modinfo base1000000007 { 1000000007, 0, 1 };
