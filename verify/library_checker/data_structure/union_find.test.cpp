@@ -10,7 +10,7 @@ int main(){
     int N,Q; cin >> N >> Q;
     union_find uf(N);
 
-    rep(_,Q) {
+    for(int _ : rep(Q)) {
         int t, u, v; cin >> t >> u >> v;
         switch(t) {
             case 0: {
