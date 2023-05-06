@@ -5,7 +5,7 @@ void sol(const vector<vector<int>> &tree, int root, const vector<int> &query, fu
     int N = tree.size();
     vector<int> path, pos(N, -1);
     vector<vector<int>> q(N);
-    rep(i,int(query.size())) q[query[i]].push_back(i);
+    for(int i : rep(query.size())) q[query[i]].push_back(i);
 
     function<void(int,int)> dfs = [&](int v, int p) -> void {
         pos[v] = path.size();
