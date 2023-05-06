@@ -3,7 +3,7 @@ tuple< vector< T >, vector<int>, vector<int> > l_s(const vector< T >& a, Cmp cmp
     int n = a.size();
     vector< T > l_s;
     vector<int> st(n, -1), nt(n, -1), rank(n);
-    rep(i,n) {
+    for(int i : rep(n)) {
         int pos = lower_bound(l_s.begin(), l_s.end(), a[i], cmp) - l_s.begin();
         st[pos] = i;
         if(pos >= 1) nt[i] = st[pos - 1];
