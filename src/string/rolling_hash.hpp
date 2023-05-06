@@ -7,13 +7,13 @@ struct rolling_hash {
         using array<ll, num_of_mod>::operator[];
         static constexpr int n = num_of_mod;
         hash() : array<ll,n>() {}
-        hash(ll x) : hash() { rep(i,n) (*this)[i] = x % MODS[i]; }
-        hash& operator+=(const hash& rhs) { rep(i,n) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator-=(const hash& rhs) { rep(i,n) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator*=(const hash& rhs) { rep(i,n) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }
-        hash& operator+=(const ll rhs) { rep(i,n) if(((*this)[i] += rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator-=(const ll rhs) { rep(i,n) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator*=(const ll rhs) { rep(i,n) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i]; return *this; }
+        hash(ll x) : hash() { for(int i : rep(n)) (*this)[i] = x % MODS[i]; }
+        hash& operator+=(const hash& rhs) { for(int i : rep(n)) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
+        hash& operator-=(const hash& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
+        hash& operator*=(const hash& rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }
+        hash& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
+        hash& operator-=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
+        hash& operator*=(const ll rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i]; return *this; }
         hash operator+(const hash& rhs) const { return hash(*this) += rhs; }
         hash operator-(const hash& rhs) const { return hash(*this) -= rhs; }
         hash operator*(const hash& rhs) const { return hash(*this) *= rhs; }
@@ -24,8 +24,8 @@ struct rolling_hash {
         friend hash operator+(ll x, const hash& y) { return hash(x) + y; }
         friend hash operator-(ll x, const hash& y) { return hash(x) + y; }
         friend hash operator*(ll x, const hash& y) { return hash(x) * y; }
-        bool operator==(const hash& rhs) { rep(i,n) if((*this)[i] != rhs[i]) return false; return true ; }
-        bool operator!=(const hash& rhs) { rep(i,n) if((*this)[i] != rhs[i]) return true ; return false; }
+        bool operator==(const hash& rhs) { for(int i : rep(n)) if((*this)[i] != rhs[i]) return false; return true ; }
+        bool operator!=(const hash& rhs) { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }
     };
 
     vector< hash > pb, hs;
@@ -34,7 +34,7 @@ struct rolling_hash {
         int n = s.size();
         hs.resize(n + 1); hs[0].fill(0);
         pb.resize(n + 1); pb[0].fill(1);
-        rep(i,n) {
+        for(int i : rep(n)) {
             hs[i + 1] = hs[i] * BASE + s[i];
             pb[i + 1] = pb[i] * BASE;
         }
