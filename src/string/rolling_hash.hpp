@@ -34,7 +34,7 @@ struct rolling_hash {
         int n = s.size();
         hs.resize(n + 1); hs[0].fill(0);
         pb.resize(n + 1); pb[0].fill(1);
-        rep(i,n) {
+        for(int i : rep(n)) {
             hs[i + 1] = hs[i] * BASE + s[i];
             pb[i + 1] = pb[i] * BASE;
         }
