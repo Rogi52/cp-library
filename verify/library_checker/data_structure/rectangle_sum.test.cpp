@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 #include "../../../src/cp-template.hpp"
 #include "../../../src/data_structure/static_point_add_rect_sum.hpp"
-#innclde "../../../src/algebra/plus.hpp"
+#include "../../../src/algebra/plus.hpp"
 
 int main() {
     int N = in(), Q = in();
