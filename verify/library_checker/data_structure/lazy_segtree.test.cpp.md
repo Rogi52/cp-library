@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
   - icon: ':question:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segtree.hpp
     title: src/data_structure/lazy_segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'
@@ -30,9 +30,9 @@ data:
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -200,25 +200,27 @@ data:
     \ operator_structure::set;\n  public:\n    static constexpr S op(const S &l, const\
     \ F &r) {\n        return S(l.first * r.a + l.second * r.b, l.second);\n    }\n\
     };\n#line 7 \"verify/library_checker/data_structure/lazy_segtree.test.cpp\"\n\n\
-    int main(){\n    \n    int N,Q; cin >> N >> Q;\n    using S = range_affine_range_sum<mint>::value_structure::set;\n\
-    \    vector< S > a(N);\n    for(int i : rep(N)) {\n        mint x; cin >> x;\n\
-    \        a[i] = S{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint>\
-    \ > lzst(a);\n    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t\
-    \ == 0) {\n            int l,r; mint b,c; cin >> l >> r >> b >> c;\n         \
-    \   lzst.apply(l, r, {b, c});\n        }\n\n        if(t == 1) {\n           \
-    \ int l,r; cin >> l >> r;\n            cout << lzst.prod(l, r).first << \"\\n\"\
-    ;\n        }\n    }\n}\n"
+    int main(){\n    \n    int N,Q; cin >> N >> Q;\n    using mint = mint998244353;\n\
+    \    using S = range_affine_range_sum<mint>::value_structure::set;\n    vector<\
+    \ S > a(N);\n    for(int i : rep(N)) {\n        mint x; cin >> x;\n        a[i]\
+    \ = S{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint> > lzst(a);\n\
+    \    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n \
+    \           int l,r; mint b,c; cin >> l >> r >> b >> c;\n            lzst.apply(l,\
+    \ r, {b, c});\n        }\n\n        if(t == 1) {\n            int l,r; cin >>\
+    \ l >> r;\n            cout << lzst.prod(l, r).first << \"\\n\";\n        }\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/modint.hpp\"\n#include\
     \ \"src/data_structure/lazy_segtree.hpp\"\n#include \"src/algebra/range_affine_range_sum.hpp\"\
-    \n\nint main(){\n    \n    int N,Q; cin >> N >> Q;\n    using S = range_affine_range_sum<mint>::value_structure::set;\n\
-    \    vector< S > a(N);\n    for(int i : rep(N)) {\n        mint x; cin >> x;\n\
-    \        a[i] = S{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint>\
-    \ > lzst(a);\n    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t\
-    \ == 0) {\n            int l,r; mint b,c; cin >> l >> r >> b >> c;\n         \
-    \   lzst.apply(l, r, {b, c});\n        }\n\n        if(t == 1) {\n           \
-    \ int l,r; cin >> l >> r;\n            cout << lzst.prod(l, r).first << \"\\n\"\
-    ;\n        }\n    }\n}\n"
+    \n\nint main(){\n    \n    int N,Q; cin >> N >> Q;\n    using mint = mint998244353;\n\
+    \    using S = range_affine_range_sum<mint>::value_structure::set;\n    vector<\
+    \ S > a(N);\n    for(int i : rep(N)) {\n        mint x; cin >> x;\n        a[i]\
+    \ = S{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint> > lzst(a);\n\
+    \    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n \
+    \           int l,r; mint b,c; cin >> l >> r >> b >> c;\n            lzst.apply(l,\
+    \ r, {b, c});\n        }\n\n        if(t == 1) {\n            int l,r; cin >>\
+    \ l >> r;\n            cout << lzst.prod(l, r).first << \"\\n\";\n        }\n\
+    \    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -232,8 +234,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-10 11:30:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp
 layout: document

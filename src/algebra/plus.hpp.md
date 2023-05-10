@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
   - icon: ':warning:'
@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
   - icon: ':x:'
@@ -46,8 +46,8 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/algebra/plus.hpp
 layout: document

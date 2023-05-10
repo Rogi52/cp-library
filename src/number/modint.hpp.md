@@ -3,21 +3,21 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
@@ -88,10 +88,10 @@ data:
   path: src/number/modint.hpp
   requiredBy: []
   timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
 documentation_of: src/number/modint.hpp

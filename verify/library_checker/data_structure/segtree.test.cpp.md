@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree.hpp
     title: src/data_structure/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -152,24 +152,26 @@ data:
     \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
     \ mint1000000007 = modint< base1000000007 >;\n#line 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N,Q; cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n  \
-    \  for(int i : rep(N)) {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a,\
-    \ b);\n    }\n\n    segtree< affine_composite_monoid<mint> > seg(f);\n    for(int\
-    \ _ : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n            int\
-    \ p; mint c,d; cin >> p >> c >> d;\n            seg.set(p, F(c, d));\n       \
-    \ }\n\n        if(t == 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n\
-    \            cout << seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
+    \ N,Q; cin >> N >> Q;\n    using mint = mint998244353;\n    using F = affine<mint>;\n\
+    \    vector< F > f(N);\n    for(int i : rep(N)) {\n        mint a,b; cin >> a\
+    \ >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree< affine_composite_monoid<mint>\
+    \ > seg(f);\n    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t\
+    \ == 0) {\n            int p; mint c,d; cin >> p >> c >> d;\n            seg.set(p,\
+    \ F(c, d));\n        }\n\n        if(t == 1) {\n            int l,r; mint x; cin\
+    \ >> l >> r >> x;\n            cout << seg.prod(l, r).eval(x) << \"\\n\";\n  \
+    \      }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/data_structure/segtree.hpp\"\
     \n#include \"src/algebra/affine.hpp\"\n#include \"src/number/modint.hpp\"\n\n\
     int main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,Q;\
-    \ cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n    for(int\
-    \ i : rep(N)) {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a, b);\n \
-    \   }\n\n    segtree< affine_composite_monoid<mint> > seg(f);\n    for(int _ :\
-    \ rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n            int p;\
-    \ mint c,d; cin >> p >> c >> d;\n            seg.set(p, F(c, d));\n        }\n\
-    \n        if(t == 1) {\n            int l,r; mint x; cin >> l >> r >> x;\n   \
-    \         cout << seg.prod(l, r).eval(x) << \"\\n\";\n        }\n    }\n}\n"
+    \ cin >> N >> Q;\n    using mint = mint998244353;\n    using F = affine<mint>;\n\
+    \    vector< F > f(N);\n    for(int i : rep(N)) {\n        mint a,b; cin >> a\
+    \ >> b;\n        f[i] = F(a, b);\n    }\n\n    segtree< affine_composite_monoid<mint>\
+    \ > seg(f);\n    for(int _ : rep(Q)) {\n        int t; cin >> t;\n        if(t\
+    \ == 0) {\n            int p; mint c,d; cin >> p >> c >> d;\n            seg.set(p,\
+    \ F(c, d));\n        }\n\n        if(t == 1) {\n            int l,r; mint x; cin\
+    \ >> l >> r >> x;\n            cout << seg.prod(l, r).eval(x) << \"\\n\";\n  \
+    \      }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -180,8 +182,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-10 11:30:59+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp
 layout: document

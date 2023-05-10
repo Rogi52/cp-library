@@ -27,9 +27,6 @@ data:
   - icon: ':x:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
-    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
@@ -171,13 +168,12 @@ data:
   isVerificationFile: false
   path: src/data_structure/static_point_add_rect_sum.hpp
   requiredBy:
-  - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/data_structure/static_point_add_rect_sum.hpp
 layout: document

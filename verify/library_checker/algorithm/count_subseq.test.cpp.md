@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/count_subseq.hpp
     title: src/algorithm/count_subseq.hpp
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_subsequences
@@ -109,11 +109,11 @@ data:
     \ dp[i + 1] -= dp[mp[a[i]]];\n        mp[a[i]] = i;\n    }\n    return dp[n];\n\
     }\n#line 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\n\nint main(){\n\
     \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N = in();\n    vector<int>\
-    \ A = in(N);\n    print(count_subseq<mint>(A) - 1);\n}\n"
+    \ A = in(N);\n    print(count_subseq<mint998244353>(A) - 1);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/modint.hpp\"\n#include\
     \ \"src/algorithm/count_subseq.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    \n    int N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint>(A)\
+    \    \n    int N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint998244353>(A)\
     \ - 1);\n}\n"
   dependsOn:
   - src/cp-template.hpp
@@ -124,8 +124,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/count_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-10 11:29:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/count_subseq.test.cpp
 layout: document

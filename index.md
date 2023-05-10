@@ -3,16 +3,16 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/affine.hpp
       title: src/algebra/affine.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
     - icon: ':question:'
       path: src/algebra/plus.hpp
       title: src/algebra/plus.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_affine_range_sum.hpp
       title: src/algebra/range_affine_range_sum.hpp
     - icon: ':warning:'
@@ -23,7 +23,7 @@ data:
     - icon: ':warning:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
     - icon: ':warning:'
@@ -54,7 +54,7 @@ data:
     - icon: ':question:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/lazy_segtree.hpp
       title: src/data_structure/lazy_segtree.hpp
     - icon: ':warning:'
@@ -63,7 +63,7 @@ data:
     - icon: ':x:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
     - icon: ':question:'
@@ -125,7 +125,7 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -164,7 +164,7 @@ data:
       title: example.test.cpp
   - name: verify/library_checker/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/count_subseq.test.cpp
       title: verify/library_checker/algorithm/count_subseq.test.cpp
     - icon: ':heavy_check_mark:'
@@ -175,7 +175,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/lazy_segtree.test.cpp
       title: verify/library_checker/data_structure/lazy_segtree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -190,7 +190,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
       title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segtree.test.cpp
       title: verify/library_checker/data_structure/segtree.test.cpp
     - icon: ':heavy_check_mark:'
