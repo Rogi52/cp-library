@@ -38,5 +38,5 @@ struct modint {
 };
 constexpr modinfo base998244353 { 998244353, 3, 1 };
 constexpr modinfo base1000000007 { 1000000007, 0, 1 };
-using mint = modint< base998244353 >;
-//using mint = modint< base1000000007 >;
+using mint998244353 = modint< base998244353 >;
+using mint1000000007 = modint< base1000000007 >;

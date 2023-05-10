@@ -1,3 +1,4 @@
+#pragma once
 template < class T > struct itr {
     T i, d;
     constexpr itr(const T i) noexcept : i(i), d(1) {}

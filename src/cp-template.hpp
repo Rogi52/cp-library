@@ -1,3 +1,4 @@
+#pragma once
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
@@ -8,5 +9,5 @@ using i128 = __int128_t;
 template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }
 template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return false; }
 
-#include "src/utility/rep_itr.hpp"
-#include "src/utility/io.hpp"
+#include "./utility/rep_itr.hpp"
+#include "./utility/io.hpp"
