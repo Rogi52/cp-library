@@ -19,6 +19,9 @@ data:
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   _isVerificationFailed: true
@@ -46,8 +49,9 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/algebra/plus.hpp
 layout: document
