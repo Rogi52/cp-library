@@ -10,5 +10,5 @@ int main(){
     
     int N = in();
     vector<int> A = in(N);
-    print(count_subseq<mint>(A) - 1);
+    print(count_subseq<mint998244353>(A) - 1);
 }
