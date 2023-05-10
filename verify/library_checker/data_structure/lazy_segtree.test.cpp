@@ -8,6 +8,7 @@
 int main(){
     
     int N,Q; cin >> N >> Q;
+    using mint = mint998244353;
     using S = range_affine_range_sum<mint>::value_structure::set;
     vector< S > a(N);
     for(int i : rep(N)) {
