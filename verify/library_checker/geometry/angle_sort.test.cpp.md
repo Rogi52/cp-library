@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/geometry/pointll.hpp
     title: src/geometry/pointll.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
@@ -28,12 +28,12 @@ data:
     - https://judge.yosupo.jp/problem/sort_points_by_argument
   bundledCode: "#line 1 \"verify/library_checker/geometry/angle_sort.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\n\n\
-    #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
     \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
-    \ false; }\n\n#line 1 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
+    \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
     \ itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n\
     \    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++()\
     \ noexcept { i += d; }\n    constexpr int operator*() const noexcept { return\
@@ -49,7 +49,7 @@ data:
     \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
     \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
     \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n#line\
-    \ 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
+    \ 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
     \ < class T > operator T() {\n            T s; cin >> s; return s;\n        }\n\
     \    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n    \
     \    template < class T > operator vector< T >() {\n            vector< T > v(n);\n\
@@ -66,22 +66,21 @@ data:
     \  cout.flush();\n    }\n}\nint print() { cout << '\\n'; return 0; }\ntemplate\
     \ < class head, class... tail > int print(head&& h, tail&&... t) {\n    cout <<\
     \ h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
-    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
-    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
-    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
-    \ ' ' : '\\n');\n    return 0;\n}\n#line 1 \"src/geometry/pointll.hpp\"\nstruct\
-    \ pointll {\n    ll x,y;\n    pointll(ll x = 0, ll y = 0) : x(x), y(y) {}\n  \
-    \  bool operator==(pointll p) const { return x == p.x && y == p.y; }\n};\n\nll\
-    \ det(pointll p, pointll q) { return p.x * q.y - p.y * q.x; }\nll dot(pointll\
-    \ p, pointll q) { return p.x * q.x + p.y * q.y; }\n#line 1 \"src/geometry/angle_sort.hpp\"\
-    \nvector<int> angle_argsort(const vector<pointll>& P) {\n    vector<int> lower,\
-    \ origin, upper;\n    pointll O(0, 0);\n    for(int i : rep(P.size())) {\n   \
-    \     if(P[i] == O)\n            origin.push_back(i);\n        else if(P[i].y\
-    \ < 0 || (P[i].y == 0 && P[i].x > 0))\n            lower .push_back(i);\n    \
-    \    else\n            upper .push_back(i);\n    }\n    sort(lower.begin(), lower.end(),\
-    \ [&](int i, int j) { return det(P[i], P[j]) > 0; });\n    sort(upper.begin(),\
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
+    \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
+    \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
+    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/geometry/pointll.hpp\"\nstruct pointll\
+    \ {\n    ll x,y;\n    pointll(ll x = 0, ll y = 0) : x(x), y(y) {}\n    bool operator==(pointll\
+    \ p) const { return x == p.x && y == p.y; }\n};\n\nll det(pointll p, pointll q)\
+    \ { return p.x * q.y - p.y * q.x; }\nll dot(pointll p, pointll q) { return p.x\
+    \ * q.x + p.y * q.y; }\n#line 1 \"src/geometry/angle_sort.hpp\"\nvector<int> angle_argsort(const\
+    \ vector<pointll>& P) {\n    vector<int> lower, origin, upper;\n    pointll O(0,\
+    \ 0);\n    for(int i : rep(P.size())) {\n        if(P[i] == O)\n            origin.push_back(i);\n\
+    \        else if(P[i].y < 0 || (P[i].y == 0 && P[i].x > 0))\n            lower\
+    \ .push_back(i);\n        else\n            upper .push_back(i);\n    }\n    sort(lower.begin(),\
+    \ lower.end(), [&](int i, int j) { return det(P[i], P[j]) > 0; });\n    sort(upper.begin(),\
     \ upper.end(), [&](int i, int j) { return det(P[i], P[j]) > 0; });\n    vector<int>\
     \ I;\n    I.insert(I.end(), lower .begin(), lower .end());\n    I.insert(I.end(),\
     \ origin.begin(), origin.end());\n    I.insert(I.end(), upper .begin(), upper\
@@ -107,7 +106,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/geometry/angle_sort.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 10:55:47+09:00'
+  timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/geometry/angle_sort.test.cpp

@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
@@ -28,12 +28,12 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
     \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
-    \ false; }\n\n#line 1 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
+    \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
     \ itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n\
     \    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++()\
     \ noexcept { i += d; }\n    constexpr int operator*() const noexcept { return\
@@ -49,7 +49,7 @@ data:
     \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
     \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
     \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n#line\
-    \ 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
+    \ 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
     \ < class T > operator T() {\n            T s; cin >> s; return s;\n        }\n\
     \    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n    \
     \    template < class T > operator vector< T >() {\n            vector< T > v(n);\n\
@@ -66,12 +66,12 @@ data:
     \  cout.flush();\n    }\n}\nint print() { cout << '\\n'; return 0; }\ntemplate\
     \ < class head, class... tail > int print(head&& h, tail&&... t) {\n    cout <<\
     \ h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
-    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
-    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
-    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
-    \ ' ' : '\\n');\n    return 0;\n}\n#line 1 \"src/data_structure/fenwick_tree.hpp\"\
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
+    \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
+    \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
+    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/data_structure/fenwick_tree.hpp\"\
     \ntemplate < class comm_monoid > class fenwick_tree {\n  public:\n    using T\
     \ = typename comm_monoid::set;\n\n  private:\n    int n, n2;\n    vector< T >\
     \ data;\n\n    int ceil_pow2(int n) {\n        int x = 1;\n        while(x < n)\
@@ -96,8 +96,8 @@ data:
     \ < class T > class PLUS {\n  public:\n    using set = T;\n    static constexpr\
     \ T op(const T &l, const T &r) { return l + r; }\n    static constexpr T id =\
     \ T(0);\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
-    \ T pow(const T &x, const int n) { return x * n; }\n    static constexpr bool\
-    \ comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
+    \ T pow(const T &x, const ll n) { return x * n; }\n    static constexpr bool comm\
+    \ = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
     \n\nint main(){\n    int N = in();\n    int Q = in();\n    vector<ll> a = in(N);\n\
     \    fenwick_tree< PLUS< ll > > tree(a);\n\n    for(int _ : rep(Q)) {\n      \
     \  int t = in();\n        switch(t) {\n            case 0: {\n               \
@@ -123,7 +123,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 11:14:03+09:00'
+  timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp

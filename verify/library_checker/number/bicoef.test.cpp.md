@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
@@ -28,12 +28,12 @@ data:
     - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
   bundledCode: "#line 1 \"verify/library_checker/number/bicoef.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
-    \n#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    \n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
     \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
-    \ false; }\n\n#line 1 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
+    \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
     \ itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n\
     \    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++()\
     \ noexcept { i += d; }\n    constexpr int operator*() const noexcept { return\
@@ -49,7 +49,7 @@ data:
     \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
     \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
     \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n#line\
-    \ 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
+    \ 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
     \ < class T > operator T() {\n            T s; cin >> s; return s;\n        }\n\
     \    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n    \
     \    template < class T > operator vector< T >() {\n            vector< T > v(n);\n\
@@ -66,18 +66,18 @@ data:
     \  cout.flush();\n    }\n}\nint print() { cout << '\\n'; return 0; }\ntemplate\
     \ < class head, class... tail > int print(head&& h, tail&&... t) {\n    cout <<\
     \ h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
-    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
-    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
-    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
-    \ ' ' : '\\n');\n    return 0;\n}\n#line 1 \"src/number/runtime_modint.hpp\"\n\
-    struct runtime_modint {\n  public:\n    ll v = 0;\n    runtime_modint(ll v = 0)\
-    \ { s(v % get_mod() + get_mod()); }\n    static void set_mod(ll m) { mod() = m;\
-    \ }\n    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp; }\n\
-    \    static ll get_mod() { return mod(); }\n    using rtmint = runtime_modint;\n\
-    \    rtmint& s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this;\
-    \ }\n    rtmint operator-() const { return rtmint() - *this; }\n    rtmint& operator+=(const\
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
+    \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
+    \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
+    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/number/runtime_modint.hpp\"\nstruct\
+    \ runtime_modint {\n  public:\n    ll v = 0;\n    runtime_modint(ll v = 0) { s(v\
+    \ % get_mod() + get_mod()); }\n    static void set_mod(ll m) { mod() = m; }\n\
+    \    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp; }\n    static\
+    \ ll get_mod() { return mod(); }\n    using rtmint = runtime_modint;\n    rtmint&\
+    \ s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this; }\n   \
+    \ rtmint operator-() const { return rtmint() - *this; }\n    rtmint& operator+=(const\
     \ rtmint& rhs) { return s(v + rhs.v); }\n    rtmint& operator-=(const rtmint&\
     \ rhs) { return s(v + get_mod() - rhs.v); }\n    rtmint& operator*=(const rtmint&\
     \ rhs) { v = ull(v) * rhs.v % get_mod(); return *this; }\n    rtmint& operator/=(const\
@@ -132,7 +132,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/bicoef.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 04:24:43+09:00'
+  timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/bicoef.test.cpp

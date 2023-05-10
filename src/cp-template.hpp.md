@@ -1,15 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: src/data_structure/point_add_rect_sum.hpp
+    title: src/data_structure/point_add_rect_sum.hpp
+  - icon: ':question:'
+    path: src/data_structure/static_point_add_rect_sum.hpp
+    title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/static_rect_add_rect_sum.hpp
+    title: src/data_structure/static_rect_add_rect_sum.hpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,18 +27,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
@@ -48,17 +66,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+  bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
     \ int;\nusing ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate <\
     \ class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false;\
     \ }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true;\
-    \ } return false; }\n\n#line 1 \"src/utility/rep_itr.hpp\"\ntemplate < class T\
+    \ } return false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T\
     \ > struct itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1)\
     \ {}\n    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void\
     \ operator++() noexcept { i += d; }\n    constexpr int operator*() const noexcept\
@@ -74,7 +92,7 @@ data:
     \ : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const T s, const T t,\
     \ const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin()\
     \ const noexcept { return s; }\n    constexpr auto end() const noexcept { return\
-    \ t; }\n};\n#line 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
+    \ t; }\n};\n#line 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
     \ {\n        template < class T > operator T() {\n            T s; cin >> s; return\
     \ s;\n        }\n    };\n    struct vec {\n        int n;\n        vec(int n)\
     \ : n(n) {}\n        template < class T > operator vector< T >() {\n         \
@@ -91,13 +109,15 @@ data:
     \    void flush() {\n        cout.flush();\n    }\n}\nint print() { cout << '\\\
     n'; return 0; }\ntemplate < class head, class... tail > int print(head&& h, tail&&...\
     \ t) {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
-    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
-    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
-    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
-    \ ' ' : '\\n');\n    return 0;\n}\n#line 13 \"src/cp-template.hpp\"\n"
-  code: '#include <bits/stdc++.h>
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
+    \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
+    \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
+    \ : '\\n');\n    return 0;\n}\n#line 14 \"src/cp-template.hpp\"\n"
+  code: '#pragma once
+
+    #include <bits/stdc++.h>
 
     using namespace std;
 
@@ -118,9 +138,9 @@ data:
     return false; }
 
 
-    #include "src/utility/rep_itr.hpp"
+    #include "./utility/rep_itr.hpp"
 
-    #include "src/utility/io.hpp"
+    #include "./utility/io.hpp"
 
     '
   dependsOn:
@@ -128,9 +148,12 @@ data:
   - src/utility/io.hpp
   isVerificationFile: false
   path: src/cp-template.hpp
-  requiredBy: []
-  timestamp: '2023-05-06 10:51:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  requiredBy:
+  - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/static_point_add_rect_sum.hpp
+  timestamp: '2023-05-10 11:13:35+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
@@ -140,9 +163,12 @@ data:
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
 documentation_of: src/cp-template.hpp

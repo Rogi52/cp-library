@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -38,7 +38,7 @@ data:
     src/algebra/plus.hpp\"\ntemplate < class T > class PLUS {\n  public:\n    using\
     \ set = T;\n    static constexpr T op(const T &l, const T &r) { return l + r;\
     \ }\n    static constexpr T id = T(0);\n    static constexpr T inv(const T &x)\
-    \ { return -x; }\n    static constexpr T pow(const T &x, const int n) { return\
+    \ { return -x; }\n    static constexpr T pow(const T &x, const ll n) { return\
     \ x * n; }\n    static constexpr bool comm = true;\n};\n#line 4 \"src/algebra/range_affine_range_sum.hpp\"\
     \n\ntemplate < class T > class range_affine_range_sum {\n  public:\n    using\
     \ value_structure = cartesian_product_monoid< PLUS< T >, PLUS< T > >;\n    using\
@@ -61,8 +61,8 @@ data:
   isVerificationFile: false
   path: src/algebra/range_affine_range_sum.hpp
   requiredBy: []
-  timestamp: '2023-03-26 22:09:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-10 11:13:35+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/algebra/range_affine_range_sum.hpp

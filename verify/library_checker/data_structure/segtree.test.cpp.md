@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/segtree.hpp
     title: src/data_structure/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -31,12 +31,12 @@ data:
     - https://judge.yosupo.jp/problem/point_set_range_composite
   bundledCode: "#line 1 \"verify/library_checker/data_structure/segtree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#line 1 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
     \ int;\nusing ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate <\
     \ class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false;\
     \ }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true;\
-    \ } return false; }\n\n#line 1 \"src/utility/rep_itr.hpp\"\ntemplate < class T\
+    \ } return false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T\
     \ > struct itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1)\
     \ {}\n    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void\
     \ operator++() noexcept { i += d; }\n    constexpr int operator*() const noexcept\
@@ -52,7 +52,7 @@ data:
     \ : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const T s, const T t,\
     \ const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin()\
     \ const noexcept { return s; }\n    constexpr auto end() const noexcept { return\
-    \ t; }\n};\n#line 1 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
+    \ t; }\n};\n#line 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
     \ {\n        template < class T > operator T() {\n            T s; cin >> s; return\
     \ s;\n        }\n    };\n    struct vec {\n        int n;\n        vec(int n)\
     \ : n(n) {}\n        template < class T > operator vector< T >() {\n         \
@@ -69,14 +69,14 @@ data:
     \    void flush() {\n        cout.flush();\n    }\n}\nint print() { cout << '\\\
     n'; return 0; }\ntemplate < class head, class... tail > int print(head&& h, tail&&...\
     \ t) {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\ntemplate < class T > int print(vector< T >& a, char sep = ' ') {\n    int n\
+    }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
-    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > >&\
-    \ a) {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n\
-    \    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ?\
-    \ ' ' : '\\n');\n    return 0;\n}\n#line 1 \"src/data_structure/segtree.hpp\"\n\
-    template < class monoid > struct segtree {\n    using S = typename monoid::set;\n\
-    \n    segtree() : segtree(0) {}\n    segtree(int n) : segtree(vector< S >(n, monoid::id))\
+    n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
+    \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
+    \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
+    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/data_structure/segtree.hpp\"\ntemplate\
+    \ < class monoid > struct segtree {\n    using S = typename monoid::set;\n\n \
+    \   segtree() : segtree(0) {}\n    segtree(int n) : segtree(vector< S >(n, monoid::id))\
     \ {}\n    segtree(const vector< S >& v) : _n(int(v.size())) {\n        log = ceil_pow2(_n);\n\
     \        size = 1 << log;\n        d = vector< S >(2 * size, monoid::id);\n  \
     \      for(int i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size\
@@ -149,8 +149,8 @@ data:
     \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
     \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
     constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint = modint< base998244353 >;\n//using mint =\
-    \ modint< base1000000007 >;\n#line 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\
+    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
+    \ mint1000000007 = modint< base1000000007 >;\n#line 7 \"verify/library_checker/data_structure/segtree.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    using F = affine<mint>;\n    vector< F > f(N);\n  \
     \  for(int i : rep(N)) {\n        mint a,b; cin >> a >> b;\n        f[i] = F(a,\
@@ -180,8 +180,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 03:34:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-10 11:13:35+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp
 layout: document

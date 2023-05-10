@@ -5,13 +5,31 @@ data:
   - icon: ':warning:'
     path: src/data_structure/offline_multiset.hpp
     title: src/data_structure/offline_multiset.hpp
+  - icon: ':x:'
+    path: src/data_structure/point_add_rect_sum.hpp
+    title: src/data_structure/point_add_rect_sum.hpp
+  - icon: ':question:'
+    path: src/data_structure/static_point_add_rect_sum.hpp
+    title: src/data_structure/static_point_add_rect_sum.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/data_structure/static_rect_add_rect_sum.hpp
+    title: src/data_structure/static_rect_add_rect_sum.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/fenwick_tree.hpp\"\ntemplate < class\
@@ -62,10 +80,16 @@ data:
   path: src/data_structure/fenwick_tree.hpp
   requiredBy:
   - src/data_structure/offline_multiset.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/static_point_add_rect_sum.hpp
   timestamp: '2022-05-28 15:46:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:
