@@ -1,4 +1,4 @@
-#define PROMLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
+#define PROBLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
 
 #include "../../../src/cp-template.hpp"
 #include "../../../src/data_structure/point_add_rect_sum.hpp"
