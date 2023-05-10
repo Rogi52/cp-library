@@ -108,6 +108,9 @@ data:
     - icon: ':warning:'
       path: src/graph/tree/offline_level_ancestor.hpp
       title: Offline Level Ancestor
+    - icon: ':heavy_check_mark:'
+      path: src/graph/tree/rerooting.hpp
+      title: src/graph/tree/rerooting.hpp
   - name: src/number
     pages:
     - icon: ':heavy_check_mark:'
@@ -214,6 +217,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
       title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/tree/rerooting.test.cpp
+      title: verify/library_checker/graph/tree/rerooting.test.cpp
   - name: verify/library_checker/number
     pages:
     - icon: ':heavy_check_mark:'

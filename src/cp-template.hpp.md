@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/graph/tree/rerooting.hpp
+    title: src/graph/tree/rerooting.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
@@ -60,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/tree/rerooting.test.cpp
+    title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
@@ -149,6 +155,7 @@ data:
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy:
+  - src/graph/tree/rerooting.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
@@ -156,6 +163,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
