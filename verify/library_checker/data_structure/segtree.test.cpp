@@ -10,6 +10,7 @@ int main(){
     ios::sync_with_stdio(0);
     
     int N,Q; cin >> N >> Q;
+    using mint = mint998244353;
     using F = affine<mint>;
     vector< F > f(N);
     for(int i : rep(N)) {
