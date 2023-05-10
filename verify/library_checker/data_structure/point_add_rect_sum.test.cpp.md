@@ -1,41 +1,42 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
     links:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
   bundledCode: "#line 1 \"verify/library_checker/data_structure/point_add_rect_sum.test.cpp\"\
-    \n#define PROMLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
     \n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
@@ -173,7 +174,7 @@ data:
     \ w = in();\n            rs.add(x, y, w);\n        }\n        if(t == 1) {\n \
     \           int l = in(), d = in(), r = in(), u = in();\n            rs.query(l,\
     \ r, d, u);\n        }\n    }\n    print(rs.solve(), '\\n');\n}\n"
-  code: "#define PROMLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/point_add_rect_sum.hpp\"\
     \n#include \"../../../src/algebra/plus.hpp\"\n\nint main() {\n    int N = in(),\
     \ Q = in();\n    rect_sum< tag::DYNAMIC, tag::POINT, int, PLUS<ll> > rs;\n   \
@@ -182,7 +183,7 @@ data:
     \ == 0) {\n            int x = in(), y = in(), w = in();\n            rs.add(x,\
     \ y, w);\n        }\n        if(t == 1) {\n            int l = in(), d = in(),\
     \ r = in(), u = in();\n            rs.query(l, r, d, u);\n        }\n    }\n \
-    \   print(rs.solve(), '\\n');\n}"
+    \   print(rs.solve(), '\\n');\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -195,8 +196,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-10 11:38:07+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 layout: document

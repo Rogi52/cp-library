@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
   _extendedRequiredBy: []

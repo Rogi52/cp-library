@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/plus.hpp
       title: src/algebra/plus.hpp
     - icon: ':heavy_check_mark:'
@@ -37,7 +37,7 @@ data:
       title: src/algorithm/mo.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -51,7 +51,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -60,13 +60,13 @@ data:
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
@@ -147,13 +147,13 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
   verificationCategories:
@@ -181,7 +181,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/line_add_get_min.test.cpp
       title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     - icon: ':heavy_check_mark:'

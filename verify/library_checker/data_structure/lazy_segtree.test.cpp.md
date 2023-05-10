@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
   - icon: ':heavy_check_mark:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -22,10 +22,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy: []
