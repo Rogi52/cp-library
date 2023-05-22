@@ -42,6 +42,9 @@ data:
       title: src/cp-template.hpp
   - name: src/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/binary_trie.hpp
+      title: src/data_structure/binary_trie.hpp
     - icon: ':warning:'
       path: src/data_structure/cht_add_monotone.hpp
       title: src/data_structure/cht_add_monotone.hpp
@@ -165,6 +168,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: example.test.cpp
       title: example.test.cpp
+  - name: verify/aoj/data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/binary_trie.test.cpp
+      title: verify/aoj/data_structure/binary_trie.test.cpp
   - name: verify/library_checker/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -175,6 +183,9 @@ data:
       title: verify/library_checker/algorithm/lis.test.cpp
   - name: verify/library_checker/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/binary_trie.test.cpp
+      title: verify/library_checker/data_structure/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp

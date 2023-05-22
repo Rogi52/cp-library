@@ -74,8 +74,8 @@ data:
   timestamp: '2022-03-21 19:55:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
 documentation_of: src/data_structure/cht_offline_get_min.hpp
 layout: document
 redirect_from:

@@ -80,9 +80,9 @@ data:
   path: src/data_structure/fenwick_tree.hpp
   requiredBy:
   - src/data_structure/offline_multiset.hpp
-  - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
   timestamp: '2022-05-28 15:46:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

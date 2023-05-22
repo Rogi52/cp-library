@@ -171,8 +171,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/static_point_add_rect_sum.hpp
   requiredBy:
-  - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
