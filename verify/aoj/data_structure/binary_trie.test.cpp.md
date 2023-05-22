@@ -97,10 +97,9 @@ data:
     \       int u = ROOT;\n        V v = 0;\n        for(int i : revrep(L)) {\n  \
     \          int p = (XOR >> i) & 1, q = (x >> i) & 1;\n            if(q > 0 and\
     \ node[u].to[p] != -1) v += node[node[u].to[p]].cnt;\n            if(node[u].to[p\
-    \ ^ q] != -1) {\n                u = node[u].to[p ^ q];\n            } else {\n\
-    \                break;\n            }\n        }\n        return v;\n    }\n\
-    \    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty() {\n  \
-    \      return size() == 0;\n    }\n};\n#line 5 \"verify/aoj/data_structure/binary_trie.test.cpp\"\
+    \ ^ q] != -1) { u = node[u].to[p ^ q]; } else break;\n        }\n        return\
+    \ v;\n    }\n    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty()\
+    \ {\n        return size() == 0;\n    }\n};\n#line 5 \"verify/aoj/data_structure/binary_trie.test.cpp\"\
     \n\nint main() {\n    int N = in(), Q = in();\n    binary_trie<int,20,int> bt;\n\
     \    for(int _ : rep(Q)) {\n        int c = in(), x = in(), y = in();\n      \
     \  switch(c) {\n            case 0: {\n                bt.insert(x, y);\n    \
@@ -121,7 +120,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/data_structure/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2023-05-22 16:09:59+09:00'
+  timestamp: '2023-05-22 16:15:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/binary_trie.test.cpp

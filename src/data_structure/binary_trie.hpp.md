@@ -95,10 +95,9 @@ data:
     \       int u = ROOT;\n        V v = 0;\n        for(int i : revrep(L)) {\n  \
     \          int p = (XOR >> i) & 1, q = (x >> i) & 1;\n            if(q > 0 and\
     \ node[u].to[p] != -1) v += node[node[u].to[p]].cnt;\n            if(node[u].to[p\
-    \ ^ q] != -1) {\n                u = node[u].to[p ^ q];\n            } else {\n\
-    \                break;\n            }\n        }\n        return v;\n    }\n\
-    \    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty() {\n  \
-    \      return size() == 0;\n    }\n};\n"
+    \ ^ q] != -1) { u = node[u].to[p ^ q]; } else break;\n        }\n        return\
+    \ v;\n    }\n    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty()\
+    \ {\n        return size() == 0;\n    }\n};\n"
   code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class K, int L, class\
     \ V >\nstruct binary_trie {\n    struct node_t {\n        array<int, 2> to = {};\n\
     \        V cnt;\n        vector<int> accept;\n        node_t() : cnt(0) { to[0]\
@@ -127,10 +126,9 @@ data:
     \       int u = ROOT;\n        V v = 0;\n        for(int i : revrep(L)) {\n  \
     \          int p = (XOR >> i) & 1, q = (x >> i) & 1;\n            if(q > 0 and\
     \ node[u].to[p] != -1) v += node[node[u].to[p]].cnt;\n            if(node[u].to[p\
-    \ ^ q] != -1) {\n                u = node[u].to[p ^ q];\n            } else {\n\
-    \                break;\n            }\n        }\n        return v;\n    }\n\
-    \    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty() {\n  \
-    \      return size() == 0;\n    }\n};"
+    \ ^ q] != -1) { u = node[u].to[p ^ q]; } else break;\n        }\n        return\
+    \ v;\n    }\n    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty()\
+    \ {\n        return size() == 0;\n    }\n};\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -138,7 +136,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2023-05-22 16:09:59+09:00'
+  timestamp: '2023-05-22 16:15:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/data_structure/binary_trie.test.cpp
