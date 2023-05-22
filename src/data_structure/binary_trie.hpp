@@ -79,11 +79,7 @@ struct binary_trie {
         for(int i : revrep(L)) {
             int p = (XOR >> i) & 1, q = (x >> i) & 1;
             if(q > 0 and node[u].to[p] != -1) v += node[node[u].to[p]].cnt;
-            if(node[u].to[p ^ q] != -1) {
-                u = node[u].to[p ^ q];
-            } else {
-                break;
-            }
+            if(node[u].to[p ^ q] != -1) { u = node[u].to[p ^ q]; } else break;
         }
         return v;
     }
