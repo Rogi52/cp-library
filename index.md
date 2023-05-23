@@ -35,6 +35,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
+    - icon: ':warning:'
+      path: src/algorithm/sqrt_decomp.hpp
+      title: src/algorithm/sqrt_decomp.hpp
   - name: src
     pages:
     - icon: ':heavy_check_mark:'
