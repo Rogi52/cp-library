@@ -46,7 +46,7 @@ data:
       title: src/algorithm/sqrt_decomp.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -120,12 +120,12 @@ data:
     - icon: ':warning:'
       path: src/graph/tree/offline_level_ancestor.hpp
       title: Offline Level Ancestor
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/tree/rerooting.hpp
       title: src/graph/tree/rerooting.hpp
   - name: src/number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/bicoef.hpp
       title: src/number/bicoef.hpp
     - icon: ':warning:'
@@ -140,18 +140,18 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':warning:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
   - name: src/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
     - icon: ':warning:'
@@ -162,16 +162,16 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
     - icon: ':heavy_check_mark:'
@@ -243,17 +243,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
       title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/rerooting.test.cpp
       title: verify/library_checker/graph/tree/rerooting.test.cpp
   - name: verify/library_checker/number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
   - name: verify/library_checker/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/rolling_hash.test.cpp
       title: verify/library_checker/string/rolling_hash.test.cpp
 layout: toppage
