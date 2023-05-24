@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: src/data_structure/union_find.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -78,24 +78,26 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/data_structure/union_find.hpp\"\
-    \nclass union_find {\n  public:\n    union_find(int n) : data(n, -1) {}\n    int\
-    \ unite(int x, int y) {\n        x = root(x), y = root(y);\n        if(x != y)\
-    \ {\n            if(size(x) < size(y)) swap(x, y);\n            data[x] += data[y];\n\
-    \            return data[y] = x;\n        }\n        return -1;\n    }\n    int\
-    \ root(int x) { return data[x] < 0 ? x : data[x] = root(data[x]); }\n    int size(int\
-    \ x) { return -data[root(x)]; }\n    bool same(int x, int y) { return root(x)\
-    \ == root(y); }\n\n  private:\n    vector<int> data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/data_structure/union_find.hpp\"\nclass union_find {\n  public:\n    union_find(int\
+    \ n) : data(n, -1) {}\n    int unite(int x, int y) {\n        x = root(x), y =\
+    \ root(y);\n        if(x != y) {\n            if(size(x) < size(y)) swap(x, y);\n\
+    \            data[x] += data[y];\n            return data[y] = x;\n        }\n\
+    \        return -1;\n    }\n    int root(int x) { return data[x] < 0 ? x : data[x]\
+    \ = root(data[x]); }\n    int size(int x) { return -data[root(x)]; }\n    bool\
+    \ same(int x, int y) { return root(x) == root(y); }\n\n  private:\n    vector<int>\
+    \ data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    union_find uf(N);\n\n    for(int _ : rep(Q)) {\n  \
     \      int t, u, v; cin >> t >> u >> v;\n        switch(t) {\n            case\
@@ -120,8 +122,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/union_find.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/union_find.test.cpp
 layout: document

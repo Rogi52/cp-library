@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/lis.hpp
     title: Longest Increasing Subsequence
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -78,28 +78,29 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/algorithm/lis.hpp\"\
-    \ntemplate < class T, class Cmp >\ntuple< vector< T >, vector<int>, vector<int>\
-    \ > l_s(const vector< T >& a, Cmp cmp) {\n    int n = a.size();\n    vector< T\
-    \ > l_s;\n    vector<int> st(n, -1), nt(n, -1), rank(n);\n    for(int i : rep(n))\
-    \ {\n        int pos = lower_bound(l_s.begin(), l_s.end(), a[i], cmp) - l_s.begin();\n\
-    \        st[pos] = i;\n        if(pos >= 1) nt[i] = st[pos - 1];\n        if(pos\
-    \ == int(l_s.size())) l_s.push_back(a[i]); else l_s[pos] = a[i];\n        rank[i]\
-    \ = pos + 1;\n    }\n    int len = l_s.size();\n    vector<int> idx(len);\n  \
-    \  for(int i = st[len - 1]; i >= 0; i = nt[i]) idx[--len] = i;\n    return {l_s,\
-    \ idx, rank};\n}\n#line 5 \"verify/library_checker/algorithm/lis.test.cpp\"\n\n\
-    int main(){\n    int N = in();\n    vector<int> A = in(N);\n\n    auto [lis, idx,\
-    \ rank] = l_s(A, [&](int a, int b) { return a < b; });\n    print(idx.size());\n\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/algorithm/lis.hpp\"\ntemplate < class T, class Cmp >\ntuple< vector< T >,\
+    \ vector<int>, vector<int> > l_s(const vector< T >& a, Cmp cmp) {\n    int n =\
+    \ a.size();\n    vector< T > l_s;\n    vector<int> st(n, -1), nt(n, -1), rank(n);\n\
+    \    for(int i : rep(n)) {\n        int pos = lower_bound(l_s.begin(), l_s.end(),\
+    \ a[i], cmp) - l_s.begin();\n        st[pos] = i;\n        if(pos >= 1) nt[i]\
+    \ = st[pos - 1];\n        if(pos == int(l_s.size())) l_s.push_back(a[i]); else\
+    \ l_s[pos] = a[i];\n        rank[i] = pos + 1;\n    }\n    int len = l_s.size();\n\
+    \    vector<int> idx(len);\n    for(int i = st[len - 1]; i >= 0; i = nt[i]) idx[--len]\
+    \ = i;\n    return {l_s, idx, rank};\n}\n#line 5 \"verify/library_checker/algorithm/lis.test.cpp\"\
+    \n\nint main(){\n    int N = in();\n    vector<int> A = in(N);\n\n    auto [lis,\
+    \ idx, rank] = l_s(A, [&](int a, int b) { return a < b; });\n    print(idx.size());\n\
     \    print(idx);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/algorithm/lis.hpp\"\n\nint\
@@ -116,8 +117,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/lis.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/lis.test.cpp
 layout: document

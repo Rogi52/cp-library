@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
@@ -78,31 +78,32 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"src/data_structure/binary_trie.hpp\"\
-    \n\ntemplate < class K, int L, class V >\nstruct binary_trie {\n    struct node_t\
-    \ {\n        array<int, 2> to = {};\n        V cnt;\n        vector<int> accept;\n\
-    \        node_t() : cnt(0) { to[0] = to[1] = -1; }\n    };\n\n    vector<node_t>\
-    \ node;\n    int ROOT;\n    K XOR;\n    binary_trie() : node(1), ROOT(0), XOR(0)\
-    \ {}\n\n    void xor_all(K x) {\n        XOR ^= x;\n    }\n    int insert(K x,\
-    \ V v = 1, int id = -1) {\n        int u = ROOT;\n        node[u].cnt += v;\n\
-    \        for(int i : revrep(L)) {\n            int p = ((XOR >> i) & 1) ^ ((x\
-    \ >> i) & 1);\n            if(node[u].to[p] == -1) {\n                node[u].to[p]\
-    \ = node.size();\n                node.push_back(node_t());\n            }\n \
-    \           u = node[u].to[p];\n            node[u].cnt += v;\n        }\n   \
-    \     if(id != -1) node[u].accept.push_back(id);\n        return u;\n    }\n \
-    \   int erase(K x, V v = 1) {\n        return insert(x, -v, -1);\n    }\n    int\
-    \ find(K x) {\n        int u = ROOT;\n        for(int i : revrep(L)) {\n     \
-    \       int p = ((XOR >> i) & 1) ^ ((x >> i) & 1);\n            u = node[u].to[p];\n\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
+    src/data_structure/binary_trie.hpp\"\n\ntemplate < class K, int L, class V >\n\
+    struct binary_trie {\n    struct node_t {\n        array<int, 2> to = {};\n  \
+    \      V cnt;\n        vector<int> accept;\n        node_t() : cnt(0) { to[0]\
+    \ = to[1] = -1; }\n    };\n\n    vector<node_t> node;\n    int ROOT;\n    K XOR;\n\
+    \    binary_trie() : node(1), ROOT(0), XOR(0) {}\n\n    void xor_all(K x) {\n\
+    \        XOR ^= x;\n    }\n    int insert(K x, V v = 1, int id = -1) {\n     \
+    \   int u = ROOT;\n        node[u].cnt += v;\n        for(int i : revrep(L)) {\n\
+    \            int p = ((XOR >> i) & 1) ^ ((x >> i) & 1);\n            if(node[u].to[p]\
+    \ == -1) {\n                node[u].to[p] = node.size();\n                node.push_back(node_t());\n\
+    \            }\n            u = node[u].to[p];\n            node[u].cnt += v;\n\
+    \        }\n        if(id != -1) node[u].accept.push_back(id);\n        return\
+    \ u;\n    }\n    int erase(K x, V v = 1) {\n        return insert(x, -v, -1);\n\
+    \    }\n    int find(K x) {\n        int u = ROOT;\n        for(int i : revrep(L))\
+    \ {\n            int p = ((XOR >> i) & 1) ^ ((x >> i) & 1);\n            u = node[u].to[p];\n\
     \            if(u == -1) return -1;\n        }\n        return u;\n    }\n   \
     \ pair< K, int > kth(V k) {\n        assert(0 <= k && k < size());\n        K\
     \ x(0);\n        int u = ROOT;\n        for(int i : revrep(L)) {\n           \
@@ -142,8 +143,8 @@ data:
   isVerificationFile: true
   path: verify/aoj/data_structure/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/binary_trie.test.cpp
 layout: document

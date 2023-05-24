@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':x:'
@@ -10,16 +10,16 @@ data:
   - icon: ':x:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -81,62 +81,64 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/number/runtime_modint.hpp\"\
-    \nstruct runtime_modint {\n  public:\n    ll v = 0;\n    runtime_modint(ll v =\
-    \ 0) { s(v % get_mod() + get_mod()); }\n    static void set_mod(ll m) { mod()\
-    \ = m; }\n    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp;\
-    \ }\n    static ll get_mod() { return mod(); }\n    using rtmint = runtime_modint;\n\
-    \    rtmint& s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this;\
-    \ }\n    rtmint operator-() const { return rtmint() - *this; }\n    rtmint& operator+=(const\
-    \ rtmint& rhs) { return s(v + rhs.v); }\n    rtmint& operator-=(const rtmint&\
-    \ rhs) { return s(v + get_mod() - rhs.v); }\n    rtmint& operator*=(const rtmint&\
-    \ rhs) { v = ull(v) * rhs.v % get_mod(); return *this; }\n    rtmint& operator/=(const\
-    \ rtmint& rhs) { return *this *= inv(rhs); }\n    rtmint operator+(const rtmint&\
-    \ rhs) const { return rtmint(*this) += rhs; }\n    rtmint operator-(const rtmint&\
-    \ rhs) const { return rtmint(*this) -= rhs; }\n    rtmint operator*(const rtmint&\
-    \ rhs) const { return rtmint(*this) *= rhs; }\n    rtmint operator/(const rtmint&\
-    \ rhs) const { return rtmint(*this) /= rhs; }\n    friend rtmint pow(rtmint x,\
-    \ ll n) { rtmint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; }\
-    \ return res; }\n    friend rtmint inv(rtmint v) {\n        if(isprime()) {\n\
-    \            return pow(v, get_mod() - 2);\n        } else {\n            ll a\
-    \ = v.v, b = get_mod(), x = 1, y = 0, t;\n            while(b > 0) { t = a / b;\
-    \ swap(a -= t * b, b); swap(x -= t * y, y); }\n            return rtmint(x);\n\
-    \        }\n    }\n    friend rtmint operator+(int x, const rtmint& y) { return\
-    \ rtmint(x) + y; }\n    friend rtmint operator-(int x, const rtmint& y) { return\
-    \ rtmint(x) - y; }\n    friend rtmint operator*(int x, const rtmint& y) { return\
-    \ rtmint(x) * y; }\n    friend rtmint operator/(int x, const rtmint& y) { return\
-    \ rtmint(x) / y; }\n    friend istream& operator>>(istream& is, rtmint& m) { ll\
-    \ x; is >> x; m = rtmint(x); return is; }\n    friend ostream& operator<<(ostream&\
-    \ os, const rtmint& m) { return os << m.v; }\n    bool operator==(const rtmint&\
-    \ r) const { return v == r.v; }\n    bool operator!=(const rtmint& r) const {\
-    \ return v != r.v; }\n  private:\n    static ll &mod() {\n        static ll mod_\
-    \ = 0;\n        return mod_;\n    }\n    static int &isprime() {\n        static\
-    \ int isprime_ = 0;\n        return isprime_;\n    }\n};\nusing mint = runtime_modint;\n\
-    #line 1 \"src/number/bicoef.hpp\"\ntemplate < class mint >\nclass bicoef {\n \
-    \   int N;\n    vector<mint> fact_, inv_, finv_;\n  public:\n    bicoef(int N)\
-    \ : N(N), fact_(N+1, 1), inv_(N+1, 1), finv_(N+1, 1) {\n        uint mod = mint::get_mod();\n\
-    \        for(int i = 2; i <= N; i++) {\n            fact_[i] = fact_[i - 1] *\
-    \ i;\n            inv_ [i] = - inv_[mod % i] * (mod / i);\n            finv_[i]\
-    \ = finv_[i - 1] * inv_[i];\n        }\n    }\n    mint fact(int n) { assert(0\
-    \ <= n && n <= N); return fact_[n]; }\n    mint inv (int n) { assert(0 <= n &&\
-    \ n <= N); return inv_ [n]; }\n    mint finv(int n) { assert(0 <= n && n <= N);\
-    \ return finv_[n]; }\n    mint comb(int n, int k) {\n        if(k < 0 || n < k)\
-    \ return mint(0);\n        return fact(n) * finv(k) * finv(n - k);\n    }\n  \
-    \  mint perm(int n, int k) { return fact(n) * finv(n - k); }\n    mint homo(int\
-    \ n, int k) { return comb(n + k - 1, k); }\n};\n#line 6 \"verify/library_checker/number/bicoef.test.cpp\"\
-    \n\nint main() {\n    int T = in();\n    int m = in();\n    mint::set_mod(m);\n\
-    \    bicoef<mint> c(min(m, 10'000'000));\n    for(int i : rep(T)) {\n        int\
-    \ n = in();\n        int k = in();\n        print(c.comb(n, k));\n    }\n}\n"
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n  public:\n    ll v\
+    \ = 0;\n    runtime_modint(ll v = 0) { s(v % get_mod() + get_mod()); }\n    static\
+    \ void set_mod(ll m) { mod() = m; }\n    static void set_mod(ll m, int isp) {\
+    \ mod() = m; isprime() = isp; }\n    static ll get_mod() { return mod(); }\n \
+    \   using rtmint = runtime_modint;\n    rtmint& s(ll v) { this->v = v < get_mod()\
+    \ ? v : v - get_mod(); return *this; }\n    rtmint operator-() const { return\
+    \ rtmint() - *this; }\n    rtmint& operator+=(const rtmint& rhs) { return s(v\
+    \ + rhs.v); }\n    rtmint& operator-=(const rtmint& rhs) { return s(v + get_mod()\
+    \ - rhs.v); }\n    rtmint& operator*=(const rtmint& rhs) { v = ull(v) * rhs.v\
+    \ % get_mod(); return *this; }\n    rtmint& operator/=(const rtmint& rhs) { return\
+    \ *this *= inv(rhs); }\n    rtmint operator+(const rtmint& rhs) const { return\
+    \ rtmint(*this) += rhs; }\n    rtmint operator-(const rtmint& rhs) const { return\
+    \ rtmint(*this) -= rhs; }\n    rtmint operator*(const rtmint& rhs) const { return\
+    \ rtmint(*this) *= rhs; }\n    rtmint operator/(const rtmint& rhs) const { return\
+    \ rtmint(*this) /= rhs; }\n    friend rtmint pow(rtmint x, ll n) { rtmint res(1);\
+    \ while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend\
+    \ rtmint inv(rtmint v) {\n        if(isprime()) {\n            return pow(v, get_mod()\
+    \ - 2);\n        } else {\n            ll a = v.v, b = get_mod(), x = 1, y = 0,\
+    \ t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t *\
+    \ y, y); }\n            return rtmint(x);\n        }\n    }\n    friend rtmint\
+    \ operator+(int x, const rtmint& y) { return rtmint(x) + y; }\n    friend rtmint\
+    \ operator-(int x, const rtmint& y) { return rtmint(x) - y; }\n    friend rtmint\
+    \ operator*(int x, const rtmint& y) { return rtmint(x) * y; }\n    friend rtmint\
+    \ operator/(int x, const rtmint& y) { return rtmint(x) / y; }\n    friend istream&\
+    \ operator>>(istream& is, rtmint& m) { ll x; is >> x; m = rtmint(x); return is;\
+    \ }\n    friend ostream& operator<<(ostream& os, const rtmint& m) { return os\
+    \ << m.v; }\n    bool operator==(const rtmint& r) const { return v == r.v; }\n\
+    \    bool operator!=(const rtmint& r) const { return v != r.v; }\n  private:\n\
+    \    static ll &mod() {\n        static ll mod_ = 0;\n        return mod_;\n \
+    \   }\n    static int &isprime() {\n        static int isprime_ = 0;\n       \
+    \ return isprime_;\n    }\n};\nusing mint = runtime_modint;\n#line 1 \"src/number/bicoef.hpp\"\
+    \ntemplate < class mint >\nclass bicoef {\n    int N;\n    vector<mint> fact_,\
+    \ inv_, finv_;\n  public:\n    bicoef(int N) : N(N), fact_(N+1, 1), inv_(N+1,\
+    \ 1), finv_(N+1, 1) {\n        uint mod = mint::get_mod();\n        for(int i\
+    \ = 2; i <= N; i++) {\n            fact_[i] = fact_[i - 1] * i;\n            inv_\
+    \ [i] = - inv_[mod % i] * (mod / i);\n            finv_[i] = finv_[i - 1] * inv_[i];\n\
+    \        }\n    }\n    mint fact(int n) { assert(0 <= n && n <= N); return fact_[n];\
+    \ }\n    mint inv (int n) { assert(0 <= n && n <= N); return inv_ [n]; }\n   \
+    \ mint finv(int n) { assert(0 <= n && n <= N); return finv_[n]; }\n    mint comb(int\
+    \ n, int k) {\n        if(k < 0 || n < k) return mint(0);\n        return fact(n)\
+    \ * finv(k) * finv(n - k);\n    }\n    mint perm(int n, int k) { return fact(n)\
+    \ * finv(n - k); }\n    mint homo(int n, int k) { return comb(n + k - 1, k); }\n\
+    };\n#line 6 \"verify/library_checker/number/bicoef.test.cpp\"\n\nint main() {\n\
+    \    int T = in();\n    int m = in();\n    mint::set_mod(m);\n    bicoef<mint>\
+    \ c(min(m, 10'000'000));\n    for(int i : rep(T)) {\n        int n = in();\n \
+    \       int k = in();\n        print(c.comb(n, k));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/runtime_modint.hpp\"\
     \n#include \"src/number/bicoef.hpp\"\n\nint main() {\n    int T = in();\n    int\
@@ -154,7 +156,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/bicoef.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
+  timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number/bicoef.test.cpp

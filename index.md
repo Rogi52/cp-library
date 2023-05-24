@@ -3,16 +3,16 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/affine.hpp
       title: src/algebra/affine.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/plus.hpp
       title: src/algebra/plus.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_affine_range_sum.hpp
       title: src/algebra/range_affine_range_sum.hpp
     - icon: ':warning:'
@@ -26,13 +26,13 @@ data:
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/lis.hpp
       title: Longest Increasing Subsequence
     - icon: ':warning:'
@@ -46,56 +46,56 @@ data:
       title: src/algorithm/sqrt_decomp.hpp
   - name: src
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/binary_trie.hpp
       title: src/data_structure/binary_trie.hpp
     - icon: ':warning:'
       path: src/data_structure/cht_add_monotone.hpp
       title: src/data_structure/cht_add_monotone.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/cht_offline_get_min.hpp
       title: src/data_structure/cht_offline_get_min.hpp
     - icon: ':warning:'
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/lazy_segtree.hpp
       title: src/data_structure/lazy_segtree.hpp
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/static_rect_add_rect_sum.hpp
       title: src/data_structure/static_rect_add_rect_sum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
   - name: src/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/angle_sort.hpp
       title: src/geometry/angle_sort.hpp
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/pointll.hpp
       title: src/geometry/pointll.hpp
   - name: src/graph
@@ -106,7 +106,7 @@ data:
     - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
     - icon: ':warning:'
@@ -114,7 +114,7 @@ data:
       title: src/graph/topological_sort.hpp
   - name: src/graph/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/tree/cartesian_tree.hpp
       title: src/graph/tree/cartesian_tree.hpp
     - icon: ':warning:'
@@ -140,7 +140,7 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -162,19 +162,19 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
   verificationCategories:
@@ -185,62 +185,62 @@ data:
       title: example.test.cpp
   - name: verify/aoj/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/binary_trie.test.cpp
       title: verify/aoj/data_structure/binary_trie.test.cpp
   - name: verify/library_checker/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/count_subseq.test.cpp
       title: verify/library_checker/algorithm/count_subseq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/lis.test.cpp
       title: verify/library_checker/algorithm/lis.test.cpp
   - name: verify/library_checker/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/binary_trie.test.cpp
       title: verify/library_checker/data_structure/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/lazy_segtree.test.cpp
       title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/line_add_get_min.test.cpp
       title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/rectangle_sum.test.cpp
       title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
       title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segtree.test.cpp
       title: verify/library_checker/data_structure/segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/union_find.test.cpp
       title: verify/library_checker/data_structure/union_find.test.cpp
   - name: verify/library_checker/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/geometry/angle_sort.test.cpp
       title: verify/library_checker/geometry/angle_sort.test.cpp
   - name: verify/library_checker/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/shortest_path.test.cpp
       title: verify/library_checker/graph/shortest_path.test.cpp
   - name: verify/library_checker/graph/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
       title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     - icon: ':x:'

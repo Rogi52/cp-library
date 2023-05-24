@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/cht_offline_get_min.hpp
     title: src/data_structure/cht_offline_get_min.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/segment_add_get_min
@@ -78,29 +78,30 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/data_structure/cht_offline_get_min.hpp\"\
-    \ntemplate < class T > class CHT_offline_get_min {\n  private:\n    struct Line\
-    \ {\n        T a, b;\n        Line(T a, T b) : a(a), b(b) {}\n        T eval(T\
-    \ x) { return a * x + b; }\n    };\n\n    T sgn;\n    int n;\n    vector< Line\
-    \ > ls;\n    vector< T > xs;\n\n  public:\n    T inf = numeric_limits< T >::max();\n\
-    \n    CHT_offline_get_min(vector< T > &x, bool is_min = true) : xs(x) {\n    \
-    \    sort(xs.begin(), xs.end());\n        xs.erase(unique(xs.begin(), xs.end()),\
-    \ xs.end());\n        n = xs.size();\n        ls.assign(n << 1, Line(0, inf));\n\
-    \        sgn = is_min ? +1 : -1;\n    }\n\n    void add_line(T a, T b) { update(a,\
-    \ b, 0, n); }\n\n    void add_segment(T a, T b, T l, T r) {\n        int xl =\
-    \ distance(xs.begin(), lower_bound(xs.begin(), xs.end(), l));\n        int xr\
-    \ = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), r));\n        update(a,\
-    \ b, xl, xr);\n    }\n\n    T query(T x) {\n        int i = distance(xs.begin(),\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/data_structure/cht_offline_get_min.hpp\"\ntemplate < class T > class CHT_offline_get_min\
+    \ {\n  private:\n    struct Line {\n        T a, b;\n        Line(T a, T b) :\
+    \ a(a), b(b) {}\n        T eval(T x) { return a * x + b; }\n    };\n\n    T sgn;\n\
+    \    int n;\n    vector< Line > ls;\n    vector< T > xs;\n\n  public:\n    T inf\
+    \ = numeric_limits< T >::max();\n\n    CHT_offline_get_min(vector< T > &x, bool\
+    \ is_min = true) : xs(x) {\n        sort(xs.begin(), xs.end());\n        xs.erase(unique(xs.begin(),\
+    \ xs.end()), xs.end());\n        n = xs.size();\n        ls.assign(n << 1, Line(0,\
+    \ inf));\n        sgn = is_min ? +1 : -1;\n    }\n\n    void add_line(T a, T b)\
+    \ { update(a, b, 0, n); }\n\n    void add_segment(T a, T b, T l, T r) {\n    \
+    \    int xl = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), l));\n  \
+    \      int xr = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), r));\n\
+    \        update(a, b, xl, xr);\n    }\n\n    T query(T x) {\n        int i = distance(xs.begin(),\
     \ lower_bound(xs.begin(), xs.end(), x));\n        assert(i != n && x == xs[i]);\n\
     \        T v = inf;\n        for(i += n; i > 0; i >>= 1) v = min(v, ls[i].eval(x));\n\
     \        return sgn * v;\n    }\n\n  private:\n    void update(T a, T b, int l,\
@@ -157,8 +158,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segment_add_get_min.test.cpp
 layout: document

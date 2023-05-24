@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -90,58 +90,60 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/utility/zip.hpp\"\
-    \ntemplate < class T >\nstruct zipper {\n  public:\n    zipper() {}\n    vector<\
-    \ T > data;\n    void insert(const T x) {\n        built = 0;\n        data.push_back(x);\n\
-    \    }\n    void insert(const vector< T > v) {\n        built = 0;\n        data.insert(data.end(),\
-    \ v.begin(), v.end());\n    }\n    template < class... args > zipper(args... a)\
-    \ { insert(a...); }\n    template < class... args > void insert(const T x, args...\
-    \ a) { insert(x); insert(a...); }\n    template < class... args > void insert(const\
-    \ vector< T > x, args... a) { insert(x); insert(a...); }\n\n    void build() {\n\
-    \        sort(data.begin(), data.end());\n        data.erase(unique(data.begin(),\
-    \ data.end()), data.end());\n        built = 1;\n    }\n\n    int id(const T x)\
-    \ {\n        assert(built);\n        return lower_bound(data.begin(), data.end(),\
-    \ x) - data.begin();\n    }\n    vector<int> zip(const vector< T >& x) {\n   \
-    \     assert(built);\n        vector<int> idx(x.size());\n        for(int i :\
-    \ rep(x.size())) idx[i] = id(x[i]);\n        return idx;\n    }\n    int size()\
-    \ {\n        assert(built);\n        return data.size();\n    }\n\n  private:\n\
-    \    int built = 0;\n};\n#line 1 \"src/data_structure/fenwick_tree.hpp\"\ntemplate\
-    \ < class comm_monoid > class fenwick_tree {\n  public:\n    using T = typename\
-    \ comm_monoid::set;\n\n  private:\n    int n, n2;\n    vector< T > data;\n\n \
-    \   int ceil_pow2(int n) {\n        int x = 1;\n        while(x < n) x <<= 1;\n\
-    \        return x;\n    }\n\n  public:\n    fenwick_tree() : fenwick_tree(0) {}\n\
-    \    fenwick_tree(int n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id)\
-    \ { assert(comm_monoid::comm); }\n    fenwick_tree(const vector< T > &a) : n(a.size()),\
-    \ n2(ceil_pow2(n)), data(a) {\n        assert(comm_monoid::comm);\n        data.insert(data.begin(),\
-    \ {comm_monoid::id});\n        for(int i = 1; i <= n; i++) {\n            int\
-    \ p = i + (i & -i);\n            if(p <= n) data[p] = comm_monoid::op(data[i],\
-    \ data[p]);\n        }\n    }\n\n    void add(int i, T x) {\n        for(int p\
-    \ = i + 1; p <= n; p += p & -p) data[p] = comm_monoid::op(data[p], x);\n    }\n\
-    \    // [0, r)\n    T fold(int r) {\n        T s = comm_monoid::id;\n        for(int\
-    \ p = r; p > 0; p -= p & -p) s = comm_monoid::op(data[p], s);\n        return\
-    \ s;\n    }\n    // [l, r)\n    T fold(int l, int r) {\n        return comm_monoid::op(comm_monoid::inv(fold(l)),\
-    \ fold(r));\n    }\n    T get(int i) {\n        return fold(i, i + 1);\n    }\n\
-    \    void set(int i, T x) {\n        add(i, comm_monoid::op(comm_monoid::inv(get(i)),\
-    \ x));\n    }\n    template< class func > int search(const func &f) {\n      \
-    \  T s = comm_monoid::id;\n        if(f(s)) return 0;\n        int i = 0, k =\
-    \ n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
-    \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 4 \"src/data_structure/static_point_add_rect_sum.hpp\"\
-    \n\nnamespace tag {\n\nstruct STATIC;\nstruct DYNAMIC;\n\nstruct POINT;\nstruct\
-    \ RECTANGLE;\n\n}\n\ntemplate < class SD, class ADD_TYPE, class T, class abel_group\
-    \ >\nstruct rect_sum {};\n\ntemplate < class T, class abel_group >\nstruct rect_sum\
-    \ < tag::STATIC, tag::POINT, T, abel_group > {\n    using W = typename abel_group::set;\n\
-    \    vector<tuple< T, T, W >> P;\n    vector<tuple< T, T, T, T >> R;\n    zipper<\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/utility/zip.hpp\"\ntemplate < class T >\nstruct zipper {\n  public:\n    zipper()\
+    \ {}\n    vector< T > data;\n    void insert(const T x) {\n        built = 0;\n\
+    \        data.push_back(x);\n    }\n    void insert(const vector< T > v) {\n \
+    \       built = 0;\n        data.insert(data.end(), v.begin(), v.end());\n   \
+    \ }\n    template < class... args > zipper(args... a) { insert(a...); }\n    template\
+    \ < class... args > void insert(const T x, args... a) { insert(x); insert(a...);\
+    \ }\n    template < class... args > void insert(const vector< T > x, args... a)\
+    \ { insert(x); insert(a...); }\n\n    void build() {\n        sort(data.begin(),\
+    \ data.end());\n        data.erase(unique(data.begin(), data.end()), data.end());\n\
+    \        built = 1;\n    }\n\n    int id(const T x) {\n        assert(built);\n\
+    \        return lower_bound(data.begin(), data.end(), x) - data.begin();\n   \
+    \ }\n    vector<int> zip(const vector< T >& x) {\n        assert(built);\n   \
+    \     vector<int> idx(x.size());\n        for(int i : rep(x.size())) idx[i] =\
+    \ id(x[i]);\n        return idx;\n    }\n    int size() {\n        assert(built);\n\
+    \        return data.size();\n    }\n\n  private:\n    int built = 0;\n};\n#line\
+    \ 1 \"src/data_structure/fenwick_tree.hpp\"\ntemplate < class comm_monoid > class\
+    \ fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\n  private:\n\
+    \    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n) {\n       \
+    \ int x = 1;\n        while(x < n) x <<= 1;\n        return x;\n    }\n\n  public:\n\
+    \    fenwick_tree() : fenwick_tree(0) {}\n    fenwick_tree(int n) : n(n), n2(ceil_pow2(n)),\
+    \ data(n + 1, comm_monoid::id) { assert(comm_monoid::comm); }\n    fenwick_tree(const\
+    \ vector< T > &a) : n(a.size()), n2(ceil_pow2(n)), data(a) {\n        assert(comm_monoid::comm);\n\
+    \        data.insert(data.begin(), {comm_monoid::id});\n        for(int i = 1;\
+    \ i <= n; i++) {\n            int p = i + (i & -i);\n            if(p <= n) data[p]\
+    \ = comm_monoid::op(data[i], data[p]);\n        }\n    }\n\n    void add(int i,\
+    \ T x) {\n        for(int p = i + 1; p <= n; p += p & -p) data[p] = comm_monoid::op(data[p],\
+    \ x);\n    }\n    // [0, r)\n    T fold(int r) {\n        T s = comm_monoid::id;\n\
+    \        for(int p = r; p > 0; p -= p & -p) s = comm_monoid::op(data[p], s);\n\
+    \        return s;\n    }\n    // [l, r)\n    T fold(int l, int r) {\n       \
+    \ return comm_monoid::op(comm_monoid::inv(fold(l)), fold(r));\n    }\n    T get(int\
+    \ i) {\n        return fold(i, i + 1);\n    }\n    void set(int i, T x) {\n  \
+    \      add(i, comm_monoid::op(comm_monoid::inv(get(i)), x));\n    }\n    template<\
+    \ class func > int search(const func &f) {\n        T s = comm_monoid::id;\n \
+    \       if(f(s)) return 0;\n        int i = 0, k = n2;\n        while(k >>= 1)\
+    \ {\n            int p = i | k;\n            if(p <= n && !f(comm_monoid::op(s,\
+    \ data[p]))) s = comm_monoid::op(s, data[i = p]);\n        }\n        return i;\n\
+    \    }\n};\n#line 4 \"src/data_structure/static_point_add_rect_sum.hpp\"\n\nnamespace\
+    \ tag {\n\nstruct STATIC;\nstruct DYNAMIC;\n\nstruct POINT;\nstruct RECTANGLE;\n\
+    \n}\n\ntemplate < class SD, class ADD_TYPE, class T, class abel_group >\nstruct\
+    \ rect_sum {};\n\ntemplate < class T, class abel_group >\nstruct rect_sum < tag::STATIC,\
+    \ tag::POINT, T, abel_group > {\n    using W = typename abel_group::set;\n   \
+    \ vector<tuple< T, T, W >> P;\n    vector<tuple< T, T, T, T >> R;\n    zipper<\
     \ T > X, Y;\n    rect_sum() {}\n    void add(T x, T y, W w) {\n        P.emplace_back(x,\
     \ y, w);\n        X.insert(x); Y.insert(y);\n    }\n    void query(T xL, T xR,\
     \ T yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        X.insert(xL);\
@@ -218,8 +220,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 layout: document

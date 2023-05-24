@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
@@ -73,31 +73,32 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"src/algorithm/selection.hpp\"\
-    \n\ntemplate < class T >\nT kth(const vector< T >& a, int k) {\n    int n = a.size();\n\
-    \    T INF = numeric_limits< T >::max();\n    vector< T > c;\n    for(int i :\
-    \ rep(0, n, 5)) {\n        vector< T > b;\n        for(int d : rep(5)) {\n   \
-    \         b.push_back(i + d < n ? a[i + d] : INF);\n        }\n        sort(b.begin(),\
-    \ b.end());\n        c.push_back(b[2]);\n    }\n\n    T m = kth(c, n / 10);\n\
-    \    vector< T > s1, s2, s3;\n    for(T& x : a) {\n        if(x <  m) s1.push_back(x);\n\
-    \        if(x == m) s2.push_back(x);\n        if(x >  m) s3.push_back(x);\n  \
-    \  }\n\n    if(k <= int(s1.size())) return kth(s1, k);\n    if(k <= int(s1.size()\
-    \ + s2.size())) return m;\n    return kth(s1, k - int(s1.size() + s2.size()));\n\
-    }\n\ntemplate < class T >\nvector< T > topk(const vector< T >& a, int k, bool\
-    \ sorted = false) {\n    T v = kth(a, k);\n    vector< T > s1, s2;\n    for(T&\
-    \ x : a) {\n        if(x <  v) s1.push_back(x);\n        if(x == v) s2.push_back(x);\n\
-    \    }\n    while(int(s1.size()) < k) s1.push_back(s2);\n    if(sorted) sort(s1.begin(),\
-    \ s1.end());\n    return s1;\n}\n"
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
+    src/algorithm/selection.hpp\"\n\ntemplate < class T >\nT kth(const vector< T >&\
+    \ a, int k) {\n    int n = a.size();\n    T INF = numeric_limits< T >::max();\n\
+    \    vector< T > c;\n    for(int i : rep(0, n, 5)) {\n        vector< T > b;\n\
+    \        for(int d : rep(5)) {\n            b.push_back(i + d < n ? a[i + d] :\
+    \ INF);\n        }\n        sort(b.begin(), b.end());\n        c.push_back(b[2]);\n\
+    \    }\n\n    T m = kth(c, n / 10);\n    vector< T > s1, s2, s3;\n    for(T& x\
+    \ : a) {\n        if(x <  m) s1.push_back(x);\n        if(x == m) s2.push_back(x);\n\
+    \        if(x >  m) s3.push_back(x);\n    }\n\n    if(k <= int(s1.size())) return\
+    \ kth(s1, k);\n    if(k <= int(s1.size() + s2.size())) return m;\n    return kth(s1,\
+    \ k - int(s1.size() + s2.size()));\n}\n\ntemplate < class T >\nvector< T > topk(const\
+    \ vector< T >& a, int k, bool sorted = false) {\n    T v = kth(a, k);\n    vector<\
+    \ T > s1, s2;\n    for(T& x : a) {\n        if(x <  v) s1.push_back(x);\n    \
+    \    if(x == v) s2.push_back(x);\n    }\n    while(int(s1.size()) < k) s1.push_back(s2);\n\
+    \    if(sorted) sort(s1.begin(), s1.end());\n    return s1;\n}\n"
   code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class T >\nT kth(const\
     \ vector< T >& a, int k) {\n    int n = a.size();\n    T INF = numeric_limits<\
     \ T >::max();\n    vector< T > c;\n    for(int i : rep(0, n, 5)) {\n        vector<\
@@ -122,7 +123,7 @@ data:
   path: src/algorithm/selection.hpp
   requiredBy:
   - src/algorithm/beam_search.hpp
-  timestamp: '2023-05-24 23:37:54+09:00'
+  timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/algorithm/selection.hpp

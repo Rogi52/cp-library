@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/range_affine_range_sum.hpp
     title: src/algebra/range_affine_range_sum.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segtree.hpp
     title: src/data_structure/lazy_segtree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -93,48 +93,49 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/number/modint.hpp\"\
-    \nstruct modinfo { uint mod, root, isprime; };\ntemplate < modinfo const &ref\
-    \ >\nstruct modint {\n    static constexpr uint const &mod = ref.mod;\n    static\
-    \ constexpr uint const &root = ref.root;\n    static constexpr uint const &isprime\
-    \ = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint v) { this->v =\
-    \ v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll v = 0) { s(v\
-    \ % mod + mod); }\n    modint operator-() const { return modint() - *this; }\n\
-    \    modint& operator+=(const modint& rhs) { return s(v + rhs.v); }\n    modint&\
-    \ operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n    modint& operator*=(const\
-    \ modint& rhs) { v = ull(v) * rhs.v % mod; return *this; }\n    modint& operator/=(const\
-    \ modint& rhs) { return *this *= inv(rhs); }\n    modint operator+(const modint&\
-    \ rhs) const { return modint(*this) += rhs; }\n    modint operator-(const modint&\
-    \ rhs) const { return modint(*this) -= rhs; }\n    modint operator*(const modint&\
-    \ rhs) const { return modint(*this) *= rhs; }\n    modint operator/(const modint&\
-    \ rhs) const { return modint(*this) /= rhs; }\n    friend modint pow(modint x,\
-    \ ll n) { modint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; }\
-    \ return res; }\n    friend modint inv(modint v) {\n        if(isprime) {\n  \
-    \          return pow(v, mod - 2);\n        } else {\n            ll a = v.v,\
-    \ b = modint::mod, x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a\
-    \ -= t * b, b); swap(x -= t * y, y); }\n            return modint(x);\n      \
-    \  }\n    }\n    friend modint operator+(int x, const modint& y) { return modint(x)\
-    \ + y; }\n    friend modint operator-(int x, const modint& y) { return modint(x)\
-    \ - y; }\n    friend modint operator*(int x, const modint& y) { return modint(x)\
-    \ * y; }\n    friend modint operator/(int x, const modint& y) { return modint(x)\
-    \ / y; }\n    friend istream& operator>>(istream& is, modint& m) { ll x; is >>\
-    \ x; m = modint(x); return is; }\n    friend ostream& operator<<(ostream& os,\
-    \ const modint& m) { return os << m.v; }\n    bool operator==(const modint& r)\
-    \ const { return v == r.v; }\n    bool operator!=(const modint& r) const { return\
-    \ v != r.v; }\n    static uint get_mod() { return mod; }\n};\nconstexpr modinfo\
-    \ base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007,\
-    \ 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing mint1000000007\
-    \ = modint< base1000000007 >;\n#line 1 \"src/data_structure/lazy_segtree.hpp\"\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\ntemplate\
+    \ < modinfo const &ref >\nstruct modint {\n    static constexpr uint const &mod\
+    \ = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static constexpr\
+    \ uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint\
+    \ v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll\
+    \ v = 0) { s(v % mod + mod); }\n    modint operator-() const { return modint()\
+    \ - *this; }\n    modint& operator+=(const modint& rhs) { return s(v + rhs.v);\
+    \ }\n    modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n\
+    \    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return\
+    \ *this; }\n    modint& operator/=(const modint& rhs) { return *this *= inv(rhs);\
+    \ }\n    modint operator+(const modint& rhs) const { return modint(*this) += rhs;\
+    \ }\n    modint operator-(const modint& rhs) const { return modint(*this) -= rhs;\
+    \ }\n    modint operator*(const modint& rhs) const { return modint(*this) *= rhs;\
+    \ }\n    modint operator/(const modint& rhs) const { return modint(*this) /= rhs;\
+    \ }\n    friend modint pow(modint x, ll n) { modint res(1); while(n > 0) { if(n\
+    \ & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint inv(modint\
+    \ v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n        }\
+    \ else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n        \
+    \    while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); }\n \
+    \           return modint(x);\n        }\n    }\n    friend modint operator+(int\
+    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
+    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
+    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
+    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
+    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
+    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
+    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
+    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
+    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
+    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
+    \ mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/data_structure/lazy_segtree.hpp\"\
     \ntemplate < class A > struct lazy_segtree {\n  public:\n    using V = typename\
     \ A::value_structure;\n    using S = typename V::set;\n    using O = typename\
     \ A::operator_structure;\n    using F = typename O::set;\n    int _n, size, log;\n\
@@ -256,8 +257,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-24 23:48:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp
 layout: document

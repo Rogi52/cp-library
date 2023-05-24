@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -78,28 +78,29 @@ data:
     \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
     \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
     \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
-    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
-    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
     }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
     \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
-    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
-    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
-    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
-    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
-    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
-    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/string/rolling_hash.hpp\"\
-    \ntemplate< int num_of_mod = 2 >\nstruct rolling_hash {\n    static constexpr\
-    \ ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n    static constexpr\
-    \ ll BASE = 9973;\n    \n    struct hash : array<ll, num_of_mod> {\n        using\
-    \ array<ll, num_of_mod>::operator[];\n        static constexpr int n = num_of_mod;\n\
-    \        hash() : array<ll,n>() {}\n        hash(ll x) : hash() { for(int i :\
-    \ rep(n)) (*this)[i] = x % MODS[i]; }\n        hash& operator+=(const hash& rhs)\
-    \ { for(int i : rep(n)) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i];\
-    \ return *this; }\n        hash& operator-=(const hash& rhs) { for(int i : rep(n))\
-    \ if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return\
-    \ *this; }\n        hash& operator*=(const hash& rhs) { for(int i : rep(n)) (*this)[i]\
-    \ = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n        hash& operator+=(const\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/string/rolling_hash.hpp\"\ntemplate< int num_of_mod = 2 >\nstruct rolling_hash\
+    \ {\n    static constexpr ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n\
+    \    static constexpr ll BASE = 9973;\n    \n    struct hash : array<ll, num_of_mod>\
+    \ {\n        using array<ll, num_of_mod>::operator[];\n        static constexpr\
+    \ int n = num_of_mod;\n        hash() : array<ll,n>() {}\n        hash(ll x) :\
+    \ hash() { for(int i : rep(n)) (*this)[i] = x % MODS[i]; }\n        hash& operator+=(const\
+    \ hash& rhs) { for(int i : rep(n)) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i]\
+    \ -= MODS[i]; return *this; }\n        hash& operator-=(const hash& rhs) { for(int\
+    \ i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i];\
+    \ return *this; }\n        hash& operator*=(const hash& rhs) { for(int i : rep(n))\
+    \ (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n        hash& operator+=(const\
     \ ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i]) >= MODS[i]) (*this)[i]\
     \ -= MODS[i]; return *this; }\n        hash& operator-=(const ll rhs) { for(int\
     \ i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >= MODS[i]) (*this)[i]\
@@ -156,7 +157,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:37:54+09:00'
+  timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/rolling_hash.test.cpp
