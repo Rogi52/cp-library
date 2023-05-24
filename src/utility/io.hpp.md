@@ -3,8 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/algorithm/selection.cpp
-    title: src/algorithm/selection.cpp
+    path: src/algorithm/beam_search.hpp
+    title: src/algorithm/beam_search.hpp
+  - icon: ':warning:'
+    path: src/algorithm/selection.hpp
+    title: src/algorithm/selection.hpp
   - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
@@ -142,7 +145,8 @@ data:
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/cp-template.hpp
   - src/graph/tree/rerooting.hpp
-  - src/algorithm/selection.cpp
+  - src/algorithm/selection.hpp
+  - src/algorithm/beam_search.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: src/algorithm/selection.hpp
+    title: src/algorithm/selection.hpp
   - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
@@ -13,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
@@ -60,7 +63,7 @@ data:
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
     \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
     \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
-    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/algorithm/selection.cpp\"\n\ntemplate\
+    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/algorithm/selection.hpp\"\n\ntemplate\
     \ < class T >\nT kth(const vector< T >& a, int k) {\n    int n = a.size();\n \
     \   T INF = numeric_limits< T >::max();\n    vector< T > c;\n    for(int i : rep(0,\
     \ n, 5)) {\n        vector< T > b;\n        for(int d : rep(5)) {\n          \
@@ -74,35 +77,35 @@ data:
     \ sorted = false) {\n    T v = kth(a, k);\n    vector< T > s1, s2;\n    for(T&\
     \ x : a) {\n        if(x <  v) s1.push_back(x);\n        if(x == v) s2.push_back(x);\n\
     \    }\n    while(int(s1.size()) < k) s1.push_back(s2);\n    if(sorted) sort(s1.begin(),\
-    \ s1.end());\n    return s1;\n}\n"
-  code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class T >\nT kth(const\
-    \ vector< T >& a, int k) {\n    int n = a.size();\n    T INF = numeric_limits<\
-    \ T >::max();\n    vector< T > c;\n    for(int i : rep(0, n, 5)) {\n        vector<\
-    \ T > b;\n        for(int d : rep(5)) {\n            b.push_back(i + d < n ? a[i\
-    \ + d] : INF);\n        }\n        sort(b.begin(), b.end());\n        c.push_back(b[2]);\n\
-    \    }\n\n    T m = kth(c, n / 10);\n    vector< T > s1, s2, s3;\n    for(T& x\
-    \ : a) {\n        if(x <  m) s1.push_back(x);\n        if(x == m) s2.push_back(x);\n\
-    \        if(x >  m) s3.push_back(x);\n    }\n\n    if(k <= int(s1.size())) return\
-    \ kth(s1, k);\n    if(k <= int(s1.size() + s2.size())) return m;\n    return kth(s1,\
-    \ k - int(s1.size() + s2.size()));\n}\n\ntemplate < class T >\nvector< T > topk(const\
-    \ vector< T >& a, int k, bool sorted = false) {\n    T v = kth(a, k);\n    vector<\
-    \ T > s1, s2;\n    for(T& x : a) {\n        if(x <  v) s1.push_back(x);\n    \
-    \    if(x == v) s2.push_back(x);\n    }\n    while(int(s1.size()) < k) s1.push_back(s2);\n\
-    \    if(sorted) sort(s1.begin(), s1.end());\n    return s1;\n}"
+    \ s1.end());\n    return s1;\n}\n#line 3 \"src/algorithm/beam_search.hpp\"\n\n\
+    template < class state, class F >\nstate beam_search(state first, int turn, int\
+    \ width, const F& trans) {\n    vector<state> list = {first};\n    for(int t :\
+    \ rep(turn)) {\n        vector<state> next;\n        for(state& s : list) {\n\
+    \            vector<state> ns = trans(s);\n            next.insert(next.end(),\
+    \ ns.begin(), ns.end());\n        }\n        list = topk(next, width);\n    }\n\
+    \    return kth(list, 1);\n}\n"
+  code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/algorithm/selection.hpp\"\
+    \n\ntemplate < class state, class F >\nstate beam_search(state first, int turn,\
+    \ int width, const F& trans) {\n    vector<state> list = {first};\n    for(int\
+    \ t : rep(turn)) {\n        vector<state> next;\n        for(state& s : list)\
+    \ {\n            vector<state> ns = trans(s);\n            next.insert(next.end(),\
+    \ ns.begin(), ns.end());\n        }\n        list = topk(next, width);\n    }\n\
+    \    return kth(list, 1);\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
+  - src/algorithm/selection.hpp
   isVerificationFile: false
-  path: src/algorithm/selection.cpp
+  path: src/algorithm/beam_search.hpp
   requiredBy: []
-  timestamp: '2023-05-24 19:11:50+09:00'
+  timestamp: '2023-05-24 19:19:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/algorithm/selection.cpp
+documentation_of: src/algorithm/beam_search.hpp
 layout: document
 redirect_from:
-- /library/src/algorithm/selection.cpp
-- /library/src/algorithm/selection.cpp.html
-title: src/algorithm/selection.cpp
+- /library/src/algorithm/beam_search.hpp
+- /library/src/algorithm/beam_search.hpp.html
+title: src/algorithm/beam_search.hpp
 ---

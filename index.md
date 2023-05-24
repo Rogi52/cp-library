@@ -23,6 +23,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
+    - icon: ':warning:'
+      path: src/algorithm/beam_search.hpp
+      title: src/algorithm/beam_search.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
@@ -36,8 +39,8 @@ data:
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
     - icon: ':warning:'
-      path: src/algorithm/selection.cpp
-      title: src/algorithm/selection.cpp
+      path: src/algorithm/selection.hpp
+      title: src/algorithm/selection.hpp
     - icon: ':warning:'
       path: src/algorithm/sqrt_decomp.hpp
       title: src/algorithm/sqrt_decomp.hpp
