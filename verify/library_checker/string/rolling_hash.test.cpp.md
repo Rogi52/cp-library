@@ -1,23 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
+  - icon: ':x:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
@@ -68,10 +74,24 @@ data:
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
     \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
     \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
-    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/string/rolling_hash.hpp\"\ntemplate<\
-    \ int num_of_mod = 2 >\nstruct rolling_hash {\n    static constexpr ll MODS[]\
-    \ = {999999937, 1000000007, 1000000009, 1000000021};\n    static constexpr ll\
-    \ BASE = 9973;\n    \n    struct hash : array<ll, num_of_mod> {\n        using\
+    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/utility/key_val.hpp\"\ntemplate <\
+    \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
+    \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
+    \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
+    \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
+    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
+    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
+    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
+    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
+    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
+    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/string/rolling_hash.hpp\"\
+    \ntemplate< int num_of_mod = 2 >\nstruct rolling_hash {\n    static constexpr\
+    \ ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n    static constexpr\
+    \ ll BASE = 9973;\n    \n    struct hash : array<ll, num_of_mod> {\n        using\
     \ array<ll, num_of_mod>::operator[];\n        static constexpr int n = num_of_mod;\n\
     \        hash() : array<ll,n>() {}\n        hash(ll x) : hash() { for(int i :\
     \ rep(n)) (*this)[i] = x % MODS[i]; }\n        hash& operator+=(const hash& rhs)\
@@ -130,12 +150,14 @@ data:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
   - src/string/rolling_hash.hpp
   isVerificationFile: true
   path: verify/library_checker/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-24 23:37:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/string/rolling_hash.test.cpp
 layout: document

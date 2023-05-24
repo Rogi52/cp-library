@@ -1,12 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
+  - icon: ':x:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/algorithm/beam_search.hpp
@@ -14,82 +20,82 @@ data:
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj/data_structure/binary_trie.test.cpp
     title: verify/aoj/data_structure/binary_trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/lis.test.cpp
     title: verify/library_checker/algorithm/lis.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/binary_trie.test.cpp
     title: verify/library_checker/data_structure/binary_trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -135,7 +141,22 @@ data:
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
     \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
     \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
-    \ : '\\n');\n    return 0;\n}\n#line 14 \"src/cp-template.hpp\"\n"
+    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/utility/key_val.hpp\"\ntemplate <\
+    \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
+    \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
+    \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
+    \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
+    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
+    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
+    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
+    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
+    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
+    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"src/cp-template.hpp\"\
+    \n"
   code: '#pragma once
 
     #include <bits/stdc++.h>
@@ -163,10 +184,14 @@ data:
 
     #include "./utility/io.hpp"
 
-    '
+    #include "./utility/key_val.hpp"
+
+    #include "./utility/vec_op.hpp"'
   dependsOn:
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy:
@@ -177,8 +202,8 @@ data:
   - src/graph/tree/rerooting.hpp
   - src/algorithm/selection.hpp
   - src/algorithm/beam_search.hpp
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-24 23:37:54+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp

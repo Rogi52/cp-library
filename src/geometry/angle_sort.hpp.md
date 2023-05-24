@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/geometry/angle_sort.hpp\"\nvector<int> angle_argsort(const\
@@ -40,7 +40,7 @@ data:
   path: src/geometry/angle_sort.hpp
   requiredBy: []
   timestamp: '2023-05-06 10:55:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/geometry/angle_sort.test.cpp
 documentation_of: src/geometry/angle_sort.hpp

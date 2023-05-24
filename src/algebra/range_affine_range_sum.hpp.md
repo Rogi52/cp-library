@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/cartesian_product_monoid.hpp
     title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algebra/plus.hpp
     title: src/algebra/plus.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -62,7 +62,7 @@ data:
   path: src/algebra/range_affine_range_sum.hpp
   requiredBy: []
   timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/algebra/range_affine_range_sum.hpp

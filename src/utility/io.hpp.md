@@ -8,85 +8,85 @@ data:
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/aoj/data_structure/binary_trie.test.cpp
     title: verify/aoj/data_structure/binary_trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/algorithm/lis.test.cpp
     title: verify/library_checker/algorithm/lis.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/binary_trie.test.cpp
     title: verify/library_checker/data_structure/binary_trie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
@@ -148,7 +148,7 @@ data:
   - src/algorithm/selection.hpp
   - src/algorithm/beam_search.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp

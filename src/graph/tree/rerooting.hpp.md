@@ -1,23 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
+  - icon: ':x:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -63,33 +69,47 @@ data:
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
     \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
     \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
-    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/graph/tree/rerooting.hpp\"\n\nstruct\
-    \ rerooting {\n    int N;\n    vector<vector<pair<int,int>>> G;\n    rerooting(int\
-    \ N) : N(N), G(N) {}\n    void add_edge(int u, int v, int i) {\n        G[u].push_back({v,\
-    \ i});\n        G[v].push_back({u, i});\n    }\n\n    template < class S, class\
-    \ M, class E, class V >\n    vector< S > solve(const M& merge, const E& fe, const\
-    \ V& fv, const S unit) {\n        vector<vector< S >> dp(N);\n        for(int\
-    \ i : rep(N)) dp[i].resize(G[i].size());\n\n        function<S(int,int)> dfs1\
-    \ = [&](int v, int p) -> S {\n            S res = unit;\n            for(int i\
-    \ : rep(G[v].size())) {\n                auto [to, id] = G[v][i];\n          \
-    \      if(to != p) {\n                    dp[v][i] = dfs1(to, v);\n          \
-    \          res = merge(res, fe(dp[v][i], id));\n                }\n          \
-    \  }\n            return fv(res, v);\n        }; dfs1(0, -1);\n\n        function<void(int,int,S)>\
-    \ dfs2 = [&](int v, int p, S dp_par) {\n            for(int i : rep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                if(to == p) {\n\
-    \                    dp[v][i] = dp_par;\n                }\n            }\n\n\
-    \            vector< S > R(G[v].size() + 1U);\n            R[G[v].size()] = unit;\n\
-    \            for(int i : revrep(G[v].size())) {\n                auto [to, id]\
-    \ = G[v][i];\n                R[i] = merge(R[i + 1], fe(dp[v][i], id));\n    \
-    \        }\n            S L = unit;\n            for(int i : rep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                if(to != p) {\n\
-    \                    S val = merge(L, R[i + 1]);\n                    dfs2(to,\
-    \ v, fv(val, v));\n                }\n                L = merge(L, fe(dp[v][i],\
-    \ id));\n            }\n        }; dfs2(0, -1, unit);\n\n        vector< S > res(N,\
-    \ unit);\n        for(int v : rep(N)) {\n            for(int i : rep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                res[v] = merge(res[v],\
-    \ fe(dp[v][i], id));\n            }\n            res[v] = fv(res[v], v);\n   \
-    \     }\n        return res;\n    }\n};\n"
+    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/utility/key_val.hpp\"\ntemplate <\
+    \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
+    \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
+    \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
+    \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
+    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
+    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
+    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
+    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
+    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
+    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"src/graph/tree/rerooting.hpp\"\
+    \n\nstruct rerooting {\n    int N;\n    vector<vector<pair<int,int>>> G;\n   \
+    \ rerooting(int N) : N(N), G(N) {}\n    void add_edge(int u, int v, int i) {\n\
+    \        G[u].push_back({v, i});\n        G[v].push_back({u, i});\n    }\n\n \
+    \   template < class S, class M, class E, class V >\n    vector< S > solve(const\
+    \ M& merge, const E& fe, const V& fv, const S unit) {\n        vector<vector<\
+    \ S >> dp(N);\n        for(int i : rep(N)) dp[i].resize(G[i].size());\n\n    \
+    \    function<S(int,int)> dfs1 = [&](int v, int p) -> S {\n            S res =\
+    \ unit;\n            for(int i : rep(G[v].size())) {\n                auto [to,\
+    \ id] = G[v][i];\n                if(to != p) {\n                    dp[v][i]\
+    \ = dfs1(to, v);\n                    res = merge(res, fe(dp[v][i], id));\n  \
+    \              }\n            }\n            return fv(res, v);\n        }; dfs1(0,\
+    \ -1);\n\n        function<void(int,int,S)> dfs2 = [&](int v, int p, S dp_par)\
+    \ {\n            for(int i : rep(G[v].size())) {\n                auto [to, id]\
+    \ = G[v][i];\n                if(to == p) {\n                    dp[v][i] = dp_par;\n\
+    \                }\n            }\n\n            vector< S > R(G[v].size() + 1U);\n\
+    \            R[G[v].size()] = unit;\n            for(int i : revrep(G[v].size()))\
+    \ {\n                auto [to, id] = G[v][i];\n                R[i] = merge(R[i\
+    \ + 1], fe(dp[v][i], id));\n            }\n            S L = unit;\n         \
+    \   for(int i : rep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
+    \                if(to != p) {\n                    S val = merge(L, R[i + 1]);\n\
+    \                    dfs2(to, v, fv(val, v));\n                }\n           \
+    \     L = merge(L, fe(dp[v][i], id));\n            }\n        }; dfs2(0, -1, unit);\n\
+    \n        vector< S > res(N, unit);\n        for(int v : rep(N)) {\n         \
+    \   for(int i : rep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
+    \                res[v] = merge(res[v], fe(dp[v][i], id));\n            }\n  \
+    \          res[v] = fv(res[v], v);\n        }\n        return res;\n    }\n};\n"
   code: "#include \"../../../src/cp-template.hpp\"\n\nstruct rerooting {\n    int\
     \ N;\n    vector<vector<pair<int,int>>> G;\n    rerooting(int N) : N(N), G(N)\
     \ {}\n    void add_edge(int u, int v, int i) {\n        G[u].push_back({v, i});\n\
@@ -121,11 +141,13 @@ data:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
   isVerificationFile: false
   path: src/graph/tree/rerooting.hpp
   requiredBy: []
-  timestamp: '2023-05-10 15:04:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-24 23:37:54+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/graph/tree/rerooting.test.cpp
 documentation_of: src/graph/tree/rerooting.hpp

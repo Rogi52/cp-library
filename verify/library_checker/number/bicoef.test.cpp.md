@@ -1,26 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/bicoef.hpp
     title: src/number/bicoef.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
+  - icon: ':x:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -71,13 +77,27 @@ data:
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
     \ {\n    if(a.empty()) return 0;\n    int h = a.size(), w = a[0].size();\n   \
     \ for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' '\
-    \ : '\\n');\n    return 0;\n}\n#line 1 \"src/number/runtime_modint.hpp\"\nstruct\
-    \ runtime_modint {\n  public:\n    ll v = 0;\n    runtime_modint(ll v = 0) { s(v\
-    \ % get_mod() + get_mod()); }\n    static void set_mod(ll m) { mod() = m; }\n\
-    \    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp; }\n    static\
-    \ ll get_mod() { return mod(); }\n    using rtmint = runtime_modint;\n    rtmint&\
-    \ s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this; }\n   \
-    \ rtmint operator-() const { return rtmint() - *this; }\n    rtmint& operator+=(const\
+    \ : '\\n');\n    return 0;\n}\n#line 2 \"src/utility/key_val.hpp\"\ntemplate <\
+    \ class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
+    \    key_val(K key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\
+    \ntemplate < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n   \
+    \ int i = max_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n\
+    \    int i = min_element(a.begin(), a.end()) - a.begin();\n    return {a[i], i};\n\
+    }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
+    \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
+    vector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int> res(R\
+    \ - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
+    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
+    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
+    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
+    \ R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"src/number/runtime_modint.hpp\"\
+    \nstruct runtime_modint {\n  public:\n    ll v = 0;\n    runtime_modint(ll v =\
+    \ 0) { s(v % get_mod() + get_mod()); }\n    static void set_mod(ll m) { mod()\
+    \ = m; }\n    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp;\
+    \ }\n    static ll get_mod() { return mod(); }\n    using rtmint = runtime_modint;\n\
+    \    rtmint& s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this;\
+    \ }\n    rtmint operator-() const { return rtmint() - *this; }\n    rtmint& operator+=(const\
     \ rtmint& rhs) { return s(v + rhs.v); }\n    rtmint& operator-=(const rtmint&\
     \ rhs) { return s(v + get_mod() - rhs.v); }\n    rtmint& operator*=(const rtmint&\
     \ rhs) { v = ull(v) * rhs.v % get_mod(); return *this; }\n    rtmint& operator/=(const\
@@ -127,13 +147,15 @@ data:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
   - src/number/runtime_modint.hpp
   - src/number/bicoef.hpp
   isVerificationFile: true
   path: verify/library_checker/number/bicoef.test.cpp
   requiredBy: []
-  timestamp: '2023-05-10 11:13:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-24 23:37:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number/bicoef.test.cpp
 layout: document

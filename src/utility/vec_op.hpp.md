@@ -89,41 +89,33 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct itr\
-    \ {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n    constexpr\
-    \ itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++() noexcept\
-    \ { i += d; }\n    constexpr int operator*() const noexcept { return i; }\n  \
-    \  constexpr bool operator!=(const itr x) const noexcept {\n        return d >\
-    \ 0 ? i < x.i : i > x.i;\n    }\n};\n\ntemplate < class T > struct rep {\n   \
-    \ const itr< T > s, t;\n    constexpr rep(const T t) noexcept : s(0), t(t) {}\n\
-    \    constexpr rep(const T s, const T t) noexcept : s(s), t(t) {}\n    constexpr\
-    \ rep(const T s, const T t, const T d) noexcept : s(s, d), t(t, d) {}\n    constexpr\
-    \ auto begin() const noexcept { return s; }\n    constexpr auto end() const noexcept\
-    \ { return t; }\n};\n\ntemplate < class T > struct revrep {\n    const itr < T\
-    \ > s, t;\n    constexpr revrep(const T t) noexcept : s(t - 1, -1), t(-1, -1)\
-    \ {}\n    constexpr revrep(const T s, const T t) noexcept : s(t - 1, -1), t(s\
-    \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
-    \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
-    \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n"
-  code: "#pragma once\ntemplate < class T > struct itr {\n    T i, d;\n    constexpr\
-    \ itr(const T i) noexcept : i(i), d(1) {}\n    constexpr itr(const T i, const\
-    \ T d) noexcept : i(i), d(d) {}\n    void operator++() noexcept { i += d; }\n\
-    \    constexpr int operator*() const noexcept { return i; }\n    constexpr bool\
-    \ operator!=(const itr x) const noexcept {\n        return d > 0 ? i < x.i : i\
-    \ > x.i;\n    }\n};\n\ntemplate < class T > struct rep {\n    const itr< T > s,\
-    \ t;\n    constexpr rep(const T t) noexcept : s(0), t(t) {}\n    constexpr rep(const\
-    \ T s, const T t) noexcept : s(s), t(t) {}\n    constexpr rep(const T s, const\
-    \ T t, const T d) noexcept : s(s, d), t(t, d) {}\n    constexpr auto begin() const\
-    \ noexcept { return s; }\n    constexpr auto end() const noexcept { return t;\
-    \ }\n};\n\ntemplate < class T > struct revrep {\n    const itr < T > s, t;\n \
-    \   constexpr revrep(const T t) noexcept : s(t - 1, -1), t(-1, -1) {}\n    constexpr\
-    \ revrep(const T s, const T t) noexcept : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr\
-    \ revrep(const T s, const T t, const T d) noexcept : s(t - 1, -d), t(s - 1, -d)\
-    \ {}\n    constexpr auto begin() const noexcept { return s; }\n    constexpr auto\
-    \ end() const noexcept { return t; }\n};\n"
+  bundledCode: "#line 2 \"src/utility/vec_op.hpp\"\ntemplate < class T >\nkey_val<\
+    \ int, T > max_of(const vector< T >& a) {\n    int i = max_element(a.begin(),\
+    \ a.end()) - a.begin();\n    return {a[i], i};\n}\n\ntemplate < class T >\nkey_val<\
+    \ int, T > min_of(const vector< T >& a) {\n    int i = min_element(a.begin(),\
+    \ a.end()) - a.begin();\n    return {a[i], i};\n}\n\ntemplate < class T >\nT sum_of(const\
+    \ vector< T >& a) {\n    T sum = 0;\n    for(const T x : a) sum += x;\n    return\
+    \ sum;\n}\n\ntemplate < class T >\nvector<int> freq(const vector< T >& a, T L\
+    \ = 0, T R) {\n    vector<int> res(R - L);\n    for(const T x : a) res[x - L]++;\n\
+    \    return res;\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector<\
+    \ T > s;\n    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(sum.begin(),\
+    \ T(0));\n        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    //\
+    \ [L, R)\n    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n"
+  code: "#pragma once\ntemplate < class T >\nkey_val< int, T > max_of(const vector<\
+    \ T >& a) {\n    int i = max_element(a.begin(), a.end()) - a.begin();\n    return\
+    \ {a[i], i};\n}\n\ntemplate < class T >\nkey_val< int, T > min_of(const vector<\
+    \ T >& a) {\n    int i = min_element(a.begin(), a.end()) - a.begin();\n    return\
+    \ {a[i], i};\n}\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n  \
+    \  T sum = 0;\n    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate\
+    \ < class T >\nvector<int> freq(const vector< T >& a, T L = 0, T R) {\n    vector<int>\
+    \ res(R - L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate\
+    \ < class T >\nstruct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector<\
+    \ T >& a) : s(a) {\n        s.insert(sum.begin(), T(0));\n        for(int i :\
+    \ rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int\
+    \ R) {\n        return s[R] - s[L];\n    }\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: src/utility/rep_itr.hpp
+  path: src/utility/vec_op.hpp
   requiredBy:
   - src/data_structure/binary_trie.hpp
   - src/data_structure/point_add_rect_sum.hpp
@@ -133,7 +125,7 @@ data:
   - src/graph/tree/rerooting.hpp
   - src/algorithm/selection.hpp
   - src/algorithm/beam_search.hpp
-  timestamp: '2023-05-10 11:13:35+09:00'
+  timestamp: '2023-05-24 23:37:54+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/aoj/data_structure/binary_trie.test.cpp
@@ -155,10 +147,10 @@ data:
   - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
-documentation_of: src/utility/rep_itr.hpp
+documentation_of: src/utility/vec_op.hpp
 layout: document
 redirect_from:
-- /library/src/utility/rep_itr.hpp
-- /library/src/utility/rep_itr.hpp.html
-title: src/utility/rep_itr.hpp
+- /library/src/utility/vec_op.hpp
+- /library/src/utility/vec_op.hpp.html
+title: src/utility/vec_op.hpp
 ---
