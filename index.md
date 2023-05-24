@@ -36,6 +36,9 @@ data:
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
     - icon: ':warning:'
+      path: src/algorithm/selection.cpp
+      title: src/algorithm/selection.cpp
+    - icon: ':warning:'
       path: src/algorithm/sqrt_decomp.hpp
       title: src/algorithm/sqrt_decomp.hpp
   - name: src

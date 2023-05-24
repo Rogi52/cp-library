@@ -8,6 +8,9 @@ data:
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/algorithm/selection.cpp
+    title: src/algorithm/selection.cpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
@@ -169,6 +172,7 @@ data:
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/graph/tree/rerooting.hpp
+  - src/algorithm/selection.cpp
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
