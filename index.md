@@ -106,6 +106,9 @@ data:
     - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
+    - icon: ':warning:'
+      path: src/graph/max_flow.hpp
+      title: src/graph/max_flow.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
