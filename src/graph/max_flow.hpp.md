@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/max_flow.test.cpp
+    title: verify/aoj/data_structure/max_flow.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/graph/max_flow.hpp\"\ntemplate < class Cap > struct\
@@ -107,8 +110,9 @@ data:
   path: src/graph/max_flow.hpp
   requiredBy: []
   timestamp: '2023-05-27 03:40:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/aoj/data_structure/max_flow.test.cpp
 documentation_of: src/graph/max_flow.hpp
 layout: document
 redirect_from:

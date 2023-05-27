@@ -106,9 +106,12 @@ data:
     - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: src/graph/max_flow.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/min_cost_flow.hpp
+      title: src/graph/min_cost_flow.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
@@ -191,6 +194,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/binary_trie.test.cpp
       title: verify/aoj/data_structure/binary_trie.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/max_flow.test.cpp
+      title: verify/aoj/data_structure/max_flow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/min_cost_flow.test.cpp
+      title: verify/aoj/data_structure/min_cost_flow.test.cpp
   - name: verify/library_checker/algorithm
     pages:
     - icon: ':heavy_check_mark:'

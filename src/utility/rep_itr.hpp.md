@@ -31,6 +31,12 @@ data:
     path: verify/aoj/data_structure/binary_trie.test.cpp
     title: verify/aoj/data_structure/binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/max_flow.test.cpp
+    title: verify/aoj/data_structure/max_flow.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/min_cost_flow.test.cpp
+    title: verify/aoj/data_structure/min_cost_flow.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
   - icon: ':heavy_check_mark:'
@@ -136,6 +142,8 @@ data:
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj/data_structure/min_cost_flow.test.cpp
+  - verify/aoj/data_structure/max_flow.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
