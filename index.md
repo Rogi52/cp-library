@@ -26,6 +26,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
+    - icon: ':warning:'
+      path: src/algorithm/bin_search.hpp
+      title: src/algorithm/bin_search.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp

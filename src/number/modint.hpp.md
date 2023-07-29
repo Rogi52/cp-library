@@ -93,11 +93,11 @@ data:
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/graph/tree/rerooting.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
 documentation_of: src/number/modint.hpp
 layout: document
 title: modint
