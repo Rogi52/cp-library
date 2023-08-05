@@ -20,5 +20,6 @@
 "verify/library_checker/graph/tree/cartesian_tree.test.cpp": "2023-05-24 23:48:31 +0900",
 "verify/library_checker/graph/tree/rerooting.test.cpp": "2023-05-24 23:48:31 +0900",
 "verify/library_checker/number/bicoef.test.cpp": "2023-05-24 23:48:31 +0900",
+"verify/library_checker/number/nim_product.test.cpp": "2023-08-06 01:11:18 +0900",
 "verify/library_checker/string/rolling_hash.test.cpp": "2023-05-24 23:48:31 +0900"
 }
