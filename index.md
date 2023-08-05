@@ -155,6 +155,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/modint.hpp
       title: modint
+    - icon: ':heavy_check_mark:'
+      path: src/number/nim_product.hpp
+      title: src/number/nim_product.hpp
     - icon: ':warning:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
@@ -269,6 +272,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/nim_product.test.cpp
+      title: verify/library_checker/number/nim_product.test.cpp
   - name: verify/library_checker/string
     pages:
     - icon: ':heavy_check_mark:'

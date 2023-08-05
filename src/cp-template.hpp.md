@@ -38,6 +38,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/number/nim_product.hpp
+    title: src/number/nim_product.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/data_structure/binary_trie.test.cpp
@@ -99,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/nim_product.test.cpp
+    title: verify/library_checker/number/nim_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
@@ -212,6 +218,7 @@ data:
   - src/algorithm/beam_search.hpp
   - src/algorithm/selection.hpp
   - src/algorithm/floor_sum.hpp
+  - src/number/nim_product.hpp
   - src/graph/tree/rerooting.hpp
   timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -231,6 +238,7 @@ data:
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/number/nim_product.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
