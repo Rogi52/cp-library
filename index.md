@@ -35,6 +35,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
+    - icon: ':warning:'
+      path: src/algorithm/floor_sum.hpp
+      title: src/algorithm/floor_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/lis.hpp
       title: Longest Increasing Subsequence

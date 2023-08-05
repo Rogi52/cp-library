@@ -43,14 +43,14 @@ data:
   isVerificationFile: false
   path: src/algebra/plus.hpp
   requiredBy:
-  - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
+  - src/algebra/range_affine_range_sum.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
 documentation_of: src/algebra/plus.hpp

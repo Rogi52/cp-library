@@ -6,6 +6,9 @@ data:
     path: src/algorithm/beam_search.hpp
     title: src/algorithm/beam_search.hpp
   - icon: ':warning:'
+    path: src/algorithm/floor_sum.hpp
+    title: src/algorithm/floor_sum.hpp
+  - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
   - icon: ':heavy_check_mark:'
@@ -126,38 +129,39 @@ data:
   isVerificationFile: false
   path: src/utility/vec_op.hpp
   requiredBy:
-  - src/cp-template.hpp
-  - src/algorithm/beam_search.hpp
-  - src/algorithm/selection.hpp
-  - src/graph/tree/rerooting.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
-  - src/data_structure/binary_trie.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
+  - src/data_structure/binary_trie.hpp
+  - src/algorithm/beam_search.hpp
+  - src/algorithm/selection.hpp
+  - src/algorithm/floor_sum.hpp
+  - src/cp-template.hpp
+  - src/graph/tree/rerooting.hpp
   timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/aoj/data_structure/min_cost_flow.test.cpp
   - verify/aoj/data_structure/max_flow.test.cpp
+  - verify/aoj/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/union_find.test.cpp
+  - verify/library_checker/algorithm/lis.test.cpp
+  - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
-  - verify/library_checker/algorithm/lis.test.cpp
-  - verify/library_checker/number/bicoef.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - verify/library_checker/graph/shortest_path.test.cpp
-  - verify/library_checker/data_structure/binary_trie.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
 documentation_of: src/utility/vec_op.hpp
 layout: document
 redirect_from:
