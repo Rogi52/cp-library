@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/count_subseq.hpp
     title: src/algorithm/count_subseq.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -92,7 +92,7 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
     src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\ntemplate\
     \ < modinfo const &ref >\nstruct modint {\n    static constexpr uint const &mod\
     \ = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static constexpr\
@@ -148,7 +148,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/count_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-06 00:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/count_subseq.test.cpp

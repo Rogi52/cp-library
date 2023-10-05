@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   - icon: ':heavy_check_mark:'
@@ -195,14 +195,14 @@ data:
   isVerificationFile: false
   path: src/data_structure/static_point_add_rect_sum.hpp
   requiredBy:
-  - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/point_add_rect_sum.hpp
   timestamp: '2023-05-24 23:48:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/data_structure/static_point_add_rect_sum.hpp
 layout: document
 redirect_from:

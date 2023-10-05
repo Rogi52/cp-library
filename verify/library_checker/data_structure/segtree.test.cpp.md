@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree.hpp
     title: src/data_structure/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -142,7 +142,7 @@ data:
     \ F = affine< T >;\n    using set = F;\n    static constexpr F op(const F &l,\
     \ const F &r) { return l.composite(r); }\n    static constexpr F id = F::id();\n\
     };\ntemplate < class T > constexpr affine< T > affine_composite_monoid< T >::id;\n\
-    #line 1 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\n\
+    #line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\n\
     template < modinfo const &ref >\nstruct modint {\n    static constexpr uint const\
     \ &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static\
     \ constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr\
@@ -206,7 +206,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-06 00:46:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp

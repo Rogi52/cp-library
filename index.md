@@ -52,7 +52,7 @@ data:
       title: src/algorithm/sqrt_decomp.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -146,19 +146,22 @@ data:
     - icon: ':warning:'
       path: src/number/czt.hpp
       title: src/number/czt.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
+    - icon: ':x:'
+      path: src/number/fps_sparse.hpp
+      title: src/number/fps_sparse.hpp
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
       path: src/number/nim_product.hpp
       title: src/number/nim_product.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
     - icon: ':heavy_check_mark:'
@@ -177,16 +180,16 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
     - icon: ':heavy_check_mark:'
@@ -272,6 +275,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_inv_sparse.test.cpp
+      title: verify/library_checker/number/fps_inv_sparse.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp
