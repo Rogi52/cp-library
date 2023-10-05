@@ -17,24 +17,6 @@ template< class mint > struct fps_sparse : std::vector<std::pair<int, mint>> {
 };
 
 template < class mint >
-fps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>& g) {
-    for(int i : revrep(f.size())) for(auto [j, gj] : g) 
-        if(i + j < f.size()) f[i + j] += f[i] * gj;
-    return f;
-}
-template < class mint >
-fps<mint>& operator/=(fps<mint>& f, const fps_sparse<mint>& g) {
-    assert(g[0].second != 0);
-    mint c = inv(g[0].second);
-    for(int i : rep(f.size())) f[i] *= c;
-    for(int i : rep(f.size())) for(auto [j, gj] : g) if(j != 0)
-        if(i + j < f.size()) f[i + j] -= f[i] * gj * c;
-    return f;
-}
-template < class mint > fps<mint> operator*(fps<mint> f, const fps_sparse<mint>& g) { return f *= g; }
-template < class mint > fps<mint> operator/(fps<mint> f, const fps_sparse<mint>& g) { return f /= g; }
-
-template < class mint >
 fps<mint> inv(const fps_sparse<mint>& f, int deg) {
     return to_dense(fps_sparse<mint>{{0, 1}}, deg) / f;
 }

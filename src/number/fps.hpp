@@ -1,6 +1,7 @@
 #pragma once
 #include "../cp-template.hpp"
 #include "../number/ntt.hpp"
+#include "../number/fps_sparse.hpp"
 
 class undefined {};
 template < class mint > struct fps : std::vector<mint> {
@@ -36,7 +37,27 @@ template < class mint > struct fps : std::vector<mint> {
     template < class T > fps& operator+=(T v) { ups(1); (*this)[0] += v; return *this; }
     template < class T > fps& operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }
     template < class T > fps& operator*=(T v) { for(auto &x : *this) x *= v; return *this; }
-    template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this *= mint(1) / v; } // inv
+    template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this *= mint(1) / v; }
+
+    template <>
+    fps& operator*=(const fps_sparse<mint>& f) {
+        for(int i : revrep(this->size())) for(auto [j, fj] : f)
+            if(i + j < this->size()) (*this)[i + j] += (*this)[i] + fj;
+        return *this;
+    }
+
+    template <>
+    fps& operator/=(const fps_sparse<mint>& f) {
+        assert(f[0].second != 0);
+        mint c = inv(f[0].second);
+        for(int i : rep(this->size())) (*this)[i] *= c;
+        for(int i : rep(this->size())) for(auto [j, fj] : f) if(j != 0)
+            if(i + j < this->size()) (*this)[i + j] -= (*this)[i] * fj * c;
+        return *this;
+    }
+    fps operator*(const fps_sparse<mint>& f) { return fps(*this) *= f; }
+    fps operator/(const fps_sparse<mint>& f) { return fps(*this) /= f; }
+
     fps& operator<<=(int s) {
         fps g(s, 0);
         g.insert(g.end(), this->begin(), this->end());
