@@ -4,6 +4,9 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
+  - icon: ':x:'
+    path: src/number/fps_sparse.hpp
+    title: src/number/fps_sparse.hpp
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
@@ -170,35 +173,73 @@ data:
     \ mod01 = mod0 * mint1::mod;\n    for(int i : rep(n + m - 1)) {\n        ll y0\
     \ = c0[i].v;\n        ll y1 = (imod0 * (c1[i] - y0)).v;\n        ll y2 = (imod01\
     \ * (c2[i] - y0) - imod1 * y1).v;\n        c[i] = mod01 * y2 + mod0 * y1 + y0;\n\
-    \    }\n    return c;\n}\n\n} // namespace ntt\n#line 4 \"src/number/fps.hpp\"\
-    \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
-    \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
-    \ : std::vector<mint>(f) {}\n    int size() const { return int(std::vector<mint>::size());\
-    \ }\n    void ups(int s) { if(size() < s) this->resize(s, 0); }\n    fps low(int\
-    \ s) const {\n        return fps(this->begin(), this->begin() + min(this->size(),\
-    \ s));\n    }\n    fps rev() const {\n        return fps(this->rbegin(), this->rend());\n\
-    \    }\n    fps operator-() const {\n        fps g = *this;\n        for(int i\
-    \ : rep(g.size())) g[i] = -g[i];\n        return g;\n    }\n    fps operator+(const\
-    \ mint& v) const { return fps(*this) += v; }\n    fps operator-(const mint& v)\
-    \ const { return fps(*this) -= v; }\n    fps operator*(const mint& v) const {\
-    \ return fps(*this) *= v; }\n    fps operator/(const mint& v) const { return fps(*this)\
-    \ /= v; }\n    fps operator+(const fps& r) const { return fps(*this) += r; }\n\
-    \    fps operator-(const fps& r) const { return fps(*this) -= r; }\n    fps operator*(const\
-    \ fps& r) const { return fps(*this) *= r; }\n    fps operator/(const fps& r) const\
-    \ { return fps(*this) /= r; }\n    fps operator<<(int s) const { return fps(*this)\
-    \ <<= s; }\n    fps operator>>(int s) const { return fps(*this) >>= s; }\n   \
-    \ fps& operator+=(const fps& r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i]\
-    \ += r[i]; return *this; }\n    fps& operator-=(const fps& r) { ups(r.size());\
-    \ for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }\n    fps& operator*=(const\
-    \ fps& r) { return *this = ntt::mul(*this, r); } // ntt\n    fps& operator/=(const\
-    \ fps& r) { return *this *= inv(r); }\n    template < class T > fps& operator+=(T\
-    \ v) { ups(1); (*this)[0] += v; return *this; }\n    template < class T > fps&\
-    \ operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }\n    template < class\
-    \ T > fps& operator*=(T v) { for(auto &x : *this) x *= v; return *this; }\n  \
-    \  template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this\
-    \ *= mint(1) / v; } // inv\n    fps& operator<<=(int s) {\n        fps g(s, 0);\n\
-    \        g.insert(g.end(), this->begin(), this->end());\n        return *this\
-    \ = g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
+    \    }\n    return c;\n}\n\n} // namespace ntt\n#line 4 \"src/number/fps_sparse.hpp\"\
+    \n\ntemplate< class mint > struct fps_sparse : std::vector<std::pair<int, mint>>\
+    \ {\n    using std::vector<std::pair<int, mint>>::vector;\n    friend fps_sparse\
+    \ differential(const fps_sparse& f) {\n        fps_sparse g;\n        for(auto\
+    \ [i, fi] : f) if(i != 0) g.push_back({i - 1, fi * i});\n        return g;\n \
+    \   }\n    friend fps_sparse integral_(const fps_sparse& f) {\n        fps_sparse\
+    \ g;\n        for(auto [i, fi] : f) g.push_back({i + 1, fi / (i + 1)});\n    \
+    \    return g;\n    }\n};\n\ntemplate < class mint >\nfps<mint> inv(const fps_sparse<mint>&\
+    \ f, int deg) {\n    return to_dense(fps_sparse<mint>{{0, 1}}, deg) / f;\n}\n\n\
+    template < class mint >\nfps<mint> to_dense(const fps_sparse<mint>& f, int deg)\
+    \ {\n    fps<mint> g(deg, 0);\n    for(auto [i, fi] : f) g[i] = fi;\n    return\
+    \ g;\n}\n\ntemplate < class mint >\nfps<mint> log(const fps_sparse<mint>& f, int\
+    \ deg) {\n    assert(f[0] == make_pair(0, mint(1)));\n    return integral_(to_dense(differential(f),\
+    \ deg - 1) / f);\n}\n\ntemplate < class mint >\nfps<mint> exp(const fps_sparse<mint>&\
+    \ f, int deg) {\n    if(f.size() == 0) return to_dense(fps_sparse<mint>{{0, 1}},\
+    \ deg);\n    assert(f[0] == make_pair(0, mint(1)));\n    fps_sparse<mint> df =\
+    \ differential(f);\n    fps<mint> g(deg, 0);\n    g[0] = 1;\n    for(int i : rep(1,\
+    \ deg)) for(auto [j, dfj] : df)\n            if(0 <= i - 1 - j) g[i] += dfj *\
+    \ g[i - 1 - j] * inv(mint(i));\n    return g;\n}\n\ntemplate < class mint >\n\
+    fps<mint> pow(const fps_sparse<mint>& f, ll n, int deg) {\n    assert(0 <= n);\n\
+    \    if(n == 0) return to_dense(fps_sparse<mint>{{0, 1}}, deg);\n    if(f.size()\
+    \ == 0) return fps<mint>(deg, 0);\n    int d = f[0].first;\n    if((deg + n -\
+    \ 1) / n <= d) return fps<mint>(deg, 0);\n    int offset = d * n;\n    mint c\
+    \ = f[0].second, c_inv = mint(1) / c;\n    fps_sparse<mint> fr;\n    for(auto\
+    \ [i, fi] : f) fr.push_back({i - d, fi * c_inv});\n\n    fps<mint> g = to_dense(fps_sparse<mint>{{0,\
+    \ 1}}, deg);\n    for(int i : rep(1, deg - offset)) for(auto [j, fj] : fr)\n \
+    \           if(j != 0 and 0 <= i - j) g[i] += fj * g[i - j] * (mint(n) * mint(j)\
+    \ - mint(i - j)) * inv(mint(i));\n    g *= pow(c, n);\n    g >>= offset;\n   \
+    \ return g;\n}\n\ntemplate < class mint >\nfps<mint> sqrt(const fps_sparse<mint>&\
+    \ f, int deg) {\n\n}\n#line 5 \"src/number/fps.hpp\"\n\nclass undefined {};\n\
+    template < class mint > struct fps : std::vector<mint> {\n    using std::vector<mint>::vector;\n\
+    \    fps(const std::vector<mint>& f) : std::vector<mint>(f) {}\n    int size()\
+    \ const { return int(std::vector<mint>::size()); }\n    void ups(int s) { if(size()\
+    \ < s) this->resize(s, 0); }\n    fps low(int s) const {\n        return fps(this->begin(),\
+    \ this->begin() + min(this->size(), s));\n    }\n    fps rev() const {\n     \
+    \   return fps(this->rbegin(), this->rend());\n    }\n    fps operator-() const\
+    \ {\n        fps g = *this;\n        for(int i : rep(g.size())) g[i] = -g[i];\n\
+    \        return g;\n    }\n    fps operator+(const mint& v) const { return fps(*this)\
+    \ += v; }\n    fps operator-(const mint& v) const { return fps(*this) -= v; }\n\
+    \    fps operator*(const mint& v) const { return fps(*this) *= v; }\n    fps operator/(const\
+    \ mint& v) const { return fps(*this) /= v; }\n    fps operator+(const fps& r)\
+    \ const { return fps(*this) += r; }\n    fps operator-(const fps& r) const { return\
+    \ fps(*this) -= r; }\n    fps operator*(const fps& r) const { return fps(*this)\
+    \ *= r; }\n    fps operator/(const fps& r) const { return fps(*this) /= r; }\n\
+    \    fps operator<<(int s) const { return fps(*this) <<= s; }\n    fps operator>>(int\
+    \ s) const { return fps(*this) >>= s; }\n    fps& operator+=(const fps& r) { ups(r.size());\
+    \ for(int i : rep(r.size())) (*this)[i] += r[i]; return *this; }\n    fps& operator-=(const\
+    \ fps& r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i] -= r[i]; return\
+    \ *this; }\n    fps& operator*=(const fps& r) { return *this = ntt::mul(*this,\
+    \ r); } // ntt\n    fps& operator/=(const fps& r) { return *this *= inv(r); }\n\
+    \    template < class T > fps& operator+=(T v) { ups(1); (*this)[0] += v; return\
+    \ *this; }\n    template < class T > fps& operator-=(T v) { ups(1); (*this)[0]\
+    \ -= v; return *this; }\n    template < class T > fps& operator*=(T v) { for(auto\
+    \ &x : *this) x *= v; return *this; }\n    template < class T > fps& operator/=(T\
+    \ v) { assert(v != T(0)); return *this *= mint(1) / v; }\n\n    template <>\n\
+    \    fps& operator*=(const fps_sparse<mint>& f) {\n        for(int i : revrep(this->size()))\
+    \ for(auto [j, fj] : f)\n            if(i + j < this->size()) (*this)[i + j] +=\
+    \ (*this)[i] + fj;\n        return *this;\n    }\n\n    template <>\n    fps&\
+    \ operator/=(const fps_sparse<mint>& f) {\n        assert(f[0].second != 0);\n\
+    \        mint c = inv(f[0].second);\n        for(int i : rep(this->size())) (*this)[i]\
+    \ *= c;\n        for(int i : rep(this->size())) for(auto [j, fj] : f) if(j !=\
+    \ 0)\n            if(i + j < this->size()) (*this)[i + j] -= (*this)[i] * fj *\
+    \ c;\n        return *this;\n    }\n    fps operator*(const fps_sparse<mint>&\
+    \ f) { return fps(*this) *= f; }\n    fps operator/(const fps_sparse<mint>& f)\
+    \ { return fps(*this) /= f; }\n\n    fps& operator<<=(int s) {\n        fps g(s,\
+    \ 0);\n        g.insert(g.end(), this->begin(), this->end());\n        return\
+    \ *this = g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
     \ + s, this->end()};\n    }\n    friend fps differential(const fps& f) {\n   \
     \     int n = f.size();\n        fps g(n - 1);\n        for(int i : rep(1, n))\
     \ g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend fps integral_(const\
@@ -235,34 +276,44 @@ data:
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
     \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n"
   code: "#pragma once\n#include \"../cp-template.hpp\"\n#include \"../number/ntt.hpp\"\
-    \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
-    \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
-    \ : std::vector<mint>(f) {}\n    int size() const { return int(std::vector<mint>::size());\
-    \ }\n    void ups(int s) { if(size() < s) this->resize(s, 0); }\n    fps low(int\
-    \ s) const {\n        return fps(this->begin(), this->begin() + min(this->size(),\
-    \ s));\n    }\n    fps rev() const {\n        return fps(this->rbegin(), this->rend());\n\
-    \    }\n    fps operator-() const {\n        fps g = *this;\n        for(int i\
-    \ : rep(g.size())) g[i] = -g[i];\n        return g;\n    }\n    fps operator+(const\
-    \ mint& v) const { return fps(*this) += v; }\n    fps operator-(const mint& v)\
-    \ const { return fps(*this) -= v; }\n    fps operator*(const mint& v) const {\
-    \ return fps(*this) *= v; }\n    fps operator/(const mint& v) const { return fps(*this)\
-    \ /= v; }\n    fps operator+(const fps& r) const { return fps(*this) += r; }\n\
-    \    fps operator-(const fps& r) const { return fps(*this) -= r; }\n    fps operator*(const\
-    \ fps& r) const { return fps(*this) *= r; }\n    fps operator/(const fps& r) const\
-    \ { return fps(*this) /= r; }\n    fps operator<<(int s) const { return fps(*this)\
-    \ <<= s; }\n    fps operator>>(int s) const { return fps(*this) >>= s; }\n   \
-    \ fps& operator+=(const fps& r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i]\
-    \ += r[i]; return *this; }\n    fps& operator-=(const fps& r) { ups(r.size());\
-    \ for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }\n    fps& operator*=(const\
-    \ fps& r) { return *this = ntt::mul(*this, r); } // ntt\n    fps& operator/=(const\
-    \ fps& r) { return *this *= inv(r); }\n    template < class T > fps& operator+=(T\
-    \ v) { ups(1); (*this)[0] += v; return *this; }\n    template < class T > fps&\
-    \ operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }\n    template < class\
-    \ T > fps& operator*=(T v) { for(auto &x : *this) x *= v; return *this; }\n  \
-    \  template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this\
-    \ *= mint(1) / v; } // inv\n    fps& operator<<=(int s) {\n        fps g(s, 0);\n\
-    \        g.insert(g.end(), this->begin(), this->end());\n        return *this\
-    \ = g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
+    \n#include \"../number/fps_sparse.hpp\"\n\nclass undefined {};\ntemplate < class\
+    \ mint > struct fps : std::vector<mint> {\n    using std::vector<mint>::vector;\n\
+    \    fps(const std::vector<mint>& f) : std::vector<mint>(f) {}\n    int size()\
+    \ const { return int(std::vector<mint>::size()); }\n    void ups(int s) { if(size()\
+    \ < s) this->resize(s, 0); }\n    fps low(int s) const {\n        return fps(this->begin(),\
+    \ this->begin() + min(this->size(), s));\n    }\n    fps rev() const {\n     \
+    \   return fps(this->rbegin(), this->rend());\n    }\n    fps operator-() const\
+    \ {\n        fps g = *this;\n        for(int i : rep(g.size())) g[i] = -g[i];\n\
+    \        return g;\n    }\n    fps operator+(const mint& v) const { return fps(*this)\
+    \ += v; }\n    fps operator-(const mint& v) const { return fps(*this) -= v; }\n\
+    \    fps operator*(const mint& v) const { return fps(*this) *= v; }\n    fps operator/(const\
+    \ mint& v) const { return fps(*this) /= v; }\n    fps operator+(const fps& r)\
+    \ const { return fps(*this) += r; }\n    fps operator-(const fps& r) const { return\
+    \ fps(*this) -= r; }\n    fps operator*(const fps& r) const { return fps(*this)\
+    \ *= r; }\n    fps operator/(const fps& r) const { return fps(*this) /= r; }\n\
+    \    fps operator<<(int s) const { return fps(*this) <<= s; }\n    fps operator>>(int\
+    \ s) const { return fps(*this) >>= s; }\n    fps& operator+=(const fps& r) { ups(r.size());\
+    \ for(int i : rep(r.size())) (*this)[i] += r[i]; return *this; }\n    fps& operator-=(const\
+    \ fps& r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i] -= r[i]; return\
+    \ *this; }\n    fps& operator*=(const fps& r) { return *this = ntt::mul(*this,\
+    \ r); } // ntt\n    fps& operator/=(const fps& r) { return *this *= inv(r); }\n\
+    \    template < class T > fps& operator+=(T v) { ups(1); (*this)[0] += v; return\
+    \ *this; }\n    template < class T > fps& operator-=(T v) { ups(1); (*this)[0]\
+    \ -= v; return *this; }\n    template < class T > fps& operator*=(T v) { for(auto\
+    \ &x : *this) x *= v; return *this; }\n    template < class T > fps& operator/=(T\
+    \ v) { assert(v != T(0)); return *this *= mint(1) / v; }\n\n    template <>\n\
+    \    fps& operator*=(const fps_sparse<mint>& f) {\n        for(int i : revrep(this->size()))\
+    \ for(auto [j, fj] : f)\n            if(i + j < this->size()) (*this)[i + j] +=\
+    \ (*this)[i] + fj;\n        return *this;\n    }\n\n    template <>\n    fps&\
+    \ operator/=(const fps_sparse<mint>& f) {\n        assert(f[0].second != 0);\n\
+    \        mint c = inv(f[0].second);\n        for(int i : rep(this->size())) (*this)[i]\
+    \ *= c;\n        for(int i : rep(this->size())) for(auto [j, fj] : f) if(j !=\
+    \ 0)\n            if(i + j < this->size()) (*this)[i + j] -= (*this)[i] * fj *\
+    \ c;\n        return *this;\n    }\n    fps operator*(const fps_sparse<mint>&\
+    \ f) { return fps(*this) *= f; }\n    fps operator/(const fps_sparse<mint>& f)\
+    \ { return fps(*this) /= f; }\n\n    fps& operator<<=(int s) {\n        fps g(s,\
+    \ 0);\n        g.insert(g.end(), this->begin(), this->end());\n        return\
+    \ *this = g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
     \ + s, this->end()};\n    }\n    friend fps differential(const fps& f) {\n   \
     \     int n = f.size();\n        fps g(n - 1);\n        for(int i : rep(1, n))\
     \ g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend fps integral_(const\
@@ -306,11 +357,12 @@ data:
   - src/utility/vec_op.hpp
   - src/number/ntt.hpp
   - src/number/modint.hpp
+  - src/number/fps_sparse.hpp
   isVerificationFile: false
   path: src/number/fps.hpp
   requiredBy:
   - src/number/fps_sparse.hpp
-  timestamp: '2023-10-06 00:46:22+09:00'
+  timestamp: '2023-10-06 01:08:40+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp

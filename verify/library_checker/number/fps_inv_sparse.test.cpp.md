@@ -175,7 +175,7 @@ data:
     \ mod01 = mod0 * mint1::mod;\n    for(int i : rep(n + m - 1)) {\n        ll y0\
     \ = c0[i].v;\n        ll y1 = (imod0 * (c1[i] - y0)).v;\n        ll y2 = (imod01\
     \ * (c2[i] - y0) - imod1 * y1).v;\n        c[i] = mod01 * y2 + mod0 * y1 + y0;\n\
-    \    }\n    return c;\n}\n\n} // namespace ntt\n#line 4 \"src/number/fps.hpp\"\
+    \    }\n    return c;\n}\n\n} // namespace ntt\n#line 5 \"src/number/fps.hpp\"\
     \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
     \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
     \ : std::vector<mint>(f) {}\n    int size() const { return int(std::vector<mint>::size());\
@@ -201,61 +201,61 @@ data:
     \ operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }\n    template < class\
     \ T > fps& operator*=(T v) { for(auto &x : *this) x *= v; return *this; }\n  \
     \  template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this\
-    \ *= mint(1) / v; } // inv\n    fps& operator<<=(int s) {\n        fps g(s, 0);\n\
-    \        g.insert(g.end(), this->begin(), this->end());\n        return *this\
-    \ = g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
-    \ + s, this->end()};\n    }\n    friend fps differential(const fps& f) {\n   \
-    \     int n = f.size();\n        fps g(n - 1);\n        for(int i : rep(1, n))\
-    \ g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend fps integral_(const\
-    \ fps& f) { // std \u3068\u885D\u7A81\n        int n = f.size();\n        fps\
-    \ g(n + 1, 0);\n        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);\n  \
-    \      return g;\n    }\n    friend fps inv(const fps& f, int deg) {\n       \
-    \ assert(f[0] != 0);\n        fps g = {mint(1) / f[0]};\n        for(int i = 1;\
-    \ i < deg; i <<= 1) {\n            g = (g + g - g * g * f.low(i << 1)).low(i <<\
-    \ 1);\n        }\n        g.resize(deg);\n        return g;\n    }\n    friend\
-    \ fps log(const fps& f, int deg) {\n        assert(f[0] == 1);\n        fps g\
-    \ = integral_((differential(f) * inv(f, deg)));\n        g.resize(deg);\n    \
-    \    return g;\n    }\n    friend fps exp(const fps& f, int deg) {\n        assert(f[0]\
-    \ == 0);\n        fps g = {1};\n        for(int i = 1; i < deg; i <<= 1) {\n \
-    \           g = g * (f.low(i << 1) - log(g, i << 1) + 1).low(i << 1);\n      \
-    \  }\n        g.resize(deg);\n        return g;\n    }\n    friend fps pow(const\
-    \ fps& f, ll n, int deg) {\n        if(n == 0) {\n            fps g(deg, 0);\n\
-    \            g[0] = 1;\n            return g;\n        }\n        int i = 0;\n\
-    \        while(i < f.size() and f[i] == 0) i++;\n        if(i == f.size() or i128(i)\
-    \ * n >= deg) return fps(deg, 0);\n        mint k = f[i];\n        fps g = exp(log((f\
-    \ >> i) / k, deg) * n, deg) * pow(k, n) << (i * n);\n        g.resize(deg);\n\
-    \        return g;\n    }\n    friend fps sqrt(const fps& f, int deg) {\n    \
-    \    int n = f.size(), d = n;\n        for(int i : revrep(0, n)) if(f[i] != 0)\
-    \ d = i;\n        if(d == n) return f;\n        if(d % 2 == 1) throw undefined();\n\
-    \        mint y = f[d], x = sqrt(y);\n        if(x * x != y) throw undefined();\n\
-    \        mint c = mint(1) / y;\n        fps g(n - d);\n        for(int i : rep(n\
-    \ - d)) g[i] = f[d + i] * c;\n        \n        assert(g[0] == 1);\n        mint\
-    \ inv2 = mint(1) / 2;\n        fps h = {1};\n        for(int i = 1; i < deg; i\
-    \ <<= 1) {\n            h = (h + g.low(i << 1) * inv(h, i << 1)).low(i << 1);\n\
-    \            for(mint& a : h) a *= inv2;\n        }\n        h.resize(deg);\n\n\
-    \        for(int i : rep(deg)) h[i] *= x;\n        for(int i : revrep(deg)) h[i]\
-    \ = (i >= d / 2 ? h[i - d / 2] : 0);\n        return h;\n    }\n\n    friend fps\
-    \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
-    \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
-    \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n#line\
-    \ 4 \"src/number/fps_sparse.hpp\"\n\ntemplate< class mint > struct fps_sparse\
-    \ : std::vector<std::pair<int, mint>> {\n    using std::vector<std::pair<int,\
-    \ mint>>::vector;\n    friend fps_sparse differential(const fps_sparse& f) {\n\
-    \        fps_sparse g;\n        for(auto [i, fi] : f) if(i != 0) g.push_back({i\
-    \ - 1, fi * i});\n        return g;\n    }\n    friend fps_sparse integral_(const\
-    \ fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i, fi] : f) g.push_back({i\
-    \ + 1, fi / (i + 1)});\n        return g;\n    }\n};\n\ntemplate < class mint\
-    \ >\nfps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>& g) {\n    for(int\
-    \ i : revrep(f.size())) for(auto [j, gj] : g) \n        if(i + j < f.size()) f[i\
-    \ + j] += f[i] * gj;\n    return f;\n}\ntemplate < class mint >\nfps<mint>& operator/=(fps<mint>&\
-    \ f, const fps_sparse<mint>& g) {\n    assert(g[0].second != 0);\n    mint c =\
-    \ inv(g[0].second);\n    for(int i : rep(f.size())) f[i] *= c;\n    for(int i\
-    \ : rep(f.size())) for(auto [j, gj] : g) if(j != 0)\n        if(i + j < f.size())\
-    \ f[i + j] -= f[i] * gj * c;\n    return f;\n}\ntemplate < class mint > fps<mint>\
-    \ operator*(fps<mint> f, const fps_sparse<mint>& g) { return f *= g; }\ntemplate\
-    \ < class mint > fps<mint> operator/(fps<mint> f, const fps_sparse<mint>& g) {\
-    \ return f /= g; }\n\ntemplate < class mint >\nfps<mint> inv(const fps_sparse<mint>&\
+    \ *= mint(1) / v; }\n\n    template <>\n    fps& operator*=(const fps_sparse<mint>&\
+    \ f) {\n        for(int i : revrep(this->size())) for(auto [j, fj] : f)\n    \
+    \        if(i + j < this->size()) (*this)[i + j] += (*this)[i] + fj;\n       \
+    \ return *this;\n    }\n\n    template <>\n    fps& operator/=(const fps_sparse<mint>&\
+    \ f) {\n        assert(f[0].second != 0);\n        mint c = inv(f[0].second);\n\
+    \        for(int i : rep(this->size())) (*this)[i] *= c;\n        for(int i :\
+    \ rep(this->size())) for(auto [j, fj] : f) if(j != 0)\n            if(i + j <\
+    \ this->size()) (*this)[i + j] -= (*this)[i] * fj * c;\n        return *this;\n\
+    \    }\n    fps operator*(const fps_sparse<mint>& f) { return fps(*this) *= f;\
+    \ }\n    fps operator/(const fps_sparse<mint>& f) { return fps(*this) /= f; }\n\
+    \n    fps& operator<<=(int s) {\n        fps g(s, 0);\n        g.insert(g.end(),\
+    \ this->begin(), this->end());\n        return *this = g;\n    }\n    fps& operator>>=(int\
+    \ s) {\n        return *this = {this->begin() + s, this->end()};\n    }\n    friend\
+    \ fps differential(const fps& f) {\n        int n = f.size();\n        fps g(n\
+    \ - 1);\n        for(int i : rep(1, n)) g[i - 1] = f[i] * i;\n        return g;\n\
+    \    }\n    friend fps integral_(const fps& f) { // std \u3068\u885D\u7A81\n \
+    \       int n = f.size();\n        fps g(n + 1, 0);\n        for(int i : rep(0,\
+    \ n)) g[i + 1] = f[i] / (i + 1);\n        return g;\n    }\n    friend fps inv(const\
+    \ fps& f, int deg) {\n        assert(f[0] != 0);\n        fps g = {mint(1) / f[0]};\n\
+    \        for(int i = 1; i < deg; i <<= 1) {\n            g = (g + g - g * g *\
+    \ f.low(i << 1)).low(i << 1);\n        }\n        g.resize(deg);\n        return\
+    \ g;\n    }\n    friend fps log(const fps& f, int deg) {\n        assert(f[0]\
+    \ == 1);\n        fps g = integral_((differential(f) * inv(f, deg)));\n      \
+    \  g.resize(deg);\n        return g;\n    }\n    friend fps exp(const fps& f,\
+    \ int deg) {\n        assert(f[0] == 0);\n        fps g = {1};\n        for(int\
+    \ i = 1; i < deg; i <<= 1) {\n            g = g * (f.low(i << 1) - log(g, i <<\
+    \ 1) + 1).low(i << 1);\n        }\n        g.resize(deg);\n        return g;\n\
+    \    }\n    friend fps pow(const fps& f, ll n, int deg) {\n        if(n == 0)\
+    \ {\n            fps g(deg, 0);\n            g[0] = 1;\n            return g;\n\
+    \        }\n        int i = 0;\n        while(i < f.size() and f[i] == 0) i++;\n\
+    \        if(i == f.size() or i128(i) * n >= deg) return fps(deg, 0);\n       \
+    \ mint k = f[i];\n        fps g = exp(log((f >> i) / k, deg) * n, deg) * pow(k,\
+    \ n) << (i * n);\n        g.resize(deg);\n        return g;\n    }\n    friend\
+    \ fps sqrt(const fps& f, int deg) {\n        int n = f.size(), d = n;\n      \
+    \  for(int i : revrep(0, n)) if(f[i] != 0) d = i;\n        if(d == n) return f;\n\
+    \        if(d % 2 == 1) throw undefined();\n        mint y = f[d], x = sqrt(y);\n\
+    \        if(x * x != y) throw undefined();\n        mint c = mint(1) / y;\n  \
+    \      fps g(n - d);\n        for(int i : rep(n - d)) g[i] = f[d + i] * c;\n \
+    \       \n        assert(g[0] == 1);\n        mint inv2 = mint(1) / 2;\n     \
+    \   fps h = {1};\n        for(int i = 1; i < deg; i <<= 1) {\n            h =\
+    \ (h + g.low(i << 1) * inv(h, i << 1)).low(i << 1);\n            for(mint& a :\
+    \ h) a *= inv2;\n        }\n        h.resize(deg);\n\n        for(int i : rep(deg))\
+    \ h[i] *= x;\n        for(int i : revrep(deg)) h[i] = (i >= d / 2 ? h[i - d /\
+    \ 2] : 0);\n        return h;\n    }\n\n    friend fps inv(const fps& f) { return\
+    \ inv(f, f.size()); }\n    friend fps log(const fps& f) { return log(f, f.size());\
+    \ }\n    friend fps exp(const fps& f) { return exp(f, f.size()); }\n    friend\
+    \ fps pow(const fps& f, ll n) { return pow(f, n, f.size()); }\n    friend fps\
+    \ sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n#line 4 \"src/number/fps_sparse.hpp\"\
+    \n\ntemplate< class mint > struct fps_sparse : std::vector<std::pair<int, mint>>\
+    \ {\n    using std::vector<std::pair<int, mint>>::vector;\n    friend fps_sparse\
+    \ differential(const fps_sparse& f) {\n        fps_sparse g;\n        for(auto\
+    \ [i, fi] : f) if(i != 0) g.push_back({i - 1, fi * i});\n        return g;\n \
+    \   }\n    friend fps_sparse integral_(const fps_sparse& f) {\n        fps_sparse\
+    \ g;\n        for(auto [i, fi] : f) g.push_back({i + 1, fi / (i + 1)});\n    \
+    \    return g;\n    }\n};\n\ntemplate < class mint >\nfps<mint> inv(const fps_sparse<mint>&\
     \ f, int deg) {\n    return to_dense(fps_sparse<mint>{{0, 1}}, deg) / f;\n}\n\n\
     template < class mint >\nfps<mint> to_dense(const fps_sparse<mint>& f, int deg)\
     \ {\n    fps<mint> g(deg, 0);\n    for(auto [i, fi] : f) g[i] = fi;\n    return\
@@ -302,7 +302,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/fps_inv_sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 00:46:22+09:00'
+  timestamp: '2023-10-06 01:08:40+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_inv_sparse.test.cpp
