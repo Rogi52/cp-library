@@ -1,3 +1,5 @@
+#pragma once
+#include "../number/modint.hpp"
 namespace ntt {
 
 template < class mint >
@@ -40,9 +42,9 @@ template < class mint > void ntt(vector<mint>& v) { trans(v, false); }
 template < class mint > void intt(vector<mint>& v) { trans(v, true); }
 
 // for garner
-constexpr modinfo base0 { 754974721, 11 };
-constexpr modinfo base1 { 167772161,  3 };
-constexpr modinfo base2 { 469762049,  3 };
+constexpr modinfo base0 { 754974721, 11, 1};
+constexpr modinfo base1 { 167772161,  3, 1};
+constexpr modinfo base2 { 469762049,  3, 1};
 using mint0 = modint< base0 >;
 using mint1 = modint< base1 >;
 using mint2 = modint< base2 >;

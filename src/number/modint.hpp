@@ -1,3 +1,4 @@
+#pragma once
 struct modinfo { uint mod, root, isprime; };
 template < modinfo const &ref >
 struct modint {
