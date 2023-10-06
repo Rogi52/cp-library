@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/number/poly.hpp
+    title: src/number/poly.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/poly_all_product.test.cpp
+    title: verify/library_checker/number/poly_all_product.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -106,12 +112,14 @@ data:
   path: src/number/modint.hpp
   requiredBy:
   - src/number/fps_sparse.hpp
+  - src/number/poly.hpp
   - src/number/ntt.hpp
   - src/number/fps.hpp
   timestamp: '2023-10-06 00:46:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp

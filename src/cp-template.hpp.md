@@ -47,6 +47,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/number/poly.hpp
+    title: src/number/poly.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/data_structure/binary_trie.test.cpp
@@ -117,6 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/poly_all_product.test.cpp
+    title: verify/library_checker/number/poly_all_product.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
@@ -227,6 +233,7 @@ data:
   - src/algorithm/floor_sum.hpp
   - src/algorithm/beam_search.hpp
   - src/number/fps_sparse.hpp
+  - src/number/poly.hpp
   - src/number/nim_product.hpp
   - src/number/fps.hpp
   - src/graph/tree/rerooting.hpp
@@ -244,6 +251,7 @@ data:
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
   - verify/library_checker/number/nim_product.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp

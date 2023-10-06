@@ -165,6 +165,9 @@ data:
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
     - icon: ':heavy_check_mark:'
+      path: src/number/poly.hpp
+      title: src/number/poly.hpp
+    - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
   - name: src/string
@@ -284,6 +287,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/poly_all_product.test.cpp
+      title: verify/library_checker/number/poly_all_product.test.cpp
   - name: verify/library_checker/string
     pages:
     - icon: ':heavy_check_mark:'
