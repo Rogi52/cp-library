@@ -13,5 +13,5 @@ int main() {
         f.push_back({i, a});
     }
     fps<mint> g = inv(f, N);
-    for(mint e : g) cout << e << " "; cout << endl;
+    print(g);
 }
