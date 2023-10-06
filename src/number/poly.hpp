@@ -37,8 +37,8 @@ template < class mint > struct poly : std::vector<mint> {
         assert(r.size() > 0);
         assert(r.back() != 0);
         int s = size() - r.size() + 1;
-        if(s <= 0) return poly{0};
-        return rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));
+        if(s <= 0) return *this = poly{0};
+        return *this = rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));
     }
     poly& operator%=(const poly& r) {
         *this -= *this / r * r;
@@ -89,6 +89,7 @@ template < class mint > struct poly : std::vector<mint> {
 
 template < class mint > int print(const poly<mint> f, char sep = ' ') {
     int n = f.size();
+    if(n == 0) { std::cout << "\n"; return 0; }
     for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\n');
     return 0;
 }
