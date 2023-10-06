@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -234,26 +234,26 @@ data:
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
     \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
-    \ < class mint > int print(const fps<mint>& f, char sep = ' ') {\n    int n =\
-    \ f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep :\
-    \ '\\n');\n    return 0;\n}\n#line 4 \"src/number/fps_sparse.hpp\"\n\ntemplate<\
-    \ class mint > struct fps_sparse : std::vector<std::pair<int, mint>> {\n    using\
-    \ std::vector<std::pair<int, mint>>::vector;\n    friend fps_sparse differential(const\
-    \ fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i, fi] : f) if(i\
-    \ != 0) g.push_back({i - 1, fi * i});\n        return g;\n    }\n    friend fps_sparse\
-    \ integral_(const fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i,\
-    \ fi] : f) g.push_back({i + 1, fi / (i + 1)});\n        return g;\n    }\n};\n\
-    \ntemplate < class mint >\nfps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>&\
-    \ g) {\n    for(int i : revrep(f.size())) for(auto [j, gj] : g) \n        if(i\
-    \ + j < f.size()) f[i + j] += f[i] * gj;\n    return f;\n}\n\ntemplate < class\
-    \ mint >\nfps<mint>& operator/=(fps<mint>& f, const fps_sparse<mint>& g) {\n \
-    \   assert(g[0].second != 0);\n    mint c = inv(g[0].second);\n    for(int i :\
-    \ rep(f.size())) f[i] *= c;\n    for(int i : rep(f.size())) for(auto [j, gj] :\
-    \ g) if(j != 0)\n        if(i + j < f.size()) f[i + j] -= f[i] * gj * c;\n   \
-    \ return f;\n}\n\ntemplate < class mint > fps<mint> operator*(fps<mint> f, const\
-    \ fps_sparse<mint>& g) { return f *= g; }\ntemplate < class mint > fps<mint> operator/(fps<mint>\
-    \ f, const fps_sparse<mint>& g) { return f /= g; }\n\ntemplate < class mint >\n\
-    fps<mint> inv(const fps_sparse<mint>& f, int deg) {\n    return to_dense(fps_sparse<mint>{{0,\
+    \ < class mint > int print(const fps<mint> f, char sep = ' ') {\n    int n = f.size();\n\
+    \    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n  \
+    \  return 0;\n}\n#line 4 \"src/number/fps_sparse.hpp\"\n\ntemplate< class mint\
+    \ > struct fps_sparse : std::vector<std::pair<int, mint>> {\n    using std::vector<std::pair<int,\
+    \ mint>>::vector;\n    friend fps_sparse differential(const fps_sparse& f) {\n\
+    \        fps_sparse g;\n        for(auto [i, fi] : f) if(i != 0) g.push_back({i\
+    \ - 1, fi * i});\n        return g;\n    }\n    friend fps_sparse integral_(const\
+    \ fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i, fi] : f) g.push_back({i\
+    \ + 1, fi / (i + 1)});\n        return g;\n    }\n};\n\ntemplate < class mint\
+    \ >\nfps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>& g) {\n    for(int\
+    \ i : revrep(f.size())) for(auto [j, gj] : g) \n        if(i + j < f.size()) f[i\
+    \ + j] += f[i] * gj;\n    return f;\n}\n\ntemplate < class mint >\nfps<mint>&\
+    \ operator/=(fps<mint>& f, const fps_sparse<mint>& g) {\n    assert(g[0].second\
+    \ != 0);\n    mint c = inv(g[0].second);\n    for(int i : rep(f.size())) f[i]\
+    \ *= c;\n    for(int i : rep(f.size())) for(auto [j, gj] : g) if(j != 0)\n   \
+    \     if(i + j < f.size()) f[i + j] -= f[i] * gj * c;\n    return f;\n}\n\ntemplate\
+    \ < class mint > fps<mint> operator*(fps<mint> f, const fps_sparse<mint>& g) {\
+    \ return f *= g; }\ntemplate < class mint > fps<mint> operator/(fps<mint> f, const\
+    \ fps_sparse<mint>& g) { return f /= g; }\n\ntemplate < class mint >\nfps<mint>\
+    \ inv(const fps_sparse<mint>& f, int deg) {\n    return to_dense(fps_sparse<mint>{{0,\
     \ 1}}, deg) / f;\n}\n\ntemplate < class mint >\nfps<mint> to_dense(const fps_sparse<mint>&\
     \ f, int deg) {\n    fps<mint> g(deg, 0);\n    for(auto [i, fi] : f) g[i] = fi;\n\
     \    return g;\n}\n\ntemplate < class mint >\nfps<mint> log(const fps_sparse<mint>&\
@@ -325,8 +325,8 @@ data:
   isVerificationFile: false
   path: src/number/fps_sparse.hpp
   requiredBy: []
-  timestamp: '2023-10-06 19:00:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-06 19:10:12+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
 documentation_of: src/number/fps_sparse.hpp

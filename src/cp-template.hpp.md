@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':heavy_check_mark:'
@@ -108,7 +108,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,9 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -232,7 +232,7 @@ data:
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   timestamp: '2023-05-24 23:48:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/data_structure/min_cost_flow.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp
