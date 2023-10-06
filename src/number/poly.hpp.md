@@ -31,6 +31,9 @@ data:
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/poly_division.test.cpp
+    title: verify/library_checker/number/poly_division.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
   _isVerificationFailed: false
@@ -270,8 +273,8 @@ data:
     \ for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }\n    poly& operator*=(const\
     \ poly& r) { return *this = ntt::mul(*this, r); }\n    poly& operator/=(const\
     \ poly& r) {\n        assert(r.size() > 0);\n        assert(r.back() != 0);\n\
-    \        int s = size() - r.size() + 1;\n        if(s <= 0) return poly{0};\n\
-    \        return rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n\
+    \        int s = size() - r.size() + 1;\n        if(s <= 0) return *this = poly{0};\n\
+    \        return *this = rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n\
     \    }\n    poly& operator%=(const poly& r) {\n        *this -= *this / r * r;\n\
     \        return *this = low(r.size() - 1);\n    }\n    template < class T > poly&\
     \ operator+=(T v) { ups(1); (*this)[0] += v; return *this; }\n    template < class\
@@ -294,15 +297,15 @@ data:
     \ (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];\n\
     \        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i : rep(n)) r[i]\
     \ /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint > int print(const\
-    \ poly<mint> f, char sep = ' ') {\n    int n = f.size();\n    for(int i : rep(n))\
-    \ std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate\
-    \ < class mint >\npoly<mint> all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size())\
-    \ == 0) return {1};\n    using P = std::pair<int, int>;\n    std::priority_queue<\
-    \ P, std::vector< P >, std::greater< P >> pq;\n    for(int i : rep(fs.size()))\
-    \ pq.push({fs[i].size(), i});\n    while(int(pq.size()) >= 2) {\n        auto\
-    \ [n1, i1] = pq.top(); pq.pop();\n        auto [n2, i2] = pq.top(); pq.pop();\n\
-    \        fs[i1] *= fs[i2];\n        pq.push({n1 + n2, i1});\n    }\n    return\
-    \ fs[pq.top().second];\n}\n"
+    \ poly<mint> f, char sep = ' ') {\n    int n = f.size();\n    if(n == 0) { std::cout\
+    \ << \"\\n\"; return 0; }\n    for(int i : rep(n)) std::cout << f[i] << (i !=\
+    \ n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate < class mint >\npoly<mint>\
+    \ all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size()) == 0) return\
+    \ {1};\n    using P = std::pair<int, int>;\n    std::priority_queue< P, std::vector<\
+    \ P >, std::greater< P >> pq;\n    for(int i : rep(fs.size())) pq.push({fs[i].size(),\
+    \ i});\n    while(int(pq.size()) >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n\
+    \        auto [n2, i2] = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n    \
+    \    pq.push({n1 + n2, i1});\n    }\n    return fs[pq.top().second];\n}\n"
   code: "#pragma once\n#include \"../cp-template.hpp\"\n#include \"../number/ntt.hpp\"\
     \n#include \"../number/fps.hpp\"\n\ntemplate < class mint > struct poly : std::vector<mint>\
     \ {\n    using std::vector<mint>::vector;\n    poly(const std::vector<mint>& f)\
@@ -327,38 +330,39 @@ data:
     \ (*this)[i] -= r[i]; return *this; }\n    poly& operator*=(const poly& r) { return\
     \ *this = ntt::mul(*this, r); }\n    poly& operator/=(const poly& r) {\n     \
     \   assert(r.size() > 0);\n        assert(r.back() != 0);\n        int s = size()\
-    \ - r.size() + 1;\n        if(s <= 0) return poly{0};\n        return rev((rev(*this).low(s)\
-    \ * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n    }\n    poly& operator%=(const\
-    \ poly& r) {\n        *this -= *this / r * r;\n        return *this = low(r.size()\
-    \ - 1);\n    }\n    template < class T > poly& operator+=(T v) { ups(1); (*this)[0]\
-    \ += v; return *this; }\n    template < class T > poly& operator-=(T v) { ups(1);\
-    \ (*this)[0] -= v; return *this; }\n    template < class T > poly& operator*=(T\
-    \ v) { for(auto &x : *this) x *= v; return *this; }\n    template < class T >\
-    \ poly& operator/=(T v) { assert(v != T(0)); return *this *= mint(1) / v; }\n\
-    \    poly& operator<<=(int s) {\n        poly g(s, 0);\n        g.insert(g.end(),\
-    \ this->begin(), this->end());\n        return *this = g;\n    }\n    poly& operator>>=(int\
-    \ s) {\n        return *this = {this->begin() + s, this->end()};\n    }\n    friend\
-    \ poly differential(const poly& f) {\n        int n = f.size();\n        poly\
-    \ g(n - 1);\n        for(int i : rep(1, n)) g[i - 1] = f[i] * i;\n        return\
-    \ g;\n    }\n    friend poly integral_(const poly& f) { // std \u3068\u885D\u7A81\
-    \n        int n = f.size();\n        poly g(n + 1, 0);\n        for(int i : rep(0,\
-    \ n)) g[i + 1] = f[i] / (i + 1);\n        return g;\n    }\n\n    poly operator->*(mint\
-    \ c) {\n        int n = size();\n        std::vector<mint> fact(n);\n        fact[0]\
-    \ = 1;\n        for(int i : rep(1, n)) fact[i] = i * fact[i - 1];\n        std::vector<mint>\
-    \ c_pow(n);\n        c_pow[0] = 1;\n        for(int i : rep(1, n)) c_pow[i] =\
-    \ c * c_pow[i - 1];\n\n        poly<mint> p(n), q(n);\n        for(int i : rep(n))\
-    \ p[i] = (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] /\
-    \ fact[i];\n        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i :\
-    \ rep(n)) r[i] /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint\
-    \ > int print(const poly<mint> f, char sep = ' ') {\n    int n = f.size();\n \
-    \   for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n   \
-    \ return 0;\n}\n\n\ntemplate < class mint >\npoly<mint> all_product(vector< poly<mint>\
-    \ >& fs) {\n    if(int(fs.size()) == 0) return {1};\n    using P = std::pair<int,\
-    \ int>;\n    std::priority_queue< P, std::vector< P >, std::greater< P >> pq;\n\
-    \    for(int i : rep(fs.size())) pq.push({fs[i].size(), i});\n    while(int(pq.size())\
-    \ >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n        auto [n2, i2]\
-    \ = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n        pq.push({n1 + n2,\
-    \ i1});\n    }\n    return fs[pq.top().second];\n}\n"
+    \ - r.size() + 1;\n        if(s <= 0) return *this = poly{0};\n        return\
+    \ *this = rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n\
+    \    }\n    poly& operator%=(const poly& r) {\n        *this -= *this / r * r;\n\
+    \        return *this = low(r.size() - 1);\n    }\n    template < class T > poly&\
+    \ operator+=(T v) { ups(1); (*this)[0] += v; return *this; }\n    template < class\
+    \ T > poly& operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }\n    template\
+    \ < class T > poly& operator*=(T v) { for(auto &x : *this) x *= v; return *this;\
+    \ }\n    template < class T > poly& operator/=(T v) { assert(v != T(0)); return\
+    \ *this *= mint(1) / v; }\n    poly& operator<<=(int s) {\n        poly g(s, 0);\n\
+    \        g.insert(g.end(), this->begin(), this->end());\n        return *this\
+    \ = g;\n    }\n    poly& operator>>=(int s) {\n        return *this = {this->begin()\
+    \ + s, this->end()};\n    }\n    friend poly differential(const poly& f) {\n \
+    \       int n = f.size();\n        poly g(n - 1);\n        for(int i : rep(1,\
+    \ n)) g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend poly integral_(const\
+    \ poly& f) { // std \u3068\u885D\u7A81\n        int n = f.size();\n        poly\
+    \ g(n + 1, 0);\n        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);\n  \
+    \      return g;\n    }\n\n    poly operator->*(mint c) {\n        int n = size();\n\
+    \        std::vector<mint> fact(n);\n        fact[0] = 1;\n        for(int i :\
+    \ rep(1, n)) fact[i] = i * fact[i - 1];\n        std::vector<mint> c_pow(n);\n\
+    \        c_pow[0] = 1;\n        for(int i : rep(1, n)) c_pow[i] = c * c_pow[i\
+    \ - 1];\n\n        poly<mint> p(n), q(n);\n        for(int i : rep(n)) p[i] =\
+    \ (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];\n\
+    \        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i : rep(n)) r[i]\
+    \ /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint > int print(const\
+    \ poly<mint> f, char sep = ' ') {\n    int n = f.size();\n    if(n == 0) { std::cout\
+    \ << \"\\n\"; return 0; }\n    for(int i : rep(n)) std::cout << f[i] << (i !=\
+    \ n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate < class mint >\npoly<mint>\
+    \ all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size()) == 0) return\
+    \ {1};\n    using P = std::pair<int, int>;\n    std::priority_queue< P, std::vector<\
+    \ P >, std::greater< P >> pq;\n    for(int i : rep(fs.size())) pq.push({fs[i].size(),\
+    \ i});\n    while(int(pq.size()) >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n\
+    \        auto [n2, i2] = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n    \
+    \    pq.push({n1 + n2, i1});\n    }\n    return fs[pq.top().second];\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -371,9 +375,10 @@ data:
   isVerificationFile: false
   path: src/number/poly.hpp
   requiredBy: []
-  timestamp: '2023-10-06 23:02:45+09:00'
+  timestamp: '2023-10-06 23:28:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/number/poly_division.test.cpp
   - verify/library_checker/number/poly_taylor_shift.test.cpp
   - verify/library_checker/number/poly_all_product.test.cpp
 documentation_of: src/number/poly.hpp
