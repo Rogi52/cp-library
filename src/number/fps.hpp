@@ -126,6 +126,28 @@ template < class mint > struct fps : std::vector<mint> {
     friend fps exp(const fps& f) { return exp(f, f.size()); }
     friend fps pow(const fps& f, ll n) { return pow(f, n, f.size()); }
     friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }
+
+    fps operator() (const fps<mint>& g) {
+        fps<mint>& f = *this;
+        assert(f.size() == g.size());
+        int n = f.size(), k = ceil(sqrt(n));
+
+        vector< fps<mint> > bs(k + 1);
+        bs[0] = {1};
+        for(int i : rep(k)) bs[i + 1] = (bs[i] * g).low(n);
+
+        vector< fps<mint> > gs(k + 1);
+        gs[0] = {1};
+        for(int i : rep(k)) gs[i + 1] = (gs[i] * bs[k]).low(n);
+
+        fps<mint> h(n);
+        for(int i : rep(0, n, k)) {
+            fps<mint> c;
+            for(int j : rep(i, min(i + k, n))) c += bs[j - i] * f[j];
+            h += (c * gs[i / k]).low(n);
+        }
+        return h;
+    }
 };
 
 template < class mint > int print(const fps<mint> f, char sep = ' ') {
