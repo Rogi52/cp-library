@@ -68,6 +68,23 @@ template < class mint > struct poly : std::vector<mint> {
         for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);
         return g;
     }
+
+    poly operator->*(mint c) {
+        int n = size();
+        std::vector<mint> fact(n);
+        fact[0] = 1;
+        for(int i : rep(1, n)) fact[i] = i * fact[i - 1];
+        std::vector<mint> c_pow(n);
+        c_pow[0] = 1;
+        for(int i : rep(1, n)) c_pow[i] = c * c_pow[i - 1];
+
+        poly<mint> p(n), q(n);
+        for(int i : rep(n)) p[i] = (*this)[i] * fact[i];
+        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];
+        poly<mint> r = (p * rev(q)) >> n - 1;
+        for(int i : rep(n)) r[i] /= fact[i];
+        return r;
+    }
 };
 
 template < class mint > int print(const poly<mint> f, char sep = ' ') {
