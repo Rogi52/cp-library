@@ -124,6 +124,9 @@ data:
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/poly_taylor_shift.test.cpp
+    title: verify/library_checker/number/poly_taylor_shift.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
   _isVerificationFailed: false
@@ -251,6 +254,7 @@ data:
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
   - verify/library_checker/number/nim_product.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
   - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp

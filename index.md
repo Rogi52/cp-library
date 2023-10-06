@@ -290,6 +290,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/poly_taylor_shift.test.cpp
+      title: verify/library_checker/number/poly_taylor_shift.test.cpp
   - name: verify/library_checker/string
     pages:
     - icon: ':heavy_check_mark:'

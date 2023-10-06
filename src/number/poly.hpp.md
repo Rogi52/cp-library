@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/poly_taylor_shift.test.cpp
+    title: verify/library_checker/number/poly_taylor_shift.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -283,10 +286,17 @@ data:
     \ n)) g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend poly integral_(const\
     \ poly& f) { // std \u3068\u885D\u7A81\n        int n = f.size();\n        poly\
     \ g(n + 1, 0);\n        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);\n  \
-    \      return g;\n    }\n};\n\ntemplate < class mint > int print(const poly<mint>\
-    \ f, char sep = ' ') {\n    int n = f.size();\n    for(int i : rep(n)) std::cout\
-    \ << f[i] << (i != n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate < class\
-    \ mint >\npoly<mint> all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size())\
+    \      return g;\n    }\n\n    poly operator->*(mint c) {\n        int n = size();\n\
+    \        std::vector<mint> fact(n);\n        fact[0] = 1;\n        for(int i :\
+    \ rep(1, n)) fact[i] = i * fact[i - 1];\n        std::vector<mint> c_pow(n);\n\
+    \        c_pow[0] = 1;\n        for(int i : rep(1, n)) c_pow[i] = c * c_pow[i\
+    \ - 1];\n\n        poly<mint> p(n), q(n);\n        for(int i : rep(n)) p[i] =\
+    \ (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];\n\
+    \        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i : rep(n)) r[i]\
+    \ /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint > int print(const\
+    \ poly<mint> f, char sep = ' ') {\n    int n = f.size();\n    for(int i : rep(n))\
+    \ std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate\
+    \ < class mint >\npoly<mint> all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size())\
     \ == 0) return {1};\n    using P = std::pair<int, int>;\n    std::priority_queue<\
     \ P, std::vector< P >, std::greater< P >> pq;\n    for(int i : rep(fs.size()))\
     \ pq.push({fs[i].size(), i});\n    while(int(pq.size()) >= 2) {\n        auto\
@@ -332,10 +342,17 @@ data:
     \ g(n - 1);\n        for(int i : rep(1, n)) g[i - 1] = f[i] * i;\n        return\
     \ g;\n    }\n    friend poly integral_(const poly& f) { // std \u3068\u885D\u7A81\
     \n        int n = f.size();\n        poly g(n + 1, 0);\n        for(int i : rep(0,\
-    \ n)) g[i + 1] = f[i] / (i + 1);\n        return g;\n    }\n};\n\ntemplate < class\
-    \ mint > int print(const poly<mint> f, char sep = ' ') {\n    int n = f.size();\n\
-    \    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n  \
-    \  return 0;\n}\n\n\ntemplate < class mint >\npoly<mint> all_product(vector< poly<mint>\
+    \ n)) g[i + 1] = f[i] / (i + 1);\n        return g;\n    }\n\n    poly operator->*(mint\
+    \ c) {\n        int n = size();\n        std::vector<mint> fact(n);\n        fact[0]\
+    \ = 1;\n        for(int i : rep(1, n)) fact[i] = i * fact[i - 1];\n        std::vector<mint>\
+    \ c_pow(n);\n        c_pow[0] = 1;\n        for(int i : rep(1, n)) c_pow[i] =\
+    \ c * c_pow[i - 1];\n\n        poly<mint> p(n), q(n);\n        for(int i : rep(n))\
+    \ p[i] = (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] /\
+    \ fact[i];\n        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i :\
+    \ rep(n)) r[i] /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint\
+    \ > int print(const poly<mint> f, char sep = ' ') {\n    int n = f.size();\n \
+    \   for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n   \
+    \ return 0;\n}\n\n\ntemplate < class mint >\npoly<mint> all_product(vector< poly<mint>\
     \ >& fs) {\n    if(int(fs.size()) == 0) return {1};\n    using P = std::pair<int,\
     \ int>;\n    std::priority_queue< P, std::vector< P >, std::greater< P >> pq;\n\
     \    for(int i : rep(fs.size())) pq.push({fs[i].size(), i});\n    while(int(pq.size())\
@@ -354,9 +371,10 @@ data:
   isVerificationFile: false
   path: src/number/poly.hpp
   requiredBy: []
-  timestamp: '2023-10-06 21:22:59+09:00'
+  timestamp: '2023-10-06 23:02:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
   - verify/library_checker/number/poly_all_product.test.cpp
 documentation_of: src/number/poly.hpp
 layout: document
