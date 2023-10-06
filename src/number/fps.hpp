@@ -127,3 +127,9 @@ template < class mint > struct fps : std::vector<mint> {
     friend fps pow(const fps& f, ll n) { return pow(f, n, f.size()); }
     friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }
 };
+
+template < class mint > int print(const fps<mint>& f, char sep = ' ') {
+    int n = f.size();
+    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\n');
+    return 0;
+}
