@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/composition_of_formal_power_series"
+#define PROBLEM "https://judge.yosupo.jp/problem/product_of_polynomial_sequence"
 
 #include "../../../src/cp-template.hpp"
 #include "../../../src/number/modint.hpp"
