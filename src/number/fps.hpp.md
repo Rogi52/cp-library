@@ -233,10 +233,18 @@ data:
     \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
-    \ < class mint > int print(const fps<mint> f, char sep = ' ') {\n    int n = f.size();\n\
-    \    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n  \
-    \  return 0;\n}\n"
+    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n\n    fps\
+    \ operator() (const fps<mint>& g) {\n        fps<mint>& f = *this;\n        assert(f.size()\
+    \ == g.size());\n        int n = f.size(), k = ceil(sqrt(n));\n\n        vector<\
+    \ fps<mint> > bs(k + 1);\n        bs[0] = {1};\n        for(int i : rep(k)) bs[i\
+    \ + 1] = (bs[i] * g).low(n);\n\n        vector< fps<mint> > gs(k + 1);\n     \
+    \   gs[0] = {1};\n        for(int i : rep(k)) gs[i + 1] = (gs[i] * bs[k]).low(n);\n\
+    \n        fps<mint> h(n);\n        for(int i : rep(0, n, k)) {\n            fps<mint>\
+    \ c;\n            for(int j : rep(i, min(i + k, n))) c += bs[j - i] * f[j];\n\
+    \            h += (c * gs[i / k]).low(n);\n        }\n        return h;\n    }\n\
+    };\n\ntemplate < class mint > int print(const fps<mint> f, char sep = ' ') {\n\
+    \    int n = f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n -\
+    \ 1 ? sep : '\\n');\n    return 0;\n}\n"
   code: "#pragma once\n#include \"../cp-template.hpp\"\n#include \"../number/ntt.hpp\"\
     \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
     \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
@@ -300,10 +308,18 @@ data:
     \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
-    \ < class mint > int print(const fps<mint> f, char sep = ' ') {\n    int n = f.size();\n\
-    \    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\\n');\n  \
-    \  return 0;\n}\n"
+    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n\n    fps\
+    \ operator() (const fps<mint>& g) {\n        fps<mint>& f = *this;\n        assert(f.size()\
+    \ == g.size());\n        int n = f.size(), k = ceil(sqrt(n));\n\n        vector<\
+    \ fps<mint> > bs(k + 1);\n        bs[0] = {1};\n        for(int i : rep(k)) bs[i\
+    \ + 1] = (bs[i] * g).low(n);\n\n        vector< fps<mint> > gs(k + 1);\n     \
+    \   gs[0] = {1};\n        for(int i : rep(k)) gs[i + 1] = (gs[i] * bs[k]).low(n);\n\
+    \n        fps<mint> h(n);\n        for(int i : rep(0, n, k)) {\n            fps<mint>\
+    \ c;\n            for(int j : rep(i, min(i + k, n))) c += bs[j - i] * f[j];\n\
+    \            h += (c * gs[i / k]).low(n);\n        }\n        return h;\n    }\n\
+    };\n\ntemplate < class mint > int print(const fps<mint> f, char sep = ' ') {\n\
+    \    int n = f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n -\
+    \ 1 ? sep : '\\n');\n    return 0;\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -316,7 +332,7 @@ data:
   path: src/number/fps.hpp
   requiredBy:
   - src/number/fps_sparse.hpp
-  timestamp: '2023-10-06 19:10:12+09:00'
+  timestamp: '2023-10-06 20:30:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
