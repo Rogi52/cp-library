@@ -276,6 +276,9 @@ data:
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/fps_composition.test.cpp
+      title: verify/library_checker/number/fps_composition.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_inv_sparse.test.cpp
       title: verify/library_checker/number/fps_inv_sparse.test.cpp
     - icon: ':heavy_check_mark:'

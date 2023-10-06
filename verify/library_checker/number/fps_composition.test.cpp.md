@@ -5,6 +5,9 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
+    path: src/number/fps.hpp
+    title: src/number/fps.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
@@ -22,23 +25,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/number/fps_sparse.hpp
-    title: src/number/fps_sparse.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/fps_composition.test.cpp
-    title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/fps_inv_sparse.test.cpp
-    title: verify/library_checker/number/fps_inv_sparse.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/composition_of_formal_power_series
+    links:
+    - https://judge.yosupo.jp/problem/composition_of_formal_power_series
+  bundledCode: "#line 1 \"verify/library_checker/number/fps_composition.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/composition_of_formal_power_series\"\
+    \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
     \ int;\nusing ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate <\
     \ class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false;\
@@ -247,103 +246,35 @@ data:
     \            h += (c * gs[i / k]).low(n);\n        }\n        return h;\n    }\n\
     };\n\ntemplate < class mint > int print(const fps<mint> f, char sep = ' ') {\n\
     \    int n = f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n -\
-    \ 1 ? sep : '\\n');\n    return 0;\n}\n"
-  code: "#pragma once\n#include \"../cp-template.hpp\"\n#include \"../number/ntt.hpp\"\
-    \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
-    \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
-    \ : std::vector<mint>(f) {}\n    int size() const { return int(std::vector<mint>::size());\
-    \ }\n    void ups(int s) { if(size() < s) this->resize(s, 0); }\n    fps low(int\
-    \ s) const {\n        return fps(this->begin(), this->begin() + min(this->size(),\
-    \ s));\n    }\n    fps rev() const {\n        return fps(this->rbegin(), this->rend());\n\
-    \    }\n    fps operator-() const {\n        fps g = *this;\n        for(int i\
-    \ : rep(g.size())) g[i] = -g[i];\n        return g;\n    }\n    fps operator+(const\
-    \ mint& v) const { return fps(*this) += v; }\n    fps operator-(const mint& v)\
-    \ const { return fps(*this) -= v; }\n    fps operator*(const mint& v) const {\
-    \ return fps(*this) *= v; }\n    fps operator/(const mint& v) const { return fps(*this)\
-    \ /= v; }\n    fps operator+(const fps& r) const { return fps(*this) += r; }\n\
-    \    fps operator-(const fps& r) const { return fps(*this) -= r; }\n    fps operator*(const\
-    \ fps& r) const { return fps(*this) *= r; }\n    fps operator/(const fps& r) const\
-    \ { return fps(*this) /= r; }\n    fps operator<<(int s) const { return fps(*this)\
-    \ <<= s; }\n    fps operator>>(int s) const { return fps(*this) >>= s; }\n   \
-    \ fps& operator+=(const fps& r) { ups(r.size()); for(int i : rep(r.size())) (*this)[i]\
-    \ += r[i]; return *this; }\n    fps& operator-=(const fps& r) { ups(r.size());\
-    \ for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }\n    fps& operator*=(const\
-    \ fps& r) { return *this = ntt::mul(*this, r); } // ntt\n    fps& operator/=(const\
-    \ fps& r) { return *this *= inv(r); }\n    template < class T > fps& operator+=(T\
-    \ v) { ups(1); (*this)[0] += v; return *this; }\n    template < class T > fps&\
-    \ operator-=(T v) { ups(1); (*this)[0] -= v; return *this; }\n    template < class\
-    \ T > fps& operator*=(T v) { for(auto &x : *this) x *= v; return *this; }\n  \
-    \  template < class T > fps& operator/=(T v) { assert(v != T(0)); return *this\
-    \ *= mint(1) / v; }\n\n    fps& operator<<=(int s) {\n        fps g(s, 0);\n \
-    \       g.insert(g.end(), this->begin(), this->end());\n        return *this =\
-    \ g;\n    }\n    fps& operator>>=(int s) {\n        return *this = {this->begin()\
-    \ + s, this->end()};\n    }\n    friend fps differential(const fps& f) {\n   \
-    \     int n = f.size();\n        fps g(n - 1);\n        for(int i : rep(1, n))\
-    \ g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend fps integral_(const\
-    \ fps& f) { // std \u3068\u885D\u7A81\n        int n = f.size();\n        fps\
-    \ g(n + 1, 0);\n        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);\n  \
-    \      return g;\n    }\n    friend fps inv(const fps& f, int deg) {\n       \
-    \ assert(f[0] != 0);\n        fps g = {mint(1) / f[0]};\n        for(int i = 1;\
-    \ i < deg; i <<= 1) {\n            g = (g + g - g * g * f.low(i << 1)).low(i <<\
-    \ 1);\n        }\n        g.resize(deg);\n        return g;\n    }\n    friend\
-    \ fps log(const fps& f, int deg) {\n        assert(f[0] == 1);\n        fps g\
-    \ = integral_((differential(f) * inv(f, deg)));\n        g.resize(deg);\n    \
-    \    return g;\n    }\n    friend fps exp(const fps& f, int deg) {\n        assert(f[0]\
-    \ == 0);\n        fps g = {1};\n        for(int i = 1; i < deg; i <<= 1) {\n \
-    \           g = g * (f.low(i << 1) - log(g, i << 1) + 1).low(i << 1);\n      \
-    \  }\n        g.resize(deg);\n        return g;\n    }\n    friend fps pow(const\
-    \ fps& f, ll n, int deg) {\n        if(n == 0) {\n            fps g(deg, 0);\n\
-    \            g[0] = 1;\n            return g;\n        }\n        int i = 0;\n\
-    \        while(i < f.size() and f[i] == 0) i++;\n        if(i == f.size() or i128(i)\
-    \ * n >= deg) return fps(deg, 0);\n        mint k = f[i];\n        fps g = exp(log((f\
-    \ >> i) / k, deg) * n, deg) * pow(k, n) << (i * n);\n        g.resize(deg);\n\
-    \        return g;\n    }\n    friend fps sqrt(const fps& f, int deg) {\n    \
-    \    int n = f.size(), d = n;\n        for(int i : revrep(0, n)) if(f[i] != 0)\
-    \ d = i;\n        if(d == n) return f;\n        if(d % 2 == 1) throw undefined();\n\
-    \        mint y = f[d], x = sqrt(y);\n        if(x * x != y) throw undefined();\n\
-    \        mint c = mint(1) / y;\n        fps g(n - d);\n        for(int i : rep(n\
-    \ - d)) g[i] = f[d + i] * c;\n        \n        assert(g[0] == 1);\n        mint\
-    \ inv2 = mint(1) / 2;\n        fps h = {1};\n        for(int i = 1; i < deg; i\
-    \ <<= 1) {\n            h = (h + g.low(i << 1) * inv(h, i << 1)).low(i << 1);\n\
-    \            for(mint& a : h) a *= inv2;\n        }\n        h.resize(deg);\n\n\
-    \        for(int i : rep(deg)) h[i] *= x;\n        for(int i : revrep(deg)) h[i]\
-    \ = (i >= d / 2 ? h[i - d / 2] : 0);\n        return h;\n    }\n\n    friend fps\
-    \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
-    \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
-    \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n\n    fps\
-    \ operator() (const fps<mint>& g) {\n        fps<mint>& f = *this;\n        assert(f.size()\
-    \ == g.size());\n        int n = f.size(), k = ceil(sqrt(n));\n\n        vector<\
-    \ fps<mint> > bs(k + 1);\n        bs[0] = {1};\n        for(int i : rep(k)) bs[i\
-    \ + 1] = (bs[i] * g).low(n);\n\n        vector< fps<mint> > gs(k + 1);\n     \
-    \   gs[0] = {1};\n        for(int i : rep(k)) gs[i + 1] = (gs[i] * bs[k]).low(n);\n\
-    \n        fps<mint> h(n);\n        for(int i : rep(0, n, k)) {\n            fps<mint>\
-    \ c;\n            for(int j : rep(i, min(i + k, n))) c += bs[j - i] * f[j];\n\
-    \            h += (c * gs[i / k]).low(n);\n        }\n        return h;\n    }\n\
-    };\n\ntemplate < class mint > int print(const fps<mint> f, char sep = ' ') {\n\
-    \    int n = f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n -\
-    \ 1 ? sep : '\\n');\n    return 0;\n}\n"
+    \ 1 ? sep : '\\n');\n    return 0;\n}\n#line 6 \"verify/library_checker/number/fps_composition.test.cpp\"\
+    \n\nint main() {\n    int N = in();\n    using mint = mint998244353;\n    fps<mint>\
+    \ f(N), g(N);\n    for(int i : rep(N)) f[i] = in();\n    for(int i : rep(N)) g[i]\
+    \ = in();\n\n    fps<mint> h = f(g);\n    print(h);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/composition_of_formal_power_series\"\
+    \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
+    \n#include \"../../../src/number/fps.hpp\"\n\nint main() {\n    int N = in();\n\
+    \    using mint = mint998244353;\n    fps<mint> f(N), g(N);\n    for(int i : rep(N))\
+    \ f[i] = in();\n    for(int i : rep(N)) g[i] = in();\n\n    fps<mint> h = f(g);\n\
+    \    print(h);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
-  - src/number/ntt.hpp
   - src/number/modint.hpp
-  isVerificationFile: false
-  path: src/number/fps.hpp
-  requiredBy:
-  - src/number/fps_sparse.hpp
-  timestamp: '2023-10-06 20:30:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/fps_composition.test.cpp
-documentation_of: src/number/fps.hpp
+  - src/number/fps.hpp
+  - src/number/ntt.hpp
+  isVerificationFile: true
+  path: verify/library_checker/number/fps_composition.test.cpp
+  requiredBy: []
+  timestamp: '2023-10-06 20:31:51+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/library_checker/number/fps_composition.test.cpp
 layout: document
 redirect_from:
-- /library/src/number/fps.hpp
-- /library/src/number/fps.hpp.html
-title: src/number/fps.hpp
+- /verify/verify/library_checker/number/fps_composition.test.cpp
+- /verify/verify/library_checker/number/fps_composition.test.cpp.html
+title: verify/library_checker/number/fps_composition.test.cpp
 ---
