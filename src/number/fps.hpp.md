@@ -233,7 +233,10 @@ data:
     \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n"
+    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
+    \ < class mint > int print(const fps<mint>& f, char sep = ' ') {\n    int n =\
+    \ f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep :\
+    \ '\\n');\n    return 0;\n}\n"
   code: "#pragma once\n#include \"../cp-template.hpp\"\n#include \"../number/ntt.hpp\"\
     \n\nclass undefined {};\ntemplate < class mint > struct fps : std::vector<mint>\
     \ {\n    using std::vector<mint>::vector;\n    fps(const std::vector<mint>& f)\
@@ -297,7 +300,10 @@ data:
     \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n"
+    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
+    \ < class mint > int print(const fps<mint>& f, char sep = ' ') {\n    int n =\
+    \ f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep :\
+    \ '\\n');\n    return 0;\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -310,7 +316,7 @@ data:
   path: src/number/fps.hpp
   requiredBy:
   - src/number/fps_sparse.hpp
-  timestamp: '2023-10-06 17:13:56+09:00'
+  timestamp: '2023-10-06 19:00:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp

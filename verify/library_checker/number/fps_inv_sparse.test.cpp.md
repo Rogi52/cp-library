@@ -238,25 +238,27 @@ data:
     \ inv(const fps& f) { return inv(f, f.size()); }\n    friend fps log(const fps&\
     \ f) { return log(f, f.size()); }\n    friend fps exp(const fps& f) { return exp(f,\
     \ f.size()); }\n    friend fps pow(const fps& f, ll n) { return pow(f, n, f.size());\
-    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n#line\
-    \ 4 \"src/number/fps_sparse.hpp\"\n\ntemplate< class mint > struct fps_sparse\
-    \ : std::vector<std::pair<int, mint>> {\n    using std::vector<std::pair<int,\
-    \ mint>>::vector;\n    friend fps_sparse differential(const fps_sparse& f) {\n\
-    \        fps_sparse g;\n        for(auto [i, fi] : f) if(i != 0) g.push_back({i\
-    \ - 1, fi * i});\n        return g;\n    }\n    friend fps_sparse integral_(const\
-    \ fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i, fi] : f) g.push_back({i\
-    \ + 1, fi / (i + 1)});\n        return g;\n    }\n};\n\ntemplate < class mint\
-    \ >\nfps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>& g) {\n    for(int\
-    \ i : revrep(f.size())) for(auto [j, gj] : g) \n        if(i + j < f.size()) f[i\
-    \ + j] += f[i] * gj;\n    return f;\n}\n\ntemplate < class mint >\nfps<mint>&\
-    \ operator/=(fps<mint>& f, const fps_sparse<mint>& g) {\n    assert(g[0].second\
-    \ != 0);\n    mint c = inv(g[0].second);\n    for(int i : rep(f.size())) f[i]\
-    \ *= c;\n    for(int i : rep(f.size())) for(auto [j, gj] : g) if(j != 0)\n   \
-    \     if(i + j < f.size()) f[i + j] -= f[i] * gj * c;\n    return f;\n}\n\ntemplate\
-    \ < class mint > fps<mint> operator*(fps<mint> f, const fps_sparse<mint>& g) {\
-    \ return f *= g; }\ntemplate < class mint > fps<mint> operator/(fps<mint> f, const\
-    \ fps_sparse<mint>& g) { return f /= g; }\n\ntemplate < class mint >\nfps<mint>\
-    \ inv(const fps_sparse<mint>& f, int deg) {\n    return to_dense(fps_sparse<mint>{{0,\
+    \ }\n    friend fps sqrt(const fps& f) { return sqrt(f, f.size()); }\n};\n\ntemplate\
+    \ < class mint > int print(const fps<mint>& f, char sep = ' ') {\n    int n =\
+    \ f.size();\n    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep :\
+    \ '\\n');\n    return 0;\n}\n#line 4 \"src/number/fps_sparse.hpp\"\n\ntemplate<\
+    \ class mint > struct fps_sparse : std::vector<std::pair<int, mint>> {\n    using\
+    \ std::vector<std::pair<int, mint>>::vector;\n    friend fps_sparse differential(const\
+    \ fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i, fi] : f) if(i\
+    \ != 0) g.push_back({i - 1, fi * i});\n        return g;\n    }\n    friend fps_sparse\
+    \ integral_(const fps_sparse& f) {\n        fps_sparse g;\n        for(auto [i,\
+    \ fi] : f) g.push_back({i + 1, fi / (i + 1)});\n        return g;\n    }\n};\n\
+    \ntemplate < class mint >\nfps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>&\
+    \ g) {\n    for(int i : revrep(f.size())) for(auto [j, gj] : g) \n        if(i\
+    \ + j < f.size()) f[i + j] += f[i] * gj;\n    return f;\n}\n\ntemplate < class\
+    \ mint >\nfps<mint>& operator/=(fps<mint>& f, const fps_sparse<mint>& g) {\n \
+    \   assert(g[0].second != 0);\n    mint c = inv(g[0].second);\n    for(int i :\
+    \ rep(f.size())) f[i] *= c;\n    for(int i : rep(f.size())) for(auto [j, gj] :\
+    \ g) if(j != 0)\n        if(i + j < f.size()) f[i + j] -= f[i] * gj * c;\n   \
+    \ return f;\n}\n\ntemplate < class mint > fps<mint> operator*(fps<mint> f, const\
+    \ fps_sparse<mint>& g) { return f *= g; }\ntemplate < class mint > fps<mint> operator/(fps<mint>\
+    \ f, const fps_sparse<mint>& g) { return f /= g; }\n\ntemplate < class mint >\n\
+    fps<mint> inv(const fps_sparse<mint>& f, int deg) {\n    return to_dense(fps_sparse<mint>{{0,\
     \ 1}}, deg) / f;\n}\n\ntemplate < class mint >\nfps<mint> to_dense(const fps_sparse<mint>&\
     \ f, int deg) {\n    fps<mint> g(deg, 0);\n    for(auto [i, fi] : f) g[i] = fi;\n\
     \    return g;\n}\n\ntemplate < class mint >\nfps<mint> log(const fps_sparse<mint>&\
@@ -301,7 +303,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/fps_inv_sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 17:14:15+09:00'
+  timestamp: '2023-10-06 19:00:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_inv_sparse.test.cpp
