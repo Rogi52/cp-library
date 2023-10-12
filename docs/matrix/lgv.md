@@ -1,7 +1,6 @@
 ---
 title: LGV 公式
 documentation_of: src/matrix/lgv.hpp
-src/graph/tree/offline_level_ancestor.hpp
 ---
 
 ## 参考
