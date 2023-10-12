@@ -5,6 +5,9 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
+    path: src/matrix/base.hpp
+    title: src/matrix/base.hpp
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
   - icon: ':heavy_check_mark:'
@@ -16,29 +19,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/matrix/lgv.hpp
-    title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
-    path: src/matrix/linear_equation.hpp
-    title: src/matrix/linear_equation.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/determinant.test.cpp
-    title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/inverse.test.cpp
-    title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/linear_equation.test.cpp
-    title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/matrix/product.test.cpp
-    title: verify/library_checker/matrix/product.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -161,92 +146,66 @@ data:
     \ -= A[i][k] * y;\n        }\n    }\n    return res;\n}\n\ntemplate < class T\
     \ >\nsquare_matrix< T > pow(square_matrix< T > A, ll n) {\n    square_matrix res\
     \ = unit(A.size());\n    while(n > 0) {\n        if(n % 2 == 1) res *= A;\n  \
-    \      A *= A;\n        n /= 2;\n    }\n    return res;\n}\n"
-  code: "#pragma once\n#include \"../cp-template.hpp\"\n\ntemplate < class T > std::vector<\
-    \ T >& operator+=(std::vector< T >& x, const std::vector< T >& y) { assert(x.size()\
-    \ == y.size()); for(int i : rep(x.size())) x[i] += y[i]; return x; }\ntemplate\
-    \ < class T > std::vector< T >& operator-=(std::vector< T >& x, const std::vector<\
-    \ T >& y) { assert(x.size() == y.size()); for(int i : rep(x.size())) x[i] -= y[i];\
-    \ return x; }\ntemplate < class T > std::vector< T >& operator*=(std::vector<\
-    \ T >& v, T x) { for(int i : rep(v.size())) v[i] *= x; return v; }\ntemplate <\
-    \ class T > std::vector< T >& operator/=(std::vector< T >& v, T x) { x = T(1)\
-    \ / x; for(int i : rep(v.size())) v[i] *= x; return v; }\ntemplate < class T >\
-    \ std::vector< T > operator+(std::vector< T > x, const std::vector< T >& y) {\
-    \ return x += y; }\ntemplate < class T > std::vector< T > operator-(std::vector<\
-    \ T > x, const std::vector< T >& y) { return x -= y; }\ntemplate < class T > std::vector<\
-    \ T > operator*(std::vector< T > v, T x) { return v *= x; }\ntemplate < class\
-    \ T > std::vector< T > operator/(std::vector< T > v, T x) { return v /= x; }\n\
-    \ntemplate < class T >\nT dot(const std::vector< T >& x, const std::vector< T\
-    \ >& y) {\n    assert(x.size() == y.size());\n    T res = 0;\n    for(int i :\
-    \ rep(x.size())) res += x[i] * y[i];\n    return res;\n}\n\ntemplate < class T\
-    \ >\nstruct matrix : std::vector< std::vector< T > > {\n    matrix(int h, int\
-    \ w, T e = 0) : std::vector< std::vector< T > >(h, std::vector< T >(w, e)) {}\n\
-    \    matrix(std::initializer_list< std::initializer_list< T > > m) : std::vector<\
-    \ std::vector< T > >(m.size()) {\n        auto it = m.begin();\n        for(int\
-    \ i = 0; it != m.end(); i++, it++) (*this)[i] = std::vector< T >(*it);\n    }\n\
-    \    matrix operator*(const matrix& rhs) const {\n        int N = this->size(),\
-    \ K = (*this)[0].size(), M = rhs[0].size();\n        assert(K == rhs.size());\n\
-    \        matrix res(N, M);\n        for(int k : rep(K)) for(int n : rep(N)) for(int\
-    \ m : rep(M)) res[n][m] += (*this)[n][k] * rhs[k][m];\n        return res;\n \
-    \   }\n    matrix& operator*=(const matrix& rhs) { return *this = (*this) * rhs;\
-    \ }\n    std::vector< T > operator*(const std::vector< T >& rhs) const {\n   \
-    \     assert((*this)[0].size() == rhs.size());\n        std::vector< T > res(this->size());\n\
-    \        for(int i : rep(this->size())) res[i] = dot((*this)[i], rhs);\n     \
-    \   return res;\n    }\n    std::vector< T >& operator[](int i) { return std::vector<\
-    \ std::vector< T > >::operator[](i); }\n    const std::vector< T >& operator[](int\
-    \ i) const { return std::vector< std::vector< T > >::operator[](i); }\n    bool\
-    \ operator==(const matrix& rhs) const {\n        for(int i : rep(this->size()))\
-    \ if((*this)[i] != rhs[i]) return false;\n        return true;\n    }\n};\n\n\
-    template < class T >\nstruct square_matrix : matrix< T > {\n    square_matrix(int\
-    \ n, T e = 0) : matrix< T >(n, n, e) {}\n    square_matrix(std::initializer_list<\
-    \ std::initializer_list< T > > m) : matrix< T >(m) {}\n};\n\ntemplate < class\
-    \ T >\nsquare_matrix< T > unit(int n) {\n    square_matrix< T > I(n);\n    for(int\
-    \ i : rep(n)) I[i][i] = 1;\n    return I;\n}\n\ntemplate < class T >\nsquare_matrix<\
-    \ T > inv(square_matrix< T > A) {\n    int n = A.size();\n    square_matrix B\
-    \ = unit< T >(n);\n    for(int i : rep(n)) {\n        if(A[i][i] == 0) {\n   \
-    \         for(int j : rep(i + 1, n)) if(A[j][i] != 0) {\n                for(int\
-    \ k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n                for(int k : rep(0,\
-    \ n)) std::swap(B[i][k], B[j][k]);\n                break;\n            }\n  \
-    \      }\n        if(A[i][i] == 0) throw \"This matrix is not regular.\"s;\n \
-    \       const T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *=\
-    \ x;\n        for(int k : rep(0, n)) B[i][k] *= x;\n        for(int j : rep(n))\
-    \ if(i != j) {\n            const T y = A[j][i];\n            for(int k : rep(i,\
-    \ n)) A[j][k] -= A[i][k] * y;\n            for(int k : rep(0, n)) B[j][k] -= B[i][k]\
-    \ * y;\n        }\n    }\n    return B;\n}\n\ntemplate < class T >\nT det(square_matrix<\
-    \ T > A) {\n    T res = 1;\n    int n = A.size();\n    for(int i : rep(n)) {\n\
-    \        if(A[i][i] == 0) {\n            for(int j : rep(i + 1, n)) if(A[j][i]\
-    \ != 0) {\n                for(int k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n\
-    \                res *= -1;\n                break;\n            }\n        }\n\
-    \        if(A[i][i] == 0) return T(0);\n        res *= A[i][i];\n        const\
-    \ T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *= x;\n      \
-    \  for(int j : rep(i + 1, n)) {\n            const T y = A[j][i];\n          \
-    \  for(int k : rep(i, n)) A[j][k] -= A[i][k] * y;\n        }\n    }\n    return\
-    \ res;\n}\n\ntemplate < class T >\nsquare_matrix< T > pow(square_matrix< T > A,\
-    \ ll n) {\n    square_matrix res = unit(A.size());\n    while(n > 0) {\n     \
-    \   if(n % 2 == 1) res *= A;\n        A *= A;\n        n /= 2;\n    }\n    return\
-    \ res;\n}"
+    \      A *= A;\n        n /= 2;\n    }\n    return res;\n}\n#line 3 \"src/matrix/lgv.hpp\"\
+    \n\ntemplate < class mint >\nmint LGV(const std::vector< std::vector<int> >& g,\
+    \ const std::vector<int>& a, const std::vector<int>& b) {\n    int n = g.size(),\
+    \ m = a.size();\n    std::vector dp(m, std::vector(n, mint(0)));\n    for(int\
+    \ i : rep(m)) dp[i][a[i]] = 1;\n    std::vector<int> deg(n, 0);\n    for(int i\
+    \ : rep(n)) for(int to : g[i]) deg[to]++;\n    std::queue<int> q;\n    for(int\
+    \ i : rep(n)) if(deg[i] == 0) q.push(i);\n    while(not q.empty()) {\n       \
+    \ int v = q.front(); q.pop();\n        for(int i : rep(m)) {\n            for(int\
+    \ to : g[v]) {\n                dp[i][to] += dp[i][v];\n                if(--deg[to]\
+    \ == 0) q.push(to);\n            }\n        }\n    }\n\n    int m = a.size();\n\
+    \    square_matrix<mint> X(m);\n    for(int i : rep(m)) for(int j : rep(m)) X[i][j]\
+    \ = dp[i][b[j]];\n    return det(X);\n}\n"
+  code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/matrix/base.hpp\"\
+    \n\ntemplate < class mint >\nmint LGV(const std::vector< std::vector<int> >& g,\
+    \ const std::vector<int>& a, const std::vector<int>& b) {\n    int n = g.size(),\
+    \ m = a.size();\n    std::vector dp(m, std::vector(n, mint(0)));\n    for(int\
+    \ i : rep(m)) dp[i][a[i]] = 1;\n    std::vector<int> deg(n, 0);\n    for(int i\
+    \ : rep(n)) for(int to : g[i]) deg[to]++;\n    std::queue<int> q;\n    for(int\
+    \ i : rep(n)) if(deg[i] == 0) q.push(i);\n    while(not q.empty()) {\n       \
+    \ int v = q.front(); q.pop();\n        for(int i : rep(m)) {\n            for(int\
+    \ to : g[v]) {\n                dp[i][to] += dp[i][v];\n                if(--deg[to]\
+    \ == 0) q.push(to);\n            }\n        }\n    }\n\n    int m = a.size();\n\
+    \    square_matrix<mint> X(m);\n    for(int i : rep(m)) for(int j : rep(m)) X[i][j]\
+    \ = dp[i][b[j]];\n    return det(X);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/matrix/base.hpp
   isVerificationFile: false
-  path: src/matrix/base.hpp
-  requiredBy:
-  - src/matrix/linear_equation.hpp
-  - src/matrix/lgv.hpp
-  timestamp: '2023-10-12 18:02:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/matrix/determinant.test.cpp
-  - verify/library_checker/matrix/product.test.cpp
-  - verify/library_checker/matrix/linear_equation.test.cpp
-  - verify/library_checker/matrix/inverse.test.cpp
-documentation_of: src/matrix/base.hpp
+  path: src/matrix/lgv.hpp
+  requiredBy: []
+  timestamp: '2023-10-12 19:50:13+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: src/matrix/lgv.hpp
 layout: document
-redirect_from:
-- /library/src/matrix/base.hpp
-- /library/src/matrix/base.hpp.html
-title: src/matrix/base.hpp
+title: "LGV \u516C\u5F0F"
 ---
+
+## 参考
+- [https://www2.ioi-jp.org/camp/2017/2017-sp_camp-kumabe2.pdf](https://www2.ioi-jp.org/camp/2017/2017-sp_camp-kumabe2.pdf)
+- [https://twitter.com/kotatsugame_t/status/1411648290546851840](https://twitter.com/kotatsugame_t/status/1411648290546851840)
+- [https://atcoder.jp/contests/abc216/editorial/2561](https://atcoder.jp/contests/abc216/editorial/2561)
+
+
+## LGV 公式
+DAG があり、そのうち $n$ 個の頂点 $a_1, a_2, \dots, a_n$ が始点として、$n$ 個の頂点 $b_1, b_2, \dots, b_n$ が終点としてマークされている。
+
+「$i < j$ かつ $k < l$ ならば $a_i$ から $b_l$ に向かうパスと $a_j$ から $b_k$ に向かうパスは頂点を共有する」($\star$) とき、
+
+パスの $n$ 個組であって、$i$ 番目のパスの始点は $a_i$ 、終点は $b_i$ であり、かつどの $2$ つのパスも頂点を共有しないものの数は
+
+$n \times n$ 行列 $X$ ($X_{ij} = $ $a_i$ から $b_j$ に向かうパスの個数) の行列式 $\mathrm{det}(X)$ に等しい。
+
+### 証明の概略
+行列式の各項 $\mathrm{sgn} (\sigma) X_{1 \sigma(1)} X_{2 \sigma(2)} \dots X_{n \sigma(n)}$ は、$a_1 \to b_{\sigma(1)}, a_2 \to b_{\sigma(2)}, \dots a_n \to b_{\sigma(n)}$ へのパスの組の個数の $\mathrm{sgn} (\sigma)$ 倍である。
+
+このパスの組がどの $2$ つのパスも頂点を共有しない場合、($\star$) より $\sigma(1) = 1, \sigma(2) = 2, \dots, \sigma(n) = n$ であり、これが数えたい場合の数である。
+
+このパスの組がある頂点 $v$ を共有する場合、$a_i \to v \to b_k, a_j \to v \to b_l$ を $a_i \to v \to b_l, a_j \to v \to b_k$ に置き換えると、置換の符号が異なることから行列式の計算で相殺される。

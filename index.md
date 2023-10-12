@@ -140,6 +140,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/matrix/base.hpp
       title: src/matrix/base.hpp
+    - icon: ':warning:'
+      path: src/matrix/lgv.hpp
+      title: "LGV \u516C\u5F0F"
     - icon: ':heavy_check_mark:'
       path: src/matrix/linear_equation.hpp
       title: src/matrix/linear_equation.hpp
