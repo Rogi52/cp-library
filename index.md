@@ -135,6 +135,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/tree/rerooting.hpp
       title: src/graph/tree/rerooting.hpp
+  - name: src/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/base.hpp
+      title: src/matrix/base.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/matrix/linear_equation.hpp
+      title: src/matrix/linear_equation.hpp
   - name: src/number
     pages:
     - icon: ':heavy_check_mark:'
@@ -273,6 +281,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/tree/rerooting.test.cpp
       title: verify/library_checker/graph/tree/rerooting.test.cpp
+  - name: verify/library_checker/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/determinant.test.cpp
+      title: verify/library_checker/matrix/determinant.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/inverse.test.cpp
+      title: verify/library_checker/matrix/inverse.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/linear_equation.test.cpp
+      title: verify/library_checker/matrix/linear_equation.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/matrix/product.test.cpp
+      title: verify/library_checker/matrix/product.test.cpp
   - name: verify/library_checker/number
     pages:
     - icon: ':heavy_check_mark:'

@@ -30,6 +30,12 @@ data:
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   - icon: ':heavy_check_mark:'
+    path: src/matrix/base.hpp
+    title: src/matrix/base.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/matrix/linear_equation.hpp
+    title: src/matrix/linear_equation.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -99,6 +105,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/determinant.test.cpp
+    title: verify/library_checker/matrix/determinant.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/inverse.test.cpp
+    title: verify/library_checker/matrix/inverse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/linear_equation.test.cpp
+    title: verify/library_checker/matrix/linear_equation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/product.test.cpp
+    title: verify/library_checker/matrix/product.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
@@ -186,6 +204,8 @@ data:
   - src/number/poly.hpp
   - src/number/nim_product.hpp
   - src/number/fps.hpp
+  - src/matrix/linear_equation.hpp
+  - src/matrix/base.hpp
   - src/graph/tree/rerooting.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/binary_trie.hpp
@@ -207,6 +227,10 @@ data:
   - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp

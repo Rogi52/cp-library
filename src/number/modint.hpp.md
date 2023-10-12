@@ -31,6 +31,18 @@ data:
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/determinant.test.cpp
+    title: verify/library_checker/matrix/determinant.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/inverse.test.cpp
+    title: verify/library_checker/matrix/inverse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/linear_equation.test.cpp
+    title: verify/library_checker/matrix/linear_equation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/matrix/product.test.cpp
+    title: verify/library_checker/matrix/product.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
   - icon: ':heavy_check_mark:'
@@ -130,6 +142,10 @@ data:
   - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
