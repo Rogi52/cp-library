@@ -146,6 +146,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/matrix/linear_equation.hpp
       title: src/matrix/linear_equation.hpp
+    - icon: ':warning:'
+      path: src/matrix/matrix-tree.hpp
+      title: "\u884C\u5217\u6728\u5B9A\u7406"
   - name: src/number
     pages:
     - icon: ':heavy_check_mark:'

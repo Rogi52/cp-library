@@ -105,71 +105,77 @@ data:
     \ T >& x, const std::vector< T >& y) {\n    assert(x.size() == y.size());\n  \
     \  T res = 0;\n    for(int i : rep(x.size())) res += x[i] * y[i];\n    return\
     \ res;\n}\n\ntemplate < class T >\nstruct matrix : std::vector< std::vector< T\
-    \ > > {\n    matrix(int h, int w, T e = 0) : std::vector< std::vector< T > >(h,\
-    \ std::vector< T >(w, e)) {}\n    matrix(std::initializer_list< std::initializer_list<\
-    \ T > > m) : std::vector< std::vector< T > >(m.size()) {\n        auto it = m.begin();\n\
-    \        for(int i = 0; it != m.end(); i++, it++) (*this)[i] = std::vector< T\
-    \ >(*it);\n    }\n    matrix operator*(const matrix& rhs) const {\n        int\
-    \ N = this->size(), K = (*this)[0].size(), M = rhs[0].size();\n        assert(K\
-    \ == rhs.size());\n        matrix res(N, M);\n        for(int k : rep(K)) for(int\
-    \ n : rep(N)) for(int m : rep(M)) res[n][m] += (*this)[n][k] * rhs[k][m];\n  \
-    \      return res;\n    }\n    matrix& operator*=(const matrix& rhs) { return\
-    \ *this = (*this) * rhs; }\n    std::vector< T > operator*(const std::vector<\
-    \ T >& rhs) const {\n        assert((*this)[0].size() == rhs.size());\n      \
-    \  std::vector< T > res(this->size());\n        for(int i : rep(this->size()))\
+    \ > > {\n    int h, w;\n    matrix(int h, int w, T e = 0) : h(h), w(w), std::vector<\
+    \ std::vector< T > >(h, std::vector< T >(w, e)) {}\n    matrix(std::initializer_list<\
+    \ std::initializer_list< T > > m) : std::vector< std::vector< T > >(m.size())\
+    \ {\n        auto it = m.begin();\n        for(int i = 0; it != m.end(); i++,\
+    \ it++) (*this)[i] = std::vector< T >(*it);\n    }\n    matrix operator*(const\
+    \ matrix& rhs) const {\n        int N = this->size(), K = (*this)[0].size(), M\
+    \ = rhs[0].size();\n        assert(K == rhs.size());\n        matrix res(N, M);\n\
+    \        for(int k : rep(K)) for(int n : rep(N)) for(int m : rep(M)) res[n][m]\
+    \ += (*this)[n][k] * rhs[k][m];\n        return res;\n    }\n    matrix& operator*=(const\
+    \ matrix& rhs) { return *this = (*this) * rhs; }\n    std::vector< T > operator*(const\
+    \ std::vector< T >& rhs) const {\n        assert((*this)[0].size() == rhs.size());\n\
+    \        std::vector< T > res(this->size());\n        for(int i : rep(this->size()))\
     \ res[i] = dot((*this)[i], rhs);\n        return res;\n    }\n    std::vector<\
     \ T >& operator[](int i) { return std::vector< std::vector< T > >::operator[](i);\
     \ }\n    const std::vector< T >& operator[](int i) const { return std::vector<\
     \ std::vector< T > >::operator[](i); }\n    bool operator==(const matrix& rhs)\
     \ const {\n        for(int i : rep(this->size())) if((*this)[i] != rhs[i]) return\
     \ false;\n        return true;\n    }\n};\n\ntemplate < class T >\nstruct square_matrix\
-    \ : matrix< T > {\n    square_matrix(int n, T e = 0) : matrix< T >(n, n, e) {}\n\
-    \    square_matrix(std::initializer_list< std::initializer_list< T > > m) : matrix<\
-    \ T >(m) {}\n};\n\ntemplate < class T >\nsquare_matrix< T > unit(int n) {\n  \
-    \  square_matrix< T > I(n);\n    for(int i : rep(n)) I[i][i] = 1;\n    return\
-    \ I;\n}\n\ntemplate < class T >\nsquare_matrix< T > inv(square_matrix< T > A)\
-    \ {\n    int n = A.size();\n    square_matrix B = unit< T >(n);\n    for(int i\
-    \ : rep(n)) {\n        if(A[i][i] == 0) {\n            for(int j : rep(i + 1,\
-    \ n)) if(A[j][i] != 0) {\n                for(int k : rep(i, n)) std::swap(A[i][k],\
-    \ A[j][k]);\n                for(int k : rep(0, n)) std::swap(B[i][k], B[j][k]);\n\
-    \                break;\n            }\n        }\n        if(A[i][i] == 0) throw\
-    \ \"This matrix is not regular.\"s;\n        const T x = T(1) / A[i][i];\n   \
-    \     for(int k : rep(i, n)) A[i][k] *= x;\n        for(int k : rep(0, n)) B[i][k]\
-    \ *= x;\n        for(int j : rep(n)) if(i != j) {\n            const T y = A[j][i];\n\
-    \            for(int k : rep(i, n)) A[j][k] -= A[i][k] * y;\n            for(int\
-    \ k : rep(0, n)) B[j][k] -= B[i][k] * y;\n        }\n    }\n    return B;\n}\n\
-    \ntemplate < class T >\nT det(square_matrix< T > A) {\n    T res = 1;\n    int\
-    \ n = A.size();\n    for(int i : rep(n)) {\n        if(A[i][i] == 0) {\n     \
-    \       for(int j : rep(i + 1, n)) if(A[j][i] != 0) {\n                for(int\
-    \ k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n                res *= -1;\n  \
-    \              break;\n            }\n        }\n        if(A[i][i] == 0) return\
-    \ T(0);\n        res *= A[i][i];\n        const T x = T(1) / A[i][i];\n      \
-    \  for(int k : rep(i, n)) A[i][k] *= x;\n        for(int j : rep(i + 1, n)) {\n\
-    \            const T y = A[j][i];\n            for(int k : rep(i, n)) A[j][k]\
-    \ -= A[i][k] * y;\n        }\n    }\n    return res;\n}\n\ntemplate < class T\
-    \ >\nsquare_matrix< T > pow(square_matrix< T > A, ll n) {\n    square_matrix res\
-    \ = unit(A.size());\n    while(n > 0) {\n        if(n % 2 == 1) res *= A;\n  \
-    \      A *= A;\n        n /= 2;\n    }\n    return res;\n}\n#line 3 \"src/matrix/linear_equation.hpp\"\
-    \n\ntemplate < class T >\nint sweep(matrix< T >& A, int w = -1) {\n    int n =\
-    \ A.size(), m = A[0].size(), rank = 0;\n    if(w == -1) w = m;\n    for(int j\
-    \ : rep(w)) {\n        int at = -1;\n        for(int i : rep(rank, n)) if(A[i][j]\
-    \ != 0) { at = i; break; }\n        if(at == -1 or rank == n) continue;\n    \
-    \    const T x = T(1) / A[at][j];\n        for(int k : rep(m)) A[at][k] *= x;\n\
-    \        swap(A[at], A[rank]);\n        for(int i : rep(n)) if(i != rank) {\n\
-    \            const T y = A[i][j];\n            for(int k : rep(j, m)) A[i][k]\
-    \ -= y * A[rank][k];\n        }\n        rank++;\n    }\n    return rank;\n}\n\
-    \ntemplate < class T >\ntuple<int, std::vector< T >, std::vector< std::vector<\
-    \ T > >> linear_equation(matrix< T >& A, std::vector< T >& b) {\n    int n = A.size(),\
-    \ m = A[0].size();\n    for(int i : rep(n)) A[i].push_back(b[i]);\n    int rank\
-    \ = sweep(A, m);\n    for(int i : rep(rank, n)) if(A[i][m] != 0) throw \"No solution.\"\
-    s;\n\n    int at = 0;\n    std::vector< T > x(m);\n    std::vector<int> r(n);\n\
-    \    std::vector< std::vector< T > > ker;\n    for(int j : rep(m)) {\n       \
-    \ bool f = true;\n        for(int i : rep(n)) if(i == at and A[i][j] != 1 or i\
-    \ != at and A[i][j] != 0) f = false;\n        if(f and at < rank) {\n        \
-    \    x[j] = A[at][m];\n            r[at] = j;\n            at++;\n        } else\
-    \ {\n            std::vector< T > k(m);\n            for(int i : rep(n)) if(i\
-    \ < at) k[r[i]] = - A[i][j];\n            k[j] = 1;\n            ker.push_back(k);\n\
-    \        }\n    }\n    return std::make_tuple(rank, x, ker);\n}\n"
+    \ : matrix< T > {\n    int n;\n    square_matrix(int n, T e = 0) : n(n), matrix<\
+    \ T >(n, n, e) {}\n    square_matrix(std::initializer_list< std::initializer_list<\
+    \ T > > m) : matrix< T >(m) {}\n    square_matrix< T > minor(int i, int j) {\n\
+    \        square_matrix< T > M(n - 1);\n        for(int i2 : rep(n)) for(int j2\
+    \ : rep(n)) {\n            if(i2 != i and j2 = j) {\n                M[i2 < i\
+    \ ? i2 : i2 - 1][j2 < j ? j2 : j2 - 1] = (*this)[i][j];\n            }\n     \
+    \   }\n        return M;\n    }\n    T cofactor(int i, int j) {\n        return\
+    \ ((i + j) % 2 == 0 ? +1 : -1) * det(minor(i, j));\n    }\n};\n\ntemplate < class\
+    \ T >\nsquare_matrix< T > unit(int n) {\n    square_matrix< T > I(n);\n    for(int\
+    \ i : rep(n)) I[i][i] = 1;\n    return I;\n}\n\ntemplate < class T >\nsquare_matrix<\
+    \ T > inv(square_matrix< T > A) {\n    int n = A.size();\n    square_matrix B\
+    \ = unit< T >(n);\n    for(int i : rep(n)) {\n        if(A[i][i] == 0) {\n   \
+    \         for(int j : rep(i + 1, n)) if(A[j][i] != 0) {\n                for(int\
+    \ k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n                for(int k : rep(0,\
+    \ n)) std::swap(B[i][k], B[j][k]);\n                break;\n            }\n  \
+    \      }\n        if(A[i][i] == 0) throw \"This matrix is not regular.\"s;\n \
+    \       const T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *=\
+    \ x;\n        for(int k : rep(0, n)) B[i][k] *= x;\n        for(int j : rep(n))\
+    \ if(i != j) {\n            const T y = A[j][i];\n            for(int k : rep(i,\
+    \ n)) A[j][k] -= A[i][k] * y;\n            for(int k : rep(0, n)) B[j][k] -= B[i][k]\
+    \ * y;\n        }\n    }\n    return B;\n}\n\ntemplate < class T >\nT det(square_matrix<\
+    \ T > A) {\n    T res = 1;\n    int n = A.size();\n    for(int i : rep(n)) {\n\
+    \        if(A[i][i] == 0) {\n            for(int j : rep(i + 1, n)) if(A[j][i]\
+    \ != 0) {\n                for(int k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n\
+    \                res *= -1;\n                break;\n            }\n        }\n\
+    \        if(A[i][i] == 0) return T(0);\n        res *= A[i][i];\n        const\
+    \ T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *= x;\n      \
+    \  for(int j : rep(i + 1, n)) {\n            const T y = A[j][i];\n          \
+    \  for(int k : rep(i, n)) A[j][k] -= A[i][k] * y;\n        }\n    }\n    return\
+    \ res;\n}\n\ntemplate < class T >\nsquare_matrix< T > pow(square_matrix< T > A,\
+    \ ll n) {\n    square_matrix res = unit(A.size());\n    while(n > 0) {\n     \
+    \   if(n % 2 == 1) res *= A;\n        A *= A;\n        n /= 2;\n    }\n    return\
+    \ res;\n}\n#line 3 \"src/matrix/linear_equation.hpp\"\n\ntemplate < class T >\n\
+    int sweep(matrix< T >& A, int w = -1) {\n    int n = A.size(), m = A[0].size(),\
+    \ rank = 0;\n    if(w == -1) w = m;\n    for(int j : rep(w)) {\n        int at\
+    \ = -1;\n        for(int i : rep(rank, n)) if(A[i][j] != 0) { at = i; break; }\n\
+    \        if(at == -1 or rank == n) continue;\n        const T x = T(1) / A[at][j];\n\
+    \        for(int k : rep(m)) A[at][k] *= x;\n        swap(A[at], A[rank]);\n \
+    \       for(int i : rep(n)) if(i != rank) {\n            const T y = A[i][j];\n\
+    \            for(int k : rep(j, m)) A[i][k] -= y * A[rank][k];\n        }\n  \
+    \      rank++;\n    }\n    return rank;\n}\n\ntemplate < class T >\ntuple<int,\
+    \ std::vector< T >, std::vector< std::vector< T > >> linear_equation(matrix< T\
+    \ >& A, std::vector< T >& b) {\n    int n = A.size(), m = A[0].size();\n    for(int\
+    \ i : rep(n)) A[i].push_back(b[i]);\n    int rank = sweep(A, m);\n    for(int\
+    \ i : rep(rank, n)) if(A[i][m] != 0) throw \"No solution.\"s;\n\n    int at =\
+    \ 0;\n    std::vector< T > x(m);\n    std::vector<int> r(n);\n    std::vector<\
+    \ std::vector< T > > ker;\n    for(int j : rep(m)) {\n        bool f = true;\n\
+    \        for(int i : rep(n)) if(i == at and A[i][j] != 1 or i != at and A[i][j]\
+    \ != 0) f = false;\n        if(f and at < rank) {\n            x[j] = A[at][m];\n\
+    \            r[at] = j;\n            at++;\n        } else {\n            std::vector<\
+    \ T > k(m);\n            for(int i : rep(n)) if(i < at) k[r[i]] = - A[i][j];\n\
+    \            k[j] = 1;\n            ker.push_back(k);\n        }\n    }\n    return\
+    \ std::make_tuple(rank, x, ker);\n}\n"
   code: "#include \"../cp-template.hpp\"\n#include \"../matrix/base.hpp\"\n\ntemplate\
     \ < class T >\nint sweep(matrix< T >& A, int w = -1) {\n    int n = A.size(),\
     \ m = A[0].size(), rank = 0;\n    if(w == -1) w = m;\n    for(int j : rep(w))\
@@ -201,7 +207,7 @@ data:
   isVerificationFile: false
   path: src/matrix/linear_equation.hpp
   requiredBy: []
-  timestamp: '2023-10-12 18:02:52+09:00'
+  timestamp: '2023-10-12 21:03:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/linear_equation.test.cpp

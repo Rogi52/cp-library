@@ -109,82 +109,88 @@ data:
     \ T >& x, const std::vector< T >& y) {\n    assert(x.size() == y.size());\n  \
     \  T res = 0;\n    for(int i : rep(x.size())) res += x[i] * y[i];\n    return\
     \ res;\n}\n\ntemplate < class T >\nstruct matrix : std::vector< std::vector< T\
-    \ > > {\n    matrix(int h, int w, T e = 0) : std::vector< std::vector< T > >(h,\
-    \ std::vector< T >(w, e)) {}\n    matrix(std::initializer_list< std::initializer_list<\
-    \ T > > m) : std::vector< std::vector< T > >(m.size()) {\n        auto it = m.begin();\n\
-    \        for(int i = 0; it != m.end(); i++, it++) (*this)[i] = std::vector< T\
-    \ >(*it);\n    }\n    matrix operator*(const matrix& rhs) const {\n        int\
-    \ N = this->size(), K = (*this)[0].size(), M = rhs[0].size();\n        assert(K\
-    \ == rhs.size());\n        matrix res(N, M);\n        for(int k : rep(K)) for(int\
-    \ n : rep(N)) for(int m : rep(M)) res[n][m] += (*this)[n][k] * rhs[k][m];\n  \
-    \      return res;\n    }\n    matrix& operator*=(const matrix& rhs) { return\
-    \ *this = (*this) * rhs; }\n    std::vector< T > operator*(const std::vector<\
-    \ T >& rhs) const {\n        assert((*this)[0].size() == rhs.size());\n      \
-    \  std::vector< T > res(this->size());\n        for(int i : rep(this->size()))\
+    \ > > {\n    int h, w;\n    matrix(int h, int w, T e = 0) : h(h), w(w), std::vector<\
+    \ std::vector< T > >(h, std::vector< T >(w, e)) {}\n    matrix(std::initializer_list<\
+    \ std::initializer_list< T > > m) : std::vector< std::vector< T > >(m.size())\
+    \ {\n        auto it = m.begin();\n        for(int i = 0; it != m.end(); i++,\
+    \ it++) (*this)[i] = std::vector< T >(*it);\n    }\n    matrix operator*(const\
+    \ matrix& rhs) const {\n        int N = this->size(), K = (*this)[0].size(), M\
+    \ = rhs[0].size();\n        assert(K == rhs.size());\n        matrix res(N, M);\n\
+    \        for(int k : rep(K)) for(int n : rep(N)) for(int m : rep(M)) res[n][m]\
+    \ += (*this)[n][k] * rhs[k][m];\n        return res;\n    }\n    matrix& operator*=(const\
+    \ matrix& rhs) { return *this = (*this) * rhs; }\n    std::vector< T > operator*(const\
+    \ std::vector< T >& rhs) const {\n        assert((*this)[0].size() == rhs.size());\n\
+    \        std::vector< T > res(this->size());\n        for(int i : rep(this->size()))\
     \ res[i] = dot((*this)[i], rhs);\n        return res;\n    }\n    std::vector<\
     \ T >& operator[](int i) { return std::vector< std::vector< T > >::operator[](i);\
     \ }\n    const std::vector< T >& operator[](int i) const { return std::vector<\
     \ std::vector< T > >::operator[](i); }\n    bool operator==(const matrix& rhs)\
     \ const {\n        for(int i : rep(this->size())) if((*this)[i] != rhs[i]) return\
     \ false;\n        return true;\n    }\n};\n\ntemplate < class T >\nstruct square_matrix\
-    \ : matrix< T > {\n    square_matrix(int n, T e = 0) : matrix< T >(n, n, e) {}\n\
-    \    square_matrix(std::initializer_list< std::initializer_list< T > > m) : matrix<\
-    \ T >(m) {}\n};\n\ntemplate < class T >\nsquare_matrix< T > unit(int n) {\n  \
-    \  square_matrix< T > I(n);\n    for(int i : rep(n)) I[i][i] = 1;\n    return\
-    \ I;\n}\n\ntemplate < class T >\nsquare_matrix< T > inv(square_matrix< T > A)\
-    \ {\n    int n = A.size();\n    square_matrix B = unit< T >(n);\n    for(int i\
-    \ : rep(n)) {\n        if(A[i][i] == 0) {\n            for(int j : rep(i + 1,\
-    \ n)) if(A[j][i] != 0) {\n                for(int k : rep(i, n)) std::swap(A[i][k],\
-    \ A[j][k]);\n                for(int k : rep(0, n)) std::swap(B[i][k], B[j][k]);\n\
-    \                break;\n            }\n        }\n        if(A[i][i] == 0) throw\
-    \ \"This matrix is not regular.\"s;\n        const T x = T(1) / A[i][i];\n   \
-    \     for(int k : rep(i, n)) A[i][k] *= x;\n        for(int k : rep(0, n)) B[i][k]\
-    \ *= x;\n        for(int j : rep(n)) if(i != j) {\n            const T y = A[j][i];\n\
-    \            for(int k : rep(i, n)) A[j][k] -= A[i][k] * y;\n            for(int\
-    \ k : rep(0, n)) B[j][k] -= B[i][k] * y;\n        }\n    }\n    return B;\n}\n\
-    \ntemplate < class T >\nT det(square_matrix< T > A) {\n    T res = 1;\n    int\
-    \ n = A.size();\n    for(int i : rep(n)) {\n        if(A[i][i] == 0) {\n     \
-    \       for(int j : rep(i + 1, n)) if(A[j][i] != 0) {\n                for(int\
-    \ k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n                res *= -1;\n  \
-    \              break;\n            }\n        }\n        if(A[i][i] == 0) return\
-    \ T(0);\n        res *= A[i][i];\n        const T x = T(1) / A[i][i];\n      \
-    \  for(int k : rep(i, n)) A[i][k] *= x;\n        for(int j : rep(i + 1, n)) {\n\
-    \            const T y = A[j][i];\n            for(int k : rep(i, n)) A[j][k]\
-    \ -= A[i][k] * y;\n        }\n    }\n    return res;\n}\n\ntemplate < class T\
-    \ >\nsquare_matrix< T > pow(square_matrix< T > A, ll n) {\n    square_matrix res\
-    \ = unit(A.size());\n    while(n > 0) {\n        if(n % 2 == 1) res *= A;\n  \
-    \      A *= A;\n        n /= 2;\n    }\n    return res;\n}\n#line 2 \"src/number/modint.hpp\"\
-    \nstruct modinfo { uint mod, root, isprime; };\ntemplate < modinfo const &ref\
-    \ >\nstruct modint {\n    static constexpr uint const &mod = ref.mod;\n    static\
-    \ constexpr uint const &root = ref.root;\n    static constexpr uint const &isprime\
-    \ = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint v) { this->v =\
-    \ v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll v = 0) { s(v\
-    \ % mod + mod); }\n    modint operator-() const { return modint() - *this; }\n\
-    \    modint& operator+=(const modint& rhs) { return s(v + rhs.v); }\n    modint&\
-    \ operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n    modint& operator*=(const\
-    \ modint& rhs) { v = ull(v) * rhs.v % mod; return *this; }\n    modint& operator/=(const\
-    \ modint& rhs) { return *this *= inv(rhs); }\n    modint operator+(const modint&\
-    \ rhs) const { return modint(*this) += rhs; }\n    modint operator-(const modint&\
-    \ rhs) const { return modint(*this) -= rhs; }\n    modint operator*(const modint&\
-    \ rhs) const { return modint(*this) *= rhs; }\n    modint operator/(const modint&\
-    \ rhs) const { return modint(*this) /= rhs; }\n    friend modint pow(modint x,\
-    \ ll n) { modint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; }\
-    \ return res; }\n    friend modint inv(modint v) {\n        if(isprime) {\n  \
-    \          return pow(v, mod - 2);\n        } else {\n            ll a = v.v,\
-    \ b = modint::mod, x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a\
-    \ -= t * b, b); swap(x -= t * y, y); }\n            return modint(x);\n      \
-    \  }\n    }\n    friend modint operator+(int x, const modint& y) { return modint(x)\
-    \ + y; }\n    friend modint operator-(int x, const modint& y) { return modint(x)\
-    \ - y; }\n    friend modint operator*(int x, const modint& y) { return modint(x)\
-    \ * y; }\n    friend modint operator/(int x, const modint& y) { return modint(x)\
-    \ / y; }\n    friend istream& operator>>(istream& is, modint& m) { ll x; is >>\
-    \ x; m = modint(x); return is; }\n    friend ostream& operator<<(ostream& os,\
-    \ const modint& m) { return os << m.v; }\n    bool operator==(const modint& r)\
-    \ const { return v == r.v; }\n    bool operator!=(const modint& r) const { return\
-    \ v != r.v; }\n    static uint get_mod() { return mod; }\n};\nconstexpr modinfo\
-    \ base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007,\
-    \ 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing mint1000000007\
-    \ = modint< base1000000007 >;\n#line 6 \"verify/library_checker/matrix/product.test.cpp\"\
+    \ : matrix< T > {\n    int n;\n    square_matrix(int n, T e = 0) : n(n), matrix<\
+    \ T >(n, n, e) {}\n    square_matrix(std::initializer_list< std::initializer_list<\
+    \ T > > m) : matrix< T >(m) {}\n    square_matrix< T > minor(int i, int j) {\n\
+    \        square_matrix< T > M(n - 1);\n        for(int i2 : rep(n)) for(int j2\
+    \ : rep(n)) {\n            if(i2 != i and j2 = j) {\n                M[i2 < i\
+    \ ? i2 : i2 - 1][j2 < j ? j2 : j2 - 1] = (*this)[i][j];\n            }\n     \
+    \   }\n        return M;\n    }\n    T cofactor(int i, int j) {\n        return\
+    \ ((i + j) % 2 == 0 ? +1 : -1) * det(minor(i, j));\n    }\n};\n\ntemplate < class\
+    \ T >\nsquare_matrix< T > unit(int n) {\n    square_matrix< T > I(n);\n    for(int\
+    \ i : rep(n)) I[i][i] = 1;\n    return I;\n}\n\ntemplate < class T >\nsquare_matrix<\
+    \ T > inv(square_matrix< T > A) {\n    int n = A.size();\n    square_matrix B\
+    \ = unit< T >(n);\n    for(int i : rep(n)) {\n        if(A[i][i] == 0) {\n   \
+    \         for(int j : rep(i + 1, n)) if(A[j][i] != 0) {\n                for(int\
+    \ k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n                for(int k : rep(0,\
+    \ n)) std::swap(B[i][k], B[j][k]);\n                break;\n            }\n  \
+    \      }\n        if(A[i][i] == 0) throw \"This matrix is not regular.\"s;\n \
+    \       const T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *=\
+    \ x;\n        for(int k : rep(0, n)) B[i][k] *= x;\n        for(int j : rep(n))\
+    \ if(i != j) {\n            const T y = A[j][i];\n            for(int k : rep(i,\
+    \ n)) A[j][k] -= A[i][k] * y;\n            for(int k : rep(0, n)) B[j][k] -= B[i][k]\
+    \ * y;\n        }\n    }\n    return B;\n}\n\ntemplate < class T >\nT det(square_matrix<\
+    \ T > A) {\n    T res = 1;\n    int n = A.size();\n    for(int i : rep(n)) {\n\
+    \        if(A[i][i] == 0) {\n            for(int j : rep(i + 1, n)) if(A[j][i]\
+    \ != 0) {\n                for(int k : rep(i, n)) std::swap(A[i][k], A[j][k]);\n\
+    \                res *= -1;\n                break;\n            }\n        }\n\
+    \        if(A[i][i] == 0) return T(0);\n        res *= A[i][i];\n        const\
+    \ T x = T(1) / A[i][i];\n        for(int k : rep(i, n)) A[i][k] *= x;\n      \
+    \  for(int j : rep(i + 1, n)) {\n            const T y = A[j][i];\n          \
+    \  for(int k : rep(i, n)) A[j][k] -= A[i][k] * y;\n        }\n    }\n    return\
+    \ res;\n}\n\ntemplate < class T >\nsquare_matrix< T > pow(square_matrix< T > A,\
+    \ ll n) {\n    square_matrix res = unit(A.size());\n    while(n > 0) {\n     \
+    \   if(n % 2 == 1) res *= A;\n        A *= A;\n        n /= 2;\n    }\n    return\
+    \ res;\n}\n#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
+    \ isprime; };\ntemplate < modinfo const &ref >\nstruct modint {\n    static constexpr\
+    \ uint const &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n\
+    \    static constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n  \
+    \  constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this;\
+    \ }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-()\
+    \ const { return modint() - *this; }\n    modint& operator+=(const modint& rhs)\
+    \ { return s(v + rhs.v); }\n    modint& operator-=(const modint& rhs) { return\
+    \ s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v)\
+    \ * rhs.v % mod; return *this; }\n    modint& operator/=(const modint& rhs) {\
+    \ return *this *= inv(rhs); }\n    modint operator+(const modint& rhs) const {\
+    \ return modint(*this) += rhs; }\n    modint operator-(const modint& rhs) const\
+    \ { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs) const\
+    \ { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs) const\
+    \ { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n) { modint\
+    \ res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n\
+    \    friend modint inv(modint v) {\n        if(isprime) {\n            return\
+    \ pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
+    \ x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b);\
+    \ swap(x -= t * y, y); }\n            return modint(x);\n        }\n    }\n  \
+    \  friend modint operator+(int x, const modint& y) { return modint(x) + y; }\n\
+    \    friend modint operator-(int x, const modint& y) { return modint(x) - y; }\n\
+    \    friend modint operator*(int x, const modint& y) { return modint(x) * y; }\n\
+    \    friend modint operator/(int x, const modint& y) { return modint(x) / y; }\n\
+    \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
+    \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
+    \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
+    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
+    using mint998244353 = modint< base998244353 >;\nusing mint1000000007 = modint<\
+    \ base1000000007 >;\n#line 6 \"verify/library_checker/matrix/product.test.cpp\"\
     \n\nint main() {\n    int N = in(), M = in(), K = in();\n    using mint = mint998244353;\n\
     \    matrix<mint> A(N, M), B(M, K);\n    for(int i : rep(N)) A[i] = in(M);\n \
     \   for(int i : rep(M)) B[i] = in(K);\n    matrix<mint> C = A * B;\n    for(int\
@@ -207,7 +213,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/matrix/product.test.cpp
   requiredBy: []
-  timestamp: '2023-10-12 18:02:52+09:00'
+  timestamp: '2023-10-12 21:03:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/product.test.cpp
