@@ -20,7 +20,8 @@ T dot(const std::vector< T >& x, const std::vector< T >& y) {
 
 template < class T >
 struct matrix : std::vector< std::vector< T > > {
-    matrix(int h, int w, T e = 0) : std::vector< std::vector< T > >(h, std::vector< T >(w, e)) {}
+    int h, w;
+    matrix(int h, int w, T e = 0) : h(h), w(w), std::vector< std::vector< T > >(h, std::vector< T >(w, e)) {}
     matrix(std::initializer_list< std::initializer_list< T > > m) : std::vector< std::vector< T > >(m.size()) {
         auto it = m.begin();
         for(int i = 0; it != m.end(); i++, it++) (*this)[i] = std::vector< T >(*it);
@@ -49,8 +50,21 @@ struct matrix : std::vector< std::vector< T > > {
 
 template < class T >
 struct square_matrix : matrix< T > {
-    square_matrix(int n, T e = 0) : matrix< T >(n, n, e) {}
+    int n;
+    square_matrix(int n, T e = 0) : n(n), matrix< T >(n, n, e) {}
     square_matrix(std::initializer_list< std::initializer_list< T > > m) : matrix< T >(m) {}
+    square_matrix< T > minor(int i, int j) {
+        square_matrix< T > M(n - 1);
+        for(int i2 : rep(n)) for(int j2 : rep(n)) {
+            if(i2 != i and j2 = j) {
+                M[i2 < i ? i2 : i2 - 1][j2 < j ? j2 : j2 - 1] = (*this)[i][j];
+            }
+        }
+        return M;
+    }
+    T cofactor(int i, int j) {
+        return ((i + j) % 2 == 0 ? +1 : -1) * det(minor(i, j));
+    }
 };
 
 template < class T >
