@@ -45,6 +45,9 @@ data:
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/sliding_window_aggregation.hpp
+    title: src/data_structure/sliding_window_aggregation.hpp
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -112,6 +115,9 @@ data:
     path: verify/library_checker/data_structure/binary_trie.test.cpp
     title: verify/library_checker/data_structure/binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -123,6 +129,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
@@ -257,6 +266,7 @@ data:
   - src/data_structure/binary_trie.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/offline_multiset.hpp
+  - src/data_structure/sliding_window_aggregation.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/fenwick_tree.hpp
   timestamp: '2023-05-10 11:13:35+09:00'
@@ -294,9 +304,11 @@ data:
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/utility/rep_itr.hpp

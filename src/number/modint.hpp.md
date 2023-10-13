@@ -19,8 +19,14 @@ data:
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
@@ -157,7 +163,9 @@ data:
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
 documentation_of: src/number/modint.hpp
 layout: document
 title: modint
