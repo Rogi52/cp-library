@@ -23,7 +23,9 @@ struct rect_sum < tag::STATIC, tag::RECTANGLE, T, abel_group > {
             for(int i : rep(4)) z[i] = A::pow(x, n);
             return z;
         }
-        static constexpr set id = set{A::id(), A::id(), A::id(), A::id()};
+        static constexpr set id() {
+            return set{A::id(), A::id(), A::id(), A::id()};
+        }
         static constexpr bool comm = true;
     };
 

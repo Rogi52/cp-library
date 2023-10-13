@@ -1,5 +1,5 @@
 #include "src/data_structure/fenwick_tree.hpp"
-#include "src/algebra/plus.hpp"
+#include "src/algebra/sum.hpp"
 
 template < class T, class U > class offline_multiset {
   private:
