@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/size.hpp
       title: src/algebra/size.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/algebra/sum.hpp
       title: src/algebra/sum.hpp
     - icon: ':warning:'
@@ -73,7 +73,7 @@ data:
       title: src/algorithm/sqrt_decomp.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -90,7 +90,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -99,16 +99,16 @@ data:
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/static_rect_add_rect_sum.hpp
       title: src/data_structure/static_rect_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
@@ -193,7 +193,7 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
@@ -221,19 +221,19 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
   verificationCategories:
@@ -278,7 +278,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/binary_trie.test.cpp
       title: verify/library_checker/data_structure/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
     - icon: ':heavy_check_mark:'

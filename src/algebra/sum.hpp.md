@@ -25,11 +25,23 @@ data:
     path: verify/aoj/data_structure/range_update_range_sum.test.cpp
     title: verify/aoj/data_structure/range_update_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/fenwick_tree.test.cpp
+    title: verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid\
@@ -52,12 +64,16 @@ data:
   - src/algebra/range_add_range_minmax.hpp
   - src/algebra/range_affine_range_sum.hpp
   timestamp: '2023-10-14 00:28:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj/data_structure/range_add_range_min.test.cpp
   - verify/aoj/data_structure/range_add_range_sum.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/algebra/sum.hpp
 layout: document
 redirect_from:
