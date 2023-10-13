@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_rectangle_add_rectangle_sum
@@ -172,44 +172,44 @@ data:
     \ z[i] = A::inv(x[i]);\n            return z;\n        }\n        static set pow(const\
     \ set& x, ll n) {\n            set z;\n            for(int i : rep(4)) z[i] =\
     \ A::pow(x, n);\n            return z;\n        }\n        static constexpr set\
-    \ id = set{A::id(), A::id(), A::id(), A::id()};\n        static constexpr bool\
-    \ comm = true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n\
-    \    vector<tuple< T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w)\
-    \ {\n        M.add(xL, yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w,\
-    \ +xL * yL)});\n        M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL),\
-    \ A::pow(w, -xL * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w,\
-    \ +xR), A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR),\
-    \ A::pow(w, -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T\
-    \ yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL,\
-    \ 0, yL);\n        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n  \
-    \      M.query(0, xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector<\
-    \ W > ans(R.size());\n        vector< array< W, 4 > > res = M.solve();\n\n   \
-    \     int k = 0;\n        for(int i : rep(R.size())) {\n            auto [xL,\
-    \ xR, yL, yR] = R[i];\n            W p = A::id(), m = A::id();\n            for(T\
-    \ x : {xL, xR}) {\n                for(T y : {yL, yR}) {\n                   \
-    \ p = A::op(p, A::pow(res[k][0], x * y));\n                    p = A::op(p, A::pow(res[k][1],\
-    \ x * 1));\n                    p = A::op(p, A::pow(res[k][2], 1 * y));\n    \
-    \                p = A::op(p, A::pow(res[k][3], 1 * 1));\n                   \
-    \ swap(p, m); k++;\n                }\n                swap(p, m);\n         \
-    \   }\n            ans[i] = A::op(p, A::inv(m));\n        }\n        return ans;\n\
-    \    }\n};\n#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
-    \ isprime; };\ntemplate < modinfo const &ref >\nstruct modint {\n    static constexpr\
-    \ uint const &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n\
-    \    static constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n  \
-    \  constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this;\
-    \ }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-()\
-    \ const { return modint() - *this; }\n    modint& operator+=(const modint& rhs)\
-    \ { return s(v + rhs.v); }\n    modint& operator-=(const modint& rhs) { return\
-    \ s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v)\
-    \ * rhs.v % mod; return *this; }\n    modint& operator/=(const modint& rhs) {\
-    \ return *this *= inv(rhs); }\n    modint operator+(const modint& rhs) const {\
-    \ return modint(*this) += rhs; }\n    modint operator-(const modint& rhs) const\
-    \ { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs) const\
-    \ { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs) const\
-    \ { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n) { modint\
-    \ res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n\
-    \    friend modint inv(modint v) {\n        if(isprime) {\n            return\
-    \ pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
+    \ id() {\n            return set{A::id(), A::id(), A::id(), A::id()};\n      \
+    \  }\n        static constexpr bool comm = true;\n    };\n\n    rect_sum< tag::STATIC,\
+    \ tag::POINT, T, A4 > M;\n    vector<tuple< T, T, T, T >> R;\n    void add(T xL,\
+    \ T xR, T yL, T yR, W w) {\n        M.add(xL, yL, {        w, A::pow(w, -yL),\
+    \ A::pow(w, -xL), A::pow(w, +xL * yL)});\n        M.add(xL, yR, {A::inv(w), A::pow(w,\
+    \ +yR), A::pow(w, +xL), A::pow(w, -xL * yR)});\n        M.add(xR, yL, {A::inv(w),\
+    \ A::pow(w, +yL), A::pow(w, +xR), A::pow(w, -xR * yL)});\n        M.add(xR, yR,\
+    \ {        w, A::pow(w, -yR), A::pow(w, -xR), A::pow(w, +xR * yR)});\n    }\n\
+    \    void query(T xL, T xR, T yL, T yR) {\n        R.emplace_back(xL, xR, yL,\
+    \ yR);\n        M.query(0, xL, 0, yL);\n        M.query(0, xL, 0, yR);\n     \
+    \   M.query(0, xR, 0, yL);\n        M.query(0, xR, 0, yR);\n    }\n    vector<\
+    \ W > solve() {\n        vector< W > ans(R.size());\n        vector< array< W,\
+    \ 4 > > res = M.solve();\n\n        int k = 0;\n        for(int i : rep(R.size()))\
+    \ {\n            auto [xL, xR, yL, yR] = R[i];\n            W p = A::id(), m =\
+    \ A::id();\n            for(T x : {xL, xR}) {\n                for(T y : {yL,\
+    \ yR}) {\n                    p = A::op(p, A::pow(res[k][0], x * y));\n      \
+    \              p = A::op(p, A::pow(res[k][1], x * 1));\n                    p\
+    \ = A::op(p, A::pow(res[k][2], 1 * y));\n                    p = A::op(p, A::pow(res[k][3],\
+    \ 1 * 1));\n                    swap(p, m); k++;\n                }\n        \
+    \        swap(p, m);\n            }\n            ans[i] = A::op(p, A::inv(m));\n\
+    \        }\n        return ans;\n    }\n};\n#line 2 \"src/number/modint.hpp\"\n\
+    struct modinfo { uint mod, root, isprime; };\ntemplate < modinfo const &ref >\n\
+    struct modint {\n    static constexpr uint const &mod = ref.mod;\n    static constexpr\
+    \ uint const &root = ref.root;\n    static constexpr uint const &isprime = ref.isprime;\n\
+    \    uint v = 0;\n    constexpr modint& s(uint v) { this->v = v < mod ? v : v\
+    \ - mod; return *this; }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n\
+    \    modint operator-() const { return modint() - *this; }\n    modint& operator+=(const\
+    \ modint& rhs) { return s(v + rhs.v); }\n    modint& operator-=(const modint&\
+    \ rhs) { return s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs)\
+    \ { v = ull(v) * rhs.v % mod; return *this; }\n    modint& operator/=(const modint&\
+    \ rhs) { return *this *= inv(rhs); }\n    modint operator+(const modint& rhs)\
+    \ const { return modint(*this) += rhs; }\n    modint operator-(const modint& rhs)\
+    \ const { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs)\
+    \ const { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs)\
+    \ const { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n)\
+    \ { modint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return\
+    \ res; }\n    friend modint inv(modint v) {\n        if(isprime) {\n         \
+    \   return pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
     \ x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b);\
     \ swap(x -= t * y, y); }\n            return modint(x);\n        }\n    }\n  \
     \  friend modint operator+(int x, const modint& y) { return modint(x) + y; }\n\
@@ -259,8 +259,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 00:54:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-14 01:03:20+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
 layout: document
