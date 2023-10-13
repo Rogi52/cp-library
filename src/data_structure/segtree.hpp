@@ -2,11 +2,12 @@ template < class monoid > struct segtree {
     using S = typename monoid::set;
 
     segtree() : segtree(0) {}
-    segtree(int n) : segtree(vector< S >(n, monoid::id)) {}
+    segtree(int n) : segtree(vector< S >(n, monoid::id())) {}
+    segtree(int n, S s) : segtree(vector< S >(n, s)) {}
     segtree(const vector< S >& v) : _n(int(v.size())) {
         log = ceil_pow2(_n);
         size = 1 << log;
-        d = vector< S >(2 * size, monoid::id);
+        d = vector< S >(2 * size, monoid::id());
         for(int i = 0; i < _n; i++) d[size + i] = v[i];
         for(int i = size - 1; i >= 1; i--) update(i);
     }
@@ -25,7 +26,7 @@ template < class monoid > struct segtree {
     // [l, r)
     S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= _n);
-        S sml = monoid::id, smr = monoid::id;
+        S sml = monoid::id(), smr = monoid::id();
         l += size, r += size;
         while(l < r) {
             if(l & 1) sml = monoid::op(sml, d[l++]);
@@ -37,10 +38,10 @@ template < class monoid > struct segtree {
     S all_prod() { return d[1]; }
     template < class func > int max_right(int l, func f) {
         assert(0 <= l && l <= _n);
-        assert(f(monoid::id));
+        assert(f(monoid::id()));
         if(l == _n) return _n;
         l += size;
-        S sm = monoid::id;
+        S sm = monoid::id();
         do {
             while(l % 2 == 0) l >>= 1;
             if(!f(monoid::op(sm, d[l]))) {
@@ -60,10 +61,10 @@ template < class monoid > struct segtree {
     }
     template < class func > int min_left(int r, func f) {
         assert(0 <= r && r <= _n);
-        assert(f(monoid::id));
+        assert(f(monoid::id()));
         if(r == 0) return 0;
         r += size;
-        S sm = monoid::id;
+        S sm = monoid::id();
         do {
             r--;
             while(r > 1 && (r % 2)) r >>= 1;

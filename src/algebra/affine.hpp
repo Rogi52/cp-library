@@ -1,6 +1,6 @@
 template < class T > class affine {
   public:
-    T a, b;
+    T a, b; // ax + b
     constexpr affine() = default;
     constexpr affine(const T &a, const T &b) : a(a), b(b) {}
     constexpr T eval(const T &x) const { return x * a + b; }
@@ -17,6 +17,5 @@ template < class T > class affine_composite_monoid {
     using F = affine< T >;
     using set = F;
     static constexpr F op(const F &l, const F &r) { return l.composite(r); }
-    static constexpr F id = F::id();
+    static constexpr F id() { return F::id(); }
 };
-template < class T > constexpr affine< T > affine_composite_monoid< T >::id;

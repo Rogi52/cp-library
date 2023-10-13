@@ -1,10 +1,10 @@
-#include "src/algebra/affine.hpp"
-#include "src/algebra/cartesian_product_monoid.hpp"
-#include "src/algebra/plus.hpp"
+#include "../../src/algebra/affine.hpp"
+#include "../../src/algebra/sum.hpp"
+#include "../../src/algebra/cartesian_product_monoid.hpp"
 
 template < class T > class range_affine_range_sum {
   public:
-    using value_structure = cartesian_product_monoid< PLUS< T >, PLUS< T > >;
+    using value_structure = cartesian_product_monoid< sum_monoid< T >, sum_monoid< T > >;
     using operator_structure = affine_composite_monoid< T >;
   private:
     using S = typename value_structure::set;

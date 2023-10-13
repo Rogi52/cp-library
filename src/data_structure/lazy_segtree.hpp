@@ -16,7 +16,7 @@ template < class A > struct lazy_segtree {
     void push(int k) {
         all_apply(2 * k, lz[k]);
         all_apply(2 * k + 1, lz[k]);
-        lz[k] = O::id;
+        lz[k] = O::id();
     }
     int ceil_pow2(int n) {
         int x = 0;
@@ -25,12 +25,13 @@ template < class A > struct lazy_segtree {
     }
 
     lazy_segtree() : lazy_segtree(0) {}
-    lazy_segtree(int n) : lazy_segtree(vector< S >(n, S::id)) {}
+    lazy_segtree(int n) : lazy_segtree(vector< S >(n, S::id())) {}
+    lazy_segtree(int n, S s) : lazy_segtree(vector< S >(n, s)) {}
     lazy_segtree(const vector< S >& v) : _n(int(v.size())) {
         log = ceil_pow2(_n);
         size = 1 << log;
-        d = vector< S >(2 * size, V::id);
-        lz = vector< F >(size, O::id);
+        d = vector< S >(2 * size, V::id());
+        lz = vector< F >(size, O::id());
         for(int i = 0; i < _n; i++) d[size + i] = v[i];
         for(int i = size - 1; i >= 1; i--) update(i);
     }
@@ -50,13 +51,13 @@ template < class A > struct lazy_segtree {
     }
     S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= _n);
-        if(l == r) return V::id;
+        if(l == r) return V::id();
         l += size, r += size;
         for(int i = log; i >= 1; i--) {
             if(((l >> i) << i) != l) push(l >> i);
             if(((r >> i) << i) != r) push(r >> i);
         }
-        S sml = V::id, smr = V::id;
+        S sml = V::id(), smr = V::id();
         while(l < r) {
             if(l & 1) sml = V::op(sml, d[l++]);
             if(r & 1) smr = V::op(d[--r], smr);
@@ -96,11 +97,11 @@ template < class A > struct lazy_segtree {
     }
     template < class G > int max_right(int l, G g) {
         assert(0 <= l && l <= _n);
-        assert(g(V::id));
+        assert(g(V::id()));
         if(l == _n) return _n;
         l += size;
         for(int i = log; i >= 1; i--) push(l >> i);
-        S sm = V::id();
+        S sm = V::id()();
         do {
             while(l % 2 == 0) l >>= 1;
             if(!g(V::op(sm, d[l]))) {
@@ -121,11 +122,11 @@ template < class A > struct lazy_segtree {
     }
     template < class G > int min_left(int r, G g) {
         assert(0 <= r && r <= _n);
-        assert(g(V::id));
+        assert(g(V::id()));
         if(r == 0) return 0;
         r += size;
         for(int i = log; i >= 1; i--) push((r - 1) >> i);
-        S sm = V::id;
+        S sm = V::id();
         do {
             r--;
             while(r > 1 && (r % 2)) r >>= 1;
