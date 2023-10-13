@@ -172,62 +172,63 @@ data:
     \ z[i] = A::inv(x[i]);\n            return z;\n        }\n        static set pow(const\
     \ set& x, ll n) {\n            set z;\n            for(int i : rep(4)) z[i] =\
     \ A::pow(x, n);\n            return z;\n        }\n        static constexpr set\
-    \ id = set{A::id, A::id, A::id, A::id};\n        static constexpr bool comm =\
-    \ true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n    vector<tuple<\
-    \ T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w) {\n        M.add(xL,\
-    \ yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w, +xL * yL)});\n   \
-    \     M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL), A::pow(w, -xL\
-    \ * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w, +xR),\
-    \ A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR), A::pow(w,\
-    \ -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T yL, T yR)\
-    \ {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL, 0, yL);\n\
-    \        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n        M.query(0,\
-    \ xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector< W > ans(R.size());\n\
-    \        vector< array< W, 4 > > res = M.solve();\n\n        int k = 0;\n    \
-    \    for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR] = R[i];\n\
-    \            W p = A::id, m = A::id;\n            for(T x : {xL, xR}) {\n    \
-    \            for(T y : {yL, yR}) {\n                    p = A::op(p, A::pow(res[k][0],\
-    \ x * y));\n                    p = A::op(p, A::pow(res[k][1], x * 1));\n    \
-    \                p = A::op(p, A::pow(res[k][2], 1 * y));\n                   \
-    \ p = A::op(p, A::pow(res[k][3], 1 * 1));\n                    swap(p, m); k++;\n\
-    \                }\n                swap(p, m);\n            }\n            ans[i]\
-    \ = A::op(p, A::inv(m));\n        }\n        return ans;\n    }\n};\n#line 2 \"\
-    src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\ntemplate\
-    \ < modinfo const &ref >\nstruct modint {\n    static constexpr uint const &mod\
-    \ = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static constexpr\
-    \ uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint\
-    \ v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll\
-    \ v = 0) { s(v % mod + mod); }\n    modint operator-() const { return modint()\
-    \ - *this; }\n    modint& operator+=(const modint& rhs) { return s(v + rhs.v);\
-    \ }\n    modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n\
-    \    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return\
-    \ *this; }\n    modint& operator/=(const modint& rhs) { return *this *= inv(rhs);\
-    \ }\n    modint operator+(const modint& rhs) const { return modint(*this) += rhs;\
-    \ }\n    modint operator-(const modint& rhs) const { return modint(*this) -= rhs;\
-    \ }\n    modint operator*(const modint& rhs) const { return modint(*this) *= rhs;\
-    \ }\n    modint operator/(const modint& rhs) const { return modint(*this) /= rhs;\
-    \ }\n    friend modint pow(modint x, ll n) { modint res(1); while(n > 0) { if(n\
-    \ & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint inv(modint\
-    \ v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n        }\
-    \ else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n        \
-    \    while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); }\n \
-    \           return modint(x);\n        }\n    }\n    friend modint operator+(int\
-    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
-    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
-    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
-    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
-    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
-    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
-    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
-    \ mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/algebra/sum.hpp\"\n\
-    template < class T > class sum_monoid {\n  public:\n    using set = T;\n    static\
-    \ constexpr T op(const T &l, const T &r) { return l + r; }\n    static constexpr\
-    \ T id() { return T(0); }\n    static constexpr T inv(const T &x) { return -x;\
-    \ }\n    static constexpr T pow(const T &x, const ll n) { return x * n; }\n  \
-    \  static constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp\"\
+    \ id = set{A::id(), A::id(), A::id(), A::id()};\n        static constexpr bool\
+    \ comm = true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n\
+    \    vector<tuple< T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w)\
+    \ {\n        M.add(xL, yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w,\
+    \ +xL * yL)});\n        M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL),\
+    \ A::pow(w, -xL * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w,\
+    \ +xR), A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR),\
+    \ A::pow(w, -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T\
+    \ yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL,\
+    \ 0, yL);\n        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n  \
+    \      M.query(0, xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector<\
+    \ W > ans(R.size());\n        vector< array< W, 4 > > res = M.solve();\n\n   \
+    \     int k = 0;\n        for(int i : rep(R.size())) {\n            auto [xL,\
+    \ xR, yL, yR] = R[i];\n            W p = A::id(), m = A::id();\n            for(T\
+    \ x : {xL, xR}) {\n                for(T y : {yL, yR}) {\n                   \
+    \ p = A::op(p, A::pow(res[k][0], x * y));\n                    p = A::op(p, A::pow(res[k][1],\
+    \ x * 1));\n                    p = A::op(p, A::pow(res[k][2], 1 * y));\n    \
+    \                p = A::op(p, A::pow(res[k][3], 1 * 1));\n                   \
+    \ swap(p, m); k++;\n                }\n                swap(p, m);\n         \
+    \   }\n            ans[i] = A::op(p, A::inv(m));\n        }\n        return ans;\n\
+    \    }\n};\n#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
+    \ isprime; };\ntemplate < modinfo const &ref >\nstruct modint {\n    static constexpr\
+    \ uint const &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n\
+    \    static constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n  \
+    \  constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this;\
+    \ }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-()\
+    \ const { return modint() - *this; }\n    modint& operator+=(const modint& rhs)\
+    \ { return s(v + rhs.v); }\n    modint& operator-=(const modint& rhs) { return\
+    \ s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v)\
+    \ * rhs.v % mod; return *this; }\n    modint& operator/=(const modint& rhs) {\
+    \ return *this *= inv(rhs); }\n    modint operator+(const modint& rhs) const {\
+    \ return modint(*this) += rhs; }\n    modint operator-(const modint& rhs) const\
+    \ { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs) const\
+    \ { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs) const\
+    \ { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n) { modint\
+    \ res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n\
+    \    friend modint inv(modint v) {\n        if(isprime) {\n            return\
+    \ pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
+    \ x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b);\
+    \ swap(x -= t * y, y); }\n            return modint(x);\n        }\n    }\n  \
+    \  friend modint operator+(int x, const modint& y) { return modint(x) + y; }\n\
+    \    friend modint operator-(int x, const modint& y) { return modint(x) - y; }\n\
+    \    friend modint operator*(int x, const modint& y) { return modint(x) * y; }\n\
+    \    friend modint operator/(int x, const modint& y) { return modint(x) / y; }\n\
+    \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
+    \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
+    \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
+    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
+    using mint998244353 = modint< base998244353 >;\nusing mint1000000007 = modint<\
+    \ base1000000007 >;\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class\
+    \ sum_monoid {\n  public:\n    using set = T;\n    static constexpr T op(const\
+    \ T &l, const T &r) { return l + r; }\n    static constexpr T id() { return T(0);\
+    \ }\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
+    \ T pow(const T &x, const ll n) { return x * n; }\n    static constexpr bool comm\
+    \ = true;\n};\n#line 6 \"verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp\"\
     \n\nint main() {\n    int N = in(), Q = in();\n    using mint = mint998244353;\n\
     \    rect_sum< tag::STATIC, tag::RECTANGLE, ll, sum_monoid<mint> > rs;\n    for(int\
     \ i : rep(N)) {\n        int l = in(), d = in(), r = in(), u = in(), w = in();\n\
@@ -258,7 +259,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 00:48:35+09:00'
+  timestamp: '2023-10-14 00:54:37+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp

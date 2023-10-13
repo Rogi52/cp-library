@@ -161,26 +161,27 @@ data:
     \ z[i] = A::inv(x[i]);\n            return z;\n        }\n        static set pow(const\
     \ set& x, ll n) {\n            set z;\n            for(int i : rep(4)) z[i] =\
     \ A::pow(x, n);\n            return z;\n        }\n        static constexpr set\
-    \ id = set{A::id, A::id, A::id, A::id};\n        static constexpr bool comm =\
-    \ true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n    vector<tuple<\
-    \ T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w) {\n        M.add(xL,\
-    \ yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w, +xL * yL)});\n   \
-    \     M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL), A::pow(w, -xL\
-    \ * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w, +xR),\
-    \ A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR), A::pow(w,\
-    \ -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T yL, T yR)\
-    \ {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL, 0, yL);\n\
-    \        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n        M.query(0,\
-    \ xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector< W > ans(R.size());\n\
-    \        vector< array< W, 4 > > res = M.solve();\n\n        int k = 0;\n    \
-    \    for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR] = R[i];\n\
-    \            W p = A::id, m = A::id;\n            for(T x : {xL, xR}) {\n    \
-    \            for(T y : {yL, yR}) {\n                    p = A::op(p, A::pow(res[k][0],\
-    \ x * y));\n                    p = A::op(p, A::pow(res[k][1], x * 1));\n    \
-    \                p = A::op(p, A::pow(res[k][2], 1 * y));\n                   \
-    \ p = A::op(p, A::pow(res[k][3], 1 * 1));\n                    swap(p, m); k++;\n\
-    \                }\n                swap(p, m);\n            }\n            ans[i]\
-    \ = A::op(p, A::inv(m));\n        }\n        return ans;\n    }\n};\n"
+    \ id = set{A::id(), A::id(), A::id(), A::id()};\n        static constexpr bool\
+    \ comm = true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n\
+    \    vector<tuple< T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w)\
+    \ {\n        M.add(xL, yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w,\
+    \ +xL * yL)});\n        M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL),\
+    \ A::pow(w, -xL * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w,\
+    \ +xR), A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR),\
+    \ A::pow(w, -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T\
+    \ yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL,\
+    \ 0, yL);\n        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n  \
+    \      M.query(0, xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector<\
+    \ W > ans(R.size());\n        vector< array< W, 4 > > res = M.solve();\n\n   \
+    \     int k = 0;\n        for(int i : rep(R.size())) {\n            auto [xL,\
+    \ xR, yL, yR] = R[i];\n            W p = A::id(), m = A::id();\n            for(T\
+    \ x : {xL, xR}) {\n                for(T y : {yL, yR}) {\n                   \
+    \ p = A::op(p, A::pow(res[k][0], x * y));\n                    p = A::op(p, A::pow(res[k][1],\
+    \ x * 1));\n                    p = A::op(p, A::pow(res[k][2], 1 * y));\n    \
+    \                p = A::op(p, A::pow(res[k][3], 1 * 1));\n                   \
+    \ swap(p, m); k++;\n                }\n                swap(p, m);\n         \
+    \   }\n            ans[i] = A::op(p, A::inv(m));\n        }\n        return ans;\n\
+    \    }\n};\n"
   code: "#include \"../../src/cp-template.hpp\"\n#include \"./static_point_add_rect_sum.hpp\"\
     \n\ntemplate < class T, class abel_group >\nstruct rect_sum < tag::STATIC, tag::RECTANGLE,\
     \ T, abel_group > {\n    using A = abel_group;\n    using W = typename A::set;\n\
@@ -191,26 +192,27 @@ data:
     \ z[i] = A::inv(x[i]);\n            return z;\n        }\n        static set pow(const\
     \ set& x, ll n) {\n            set z;\n            for(int i : rep(4)) z[i] =\
     \ A::pow(x, n);\n            return z;\n        }\n        static constexpr set\
-    \ id = set{A::id, A::id, A::id, A::id};\n        static constexpr bool comm =\
-    \ true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n    vector<tuple<\
-    \ T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w) {\n        M.add(xL,\
-    \ yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w, +xL * yL)});\n   \
-    \     M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL), A::pow(w, -xL\
-    \ * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w, +xR),\
-    \ A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR), A::pow(w,\
-    \ -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T yL, T yR)\
-    \ {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL, 0, yL);\n\
-    \        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n        M.query(0,\
-    \ xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector< W > ans(R.size());\n\
-    \        vector< array< W, 4 > > res = M.solve();\n\n        int k = 0;\n    \
-    \    for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR] = R[i];\n\
-    \            W p = A::id, m = A::id;\n            for(T x : {xL, xR}) {\n    \
-    \            for(T y : {yL, yR}) {\n                    p = A::op(p, A::pow(res[k][0],\
-    \ x * y));\n                    p = A::op(p, A::pow(res[k][1], x * 1));\n    \
-    \                p = A::op(p, A::pow(res[k][2], 1 * y));\n                   \
-    \ p = A::op(p, A::pow(res[k][3], 1 * 1));\n                    swap(p, m); k++;\n\
-    \                }\n                swap(p, m);\n            }\n            ans[i]\
-    \ = A::op(p, A::inv(m));\n        }\n        return ans;\n    }\n};"
+    \ id = set{A::id(), A::id(), A::id(), A::id()};\n        static constexpr bool\
+    \ comm = true;\n    };\n\n    rect_sum< tag::STATIC, tag::POINT, T, A4 > M;\n\
+    \    vector<tuple< T, T, T, T >> R;\n    void add(T xL, T xR, T yL, T yR, W w)\
+    \ {\n        M.add(xL, yL, {        w, A::pow(w, -yL), A::pow(w, -xL), A::pow(w,\
+    \ +xL * yL)});\n        M.add(xL, yR, {A::inv(w), A::pow(w, +yR), A::pow(w, +xL),\
+    \ A::pow(w, -xL * yR)});\n        M.add(xR, yL, {A::inv(w), A::pow(w, +yL), A::pow(w,\
+    \ +xR), A::pow(w, -xR * yL)});\n        M.add(xR, yR, {        w, A::pow(w, -yR),\
+    \ A::pow(w, -xR), A::pow(w, +xR * yR)});\n    }\n    void query(T xL, T xR, T\
+    \ yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        M.query(0, xL,\
+    \ 0, yL);\n        M.query(0, xL, 0, yR);\n        M.query(0, xR, 0, yL);\n  \
+    \      M.query(0, xR, 0, yR);\n    }\n    vector< W > solve() {\n        vector<\
+    \ W > ans(R.size());\n        vector< array< W, 4 > > res = M.solve();\n\n   \
+    \     int k = 0;\n        for(int i : rep(R.size())) {\n            auto [xL,\
+    \ xR, yL, yR] = R[i];\n            W p = A::id(), m = A::id();\n            for(T\
+    \ x : {xL, xR}) {\n                for(T y : {yL, yR}) {\n                   \
+    \ p = A::op(p, A::pow(res[k][0], x * y));\n                    p = A::op(p, A::pow(res[k][1],\
+    \ x * 1));\n                    p = A::op(p, A::pow(res[k][2], 1 * y));\n    \
+    \                p = A::op(p, A::pow(res[k][3], 1 * 1));\n                   \
+    \ swap(p, m); k++;\n                }\n                swap(p, m);\n         \
+    \   }\n            ans[i] = A::op(p, A::inv(m));\n        }\n        return ans;\n\
+    \    }\n};"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -223,7 +225,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/static_rect_add_rect_sum.hpp
   requiredBy: []
-  timestamp: '2023-10-14 00:48:35+09:00'
+  timestamp: '2023-10-14 00:54:37+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
