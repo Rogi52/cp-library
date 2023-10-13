@@ -38,10 +38,10 @@ data:
   - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':x:'
@@ -117,10 +117,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'

@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':question:'
@@ -22,17 +22,17 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -146,7 +146,7 @@ data:
     \ w);\n        for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR]\
     \ = R[i];\n            int iyL = Y.id(yL), iyR = Y.id(yR);\n            R2[X.id(xL)].emplace_back(iyL,\
     \ iyR, i, 1);\n            R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);\n      \
-    \  }\n\n        vector< W > ans(R.size(), abel_group::id);\n        fenwick_tree<\
+    \  }\n\n        vector< W > ans(R.size(), abel_group::id());\n        fenwick_tree<\
     \ abel_group > bit(Y.size());\n        for(int x : rep(X.size())) {\n        \
     \    for(auto [yL, yR, i, inv] : R2[x]) {\n                W w = bit.fold(yL,\
     \ yR);\n                if(inv) w = abel_group::inv(w);\n                ans[i]\
@@ -213,8 +213,8 @@ data:
   isVerificationFile: false
   path: src/data_structure/point_add_rect_sum.hpp
   requiredBy: []
-  timestamp: '2023-10-14 00:39:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-14 00:48:35+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/data_structure/point_add_rect_sum.hpp

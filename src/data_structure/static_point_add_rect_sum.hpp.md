@@ -19,21 +19,21 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
   - icon: ':x:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
   - icon: ':x:'
@@ -41,7 +41,7 @@ data:
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -155,7 +155,7 @@ data:
     \ w);\n        for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR]\
     \ = R[i];\n            int iyL = Y.id(yL), iyR = Y.id(yR);\n            R2[X.id(xL)].emplace_back(iyL,\
     \ iyR, i, 1);\n            R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);\n      \
-    \  }\n\n        vector< W > ans(R.size(), abel_group::id);\n        fenwick_tree<\
+    \  }\n\n        vector< W > ans(R.size(), abel_group::id());\n        fenwick_tree<\
     \ abel_group > bit(Y.size());\n        for(int x : rep(X.size())) {\n        \
     \    for(auto [yL, yR, i, inv] : R2[x]) {\n                W w = bit.fold(yL,\
     \ yR);\n                if(inv) w = abel_group::inv(w);\n                ans[i]\
@@ -178,7 +178,7 @@ data:
     \ w);\n        for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR]\
     \ = R[i];\n            int iyL = Y.id(yL), iyR = Y.id(yR);\n            R2[X.id(xL)].emplace_back(iyL,\
     \ iyR, i, 1);\n            R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);\n      \
-    \  }\n\n        vector< W > ans(R.size(), abel_group::id);\n        fenwick_tree<\
+    \  }\n\n        vector< W > ans(R.size(), abel_group::id());\n        fenwick_tree<\
     \ abel_group > bit(Y.size());\n        for(int x : rep(X.size())) {\n        \
     \    for(auto [yL, yR, i, inv] : R2[x]) {\n                W w = bit.fold(yL,\
     \ yR);\n                if(inv) w = abel_group::inv(w);\n                ans[i]\
@@ -197,8 +197,8 @@ data:
   requiredBy:
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
-  timestamp: '2023-10-14 00:39:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-14 00:48:35+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp

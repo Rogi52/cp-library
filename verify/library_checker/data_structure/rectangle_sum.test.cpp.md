@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':question:'
@@ -25,14 +25,14 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -151,7 +151,7 @@ data:
     \ w);\n        for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR]\
     \ = R[i];\n            int iyL = Y.id(yL), iyR = Y.id(yR);\n            R2[X.id(xL)].emplace_back(iyL,\
     \ iyR, i, 1);\n            R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);\n      \
-    \  }\n\n        vector< W > ans(R.size(), abel_group::id);\n        fenwick_tree<\
+    \  }\n\n        vector< W > ans(R.size(), abel_group::id());\n        fenwick_tree<\
     \ abel_group > bit(Y.size());\n        for(int x : rep(X.size())) {\n        \
     \    for(auto [yL, yR, i, inv] : R2[x]) {\n                W w = bit.fold(yL,\
     \ yR);\n                if(inv) w = abel_group::inv(w);\n                ans[i]\
@@ -188,8 +188,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 00:39:08+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-14 00:48:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/rectangle_sum.test.cpp
 layout: document
