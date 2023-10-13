@@ -44,7 +44,7 @@ struct rect_sum < tag::STATIC, tag::POINT, T, abel_group > {
             R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);
         }
 
-        vector< W > ans(R.size(), abel_group::id);
+        vector< W > ans(R.size(), abel_group::id());
         fenwick_tree< abel_group > bit(Y.size());
         for(int x : rep(X.size())) {
             for(auto [yL, yR, i, inv] : R2[x]) {
