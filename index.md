@@ -161,6 +161,9 @@ data:
       path: src/number/czt.hpp
       title: src/number/czt.hpp
     - icon: ':heavy_check_mark:'
+      path: src/number/eratosthenes.hpp
+      title: src/number/eratosthenes.hpp
+    - icon: ':heavy_check_mark:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
     - icon: ':heavy_check_mark:'
@@ -312,6 +315,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_inv_sparse.test.cpp
       title: verify/library_checker/number/fps_inv_sparse.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/gcd_convolution.test.cpp
+      title: verify/library_checker/number/gcd_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/lcm_convolution.test.cpp
+      title: verify/library_checker/number/lcm_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp

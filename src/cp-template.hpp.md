@@ -51,6 +51,9 @@ data:
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
   - icon: ':heavy_check_mark:'
+    path: src/number/eratosthenes.hpp
+    title: src/number/eratosthenes.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -141,6 +144,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/gcd_convolution.test.cpp
+    title: verify/library_checker/number/gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/lcm_convolution.test.cpp
+    title: verify/library_checker/number/lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
@@ -264,6 +273,7 @@ data:
   - src/algorithm/beam_search.hpp
   - src/number/fps_sparse.hpp
   - src/number/poly.hpp
+  - src/number/eratosthenes.hpp
   - src/number/nim_product.hpp
   - src/number/fps.hpp
   - src/matrix/linear_equation.hpp
@@ -284,11 +294,13 @@ data:
   - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
+  - verify/library_checker/number/gcd_convolution.test.cpp
   - verify/library_checker/number/nim_product.test.cpp
   - verify/library_checker/number/poly_division.test.cpp
   - verify/library_checker/number/poly_taylor_shift.test.cpp
   - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/number/bicoef.test.cpp
+  - verify/library_checker/number/lcm_convolution.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/matrix/determinant.test.cpp
