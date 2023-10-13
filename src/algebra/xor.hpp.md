@@ -8,21 +8,22 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/algebra/xor.hpp\"\ntemplate < class T > class XOR {\n\
-    \  public:\n    using set = T;\n    static constexpr T op(const T &l, const T\
-    \ &r) { return l ^ r; }\n    static constexpr T id = T(0);\n    static constexpr\
-    \ T inv(const T &x) { return x; }\n    static constexpr T pow(const T &x, const\
-    \ int n) { return n & 1 ? x : 0; }\n    static constexpr bool comm = true;\n};\n"
-  code: "template < class T > class XOR {\n  public:\n    using set = T;\n    static\
-    \ constexpr T op(const T &l, const T &r) { return l ^ r; }\n    static constexpr\
-    \ T id = T(0);\n    static constexpr T inv(const T &x) { return x; }\n    static\
-    \ constexpr T pow(const T &x, const int n) { return n & 1 ? x : 0; }\n    static\
-    \ constexpr bool comm = true;\n};\n"
+  bundledCode: "#line 1 \"src/algebra/xor.hpp\"\ntemplate < class T > class xor_monoid\
+    \ {\n  public:\n    using set = T;\n    static constexpr T op(const T &l, const\
+    \ T &r) { return l ^ r; }\n    static constexpr T id() { return T(0); }\n    static\
+    \ constexpr T inv(const T &x) { return x; }\n    static constexpr T pow(const\
+    \ T &x, const int n) { return n & 1 ? x : 0; }\n    static constexpr bool comm\
+    \ = true;\n};\n"
+  code: "template < class T > class xor_monoid {\n  public:\n    using set = T;\n\
+    \    static constexpr T op(const T &l, const T &r) { return l ^ r; }\n    static\
+    \ constexpr T id() { return T(0); }\n    static constexpr T inv(const T &x) {\
+    \ return x; }\n    static constexpr T pow(const T &x, const int n) { return n\
+    \ & 1 ? x : 0; }\n    static constexpr bool comm = true;\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: src/algebra/xor.hpp
   requiredBy: []
-  timestamp: '2023-03-26 20:48:05+09:00'
+  timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/algebra/xor.hpp

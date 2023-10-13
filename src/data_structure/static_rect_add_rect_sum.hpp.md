@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -22,17 +22,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -224,9 +221,8 @@ data:
   path: src/data_structure/static_rect_add_rect_sum.hpp
   requiredBy: []
   timestamp: '2023-05-24 23:48:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data_structure/static_rect_add_rect_sum.hpp
 layout: document
 redirect_from:

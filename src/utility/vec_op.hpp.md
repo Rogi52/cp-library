@@ -2,6 +2,24 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/minmax.hpp
+    title: src/algebra/minmax.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_add_range_minmax.hpp
+    title: src/algebra/range_add_range_minmax.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_add_range_sum.hpp
+    title: src/algebra/range_add_range_sum.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_update_range_minmax.hpp
+    title: src/algebra/range_update_range_minmax.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_update_range_sum.hpp
+    title: src/algebra/range_update_range_sum.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/size.hpp
+    title: src/algebra/size.hpp
   - icon: ':warning:'
     path: src/algorithm/beam_search.hpp
     title: src/algorithm/beam_search.hpp
@@ -17,13 +35,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -67,6 +85,18 @@ data:
     path: verify/aoj/data_structure/min_cost_flow.test.cpp
     title: verify/aoj/data_structure/min_cost_flow.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/range_add_range_min.test.cpp
+    title: verify/aoj/data_structure/range_add_range_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/range_add_range_sum.test.cpp
+    title: verify/aoj/data_structure/range_add_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/range_update_range_min.test.cpp
+    title: verify/aoj/data_structure/range_update_range_min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/data_structure/range_update_range_sum.test.cpp
+    title: verify/aoj/data_structure/range_update_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
   - icon: ':heavy_check_mark:'
@@ -76,29 +106,17 @@ data:
     path: verify/library_checker/data_structure/binary_trie.test.cpp
     title: verify/library_checker/data_structure/binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/fenwick_tree.test.cpp
-    title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/line_add_get_min.test.cpp
     title: verify/library_checker/data_structure/line_add_get_min.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-    title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/rectangle_sum.test.cpp
-    title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
@@ -195,6 +213,12 @@ data:
   - src/algorithm/selection.hpp
   - src/algorithm/floor_sum.hpp
   - src/algorithm/beam_search.hpp
+  - src/algebra/range_update_range_sum.hpp
+  - src/algebra/range_update_range_minmax.hpp
+  - src/algebra/range_add_range_sum.hpp
+  - src/algebra/range_add_range_minmax.hpp
+  - src/algebra/minmax.hpp
+  - src/algebra/size.hpp
   - src/cp-template.hpp
   - src/number/fps_sparse.hpp
   - src/number/poly.hpp
@@ -215,7 +239,11 @@ data:
   verifiedWith:
   - verify/aoj/data_structure/min_cost_flow.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp
+  - verify/aoj/data_structure/range_add_range_min.test.cpp
   - verify/aoj/data_structure/max_flow.test.cpp
+  - verify/aoj/data_structure/range_update_range_min.test.cpp
+  - verify/aoj/data_structure/range_add_range_sum.test.cpp
+  - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
@@ -237,15 +265,11 @@ data:
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/string/rolling_hash.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/binary_trie.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/utility/vec_op.hpp
 layout: document
 redirect_from:

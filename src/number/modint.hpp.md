@@ -25,9 +25,6 @@ data:
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-    title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':heavy_check_mark:'
@@ -156,7 +153,6 @@ data:
   - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
 documentation_of: src/number/modint.hpp
 layout: document

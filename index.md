@@ -10,11 +10,32 @@ data:
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
     - icon: ':heavy_check_mark:'
-      path: src/algebra/plus.hpp
-      title: src/algebra/plus.hpp
+      path: src/algebra/minmax.hpp
+      title: src/algebra/minmax.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/range_add_range_minmax.hpp
+      title: src/algebra/range_add_range_minmax.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/range_add_range_sum.hpp
+      title: src/algebra/range_add_range_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/range_affine_range_sum.hpp
       title: src/algebra/range_affine_range_sum.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/range_update_range_minmax.hpp
+      title: src/algebra/range_update_range_minmax.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/range_update_range_sum.hpp
+      title: src/algebra/range_update_range_sum.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/set_monoid.hpp
+      title: src/algebra/set_monoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/size.hpp
+      title: src/algebra/size.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/algebra/sum.hpp
+      title: src/algebra/sum.hpp
     - icon: ':warning:'
       path: src/algebra/xor.hpp
       title: src/algebra/xor.hpp
@@ -69,7 +90,7 @@ data:
     - icon: ':warning:'
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -78,16 +99,16 @@ data:
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data_structure/static_rect_add_rect_sum.hpp
       title: src/data_structure/static_rect_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
@@ -212,7 +233,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
   verificationCategories:
@@ -232,6 +253,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/min_cost_flow.test.cpp
       title: verify/aoj/data_structure/min_cost_flow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/range_add_range_min.test.cpp
+      title: verify/aoj/data_structure/range_add_range_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/range_add_range_sum.test.cpp
+      title: verify/aoj/data_structure/range_add_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/range_update_range_min.test.cpp
+      title: verify/aoj/data_structure/range_update_range_min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/data_structure/range_update_range_sum.test.cpp
+      title: verify/aoj/data_structure/range_update_range_sum.test.cpp
   - name: verify/library_checker/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -245,7 +278,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/binary_trie.test.cpp
       title: verify/library_checker/data_structure/binary_trie.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -254,10 +287,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/line_add_get_min.test.cpp
       title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/data_structure/rectangle_sum.test.cpp
       title: verify/library_checker/data_structure/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -266,7 +299,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/segtree.test.cpp
       title: verify/library_checker/data_structure/segtree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     - icon: ':heavy_check_mark:'

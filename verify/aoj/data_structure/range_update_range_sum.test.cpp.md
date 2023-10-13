@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/affine.hpp
-    title: src/algebra/affine.hpp
+    path: src/algebra/range_update_range_sum.hpp
+    title: src/algebra/range_update_range_sum.hpp
   - icon: ':heavy_check_mark:'
-    path: src/algebra/cartesian_product_monoid.hpp
-    title: src/algebra/cartesian_product_monoid.hpp
+    path: src/algebra/set_monoid.hpp
+    title: src/algebra/set_monoid.hpp
   - icon: ':heavy_check_mark:'
-    path: src/algebra/range_affine_range_sum.hpp
-    title: src/algebra/range_affine_range_sum.hpp
+    path: src/algebra/size.hpp
+    title: src/algebra/size.hpp
   - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
@@ -19,9 +19,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segtree.hpp
     title: src/data_structure/lazy_segtree.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/modint.hpp
-    title: modint
   - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
@@ -41,12 +38,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_I
     links:
-    - https://judge.yosupo.jp/problem/range_affine_range_sum
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/lazy_segtree.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
-    \n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_I
+  bundledCode: "#line 1 \"verify/aoj/data_structure/range_update_range_sum.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_I\"\n\n#line\
+    \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
@@ -104,52 +101,21 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\ntemplate\
-    \ < modinfo const &ref >\nstruct modint {\n    static constexpr uint const &mod\
-    \ = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static constexpr\
-    \ uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint\
-    \ v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll\
-    \ v = 0) { s(v % mod + mod); }\n    modint operator-() const { return modint()\
-    \ - *this; }\n    modint& operator+=(const modint& rhs) { return s(v + rhs.v);\
-    \ }\n    modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n\
-    \    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return\
-    \ *this; }\n    modint& operator/=(const modint& rhs) { return *this *= inv(rhs);\
-    \ }\n    modint operator+(const modint& rhs) const { return modint(*this) += rhs;\
-    \ }\n    modint operator-(const modint& rhs) const { return modint(*this) -= rhs;\
-    \ }\n    modint operator*(const modint& rhs) const { return modint(*this) *= rhs;\
-    \ }\n    modint operator/(const modint& rhs) const { return modint(*this) /= rhs;\
-    \ }\n    friend modint pow(modint x, ll n) { modint res(1); while(n > 0) { if(n\
-    \ & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint inv(modint\
-    \ v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n        }\
-    \ else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n        \
-    \    while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); }\n \
-    \           return modint(x);\n        }\n    }\n    friend modint operator+(int\
-    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
-    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
-    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
-    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
-    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
-    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
-    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
-    \ mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/data_structure/lazy_segtree.hpp\"\
-    \ntemplate < class A > struct lazy_segtree {\n  public:\n    using V = typename\
-    \ A::value_structure;\n    using S = typename V::set;\n    using O = typename\
-    \ A::operator_structure;\n    using F = typename O::set;\n    int _n, size, log;\n\
-    \    vector< S > d;\n    vector< F > lz;\n\n    void update(int k) { d[k] = V::op(d[2\
-    \ * k], d[2 * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k] = A::op(d[k],\
-    \ f);\n        if(k < size) lz[k] = O::op(lz[k], f);\n    }\n    void push(int\
-    \ k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n\
-    \        lz[k] = O::id();\n    }\n    int ceil_pow2(int n) {\n        int x =\
-    \ 0;\n        while((1U << x) < uint(n)) x++;\n        return x;\n    }\n\n  \
-    \  lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int n) : lazy_segtree(vector<\
-    \ S >(n, S::id())) {}\n    lazy_segtree(int n, S s) : lazy_segtree(vector< S >(n,\
-    \ s)) {}\n    lazy_segtree(const vector< S >& v) : _n(int(v.size())) {\n     \
-    \   log = ceil_pow2(_n);\n        size = 1 << log;\n        d = vector< S >(2\
-    \ * size, V::id());\n        lz = vector< F >(size, O::id());\n        for(int\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
+    src/data_structure/lazy_segtree.hpp\"\ntemplate < class A > struct lazy_segtree\
+    \ {\n  public:\n    using V = typename A::value_structure;\n    using S = typename\
+    \ V::set;\n    using O = typename A::operator_structure;\n    using F = typename\
+    \ O::set;\n    int _n, size, log;\n    vector< S > d;\n    vector< F > lz;\n\n\
+    \    void update(int k) { d[k] = V::op(d[2 * k], d[2 * k + 1]); }\n    void all_apply(int\
+    \ k, F f) {\n        d[k] = A::op(d[k], f);\n        if(k < size) lz[k] = O::op(lz[k],\
+    \ f);\n    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n     \
+    \   all_apply(2 * k + 1, lz[k]);\n        lz[k] = O::id();\n    }\n    int ceil_pow2(int\
+    \ n) {\n        int x = 0;\n        while((1U << x) < uint(n)) x++;\n        return\
+    \ x;\n    }\n\n    lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int n)\
+    \ : lazy_segtree(vector< S >(n, S::id())) {}\n    lazy_segtree(int n, S s) : lazy_segtree(vector<\
+    \ S >(n, s)) {}\n    lazy_segtree(const vector< S >& v) : _n(int(v.size())) {\n\
+    \        log = ceil_pow2(_n);\n        size = 1 << log;\n        d = vector< S\
+    \ >(2 * size, V::id());\n        lz = vector< F >(size, O::id());\n        for(int\
     \ i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size - 1; i >=\
     \ 1; i--) update(i);\n    }\n\n    void set(int i, S x) {\n        assert(0 <=\
     \ i && i < _n);\n        i += size;\n        for(int p = log; p >= 1; p--) push(i\
@@ -196,73 +162,63 @@ data:
     \       sm = V::op(d[r], sm);\n                        r--;\n                \
     \    }\n                }\n                return r + 1 - size;\n            }\n\
     \            sm = V::op(d[r], sm);\n        } while((r & -r) != r);\n        return\
-    \ 0;\n    }\n};\n#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class\
-    \ affine {\n  public:\n    T a, b; // ax + b\n    constexpr affine() = default;\n\
-    \    constexpr affine(const T &a, const T &b) : a(a), b(b) {}\n    constexpr T\
-    \ eval(const T &x) const { return x * a + b; }\n    constexpr affine composite(const\
-    \ affine &r) const {\n        return affine(a * r.a, b * r.a + r.b);\n    }\n\
-    \    static constexpr affine id() {\n        return affine(T(1), T(0));\n    }\n\
-    };\n\ntemplate < class T > class affine_composite_monoid {\n  public:\n    using\
-    \ F = affine< T >;\n    using set = F;\n    static constexpr F op(const F &l,\
-    \ const F &r) { return l.composite(r); }\n    static constexpr F id() { return\
-    \ F::id(); }\n};\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class\
-    \ sum_monoid {\n  public:\n    using set = T;\n    static constexpr T op(const\
-    \ T &l, const T &r) { return l + r; }\n    static constexpr T id() { return T(0);\
-    \ }\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
-    \ T pow(const T &x, const ll n) { return x * n; }\n    static constexpr bool comm\
-    \ = true;\n};\n#line 1 \"src/algebra/cartesian_product_monoid.hpp\"\ntemplate\
-    \ < class M, class N > class cartesian_product_monoid {\n    using T = pair< typename\
-    \ M::set, typename N::set >;\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) {\n        return T(M::op(l.first, r.first), N::op(l.second,\
-    \ r.second));\n    }\n    static constexpr T id() { return T(M::id(), N::id());\
-    \ }\n};\n#line 4 \"src/algebra/range_affine_range_sum.hpp\"\n\ntemplate < class\
-    \ T > class range_affine_range_sum {\n  public:\n    using value_structure = cartesian_product_monoid<\
-    \ sum_monoid< T >, sum_monoid< T > >;\n    using operator_structure = affine_composite_monoid<\
-    \ T >;\n  private:\n    using S = typename value_structure::set;\n    using F\
-    \ = typename operator_structure::set;\n  public:\n    static constexpr S op(const\
-    \ S &l, const F &r) {\n        return S(l.first * r.a + l.second * r.b, l.second);\n\
-    \    }\n};\n#line 7 \"verify/library_checker/data_structure/lazy_segtree.test.cpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    using mint = mint998244353;\n\
-    \    using V = range_affine_range_sum<mint>::value_structure::set;\n    vector<\
-    \ V > a(N);\n    for(int i : rep(N)) {\n        mint x = in();\n        a[i] =\
-    \ V{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint> > lzst(a);\n\
-    \    for(int _ : rep(Q)) {\n        int t = in();\n        if(t == 0) {\n    \
-    \        int l = in(), r = in(); mint b = in(), c = in();\n            lzst.apply(l,\
-    \ r, {b, c});\n        }\n        if(t == 1) {\n            int l = in(), r =\
-    \ in();\n            print(lzst.prod(l, r).first);\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
-    \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
-    \n#include \"../../../src/data_structure/lazy_segtree.hpp\"\n#include \"../../../src/algebra/range_affine_range_sum.hpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    using mint = mint998244353;\n\
-    \    using V = range_affine_range_sum<mint>::value_structure::set;\n    vector<\
-    \ V > a(N);\n    for(int i : rep(N)) {\n        mint x = in();\n        a[i] =\
-    \ V{x, 1};\n    }\n\n    lazy_segtree< range_affine_range_sum<mint> > lzst(a);\n\
-    \    for(int _ : rep(Q)) {\n        int t = in();\n        if(t == 0) {\n    \
-    \        int l = in(), r = in(); mint b = in(), c = in();\n            lzst.apply(l,\
-    \ r, {b, c});\n        }\n        if(t == 1) {\n            int l = in(), r =\
-    \ in();\n            print(lzst.prod(l, r).first);\n        }\n    }\n}\n"
+    \ 0;\n    }\n};\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid\
+    \ {\n  public:\n    using set = T;\n    static constexpr T op(const T &l, const\
+    \ T &r) { return l + r; }\n    static constexpr T id() { return T(0); }\n    static\
+    \ constexpr T inv(const T &x) { return -x; }\n    static constexpr T pow(const\
+    \ T &x, const ll n) { return x * n; }\n    static constexpr bool comm = true;\n\
+    };\n#line 1 \"src/algebra/set_monoid.hpp\"\ntemplate < class T, T none = T(-1)\
+    \ >\nstruct set_monoid {\n  public:\n    using set = T;\n    static constexpr\
+    \ T op(const T& l, const T& r) { return (r == none ? l : r); }\n    static constexpr\
+    \ T id() { return none; }\n    static constexpr bool comm = false;\n};\n#line\
+    \ 2 \"src/algebra/size.hpp\"\n\ntemplate < class M, class T >\nstruct with_size\
+    \ {\n  public:\n    struct VS {\n        using V = typename M::set;\n        mutable\
+    \ V value;\n        T size;\n    };\n    using set = VS;\n    static constexpr\
+    \ set op(const set& l, const set& r) {\n        return set{M::op(l.value, r.value),\
+    \ l.size + r.size};\n    }\n    static constexpr set id() {\n        return set{M::id(),\
+    \ 0};\n    }\n};\n#line 5 \"src/algebra/range_update_range_sum.hpp\"\n\ntemplate\
+    \ < class T, T none = T(-1) > class range_update_range_sum {\n  public:\n    using\
+    \ value_structure = with_size< sum_monoid< T >, T >;\n    using operator_structure\
+    \ = set_monoid< T, none >;\n  private:\n    using S = typename value_structure::set;\n\
+    \    using F = typename operator_structure::set;\n  public:\n    static constexpr\
+    \ S op(const S& x, const F& f) {\n        if(f != none) x.value = f * x.size;\n\
+    \        return x;\n    }\n};\n#line 6 \"verify/aoj/data_structure/range_update_range_sum.test.cpp\"\
+    \n\nint main() {\n    int n = in(), q = in();\n    lazy_segtree<range_update_range_sum<ll,\
+    \ ll(1e18)>> st(n, {0, 1});\n    for(int _q : rep(q)) {\n        int type = in();\n\
+    \        if(type == 0) {\n            int s = in(), t = in(), x = in(); t++;\n\
+    \            st.apply(s, t, x);\n        }\n        if(type == 1) {\n        \
+    \    int s = in(), t = in(); t++;\n            print(st.prod(s, t).value);\n \
+    \       }\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_I\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/lazy_segtree.hpp\"\
+    \n#include \"../../../src/algebra/range_update_range_sum.hpp\"\n\nint main() {\n\
+    \    int n = in(), q = in();\n    lazy_segtree<range_update_range_sum<ll, ll(1e18)>>\
+    \ st(n, {0, 1});\n    for(int _q : rep(q)) {\n        int type = in();\n     \
+    \   if(type == 0) {\n            int s = in(), t = in(), x = in(); t++;\n    \
+    \        st.apply(s, t, x);\n        }\n        if(type == 1) {\n            int\
+    \ s = in(), t = in(); t++;\n            print(st.prod(s, t).value);\n        }\n\
+    \    }\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
-  - src/number/modint.hpp
   - src/data_structure/lazy_segtree.hpp
-  - src/algebra/range_affine_range_sum.hpp
-  - src/algebra/affine.hpp
+  - src/algebra/range_update_range_sum.hpp
   - src/algebra/sum.hpp
-  - src/algebra/cartesian_product_monoid.hpp
+  - src/algebra/set_monoid.hpp
+  - src/algebra/size.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  path: verify/aoj/data_structure/range_update_range_sum.test.cpp
   requiredBy: []
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp
+documentation_of: verify/aoj/data_structure/range_update_range_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/lazy_segtree.test.cpp
-- /verify/verify/library_checker/data_structure/lazy_segtree.test.cpp.html
-title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+- /verify/verify/aoj/data_structure/range_update_range_sum.test.cpp
+- /verify/verify/aoj/data_structure/range_update_range_sum.test.cpp.html
+title: verify/aoj/data_structure/range_update_range_sum.test.cpp
 ---
