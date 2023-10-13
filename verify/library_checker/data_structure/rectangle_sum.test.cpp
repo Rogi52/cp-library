@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 #include "../../../src/cp-template.hpp"
 #include "../../../src/data_structure/static_point_add_rect_sum.hpp"
-#include "../../../src/algebra/plus.hpp"
+#include "../../../src/algebra/sum.hpp"
 
 int main() {
     int N = in(), Q = in();
-    rect_sum< tag::STATIC, tag::POINT, int, PLUS<ll> > rs;
+    rect_sum< tag::STATIC, tag::POINT, int, sum_monoid<ll> > rs;
     for(int i : rep(N)) {
         int x = in(), y = in(), w = in();
         rs.add(x, y, w);
