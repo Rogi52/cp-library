@@ -85,7 +85,7 @@ struct wavlet_matrix {
         }
         return res;
     }
-    // count [a, b]
+    // count [a, b)
     int freq(int L, int R, T a, T b) {
         return freq(L, R, b) - freq(L, R, a);
     }
