@@ -2,17 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
-  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/fenwick_tree.hpp
-    title: src/data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/data_structure/static_point_add_rect_sum.hpp
-    title: src/data_structure/static_point_add_rect_sum.hpp
+    path: src/data_structure/wavlet_matrix.hpp
+    title: src/data_structure/wavlet_matrix.hpp
   - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
@@ -35,14 +29,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
+    PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
     links:
-    - https://judge.yosupo.jp/problem/rectangle_sum
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/rectangle_sum.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n#line 2 \"\
-    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
-    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
-    \  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
+    - https://judge.yosupo.jp/problem/range_kth_smallest
+  bundledCode: "#line 1 \"verify/library_checker/data_structure/wavlet_matrix.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#line\
+    \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
+    \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
     \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
     \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
@@ -114,87 +108,74 @@ data:
     \        vector<int> idx(x.size());\n        for(int i : rep(x.size())) idx[i]\
     \ = id(x[i]);\n        return idx;\n    }\n    int size() {\n        if(not built)\
     \ build();\n        return data.size();\n    }\n\n  private:\n    int built =\
-    \ 0;\n};\n#line 2 \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate < class\
-    \ comm_monoid > class fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\
-    \n  private:\n    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n)\
-    \ {\n        int x = 1;\n        while(x < n) x <<= 1;\n        return x;\n  \
-    \  }\n\n  public:\n    fenwick_tree() : fenwick_tree(0) {}\n    fenwick_tree(int\
-    \ n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id()) { assert(comm_monoid::comm);\
-    \ }\n    fenwick_tree(const vector< T > &a) : n(a.size()), n2(ceil_pow2(n)), data(a)\
-    \ {\n        assert(comm_monoid::comm);\n        data.insert(data.begin(), {comm_monoid::id()});\n\
-    \        for(int i = 1; i <= n; i++) {\n            int p = i + (i & -i);\n  \
-    \          if(p <= n) data[p] = comm_monoid::op(data[i], data[p]);\n        }\n\
-    \    }\n\n    void add(int i, T x) {\n        for(int p = i + 1; p <= n; p +=\
-    \ p & -p) data[p] = comm_monoid::op(data[p], x);\n    }\n    // [0, r)\n    T\
-    \ fold(int r) {\n        T s = comm_monoid::id();\n        for(int p = r; p >\
-    \ 0; p -= p & -p) s = comm_monoid::op(data[p], s);\n        return s;\n    }\n\
-    \    // [l, r)\n    T fold(int l, int r) {\n        return comm_monoid::op(comm_monoid::inv(fold(l)),\
-    \ fold(r));\n    }\n    T get(int i) {\n        return fold(i, i + 1);\n    }\n\
-    \    void set(int i, T x) {\n        add(i, comm_monoid::op(comm_monoid::inv(get(i)),\
-    \ x));\n    }\n    template< class func > int search(const func &f) {\n      \
-    \  T s = comm_monoid::id();\n        if(f(s)) return 0;\n        int i = 0, k\
-    \ = n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
-    \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 4 \"src/data_structure/static_point_add_rect_sum.hpp\"\
-    \n\nnamespace tag {\n\nstruct STATIC;\nstruct DYNAMIC;\n\nstruct POINT;\nstruct\
-    \ RECTANGLE;\n\n}\n\ntemplate < class SD, class ADD_TYPE, class T, class abel_group\
-    \ >\nstruct rect_sum {};\n\ntemplate < class T, class abel_group >\nstruct rect_sum\
-    \ < tag::STATIC, tag::POINT, T, abel_group > {\n    using W = typename abel_group::set;\n\
-    \    vector<tuple< T, T, W >> P;\n    vector<tuple< T, T, T, T >> R;\n    zipper<\
-    \ T > X, Y;\n    rect_sum() {}\n    void add(T x, T y, W w) {\n        P.emplace_back(x,\
-    \ y, w);\n        X.insert(x); Y.insert(y);\n    }\n    void query(T xL, T xR,\
-    \ T yL, T yR) {\n        R.emplace_back(xL, xR, yL, yR);\n        X.insert(xL);\
-    \ X.insert(xR);\n        Y.insert(yL); Y.insert(yR);\n    }\n\n    vector< W >\
-    \ solve() {\n        X.build(); Y.build();\n        vector< vector< pair< int,\
-    \ W > > > P2(X.size());\n        vector< vector< tuple< int, int, int, int > >\
-    \ > R2(X.size());\n        for(auto [x, y, w] : P) P2[X.id(x)].emplace_back(Y.id(y),\
-    \ w);\n        for(int i : rep(R.size())) {\n            auto [xL, xR, yL, yR]\
-    \ = R[i];\n            int iyL = Y.id(yL), iyR = Y.id(yR);\n            R2[X.id(xL)].emplace_back(iyL,\
-    \ iyR, i, 1);\n            R2[X.id(xR)].emplace_back(iyL, iyR, i, 0);\n      \
-    \  }\n\n        vector< W > ans(R.size(), abel_group::id());\n        fenwick_tree<\
-    \ abel_group > bit(Y.size());\n        for(int x : rep(X.size())) {\n        \
-    \    for(auto [yL, yR, i, inv] : R2[x]) {\n                W w = bit.fold(yL,\
-    \ yR);\n                if(inv) w = abel_group::inv(w);\n                ans[i]\
-    \ = abel_group::op(ans[i], w);\n            }\n            for(auto [y, w] : P2[x])\
-    \ bit.add(y, w);\n        }\n        return ans;\n    }\n};\n#line 1 \"src/algebra/sum.hpp\"\
-    \ntemplate < class T > class sum_monoid {\n  public:\n    using set = T;\n   \
-    \ static constexpr T op(const T &l, const T &r) { return l + r; }\n    static\
-    \ constexpr T id() { return T(0); }\n    static constexpr T inv(const T &x) {\
-    \ return -x; }\n    static constexpr T pow(const T &x, const ll n) { return x\
-    \ * n; }\n    static constexpr bool comm = true;\n};\n#line 5 \"verify/library_checker/data_structure/rectangle_sum.test.cpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    rect_sum< tag::STATIC, tag::POINT,\
-    \ int, sum_monoid<ll> > rs;\n    for(int i : rep(N)) {\n        int x = in(),\
-    \ y = in(), w = in();\n        rs.add(x, y, w);\n    }\n    for(int i : rep(Q))\
-    \ {\n        int l = in(), d = in(), r = in(), u = in();\n        rs.query(l,\
-    \ r, d, u);\n    }\n    print(rs.solve(), '\\n');\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n#include\
-    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/static_point_add_rect_sum.hpp\"\
-    \n#include \"../../../src/algebra/sum.hpp\"\n\nint main() {\n    int N = in(),\
-    \ Q = in();\n    rect_sum< tag::STATIC, tag::POINT, int, sum_monoid<ll> > rs;\n\
-    \    for(int i : rep(N)) {\n        int x = in(), y = in(), w = in();\n      \
-    \  rs.add(x, y, w);\n    }\n    for(int i : rep(Q)) {\n        int l = in(), d\
-    \ = in(), r = in(), u = in();\n        rs.query(l, r, d, u);\n    }\n    print(rs.solve(),\
-    \ '\\n');\n}\n"
+    \ 0;\n};\n#line 2 \"src/data_structure/wavlet_matrix.hpp\"\n\nusing u64 = unsigned\
+    \ long long;\nusing u8  = unsigned char;\n\nstruct bit_vector {\n    std::vector<u64>\
+    \ buf;\n    std::vector<int> sum;\n    bit_vector() {}\n    bit_vector(const vector<u8>&\
+    \ a) {\n        int n = a.size();\n        buf.assign((n + 63) >> 6, 0);\n   \
+    \     sum.assign(buf.size() + 1, 0);\n        for(int i : rep(n)) if(a[i]) {\n\
+    \            buf[i >> 6] |= u64(1) << (i & 63);\n            sum[(i >> 6) + 1]++;\n\
+    \        }\n        for(int i : rep(buf.size())) sum[i + 1] += sum[i];\n    }\n\
+    \    int rank(int k, int f = 1) {\n        int res = sum[k >> 6] + __builtin_popcountll(buf[k\
+    \ >> 6] & ((u64(1) << (k & 63)) - 1));\n        return f ? res : k - res;\n  \
+    \  }\n};\n\ntemplate < class T >\nstruct wavlet_matrix {\n    int n, lg; T m;\n\
+    \    vector<int> mid;\n    vector<bit_vector> buf;\n\n    wavlet_matrix(vector<\
+    \ T > a) : n(a.size()), lg(0), m(1) {\n        T max_a = 0;\n        for(T x :\
+    \ a) chmax(max_a, x);\n        while(m <= max_a) m <<= 1, lg++;\n        mid.resize(lg);\n\
+    \        buf.resize(lg);\n        for(int d : revrep(lg)) {\n            vector<u8>\
+    \ add;\n            vector<vector< T >> nxt(2);\n            for(T x : a) {\n\
+    \                add.push_back(x >> d & 1);\n                nxt[x >> d & 1].push_back(x);\n\
+    \            }\n            mid[d] = int(nxt[0].size());\n            buf[d] =\
+    \ bit_vector(add);\n            swap(a, nxt[0]);\n            a.insert(a.end(),\
+    \ nxt[1].begin(), nxt[1].end());\n        }\n    }\n    // count x\n    int rank(int\
+    \ L, int R, T x) {\n        if(m <= x) return 0;\n        for(int d : revrep(lg))\
+    \ {\n            int f = x >> d & 1;\n            L = buf[d].rank(L, f) + (f ?\
+    \ mid[d] : 0);\n            R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n      \
+    \  }\n        return R - L;\n    }\n    // kth smallest\n    T quantile(int L,\
+    \ int R, int k) {\n        T res = 0;\n        for(int d : revrep(lg)) {\n   \
+    \         int l0 = buf[d].rank(L, 0), r0 = buf[d].rank(R, 0);\n            if(k\
+    \ < r0 - l0) {\n                L = l0, R = r0;\n            } else {\n      \
+    \          k -= r0 - l0;\n                res |= T(1) << d;\n                L\
+    \ += mid[d] - l0, R += mid[d] - r0;\n            }\n        }\n        return\
+    \ res;\n    }\n    // count v < x\n    int freq(int L, int R, T x) {\n       \
+    \ if(m <= x) return R - L;\n        int res = 0;\n        for(int d : revrep(lg))\
+    \ {\n            int f = x >> d & 1;\n            if(f) res += buf[d].rank(R,\
+    \ 0) - buf[d].rank(L, 0);\n            L = buf[d].rank(L, f) + (f ? mid[d] : 0);\n\
+    \            R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n        }\n        return\
+    \ res;\n    }\n    // count [a, b]\n    int freq(int L, int R, T a, T b) {\n \
+    \       return freq(L, R, b) - freq(L, R, a);\n    }\n    // max v <= x\n    T\
+    \ prev(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
+    \ cnt == R - L ? T(-1) : quantile(L, R, cnt);\n    }\n    // min v > x\n    T\
+    \ next(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
+    \ cnt == 0 ? T(-1) : quantile(L, R, cnt - 1);\n    }\n};\n#line 6 \"verify/library_checker/data_structure/wavlet_matrix.test.cpp\"\
+    \n\nint main() {\n    int N = in(), Q = in();\n    using value_type = int;\n \
+    \   vector< value_type > a = in(N);\n    zipper< value_type > z(a);\n    wavlet_matrix<\
+    \ int > wm(z.zip(a));\n    \n    for(int _ : rep(Q)) {\n        int L = in(),\
+    \ R = in(), k = in();\n        print(z.data[wm.quantile(L, R, k)]);\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/utility/zip.hpp\"\
+    \n#include \"../../../src/data_structure/wavlet_matrix.hpp\"\n\nint main() {\n\
+    \    int N = in(), Q = in();\n    using value_type = int;\n    vector< value_type\
+    \ > a = in(N);\n    zipper< value_type > z(a);\n    wavlet_matrix< int > wm(z.zip(a));\n\
+    \    \n    for(int _ : rep(Q)) {\n        int L = in(), R = in(), k = in();\n\
+    \        print(z.data[wm.quantile(L, R, k)]);\n    }\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
-  - src/data_structure/static_point_add_rect_sum.hpp
   - src/utility/zip.hpp
-  - src/data_structure/fenwick_tree.hpp
-  - src/algebra/sum.hpp
+  - src/data_structure/wavlet_matrix.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/rectangle_sum.test.cpp
+  path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   requiredBy: []
   timestamp: '2023-10-16 21:58:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/rectangle_sum.test.cpp
+documentation_of: verify/library_checker/data_structure/wavlet_matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/rectangle_sum.test.cpp
-- /verify/verify/library_checker/data_structure/rectangle_sum.test.cpp.html
-title: verify/library_checker/data_structure/rectangle_sum.test.cpp
+- /verify/verify/library_checker/data_structure/wavlet_matrix.test.cpp
+- /verify/verify/library_checker/data_structure/wavlet_matrix.test.cpp.html
+title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
 ---

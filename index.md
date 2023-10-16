@@ -120,6 +120,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data_structure/wavlet_matrix.hpp
+      title: src/data_structure/wavlet_matrix.hpp
   - name: src/geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -320,6 +323,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/union_find.test.cpp
       title: verify/library_checker/data_structure/union_find.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
+      title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - name: verify/library_checker/geometry
     pages:
     - icon: ':heavy_check_mark:'

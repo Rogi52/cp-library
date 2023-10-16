@@ -114,15 +114,15 @@ data:
     \ }\n    template < class... args > void insert(const vector< T > x, args... a)\
     \ { insert(x); insert(a...); }\n\n    void build() {\n        sort(data.begin(),\
     \ data.end());\n        data.erase(unique(data.begin(), data.end()), data.end());\n\
-    \        built = 1;\n    }\n\n    int id(const T x) {\n        assert(built);\n\
+    \        built = 1;\n    }\n\n    int id(const T x) {\n        if(not built) build();\n\
     \        return lower_bound(data.begin(), data.end(), x) - data.begin();\n   \
-    \ }\n    vector<int> zip(const vector< T >& x) {\n        assert(built);\n   \
-    \     vector<int> idx(x.size());\n        for(int i : rep(x.size())) idx[i] =\
-    \ id(x[i]);\n        return idx;\n    }\n    int size() {\n        assert(built);\n\
-    \        return data.size();\n    }\n\n  private:\n    int built = 0;\n};\n#line\
-    \ 2 \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate < class comm_monoid >\
-    \ class fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\n\
-    \  private:\n    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n)\
+    \ }\n    vector<int> zip(const vector< T >& x) {\n        if(not built) build();\n\
+    \        vector<int> idx(x.size());\n        for(int i : rep(x.size())) idx[i]\
+    \ = id(x[i]);\n        return idx;\n    }\n    int size() {\n        if(not built)\
+    \ build();\n        return data.size();\n    }\n\n  private:\n    int built =\
+    \ 0;\n};\n#line 2 \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate < class\
+    \ comm_monoid > class fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\
+    \n  private:\n    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n)\
     \ {\n        int x = 1;\n        while(x < n) x <<= 1;\n        return x;\n  \
     \  }\n\n  public:\n    fenwick_tree() : fenwick_tree(0) {}\n    fenwick_tree(int\
     \ n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id()) { assert(comm_monoid::comm);\
@@ -259,7 +259,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 01:03:20+09:00'
+  timestamp: '2023-10-16 21:58:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp

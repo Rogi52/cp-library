@@ -57,6 +57,9 @@ data:
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/wavlet_matrix.hpp
+    title: src/data_structure/wavlet_matrix.hpp
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   - icon: ':heavy_check_mark:'
@@ -153,6 +156,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
+    title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
@@ -266,6 +272,7 @@ data:
   - src/data_structure/range_freq.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/binary_trie.hpp
+  - src/data_structure/wavlet_matrix.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/offline_multiset.hpp
   - src/data_structure/sliding_window_aggregation.hpp
@@ -312,6 +319,7 @@ data:
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/utility/vec_op.hpp
