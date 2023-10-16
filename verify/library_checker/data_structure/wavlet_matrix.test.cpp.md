@@ -141,7 +141,7 @@ data:
     \ {\n            int f = x >> d & 1;\n            if(f) res += buf[d].rank(R,\
     \ 0) - buf[d].rank(L, 0);\n            L = buf[d].rank(L, f) + (f ? mid[d] : 0);\n\
     \            R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n        }\n        return\
-    \ res;\n    }\n    // count [a, b]\n    int freq(int L, int R, T a, T b) {\n \
+    \ res;\n    }\n    // count [a, b)\n    int freq(int L, int R, T a, T b) {\n \
     \       return freq(L, R, b) - freq(L, R, a);\n    }\n    // max v <= x\n    T\
     \ prev(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
     \ cnt == R - L ? T(-1) : quantile(L, R, cnt);\n    }\n    // min v > x\n    T\
@@ -169,7 +169,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   requiredBy: []
-  timestamp: '2023-10-16 21:58:00+09:00'
+  timestamp: '2023-10-16 22:34:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/wavlet_matrix.test.cpp
