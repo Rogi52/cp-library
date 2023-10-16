@@ -45,6 +45,9 @@ data:
     path: src/data_structure/point_add_rect_sum.hpp
     title: src/data_structure/point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/range_freq.hpp
+    title: src/data_structure/range_freq.hpp
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
   - icon: ':heavy_check_mark:'
@@ -132,6 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/range_freq.test.cpp
+    title: verify/library_checker/data_structure/range_freq.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
@@ -236,6 +242,7 @@ data:
   - src/matrix/matrix-tree.hpp
   - src/matrix/lgv.hpp
   - src/graph/tree/rerooting.hpp
+  - src/data_structure/range_freq.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/binary_trie.hpp
   - src/data_structure/point_add_rect_sum.hpp
@@ -276,6 +283,7 @@ data:
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/range_freq.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
   - verify/library_checker/data_structure/binary_trie.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
