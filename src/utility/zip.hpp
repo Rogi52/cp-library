@@ -22,17 +22,17 @@ struct zipper {
     }
 
     int id(const T x) {
-        assert(built);
+        if(not built) build();
         return lower_bound(data.begin(), data.end(), x) - data.begin();
     }
     vector<int> zip(const vector< T >& x) {
-        assert(built);
+        if(not built) build();
         vector<int> idx(x.size());
         for(int i : rep(x.size())) idx[i] = id(x[i]);
         return idx;
     }
     int size() {
-        assert(built);
+        if(not built) build();
         return data.size();
     }
 
