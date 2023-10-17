@@ -199,6 +199,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/number/gaussian_integer.hpp
+      title: src/number/gaussian_integer.hpp
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
@@ -392,5 +395,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/rolling_hash.test.cpp
       title: verify/library_checker/string/rolling_hash.test.cpp
+  - name: verify/yukicoder
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/gaussian_integer.test.cpp
+      title: verify/yukicoder/gaussian_integer.test.cpp
 layout: toppage
 ---

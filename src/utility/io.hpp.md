@@ -84,6 +84,9 @@ data:
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':heavy_check_mark:'
+    path: src/number/gaussian_integer.hpp
+    title: src/number/gaussian_integer.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
   - icon: ':heavy_check_mark:'
@@ -213,6 +216,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/gaussian_integer.test.cpp
+    title: verify/yukicoder/gaussian_integer.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -282,6 +288,7 @@ data:
   - src/number/poly.hpp
   - src/number/eratosthenes.hpp
   - src/number/nim_product.hpp
+  - src/number/gaussian_integer.hpp
   - src/number/fps.hpp
   - src/matrix/linear_equation.hpp
   - src/matrix/base.hpp
@@ -341,6 +348,7 @@ data:
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - verify/yukicoder/gaussian_integer.test.cpp
 documentation_of: src/utility/io.hpp
 layout: document
 redirect_from:
