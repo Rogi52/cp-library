@@ -40,5 +40,6 @@
 "verify/library_checker/number/poly_all_product.test.cpp": "2023-10-06 23:28:54 +0900",
 "verify/library_checker/number/poly_division.test.cpp": "2023-10-06 23:28:54 +0900",
 "verify/library_checker/number/poly_taylor_shift.test.cpp": "2023-10-06 23:28:54 +0900",
-"verify/library_checker/string/rolling_hash.test.cpp": "2023-05-24 23:48:31 +0900"
+"verify/library_checker/string/rolling_hash.test.cpp": "2023-05-24 23:48:31 +0900",
+"verify/yukicoder/gaussian_integer.test.cpp": "2023-10-17 14:35:57 +0900"
 }
