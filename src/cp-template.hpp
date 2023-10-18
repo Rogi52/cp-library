@@ -13,3 +13,6 @@ template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } r
 #include "./utility/io.hpp"
 #include "./utility/key_val.hpp"
 #include "./utility/vec_op.hpp"
+
+#include "./algorithm/bin_search.hpp"
+#include "./algorithm/argsort.hpp"
