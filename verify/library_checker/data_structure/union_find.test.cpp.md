@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/union_find.hpp
     title: src/data_structure/union_find.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -89,15 +95,25 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/data_structure/union_find.hpp\"\nclass union_find {\n  public:\n    union_find(int\
-    \ n) : data(n, -1) {}\n    int unite(int x, int y) {\n        x = root(x), y =\
-    \ root(y);\n        if(x != y) {\n            if(size(x) < size(y)) swap(x, y);\n\
-    \            data[x] += data[y];\n            return data[y] = x;\n        }\n\
-    \        return -1;\n    }\n    int root(int x) { return data[x] < 0 ? x : data[x]\
-    \ = root(data[x]); }\n    int size(int x) { return -data[root(x)]; }\n    bool\
-    \ same(int x, int y) { return root(x) == root(y); }\n\n  private:\n    vector<int>\
-    \ data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/data_structure/union_find.hpp\"\nclass union_find {\n  public:\n\
+    \    union_find(int n) : data(n, -1) {}\n    int unite(int x, int y) {\n     \
+    \   x = root(x), y = root(y);\n        if(x != y) {\n            if(size(x) <\
+    \ size(y)) swap(x, y);\n            data[x] += data[y];\n            return data[y]\
+    \ = x;\n        }\n        return -1;\n    }\n    int root(int x) { return data[x]\
+    \ < 0 ? x : data[x] = root(data[x]); }\n    int size(int x) { return -data[root(x)];\
+    \ }\n    bool same(int x, int y) { return root(x) == root(y); }\n\n  private:\n\
+    \    vector<int> data;\n};\n#line 5 \"verify/library_checker/data_structure/union_find.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
     \ N,Q; cin >> N >> Q;\n    union_find uf(N);\n\n    for(int _ : rep(Q)) {\n  \
     \      int t, u, v; cin >> t >> u >> v;\n        switch(t) {\n            case\
@@ -118,11 +134,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/data_structure/union_find.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/union_find.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/union_find.test.cpp

@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/max_flow.hpp
     title: src/graph/max_flow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -89,10 +95,20 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/graph/max_flow.hpp\"\ntemplate < class Cap > struct mf_graph {\n  public:\n\
-    \    explicit mf_graph(int n) : n(n), g(n) {}\n  \n    int add_edge(int from,\
-    \ int to, Cap cap) {\n        assert(0 <= from and from < n);\n        assert(0\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/graph/max_flow.hpp\"\ntemplate < class Cap > struct mf_graph\
+    \ {\n  public:\n    explicit mf_graph(int n) : n(n), g(n) {}\n  \n    int add_edge(int\
+    \ from, int to, Cap cap) {\n        assert(0 <= from and from < n);\n        assert(0\
     \ <= to and to < n);\n        assert(0 <= cap);\n        int m = pos.size();\n\
     \        int from_id = g[from].size();\n        int to_id = g[to].size() + (from\
     \ == to);\n        g[from].push_back(_edge{to, to_id, cap});\n        g[to].push_back(_edge{from,\
@@ -152,11 +168,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/graph/max_flow.hpp
   isVerificationFile: true
   path: verify/aoj/data_structure/max_flow.test.cpp
   requiredBy: []
-  timestamp: '2023-05-27 19:27:00+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/max_flow.test.cpp

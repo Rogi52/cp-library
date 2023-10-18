@@ -1,19 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -84,10 +90,20 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/data_structure/wavlet_matrix.hpp\"\n\nusing u64 = unsigned long long;\nusing\
-    \ u8  = unsigned char;\n\nstruct bit_vector {\n    std::vector<u64> buf;\n   \
-    \ std::vector<int> sum;\n    bit_vector() {}\n    bit_vector(const vector<u8>&\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/data_structure/wavlet_matrix.hpp\"\n\nusing u64 = unsigned long\
+    \ long;\nusing u8  = unsigned char;\n\nstruct bit_vector {\n    std::vector<u64>\
+    \ buf;\n    std::vector<int> sum;\n    bit_vector() {}\n    bit_vector(const vector<u8>&\
     \ a) {\n        int n = a.size();\n        buf.assign((n + 63) >> 6, 0);\n   \
     \     sum.assign(buf.size() + 1, 0);\n        for(int i : rep(n)) if(a[i]) {\n\
     \            buf[i >> 6] |= u64(1) << (i & 63);\n            sum[(i >> 6) + 1]++;\n\
@@ -169,10 +185,12 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/data_structure/wavlet_matrix.hpp
   requiredBy: []
-  timestamp: '2023-10-16 22:34:06+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp

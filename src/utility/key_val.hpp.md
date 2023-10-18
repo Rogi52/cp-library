@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/size.hpp
     title: src/algebra/size.hpp
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
   - icon: ':warning:'
     path: src/algorithm/beam_search.hpp
     title: src/algorithm/beam_search.hpp
@@ -29,7 +32,7 @@ data:
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -59,37 +62,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
+  - icon: ':warning:'
+    path: src/geometry/convex_hull.hpp
+    title: src/geometry/convex_hull.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   _extendedVerifiedWith:
@@ -174,54 +180,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/gaussian_integer.test.cpp
     title: verify/yukicoder/gaussian_integer.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/utility/key_val.hpp\"\ntemplate < class K, class V >\n\
@@ -237,12 +243,14 @@ data:
   - src/algorithm/selection.hpp
   - src/algorithm/floor_sum.hpp
   - src/algorithm/beam_search.hpp
+  - src/algorithm/argsort.hpp
   - src/algebra/range_update_range_sum.hpp
   - src/algebra/range_update_range_minmax.hpp
   - src/algebra/range_add_range_sum.hpp
   - src/algebra/range_add_range_minmax.hpp
   - src/algebra/minmax.hpp
   - src/algebra/size.hpp
+  - src/geometry/convex_hull.hpp
   - src/cp-template.hpp
   - src/number/fps_sparse.hpp
   - src/number/poly.hpp
@@ -265,7 +273,7 @@ data:
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/fenwick_tree.hpp
   timestamp: '2023-05-24 23:37:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj/data_structure/min_cost_flow.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp

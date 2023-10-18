@@ -1,29 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/321
@@ -88,35 +94,45 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/number/gaussian_integer.hpp\"\n\nstruct gaussian_integer {\n    using gint\
-    \ = gaussian_integer;\n    ll x, y;\n    gaussian_integer() : x(0), y(0) {}\n\
-    \    gaussian_integer(ll x) : x(x), y(0) {}\n    gaussian_integer(ll x, ll y)\
-    \ : x(x), y(y) {}\n\n    friend ll abs(const gint& a) {\n        return a.x *\
-    \ a.x + a.y * a.y;\n    }\n    friend gint conj(const gint& a) {\n        return\
-    \ gint(a.x, -a.y);\n    }\n    gint operator-() { return gint(-x, -y); }\n   \
-    \ gint operator+(const gint& r) { return gint(*this) += r; }\n    gint operator-(const\
-    \ gint& r) { return gint(*this) -= r; }\n    gint operator*(const gint& r) { return\
-    \ gint(*this) *= r; }\n    gint operator/(const gint& r) { return gint(*this)\
-    \ /= r; }\n    gint operator%(const gint& r) { return gint(*this) %= r; }\n  \
-    \  gint& operator+=(const gint& r) { x += r.x, y += r.y; return *this; }\n   \
-    \ gint& operator-=(const gint& r) { x -= r.x, y -= r.y; return *this; }\n    gint&\
-    \ operator*=(const gint& r) { std::tie(x, y) = std::make_pair(x * r.x - y * r.y,\
-    \ x * r.y + y * r.x); return *this; }\n    gint& operator/=(const gint& r) {\n\
-    \        assert(not(r.x == 0 and r.y == 0));\n\n        auto near = [](ll a, ll\
-    \ b) {\n            ll q = a / b, r = a - q * b;\n            if(abs(r) > abs(r\
-    \ - b)) return q + 1;\n            if(abs(r) > abs(r + b)) return q - 1;\n   \
-    \         return q;\n        };\n\n        gint u = (*this) * conj(r);\n     \
-    \   return *this = gint(near(u.x, abs(r)), near(u.y, abs(r)));\n    }\n    gint&\
-    \ operator%=(const gint& r) { return *this -= (*this) / r * r; }\n    bool operator==(const\
-    \ gint& r) { return x == r.x and y == r.y; }\n    bool operator!=(const gint&\
-    \ r) { return x != r.x or  y != r.y; }\n    friend gint gcd(gint a, gint b) {\n\
-    \        if(b == gint(0, 0)) return a;\n        return gcd(b, a % b);\n    }\n\
-    };\n#line 5 \"verify/yukicoder/gaussian_integer.test.cpp\"\n\nint main() {\n \
-    \   using gint = gaussian_integer;\n    gint t; t.x = in(), t.y = in();\n    gint\
-    \ g = gcd(t, conj(t));\n\n    int N = in();\n    int ans = 0;\n    for(int _ :\
-    \ rep(N)) {\n        gint v; v.x = in(), v.y = in();\n        if(g == 0) {\n \
-    \           if(v == 0) ans++;\n        } else {\n            if(v % g == 0) ans++;\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/number/gaussian_integer.hpp\"\n\nstruct gaussian_integer {\n\
+    \    using gint = gaussian_integer;\n    ll x, y;\n    gaussian_integer() : x(0),\
+    \ y(0) {}\n    gaussian_integer(ll x) : x(x), y(0) {}\n    gaussian_integer(ll\
+    \ x, ll y) : x(x), y(y) {}\n\n    friend ll abs(const gint& a) {\n        return\
+    \ a.x * a.x + a.y * a.y;\n    }\n    friend gint conj(const gint& a) {\n     \
+    \   return gint(a.x, -a.y);\n    }\n    gint operator-() { return gint(-x, -y);\
+    \ }\n    gint operator+(const gint& r) { return gint(*this) += r; }\n    gint\
+    \ operator-(const gint& r) { return gint(*this) -= r; }\n    gint operator*(const\
+    \ gint& r) { return gint(*this) *= r; }\n    gint operator/(const gint& r) { return\
+    \ gint(*this) /= r; }\n    gint operator%(const gint& r) { return gint(*this)\
+    \ %= r; }\n    gint& operator+=(const gint& r) { x += r.x, y += r.y; return *this;\
+    \ }\n    gint& operator-=(const gint& r) { x -= r.x, y -= r.y; return *this; }\n\
+    \    gint& operator*=(const gint& r) { std::tie(x, y) = std::make_pair(x * r.x\
+    \ - y * r.y, x * r.y + y * r.x); return *this; }\n    gint& operator/=(const gint&\
+    \ r) {\n        assert(not(r.x == 0 and r.y == 0));\n\n        auto near = [](ll\
+    \ a, ll b) {\n            ll q = a / b, r = a - q * b;\n            if(abs(r)\
+    \ > abs(r - b)) return q + 1;\n            if(abs(r) > abs(r + b)) return q -\
+    \ 1;\n            return q;\n        };\n\n        gint u = (*this) * conj(r);\n\
+    \        return *this = gint(near(u.x, abs(r)), near(u.y, abs(r)));\n    }\n \
+    \   gint& operator%=(const gint& r) { return *this -= (*this) / r * r; }\n   \
+    \ bool operator==(const gint& r) { return x == r.x and y == r.y; }\n    bool operator!=(const\
+    \ gint& r) { return x != r.x or  y != r.y; }\n    friend gint gcd(gint a, gint\
+    \ b) {\n        if(b == gint(0, 0)) return a;\n        return gcd(b, a % b);\n\
+    \    }\n};\n#line 5 \"verify/yukicoder/gaussian_integer.test.cpp\"\n\nint main()\
+    \ {\n    using gint = gaussian_integer;\n    gint t; t.x = in(), t.y = in();\n\
+    \    gint g = gcd(t, conj(t));\n\n    int N = in();\n    int ans = 0;\n    for(int\
+    \ _ : rep(N)) {\n        gint v; v.x = in(), v.y = in();\n        if(g == 0) {\n\
+    \            if(v == 0) ans++;\n        } else {\n            if(v % g == 0) ans++;\n\
     \        }\n    }\n    print(ans);\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/321\"\n\n#include \"../../src/cp-template.hpp\"\
     \n#include \"../../src/number/gaussian_integer.hpp\"\n\nint main() {\n    using\
@@ -131,12 +147,14 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/number/gaussian_integer.hpp
   isVerificationFile: true
   path: verify/yukicoder/gaussian_integer.test.cpp
   requiredBy: []
-  timestamp: '2023-10-17 14:35:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-18 21:43:28+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yukicoder/gaussian_integer.test.cpp
 layout: document

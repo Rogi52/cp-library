@@ -1,32 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -87,41 +93,51 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/number/eratosthenes.hpp\"\n\nstruct Eratosthenes {\n    int N;\n    vector<int>\
-    \ isprime, primes, spf, mobius;\n    Eratosthenes(int N) : N(N), isprime(N + 1,\
-    \ 1), spf(N + 1, -1), mobius(N + 1, 1) {\n        isprime[1] = 0;\n        spf[1]\
-    \ = 1;\n        for(int n = 2; n <= N; n++) if(isprime[n]) {\n            primes.push_back(n);\n\
-    \            spf[n] = n;\n            mobius[n] = -1;\n            for(int m =\
-    \ n + n; m <= N; m += n) {\n                isprime[m] = 0;\n                if(spf[m]\
-    \ == -1) spf[m] = n;\n                mobius[m] = ((m / n) % n == 0 ? 0 : - mobius[m]);\n\
-    \            }\n        }\n    }\n    vector<pair<int,int>> factorize(int n) {\n\
-    \        assert(1 <= n and n <= N);\n        vector<pair<int,int>> res;\n    \
-    \    while(n > 1) {\n            int p = spf[n], e = 0;\n            while(spf[n]\
-    \ == p) n /= p, e++;\n            res.push_back({p, e});\n        }\n        return\
-    \ res;\n    }\n    vector<int> divisors(int n) {\n        vector<int> res = {1};\n\
-    \        auto pf = factorize(n);\n        for(auto [p, e] : pf) {\n          \
-    \  for(int i : rep(res.size())) {\n                int v = 1;\n              \
-    \  for(int j : rep(e)) {\n                    v *= p;\n                    res.push_back(res[i]\
-    \ * v);\n                }\n            }\n        }\n        return res;\n  \
-    \  }\n    int euler_phi(int n) {\n        assert(1 <= n and n <= N);\n       \
-    \ int res = n;\n        for(auto [p, e] : factorize(n)) {\n            res /=\
-    \ p;\n            res *= p - 1;\n        }\n        return res;\n    }\n\n   \
-    \ template < class T >\n    void multiple_zeta(vector< T >& a) {\n        int\
-    \ n = a.size() - 1;\n        assert(1 <= n and n <= N);\n        for(int p : primes)\
-    \ {\n            if(p <= n)\n                for(int k = n / p; k > 0; k--) a[k]\
-    \ += a[k * p];\n            else\n                break;\n        }\n    }\n \
-    \   template < class T >\n    void multiple_mobius(vector< T >& a) {\n       \
-    \ int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n        for(int p\
-    \ : primes) {\n            if(p <= n)\n                for(int k = 1; k * p <=\
-    \ n; k++) a[k] -= a[k * p];\n            else\n                break;\n      \
-    \  }\n    }\n    template < class T >\n    void divisor_zeta(vector< T >& a) {\n\
-    \        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n        for(int\
-    \ p : primes) {\n            if(p <= n)\n                for(int k = 1; k * p\
-    \ <= n; k++) a[k * p] += a[k];\n            else\n                break;\n   \
-    \     }\n    }\n    template < class T >\n    void divisor_mobius(vector< T >&\
-    \ a) {\n        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n  \
-    \      for(int p : primes) {\n            if(p <= n)\n                for(int\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/number/eratosthenes.hpp\"\n\nstruct Eratosthenes {\n    int N;\n\
+    \    vector<int> isprime, primes, spf, mobius;\n    Eratosthenes(int N) : N(N),\
+    \ isprime(N + 1, 1), spf(N + 1, -1), mobius(N + 1, 1) {\n        isprime[1] =\
+    \ 0;\n        spf[1] = 1;\n        for(int n = 2; n <= N; n++) if(isprime[n])\
+    \ {\n            primes.push_back(n);\n            spf[n] = n;\n            mobius[n]\
+    \ = -1;\n            for(int m = n + n; m <= N; m += n) {\n                isprime[m]\
+    \ = 0;\n                if(spf[m] == -1) spf[m] = n;\n                mobius[m]\
+    \ = ((m / n) % n == 0 ? 0 : - mobius[m]);\n            }\n        }\n    }\n \
+    \   vector<pair<int,int>> factorize(int n) {\n        assert(1 <= n and n <= N);\n\
+    \        vector<pair<int,int>> res;\n        while(n > 1) {\n            int p\
+    \ = spf[n], e = 0;\n            while(spf[n] == p) n /= p, e++;\n            res.push_back({p,\
+    \ e});\n        }\n        return res;\n    }\n    vector<int> divisors(int n)\
+    \ {\n        vector<int> res = {1};\n        auto pf = factorize(n);\n       \
+    \ for(auto [p, e] : pf) {\n            for(int i : rep(res.size())) {\n      \
+    \          int v = 1;\n                for(int j : rep(e)) {\n               \
+    \     v *= p;\n                    res.push_back(res[i] * v);\n              \
+    \  }\n            }\n        }\n        return res;\n    }\n    int euler_phi(int\
+    \ n) {\n        assert(1 <= n and n <= N);\n        int res = n;\n        for(auto\
+    \ [p, e] : factorize(n)) {\n            res /= p;\n            res *= p - 1;\n\
+    \        }\n        return res;\n    }\n\n    template < class T >\n    void multiple_zeta(vector<\
+    \ T >& a) {\n        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n\
+    \        for(int p : primes) {\n            if(p <= n)\n                for(int\
+    \ k = n / p; k > 0; k--) a[k] += a[k * p];\n            else\n               \
+    \ break;\n        }\n    }\n    template < class T >\n    void multiple_mobius(vector<\
+    \ T >& a) {\n        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n\
+    \        for(int p : primes) {\n            if(p <= n)\n                for(int\
+    \ k = 1; k * p <= n; k++) a[k] -= a[k * p];\n            else\n              \
+    \  break;\n        }\n    }\n    template < class T >\n    void divisor_zeta(vector<\
+    \ T >& a) {\n        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n\
+    \        for(int p : primes) {\n            if(p <= n)\n                for(int\
+    \ k = 1; k * p <= n; k++) a[k * p] += a[k];\n            else\n              \
+    \  break;\n        }\n    }\n    template < class T >\n    void divisor_mobius(vector<\
+    \ T >& a) {\n        int n = a.size() - 1;\n        assert(1 <= n and n <= N);\n\
+    \        for(int p : primes) {\n            if(p <= n)\n                for(int\
     \ k = n / p; k > 0; k--) a[k * p] -= a[k];\n            else\n               \
     \ break;\n        }\n    }\n    template < class T >\n    vector< T > gcd_convolution(vector<\
     \ T > a, vector< T > b) {\n        int n = max(a.size(), b.size());\n        a.resize(n,\
@@ -184,11 +200,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/number/eratosthenes.hpp
   requiredBy: []
-  timestamp: '2023-10-13 16:06:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-18 21:43:28+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number/gcd_convolution.test.cpp
   - verify/library_checker/number/lcm_convolution.test.cpp

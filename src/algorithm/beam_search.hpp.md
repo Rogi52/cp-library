@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -84,12 +90,22 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/algorithm/selection.hpp\"\n\ntemplate < class T >\nT kth(const vector< T >&\
-    \ a, int k) {\n    int n = a.size();\n    T INF = numeric_limits< T >::max();\n\
-    \    vector< T > c;\n    for(int i : rep(0, n, 5)) {\n        vector< T > b;\n\
-    \        for(int d : rep(5)) {\n            b.push_back(i + d < n ? a[i + d] :\
-    \ INF);\n        }\n        sort(b.begin(), b.end());\n        c.push_back(b[2]);\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/algorithm/selection.hpp\"\n\ntemplate < class T >\nT kth(const\
+    \ vector< T >& a, int k) {\n    int n = a.size();\n    T INF = numeric_limits<\
+    \ T >::max();\n    vector< T > c;\n    for(int i : rep(0, n, 5)) {\n        vector<\
+    \ T > b;\n        for(int d : rep(5)) {\n            b.push_back(i + d < n ? a[i\
+    \ + d] : INF);\n        }\n        sort(b.begin(), b.end());\n        c.push_back(b[2]);\n\
     \    }\n\n    T m = kth(c, n / 10);\n    vector< T > s1, s2, s3;\n    for(T& x\
     \ : a) {\n        if(x <  m) s1.push_back(x);\n        if(x == m) s2.push_back(x);\n\
     \        if(x >  m) s3.push_back(x);\n    }\n\n    if(k <= int(s1.size())) return\
@@ -118,11 +134,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/algorithm/selection.hpp
   isVerificationFile: false
   path: src/algorithm/beam_search.hpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/algorithm/beam_search.hpp

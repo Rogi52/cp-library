@@ -4,25 +4,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/segtree.hpp
     title: src/data_structure/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -95,19 +101,29 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/data_structure/segtree.hpp\"\ntemplate < class monoid > struct segtree {\n\
-    \    using S = typename monoid::set;\n\n    segtree() : segtree(0) {}\n    segtree(int\
-    \ n) : segtree(vector< S >(n, monoid::id())) {}\n    segtree(int n, S s) : segtree(vector<\
-    \ S >(n, s)) {}\n    segtree(const vector< S >& v) : _n(int(v.size())) {\n   \
-    \     log = ceil_pow2(_n);\n        size = 1 << log;\n        d = vector< S >(2\
-    \ * size, monoid::id());\n        for(int i = 0; i < _n; i++) d[size + i] = v[i];\n\
-    \        for(int i = size - 1; i >= 1; i--) update(i);\n    }\n    // a[i] <-\
-    \ x\n    void set(int i, S x) {\n        assert(0 <= i && i < _n);\n        i\
-    \ += size;\n        d[i] = x;\n        for(int p = 1; p <= log; p++) update(i\
-    \ >> p);\n    }\n    // a[i]\n    S get(int i) {\n        assert(0 <= i && i <\
-    \ _n);\n        return d[i + size];\n    }\n    // [l, r)\n    S prod(int l, int\
-    \ r) {\n        assert(0 <= l && l <= r && r <= _n);\n        S sml = monoid::id(),\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/data_structure/segtree.hpp\"\ntemplate < class monoid > struct\
+    \ segtree {\n    using S = typename monoid::set;\n\n    segtree() : segtree(0)\
+    \ {}\n    segtree(int n) : segtree(vector< S >(n, monoid::id())) {}\n    segtree(int\
+    \ n, S s) : segtree(vector< S >(n, s)) {}\n    segtree(const vector< S >& v) :\
+    \ _n(int(v.size())) {\n        log = ceil_pow2(_n);\n        size = 1 << log;\n\
+    \        d = vector< S >(2 * size, monoid::id());\n        for(int i = 0; i <\
+    \ _n; i++) d[size + i] = v[i];\n        for(int i = size - 1; i >= 1; i--) update(i);\n\
+    \    }\n    // a[i] <- x\n    void set(int i, S x) {\n        assert(0 <= i &&\
+    \ i < _n);\n        i += size;\n        d[i] = x;\n        for(int p = 1; p <=\
+    \ log; p++) update(i >> p);\n    }\n    // a[i]\n    S get(int i) {\n        assert(0\
+    \ <= i && i < _n);\n        return d[i + size];\n    }\n    // [l, r)\n    S prod(int\
+    \ l, int r) {\n        assert(0 <= l && l <= r && r <= _n);\n        S sml = monoid::id(),\
     \ smr = monoid::id();\n        l += size, r += size;\n        while(l < r) {\n\
     \            if(l & 1) sml = monoid::op(sml, d[l++]);\n            if(r & 1) smr\
     \ = monoid::op(d[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n     \
@@ -201,13 +217,15 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/data_structure/segtree.hpp
   - src/algebra/affine.hpp
   - src/number/modint.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 00:28:35+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/segtree.test.cpp

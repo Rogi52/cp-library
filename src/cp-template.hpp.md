@@ -1,16 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
@@ -32,6 +38,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/size.hpp
     title: src/algebra/size.hpp
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
   - icon: ':warning:'
     path: src/algorithm/beam_search.hpp
     title: src/algorithm/beam_search.hpp
@@ -68,37 +77,40 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
+  - icon: ':warning:'
+    path: src/geometry/convex_hull.hpp
+    title: src/geometry/convex_hull.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   _extendedVerifiedWith:
@@ -183,54 +195,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/gaussian_integer.test.cpp
     title: verify/yukicoder/gaussian_integer.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -292,7 +304,17 @@ data:
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
     \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
-    src/cp-template.hpp\"\n"
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 19 \"src/cp-template.hpp\"\n"
   code: '#pragma once
 
     #include <bits/stdc++.h>
@@ -322,24 +344,35 @@ data:
 
     #include "./utility/key_val.hpp"
 
-    #include "./utility/vec_op.hpp"'
+    #include "./utility/vec_op.hpp"
+
+
+    #include "./algorithm/bin_search.hpp"
+
+    #include "./algorithm/argsort.hpp"
+
+    '
   dependsOn:
   - src/utility/rep_itr.hpp
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy:
   - src/algorithm/selection.hpp
   - src/algorithm/floor_sum.hpp
   - src/algorithm/beam_search.hpp
+  - src/algorithm/argsort.hpp
   - src/algebra/range_update_range_sum.hpp
   - src/algebra/range_update_range_minmax.hpp
   - src/algebra/range_add_range_sum.hpp
   - src/algebra/range_add_range_minmax.hpp
   - src/algebra/minmax.hpp
   - src/algebra/size.hpp
+  - src/geometry/convex_hull.hpp
   - src/number/fps_sparse.hpp
   - src/number/poly.hpp
   - src/number/eratosthenes.hpp
@@ -360,8 +393,8 @@ data:
   - src/data_structure/sliding_window_aggregation.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/fenwick_tree.hpp
-  timestamp: '2023-05-24 23:48:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-18 21:43:28+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj/data_structure/min_cost_flow.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp

@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   - icon: ':heavy_check_mark:'
@@ -92,61 +98,72 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/utility/zip.hpp\"\ntemplate < class T >\nstruct zipper {\n  public:\n    zipper()\
-    \ {}\n    vector< T > data;\n    void insert(const T x) {\n        built = 0;\n\
-    \        data.push_back(x);\n    }\n    void insert(const vector< T > v) {\n \
-    \       built = 0;\n        data.insert(data.end(), v.begin(), v.end());\n   \
-    \ }\n    template < class... args > zipper(args... a) { insert(a...); }\n    template\
-    \ < class... args > void insert(const T x, args... a) { insert(x); insert(a...);\
-    \ }\n    template < class... args > void insert(const vector< T > x, args... a)\
-    \ { insert(x); insert(a...); }\n\n    void build() {\n        sort(data.begin(),\
-    \ data.end());\n        data.erase(unique(data.begin(), data.end()), data.end());\n\
-    \        built = 1;\n    }\n\n    int id(const T x) {\n        if(not built) build();\n\
-    \        return lower_bound(data.begin(), data.end(), x) - data.begin();\n   \
-    \ }\n    vector<int> zip(const vector< T >& x) {\n        if(not built) build();\n\
-    \        vector<int> idx(x.size());\n        for(int i : rep(x.size())) idx[i]\
-    \ = id(x[i]);\n        return idx;\n    }\n    int size() {\n        if(not built)\
-    \ build();\n        return data.size();\n    }\n\n  private:\n    int built =\
-    \ 0;\n};\n#line 2 \"src/data_structure/wavlet_matrix.hpp\"\n\nusing u64 = unsigned\
-    \ long long;\nusing u8  = unsigned char;\n\nstruct bit_vector {\n    std::vector<u64>\
-    \ buf;\n    std::vector<int> sum;\n    bit_vector() {}\n    bit_vector(const vector<u8>&\
-    \ a) {\n        int n = a.size();\n        buf.assign((n + 63) >> 6, 0);\n   \
-    \     sum.assign(buf.size() + 1, 0);\n        for(int i : rep(n)) if(a[i]) {\n\
-    \            buf[i >> 6] |= u64(1) << (i & 63);\n            sum[(i >> 6) + 1]++;\n\
-    \        }\n        for(int i : rep(buf.size())) sum[i + 1] += sum[i];\n    }\n\
-    \    int rank(int k, int f = 1) {\n        int res = sum[k >> 6] + __builtin_popcountll(buf[k\
-    \ >> 6] & ((u64(1) << (k & 63)) - 1));\n        return f ? res : k - res;\n  \
-    \  }\n};\n\ntemplate < class T >\nstruct wavlet_matrix {\n    int n, lg; T m;\n\
-    \    vector<int> mid;\n    vector<bit_vector> buf;\n\n    wavlet_matrix(vector<\
-    \ T > a) : n(a.size()), lg(0), m(1) {\n        T max_a = 0;\n        for(T x :\
-    \ a) chmax(max_a, x);\n        while(m <= max_a) m <<= 1, lg++;\n        mid.resize(lg);\n\
-    \        buf.resize(lg);\n        for(int d : revrep(lg)) {\n            vector<u8>\
-    \ add;\n            vector<vector< T >> nxt(2);\n            for(T x : a) {\n\
-    \                add.push_back(x >> d & 1);\n                nxt[x >> d & 1].push_back(x);\n\
-    \            }\n            mid[d] = int(nxt[0].size());\n            buf[d] =\
-    \ bit_vector(add);\n            swap(a, nxt[0]);\n            a.insert(a.end(),\
-    \ nxt[1].begin(), nxt[1].end());\n        }\n    }\n    // count x\n    int rank(int\
-    \ L, int R, T x) {\n        if(m <= x) return 0;\n        for(int d : revrep(lg))\
-    \ {\n            int f = x >> d & 1;\n            L = buf[d].rank(L, f) + (f ?\
-    \ mid[d] : 0);\n            R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n      \
-    \  }\n        return R - L;\n    }\n    // kth smallest\n    T quantile(int L,\
-    \ int R, int k) {\n        T res = 0;\n        for(int d : revrep(lg)) {\n   \
-    \         int l0 = buf[d].rank(L, 0), r0 = buf[d].rank(R, 0);\n            if(k\
-    \ < r0 - l0) {\n                L = l0, R = r0;\n            } else {\n      \
-    \          k -= r0 - l0;\n                res |= T(1) << d;\n                L\
-    \ += mid[d] - l0, R += mid[d] - r0;\n            }\n        }\n        return\
-    \ res;\n    }\n    // count v < x\n    int freq(int L, int R, T x) {\n       \
-    \ if(m <= x) return R - L;\n        int res = 0;\n        for(int d : revrep(lg))\
-    \ {\n            int f = x >> d & 1;\n            if(f) res += buf[d].rank(R,\
-    \ 0) - buf[d].rank(L, 0);\n            L = buf[d].rank(L, f) + (f ? mid[d] : 0);\n\
-    \            R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n        }\n        return\
-    \ res;\n    }\n    // count [a, b)\n    int freq(int L, int R, T a, T b) {\n \
-    \       return freq(L, R, b) - freq(L, R, a);\n    }\n    // max v <= x\n    T\
-    \ prev(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
-    \ cnt == R - L ? T(-1) : quantile(L, R, cnt);\n    }\n    // min v > x\n    T\
-    \ next(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
-    \ cnt == 0 ? T(-1) : quantile(L, R, cnt - 1);\n    }\n};\n#line 6 \"verify/library_checker/data_structure/wavlet_matrix.test.cpp\"\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/utility/zip.hpp\"\ntemplate < class T >\nstruct zipper {\n  public:\n\
+    \    zipper() {}\n    vector< T > data;\n    void insert(const T x) {\n      \
+    \  built = 0;\n        data.push_back(x);\n    }\n    void insert(const vector<\
+    \ T > v) {\n        built = 0;\n        data.insert(data.end(), v.begin(), v.end());\n\
+    \    }\n    template < class... args > zipper(args... a) { insert(a...); }\n \
+    \   template < class... args > void insert(const T x, args... a) { insert(x);\
+    \ insert(a...); }\n    template < class... args > void insert(const vector< T\
+    \ > x, args... a) { insert(x); insert(a...); }\n\n    void build() {\n       \
+    \ sort(data.begin(), data.end());\n        data.erase(unique(data.begin(), data.end()),\
+    \ data.end());\n        built = 1;\n    }\n\n    int id(const T x) {\n       \
+    \ if(not built) build();\n        return lower_bound(data.begin(), data.end(),\
+    \ x) - data.begin();\n    }\n    vector<int> zip(const vector< T >& x) {\n   \
+    \     if(not built) build();\n        vector<int> idx(x.size());\n        for(int\
+    \ i : rep(x.size())) idx[i] = id(x[i]);\n        return idx;\n    }\n    int size()\
+    \ {\n        if(not built) build();\n        return data.size();\n    }\n\n  private:\n\
+    \    int built = 0;\n};\n#line 2 \"src/data_structure/wavlet_matrix.hpp\"\n\n\
+    using u64 = unsigned long long;\nusing u8  = unsigned char;\n\nstruct bit_vector\
+    \ {\n    std::vector<u64> buf;\n    std::vector<int> sum;\n    bit_vector() {}\n\
+    \    bit_vector(const vector<u8>& a) {\n        int n = a.size();\n        buf.assign((n\
+    \ + 63) >> 6, 0);\n        sum.assign(buf.size() + 1, 0);\n        for(int i :\
+    \ rep(n)) if(a[i]) {\n            buf[i >> 6] |= u64(1) << (i & 63);\n       \
+    \     sum[(i >> 6) + 1]++;\n        }\n        for(int i : rep(buf.size())) sum[i\
+    \ + 1] += sum[i];\n    }\n    int rank(int k, int f = 1) {\n        int res =\
+    \ sum[k >> 6] + __builtin_popcountll(buf[k >> 6] & ((u64(1) << (k & 63)) - 1));\n\
+    \        return f ? res : k - res;\n    }\n};\n\ntemplate < class T >\nstruct\
+    \ wavlet_matrix {\n    int n, lg; T m;\n    vector<int> mid;\n    vector<bit_vector>\
+    \ buf;\n\n    wavlet_matrix(vector< T > a) : n(a.size()), lg(0), m(1) {\n    \
+    \    T max_a = 0;\n        for(T x : a) chmax(max_a, x);\n        while(m <= max_a)\
+    \ m <<= 1, lg++;\n        mid.resize(lg);\n        buf.resize(lg);\n        for(int\
+    \ d : revrep(lg)) {\n            vector<u8> add;\n            vector<vector< T\
+    \ >> nxt(2);\n            for(T x : a) {\n                add.push_back(x >> d\
+    \ & 1);\n                nxt[x >> d & 1].push_back(x);\n            }\n      \
+    \      mid[d] = int(nxt[0].size());\n            buf[d] = bit_vector(add);\n \
+    \           swap(a, nxt[0]);\n            a.insert(a.end(), nxt[1].begin(), nxt[1].end());\n\
+    \        }\n    }\n    // count x\n    int rank(int L, int R, T x) {\n       \
+    \ if(m <= x) return 0;\n        for(int d : revrep(lg)) {\n            int f =\
+    \ x >> d & 1;\n            L = buf[d].rank(L, f) + (f ? mid[d] : 0);\n       \
+    \     R = buf[d].rank(R, f) + (f ? mid[d] : 0);\n        }\n        return R -\
+    \ L;\n    }\n    // kth smallest\n    T quantile(int L, int R, int k) {\n    \
+    \    T res = 0;\n        for(int d : revrep(lg)) {\n            int l0 = buf[d].rank(L,\
+    \ 0), r0 = buf[d].rank(R, 0);\n            if(k < r0 - l0) {\n               \
+    \ L = l0, R = r0;\n            } else {\n                k -= r0 - l0;\n     \
+    \           res |= T(1) << d;\n                L += mid[d] - l0, R += mid[d] -\
+    \ r0;\n            }\n        }\n        return res;\n    }\n    // count v <\
+    \ x\n    int freq(int L, int R, T x) {\n        if(m <= x) return R - L;\n   \
+    \     int res = 0;\n        for(int d : revrep(lg)) {\n            int f = x >>\
+    \ d & 1;\n            if(f) res += buf[d].rank(R, 0) - buf[d].rank(L, 0);\n  \
+    \          L = buf[d].rank(L, f) + (f ? mid[d] : 0);\n            R = buf[d].rank(R,\
+    \ f) + (f ? mid[d] : 0);\n        }\n        return res;\n    }\n    // count\
+    \ [a, b)\n    int freq(int L, int R, T a, T b) {\n        return freq(L, R, b)\
+    \ - freq(L, R, a);\n    }\n    // max v <= x\n    T prev(int L, int R, T x) {\n\
+    \        int cnt = freq(L, R, x);\n        return cnt == R - L ? T(-1) : quantile(L,\
+    \ R, cnt);\n    }\n    // min v > x\n    T next(int L, int R, T x) {\n       \
+    \ int cnt = freq(L, R, x);\n        return cnt == 0 ? T(-1) : quantile(L, R, cnt\
+    \ - 1);\n    }\n};\n#line 6 \"verify/library_checker/data_structure/wavlet_matrix.test.cpp\"\
     \n\nint main() {\n    int N = in(), Q = in();\n    using value_type = int;\n \
     \   vector< value_type > a = in(N);\n    zipper< value_type > z(a);\n    wavlet_matrix<\
     \ int > wm(z.zip(a));\n    \n    for(int _ : rep(Q)) {\n        int L = in(),\
@@ -164,12 +181,14 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/utility/zip.hpp
   - src/data_structure/wavlet_matrix.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   requiredBy: []
-  timestamp: '2023-10-16 22:34:06+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/wavlet_matrix.test.cpp

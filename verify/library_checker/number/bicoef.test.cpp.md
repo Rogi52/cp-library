@@ -1,32 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/bicoef.hpp
     title: src/number/bicoef.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -92,12 +98,22 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n  public:\n    ll v\
-    \ = 0;\n    runtime_modint(ll v = 0) { s(v % get_mod() + get_mod()); }\n    static\
-    \ void set_mod(ll m) { mod() = m; }\n    static void set_mod(ll m, int isp) {\
-    \ mod() = m; isprime() = isp; }\n    static ll get_mod() { return mod(); }\n \
-    \   using rtmint = runtime_modint;\n    rtmint& s(ll v) { this->v = v < get_mod()\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n  public:\n\
+    \    ll v = 0;\n    runtime_modint(ll v = 0) { s(v % get_mod() + get_mod()); }\n\
+    \    static void set_mod(ll m) { mod() = m; }\n    static void set_mod(ll m, int\
+    \ isp) { mod() = m; isprime() = isp; }\n    static ll get_mod() { return mod();\
+    \ }\n    using rtmint = runtime_modint;\n    rtmint& s(ll v) { this->v = v < get_mod()\
     \ ? v : v - get_mod(); return *this; }\n    rtmint operator-() const { return\
     \ rtmint() - *this; }\n    rtmint& operator+=(const rtmint& rhs) { return s(v\
     \ + rhs.v); }\n    rtmint& operator-=(const rtmint& rhs) { return s(v + get_mod()\
@@ -151,13 +167,15 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/number/runtime_modint.hpp
   - src/number/bicoef.hpp
   isVerificationFile: true
   path: verify/library_checker/number/bicoef.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-18 21:43:28+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number/bicoef.test.cpp
 layout: document

@@ -1,38 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/division_of_polynomials
@@ -98,52 +104,63 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\ntemplate\
-    \ < modinfo const &ref >\nstruct modint {\n    static constexpr uint const &mod\
-    \ = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static constexpr\
-    \ uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint\
-    \ v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll\
-    \ v = 0) { s(v % mod + mod); }\n    modint operator-() const { return modint()\
-    \ - *this; }\n    modint& operator+=(const modint& rhs) { return s(v + rhs.v);\
-    \ }\n    modint& operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n\
-    \    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v % mod; return\
-    \ *this; }\n    modint& operator/=(const modint& rhs) { return *this *= inv(rhs);\
-    \ }\n    modint operator+(const modint& rhs) const { return modint(*this) += rhs;\
-    \ }\n    modint operator-(const modint& rhs) const { return modint(*this) -= rhs;\
-    \ }\n    modint operator*(const modint& rhs) const { return modint(*this) *= rhs;\
-    \ }\n    modint operator/(const modint& rhs) const { return modint(*this) /= rhs;\
-    \ }\n    friend modint pow(modint x, ll n) { modint res(1); while(n > 0) { if(n\
-    \ & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint inv(modint\
-    \ v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n        }\
-    \ else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n        \
-    \    while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y); }\n \
-    \           return modint(x);\n        }\n    }\n    friend modint operator+(int\
-    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
-    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
-    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
-    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
-    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
-    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
-    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
-    \ mint1000000007 = modint< base1000000007 >;\n#line 3 \"src/number/ntt.hpp\"\n\
-    namespace ntt {\n\ntemplate < class mint >\nvoid trans(vector<mint>& v, bool is_inv)\
-    \ {\n    if(v.empty()) return;\n    int n = v.size();\n    uint mod = mint::mod,\
-    \ root = mint::root;\n    static bool first = true;\n    static vector<ll> vbw(30),\
-    \ vibw(30);\n    if(first) {\n        first = false;\n        for(int k : rep(30))\
-    \ {\n            vbw[k] = pow(mint(root), (mod - 1) >> (k + 1)).v;\n         \
-    \   vibw[k] = inv(mint(vbw[k])).v;\n        }\n    }\n    for(int i = 0, j = 1;\
-    \ j < n - 1; j++) {\n        for(int k = n >> 1; k > (i ^= k); k >>= 1);\n   \
-    \     if(i > j) swap(v[i], v[j]);\n    }\n    for(int k = 0, t = 2; t <= n; ++k,\
-    \ t <<= 1) {\n        mint bw = (is_inv ? vibw[k] : vbw[k]);\n        for (int\
-    \ i = 0; i < n; i += t) {\n            mint w = 1;\n            for (int j = 0;\
-    \ j < t / 2; ++j) {\n                int j1 = i + j, j2 = i + j + t/2;\n     \
-    \           mint c1 = v[j1], c2 = v[j2] * w;\n                v[j1] = c1 + c2;\n\
-    \                v[j2] = c1 - c2;\n                w *= bw;\n            }\n \
-    \       }\n    }\n    if(is_inv) {\n        mint iv = inv(mint(n));\n        for(int\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime;\
+    \ };\ntemplate < modinfo const &ref >\nstruct modint {\n    static constexpr uint\
+    \ const &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n \
+    \   static constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n   \
+    \ constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this;\
+    \ }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-()\
+    \ const { return modint() - *this; }\n    modint& operator+=(const modint& rhs)\
+    \ { return s(v + rhs.v); }\n    modint& operator-=(const modint& rhs) { return\
+    \ s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v)\
+    \ * rhs.v % mod; return *this; }\n    modint& operator/=(const modint& rhs) {\
+    \ return *this *= inv(rhs); }\n    modint operator+(const modint& rhs) const {\
+    \ return modint(*this) += rhs; }\n    modint operator-(const modint& rhs) const\
+    \ { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs) const\
+    \ { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs) const\
+    \ { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n) { modint\
+    \ res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n\
+    \    friend modint inv(modint v) {\n        if(isprime) {\n            return\
+    \ pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
+    \ x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b);\
+    \ swap(x -= t * y, y); }\n            return modint(x);\n        }\n    }\n  \
+    \  friend modint operator+(int x, const modint& y) { return modint(x) + y; }\n\
+    \    friend modint operator-(int x, const modint& y) { return modint(x) - y; }\n\
+    \    friend modint operator*(int x, const modint& y) { return modint(x) * y; }\n\
+    \    friend modint operator/(int x, const modint& y) { return modint(x) / y; }\n\
+    \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
+    \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
+    \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
+    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
+    using mint998244353 = modint< base998244353 >;\nusing mint1000000007 = modint<\
+    \ base1000000007 >;\n#line 3 \"src/number/ntt.hpp\"\nnamespace ntt {\n\ntemplate\
+    \ < class mint >\nvoid trans(vector<mint>& v, bool is_inv) {\n    if(v.empty())\
+    \ return;\n    int n = v.size();\n    uint mod = mint::mod, root = mint::root;\n\
+    \    static bool first = true;\n    static vector<ll> vbw(30), vibw(30);\n   \
+    \ if(first) {\n        first = false;\n        for(int k : rep(30)) {\n      \
+    \      vbw[k] = pow(mint(root), (mod - 1) >> (k + 1)).v;\n            vibw[k]\
+    \ = inv(mint(vbw[k])).v;\n        }\n    }\n    for(int i = 0, j = 1; j < n -\
+    \ 1; j++) {\n        for(int k = n >> 1; k > (i ^= k); k >>= 1);\n        if(i\
+    \ > j) swap(v[i], v[j]);\n    }\n    for(int k = 0, t = 2; t <= n; ++k, t <<=\
+    \ 1) {\n        mint bw = (is_inv ? vibw[k] : vbw[k]);\n        for (int i = 0;\
+    \ i < n; i += t) {\n            mint w = 1;\n            for (int j = 0; j < t\
+    \ / 2; ++j) {\n                int j1 = i + j, j2 = i + j + t/2;\n           \
+    \     mint c1 = v[j1], c2 = v[j2] * w;\n                v[j1] = c1 + c2;\n   \
+    \             v[j2] = c1 - c2;\n                w *= bw;\n            }\n    \
+    \    }\n    }\n    if(is_inv) {\n        mint iv = inv(mint(n));\n        for(int\
     \ i : rep(n)) v[i] *= iv;\n    }\n}\ntemplate < class mint > void ntt(vector<mint>&\
     \ v) { trans(v, false); }\ntemplate < class mint > void intt(vector<mint>& v)\
     \ { trans(v, true); }\n\n// for garner\nconstexpr modinfo base0 { 754974721, 11,\
@@ -325,6 +342,8 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/number/modint.hpp
   - src/number/poly.hpp
   - src/number/ntt.hpp
@@ -332,8 +351,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/poly_division.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:28:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-18 21:43:28+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/number/poly_division.test.cpp
 layout: document

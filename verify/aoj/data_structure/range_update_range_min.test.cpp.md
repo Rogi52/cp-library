@@ -10,22 +10,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/set_monoid.hpp
     title: src/algebra/set_monoid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/lazy_segtree.hpp
     title: src/data_structure/lazy_segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -98,73 +104,83 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/data_structure/lazy_segtree.hpp\"\ntemplate < class A > struct lazy_segtree\
-    \ {\n  public:\n    using V = typename A::value_structure;\n    using S = typename\
-    \ V::set;\n    using O = typename A::operator_structure;\n    using F = typename\
-    \ O::set;\n    int _n, size, log;\n    vector< S > d;\n    vector< F > lz;\n\n\
-    \    void update(int k) { d[k] = V::op(d[2 * k], d[2 * k + 1]); }\n    void all_apply(int\
-    \ k, F f) {\n        d[k] = A::op(d[k], f);\n        if(k < size) lz[k] = O::op(lz[k],\
-    \ f);\n    }\n    void push(int k) {\n        all_apply(2 * k, lz[k]);\n     \
-    \   all_apply(2 * k + 1, lz[k]);\n        lz[k] = O::id();\n    }\n    int ceil_pow2(int\
-    \ n) {\n        int x = 0;\n        while((1U << x) < uint(n)) x++;\n        return\
-    \ x;\n    }\n\n    lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int n)\
-    \ : lazy_segtree(vector< S >(n, S::id())) {}\n    lazy_segtree(int n, S s) : lazy_segtree(vector<\
-    \ S >(n, s)) {}\n    lazy_segtree(const vector< S >& v) : _n(int(v.size())) {\n\
-    \        log = ceil_pow2(_n);\n        size = 1 << log;\n        d = vector< S\
-    \ >(2 * size, V::id());\n        lz = vector< F >(size, O::id());\n        for(int\
-    \ i = 0; i < _n; i++) d[size + i] = v[i];\n        for(int i = size - 1; i >=\
-    \ 1; i--) update(i);\n    }\n\n    void set(int i, S x) {\n        assert(0 <=\
-    \ i && i < _n);\n        i += size;\n        for(int p = log; p >= 1; p--) push(i\
-    \ >> p);\n        d[i] = x;\n        for(int p = 1; p <= log; p++) update(i >>\
-    \ p);\n    }\n    S get(int i) {\n        assert(0 <= i && i < _n);\n        i\
-    \ += size;\n        for(int p = log; p >= 1; p--) push(i >> p);\n        return\
-    \ d[i];\n    }\n    S prod(int l, int r) {\n        assert(0 <= l && l <= r &&\
-    \ r <= _n);\n        if(l == r) return V::id();\n        l += size, r += size;\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/data_structure/lazy_segtree.hpp\"\ntemplate < class A > struct\
+    \ lazy_segtree {\n  public:\n    using V = typename A::value_structure;\n    using\
+    \ S = typename V::set;\n    using O = typename A::operator_structure;\n    using\
+    \ F = typename O::set;\n    int _n, size, log;\n    vector< S > d;\n    vector<\
+    \ F > lz;\n\n    void update(int k) { d[k] = V::op(d[2 * k], d[2 * k + 1]); }\n\
+    \    void all_apply(int k, F f) {\n        d[k] = A::op(d[k], f);\n        if(k\
+    \ < size) lz[k] = O::op(lz[k], f);\n    }\n    void push(int k) {\n        all_apply(2\
+    \ * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n        lz[k] = O::id();\n\
+    \    }\n    int ceil_pow2(int n) {\n        int x = 0;\n        while((1U << x)\
+    \ < uint(n)) x++;\n        return x;\n    }\n\n    lazy_segtree() : lazy_segtree(0)\
+    \ {}\n    lazy_segtree(int n) : lazy_segtree(vector< S >(n, S::id())) {}\n   \
+    \ lazy_segtree(int n, S s) : lazy_segtree(vector< S >(n, s)) {}\n    lazy_segtree(const\
+    \ vector< S >& v) : _n(int(v.size())) {\n        log = ceil_pow2(_n);\n      \
+    \  size = 1 << log;\n        d = vector< S >(2 * size, V::id());\n        lz =\
+    \ vector< F >(size, O::id());\n        for(int i = 0; i < _n; i++) d[size + i]\
+    \ = v[i];\n        for(int i = size - 1; i >= 1; i--) update(i);\n    }\n\n  \
+    \  void set(int i, S x) {\n        assert(0 <= i && i < _n);\n        i += size;\n\
+    \        for(int p = log; p >= 1; p--) push(i >> p);\n        d[i] = x;\n    \
+    \    for(int p = 1; p <= log; p++) update(i >> p);\n    }\n    S get(int i) {\n\
+    \        assert(0 <= i && i < _n);\n        i += size;\n        for(int p = log;\
+    \ p >= 1; p--) push(i >> p);\n        return d[i];\n    }\n    S prod(int l, int\
+    \ r) {\n        assert(0 <= l && l <= r && r <= _n);\n        if(l == r) return\
+    \ V::id();\n        l += size, r += size;\n        for(int i = log; i >= 1; i--)\
+    \ {\n            if(((l >> i) << i) != l) push(l >> i);\n            if(((r >>\
+    \ i) << i) != r) push(r >> i);\n        }\n        S sml = V::id(), smr = V::id();\n\
+    \        while(l < r) {\n            if(l & 1) sml = V::op(sml, d[l++]);\n   \
+    \         if(r & 1) smr = V::op(d[--r], smr);\n            l >>= 1, r >>= 1;\n\
+    \        }\n        return V::op(sml, smr);\n    }\n    S all_prod() { return\
+    \ d[1]; }\n    void apply(int i, F f) {\n        assert(0 <= i && i < _n);\n \
+    \       i += size;\n        for(int p = log; p >= 1; p--) push(i >> p);\n    \
+    \    d[i] = O::op(d[i], f);\n        for(int p = 1; p <= log; p++) update(i >>\
+    \ p);\n    }\n    void apply(int l, int r, F f) {\n        assert(0 <= l && l\
+    \ <= r && r <= _n);\n        if(l == r) return;\n        l += size, r += size;\n\
     \        for(int i = log; i >= 1; i--) {\n            if(((l >> i) << i) != l)\
-    \ push(l >> i);\n            if(((r >> i) << i) != r) push(r >> i);\n        }\n\
-    \        S sml = V::id(), smr = V::id();\n        while(l < r) {\n           \
-    \ if(l & 1) sml = V::op(sml, d[l++]);\n            if(r & 1) smr = V::op(d[--r],\
-    \ smr);\n            l >>= 1, r >>= 1;\n        }\n        return V::op(sml, smr);\n\
-    \    }\n    S all_prod() { return d[1]; }\n    void apply(int i, F f) {\n    \
-    \    assert(0 <= i && i < _n);\n        i += size;\n        for(int p = log; p\
-    \ >= 1; p--) push(i >> p);\n        d[i] = O::op(d[i], f);\n        for(int p\
-    \ = 1; p <= log; p++) update(i >> p);\n    }\n    void apply(int l, int r, F f)\
-    \ {\n        assert(0 <= l && l <= r && r <= _n);\n        if(l == r) return;\n\
-    \        l += size, r += size;\n        for(int i = log; i >= 1; i--) {\n    \
-    \        if(((l >> i) << i) != l) push(l >> i);\n            if(((r >> i) << i)\
-    \ != r) push((r - 1) >> i);\n        }\n        {\n            int l2 = l, r2\
-    \ = r;\n            while(l < r) {\n                if(l & 1) all_apply(l++, f);\n\
-    \                if(r & 1) all_apply(--r, f);\n                l >>= 1, r >>=\
-    \ 1;\n            }\n            l = l2, r = r2;\n        }\n        for(int i\
-    \ = 1; i <= log; i++) {\n            if(((l >> i) << i) != l) update(l >> i);\n\
-    \            if(((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\
-    \    template < class G > int max_right(int l, G g) {\n        assert(0 <= l &&\
-    \ l <= _n);\n        assert(g(V::id()));\n        if(l == _n) return _n;\n   \
-    \     l += size;\n        for(int i = log; i >= 1; i--) push(l >> i);\n      \
-    \  S sm = V::id()();\n        do {\n            while(l % 2 == 0) l >>= 1;\n \
-    \           if(!g(V::op(sm, d[l]))) {\n                while(l < size) {\n   \
-    \                 push(l);\n                    l = 2 * l;\n                 \
-    \   if(g(V::op(sm, d[l]))) {\n                        sm = V::op(sm, d[l]);\n\
-    \                        l++;\n                    }\n                }\n    \
-    \            return l - size;\n            }\n            sm = V::op(sm, d[l]);\n\
-    \            l++;\n        } while((l & -l) != l);\n        return _n;\n    }\n\
-    \    template < class G > int min_left(int r, G g) {\n        assert(0 <= r &&\
-    \ r <= _n);\n        assert(g(V::id()));\n        if(r == 0) return 0;\n     \
-    \   r += size;\n        for(int i = log; i >= 1; i--) push((r - 1) >> i);\n  \
-    \      S sm = V::id();\n        do {\n            r--;\n            while(r >\
-    \ 1 && (r % 2)) r >>= 1;\n            if(!g(V::op(d[r], sm))) {\n            \
-    \    while(r < size) {\n                    push(r);\n                    r =\
-    \ 2 * r + 1;\n                    if(g(V::op(d[r], sm))) {\n                 \
-    \       sm = V::op(d[r], sm);\n                        r--;\n                \
-    \    }\n                }\n                return r + 1 - size;\n            }\n\
-    \            sm = V::op(d[r], sm);\n        } while((r & -r) != r);\n        return\
-    \ 0;\n    }\n};\n#line 3 \"src/algebra/minmax.hpp\"\n\ntemplate < class T > class\
-    \ min_monoid {\n  public:\n    using set = T;\n    static constexpr T op(const\
-    \ T &l, const T &r) { return std::min(l, r); }\n    static constexpr T id() {\
-    \ return std::numeric_limits< T >::max(); }\n    static constexpr bool comm =\
-    \ true;\n};\n\ntemplate < class T > class max_monoid {\n  public:\n    using set\
-    \ = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
+    \ push(l >> i);\n            if(((r >> i) << i) != r) push((r - 1) >> i);\n  \
+    \      }\n        {\n            int l2 = l, r2 = r;\n            while(l < r)\
+    \ {\n                if(l & 1) all_apply(l++, f);\n                if(r & 1) all_apply(--r,\
+    \ f);\n                l >>= 1, r >>= 1;\n            }\n            l = l2, r\
+    \ = r2;\n        }\n        for(int i = 1; i <= log; i++) {\n            if(((l\
+    \ >> i) << i) != l) update(l >> i);\n            if(((r >> i) << i) != r) update((r\
+    \ - 1) >> i);\n        }\n    }\n    template < class G > int max_right(int l,\
+    \ G g) {\n        assert(0 <= l && l <= _n);\n        assert(g(V::id()));\n  \
+    \      if(l == _n) return _n;\n        l += size;\n        for(int i = log; i\
+    \ >= 1; i--) push(l >> i);\n        S sm = V::id()();\n        do {\n        \
+    \    while(l % 2 == 0) l >>= 1;\n            if(!g(V::op(sm, d[l]))) {\n     \
+    \           while(l < size) {\n                    push(l);\n                \
+    \    l = 2 * l;\n                    if(g(V::op(sm, d[l]))) {\n              \
+    \          sm = V::op(sm, d[l]);\n                        l++;\n             \
+    \       }\n                }\n                return l - size;\n            }\n\
+    \            sm = V::op(sm, d[l]);\n            l++;\n        } while((l & -l)\
+    \ != l);\n        return _n;\n    }\n    template < class G > int min_left(int\
+    \ r, G g) {\n        assert(0 <= r && r <= _n);\n        assert(g(V::id()));\n\
+    \        if(r == 0) return 0;\n        r += size;\n        for(int i = log; i\
+    \ >= 1; i--) push((r - 1) >> i);\n        S sm = V::id();\n        do {\n    \
+    \        r--;\n            while(r > 1 && (r % 2)) r >>= 1;\n            if(!g(V::op(d[r],\
+    \ sm))) {\n                while(r < size) {\n                    push(r);\n \
+    \                   r = 2 * r + 1;\n                    if(g(V::op(d[r], sm)))\
+    \ {\n                        sm = V::op(d[r], sm);\n                        r--;\n\
+    \                    }\n                }\n                return r + 1 - size;\n\
+    \            }\n            sm = V::op(d[r], sm);\n        } while((r & -r) !=\
+    \ r);\n        return 0;\n    }\n};\n#line 3 \"src/algebra/minmax.hpp\"\n\ntemplate\
+    \ < class T > class min_monoid {\n  public:\n    using set = T;\n    static constexpr\
+    \ T op(const T &l, const T &r) { return std::min(l, r); }\n    static constexpr\
+    \ T id() { return std::numeric_limits< T >::max(); }\n    static constexpr bool\
+    \ comm = true;\n};\n\ntemplate < class T > class max_monoid {\n  public:\n   \
+    \ using set = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
     \ r); }\n    static constexpr T id() { return std::numeric_limits< T >::min();\
     \ }\n    static constexpr bool comm = true;\n};\n#line 1 \"src/algebra/set_monoid.hpp\"\
     \ntemplate < class T, T none = T(-1) >\nstruct set_monoid {\n  public:\n    using\
@@ -202,6 +218,8 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/data_structure/lazy_segtree.hpp
   - src/algebra/range_update_range_minmax.hpp
   - src/algebra/minmax.hpp
@@ -209,7 +227,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/data_structure/range_update_range_min.test.cpp
   requiredBy: []
-  timestamp: '2023-10-14 00:28:35+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/range_update_range_min.test.cpp

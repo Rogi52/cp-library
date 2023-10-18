@@ -10,19 +10,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -93,28 +99,38 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid {\n  public:\n  \
-    \  using set = T;\n    static constexpr T op(const T &l, const T &r) { return\
-    \ l + r; }\n    static constexpr T id() { return T(0); }\n    static constexpr\
-    \ T inv(const T &x) { return -x; }\n    static constexpr T pow(const T &x, const\
-    \ ll n) { return x * n; }\n    static constexpr bool comm = true;\n};\n#line 1\
-    \ \"src/algebra/set_monoid.hpp\"\ntemplate < class T, T none = T(-1) >\nstruct\
-    \ set_monoid {\n  public:\n    using set = T;\n    static constexpr T op(const\
-    \ T& l, const T& r) { return (r == none ? l : r); }\n    static constexpr T id()\
-    \ { return none; }\n    static constexpr bool comm = false;\n};\n#line 2 \"src/algebra/size.hpp\"\
-    \n\ntemplate < class M, class T >\nstruct with_size {\n  public:\n    struct VS\
-    \ {\n        using V = typename M::set;\n        mutable V value;\n        T size;\n\
-    \    };\n    using set = VS;\n    static constexpr set op(const set& l, const\
-    \ set& r) {\n        return set{M::op(l.value, r.value), l.size + r.size};\n \
-    \   }\n    static constexpr set id() {\n        return set{M::id(), 0};\n    }\n\
-    };\n#line 5 \"src/algebra/range_update_range_sum.hpp\"\n\ntemplate < class T,\
-    \ T none = T(-1) > class range_update_range_sum {\n  public:\n    using value_structure\
-    \ = with_size< sum_monoid< T >, T >;\n    using operator_structure = set_monoid<\
-    \ T, none >;\n  private:\n    using S = typename value_structure::set;\n    using\
-    \ F = typename operator_structure::set;\n  public:\n    static constexpr S op(const\
-    \ S& x, const F& f) {\n        if(f != none) x.value = f * x.size;\n        return\
-    \ x;\n    }\n};\n"
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid {\n\
+    \  public:\n    using set = T;\n    static constexpr T op(const T &l, const T\
+    \ &r) { return l + r; }\n    static constexpr T id() { return T(0); }\n    static\
+    \ constexpr T inv(const T &x) { return -x; }\n    static constexpr T pow(const\
+    \ T &x, const ll n) { return x * n; }\n    static constexpr bool comm = true;\n\
+    };\n#line 1 \"src/algebra/set_monoid.hpp\"\ntemplate < class T, T none = T(-1)\
+    \ >\nstruct set_monoid {\n  public:\n    using set = T;\n    static constexpr\
+    \ T op(const T& l, const T& r) { return (r == none ? l : r); }\n    static constexpr\
+    \ T id() { return none; }\n    static constexpr bool comm = false;\n};\n#line\
+    \ 2 \"src/algebra/size.hpp\"\n\ntemplate < class M, class T >\nstruct with_size\
+    \ {\n  public:\n    struct VS {\n        using V = typename M::set;\n        mutable\
+    \ V value;\n        T size;\n    };\n    using set = VS;\n    static constexpr\
+    \ set op(const set& l, const set& r) {\n        return set{M::op(l.value, r.value),\
+    \ l.size + r.size};\n    }\n    static constexpr set id() {\n        return set{M::id(),\
+    \ 0};\n    }\n};\n#line 5 \"src/algebra/range_update_range_sum.hpp\"\n\ntemplate\
+    \ < class T, T none = T(-1) > class range_update_range_sum {\n  public:\n    using\
+    \ value_structure = with_size< sum_monoid< T >, T >;\n    using operator_structure\
+    \ = set_monoid< T, none >;\n  private:\n    using S = typename value_structure::set;\n\
+    \    using F = typename operator_structure::set;\n  public:\n    static constexpr\
+    \ S op(const S& x, const F& f) {\n        if(f != none) x.value = f * x.size;\n\
+    \        return x;\n    }\n};\n"
   code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/algebra/sum.hpp\"\
     \n#include \"../../src/algebra/set_monoid.hpp\"\n#include \"../../src/algebra/size.hpp\"\
     \n\ntemplate < class T, T none = T(-1) > class range_update_range_sum {\n  public:\n\
@@ -129,13 +145,15 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/algebra/sum.hpp
   - src/algebra/set_monoid.hpp
   - src/algebra/size.hpp
   isVerificationFile: false
   path: src/algebra/range_update_range_sum.hpp
   requiredBy: []
-  timestamp: '2023-10-14 00:28:35+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/data_structure/range_update_range_sum.test.cpp

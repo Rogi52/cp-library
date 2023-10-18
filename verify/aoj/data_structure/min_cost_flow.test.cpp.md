@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/min_cost_flow.hpp
     title: src/graph/min_cost_flow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -89,31 +95,42 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/graph/min_cost_flow.hpp\"\ntemplate < class Cap, class Cost > struct mcf_graph\
-    \ {\n  public:\n    explicit mcf_graph(int n) : n(n) {}\n\n    int add_edge(int\
-    \ from, int to, Cap cap, Cost cost) {\n        assert(0 <= from and from < n);\n\
-    \        assert(0 <= to and to < n);\n        assert(0 <= cap);\n        assert(0\
-    \ <= cost);\n        int m = _edges.size();\n        _edges.push_back({from, to,\
-    \ cap, 0, cost});\n        return m;\n    }\n\n    struct edge {\n        int\
-    \ from, to;\n        Cap cap, flow;\n        Cost cost;\n    };\n\n    edge get_edge(int\
-    \ i) {\n        int m = _edges.size();\n        assert(0 <= i and i < m);\n  \
-    \      return _edges[i];\n    }\n\n    vector<edge> edges() { return _edges; }\n\
-    \n    pair<Cap, Cost> flow(int s, int t) {\n        return flow(s, t, numeric_limits<Cap>::max());\n\
-    \    }\n    pair<Cap, Cost> flow(int s, int t, Cap flow_limit) {\n        return\
-    \ slope(s, t, flow_limit).back();\n    }\n    vector<pair<Cap, Cost>> slope(int\
-    \ s, int t) {\n        return slope(s, t, numeric_limits<Cap>::max());\n    }\n\
-    \    vector<pair<Cap, Cost>> slope(int s, int t, Cap flow_limit) {\n        assert(0\
-    \ <= s and s < n);\n        assert(0 <= t and t < n);\n        assert(s != t);\n\
-    \n        int m = _edges.size();\n        vector<int> e_id(m);\n        auto g\
-    \ = [&]() {\n            vector<int> degree(n), r_id(m);\n            vector<pair<int,\
-    \ _edge>> elist;\n            elist.reserve(m + m);\n            for(int i : rep(m))\
-    \ {\n                edge e = _edges[i];\n                e_id[i] = degree[e.from]++;\n\
-    \                r_id[i] = degree[e.to]++;\n                elist.push_back({e.from,\
-    \ {e.to, -1, e.cap - e.flow, e.cost}});\n                elist.push_back({e.to,\
-    \ {e.from, -1, e.flow, -e.cost}});\n            }\n            csr<_edge> _g(n,\
-    \ elist);\n            for(int i : rep(m)) {\n                edge e = _edges[i];\n\
-    \                e_id[i] += _g.start[e.from];\n                r_id[i] += _g.start[e.to];\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/graph/min_cost_flow.hpp\"\ntemplate < class Cap, class Cost >\
+    \ struct mcf_graph {\n  public:\n    explicit mcf_graph(int n) : n(n) {}\n\n \
+    \   int add_edge(int from, int to, Cap cap, Cost cost) {\n        assert(0 <=\
+    \ from and from < n);\n        assert(0 <= to and to < n);\n        assert(0 <=\
+    \ cap);\n        assert(0 <= cost);\n        int m = _edges.size();\n        _edges.push_back({from,\
+    \ to, cap, 0, cost});\n        return m;\n    }\n\n    struct edge {\n       \
+    \ int from, to;\n        Cap cap, flow;\n        Cost cost;\n    };\n\n    edge\
+    \ get_edge(int i) {\n        int m = _edges.size();\n        assert(0 <= i and\
+    \ i < m);\n        return _edges[i];\n    }\n\n    vector<edge> edges() { return\
+    \ _edges; }\n\n    pair<Cap, Cost> flow(int s, int t) {\n        return flow(s,\
+    \ t, numeric_limits<Cap>::max());\n    }\n    pair<Cap, Cost> flow(int s, int\
+    \ t, Cap flow_limit) {\n        return slope(s, t, flow_limit).back();\n    }\n\
+    \    vector<pair<Cap, Cost>> slope(int s, int t) {\n        return slope(s, t,\
+    \ numeric_limits<Cap>::max());\n    }\n    vector<pair<Cap, Cost>> slope(int s,\
+    \ int t, Cap flow_limit) {\n        assert(0 <= s and s < n);\n        assert(0\
+    \ <= t and t < n);\n        assert(s != t);\n\n        int m = _edges.size();\n\
+    \        vector<int> e_id(m);\n        auto g = [&]() {\n            vector<int>\
+    \ degree(n), r_id(m);\n            vector<pair<int, _edge>> elist;\n         \
+    \   elist.reserve(m + m);\n            for(int i : rep(m)) {\n               \
+    \ edge e = _edges[i];\n                e_id[i] = degree[e.from]++;\n         \
+    \       r_id[i] = degree[e.to]++;\n                elist.push_back({e.from, {e.to,\
+    \ -1, e.cap - e.flow, e.cost}});\n                elist.push_back({e.to, {e.from,\
+    \ -1, e.flow, -e.cost}});\n            }\n            csr<_edge> _g(n, elist);\n\
+    \            for(int i : rep(m)) {\n                edge e = _edges[i];\n    \
+    \            e_id[i] += _g.start[e.from];\n                r_id[i] += _g.start[e.to];\n\
     \                _g.elist[e_id[i]].rev = r_id[i];\n                _g.elist[r_id[i]].rev\
     \ = e_id[i];\n            }\n            return _g;\n        }();\n\n        auto\
     \ result = slope(g, s, t, flow_limit);\n        for(int i : rep(m)) {\n      \
@@ -197,11 +214,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/graph/min_cost_flow.hpp
   isVerificationFile: true
   path: verify/aoj/data_structure/min_cost_flow.test.cpp
   requiredBy: []
-  timestamp: '2023-05-27 19:27:00+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/min_cost_flow.test.cpp

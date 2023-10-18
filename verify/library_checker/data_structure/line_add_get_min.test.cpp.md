@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/cht_offline_get_min.hpp
     title: src/data_structure/cht_offline_get_min.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -89,44 +95,55 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 1 \"\
-    src/data_structure/cht_offline_get_min.hpp\"\ntemplate < class T > class CHT_offline_get_min\
-    \ {\n  private:\n    struct Line {\n        T a, b;\n        Line(T a, T b) :\
-    \ a(a), b(b) {}\n        T eval(T x) { return a * x + b; }\n    };\n\n    T sgn;\n\
-    \    int n;\n    vector< Line > ls;\n    vector< T > xs;\n\n  public:\n    T inf\
-    \ = numeric_limits< T >::max();\n\n    CHT_offline_get_min(vector< T > &x, bool\
-    \ is_min = true) : xs(x) {\n        sort(xs.begin(), xs.end());\n        xs.erase(unique(xs.begin(),\
-    \ xs.end()), xs.end());\n        n = xs.size();\n        ls.assign(n << 1, Line(0,\
-    \ inf));\n        sgn = is_min ? +1 : -1;\n    }\n\n    void add_line(T a, T b)\
-    \ { update(a, b, 0, n); }\n\n    void add_segment(T a, T b, T l, T r) {\n    \
-    \    int xl = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), l));\n  \
-    \      int xr = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), r));\n\
-    \        update(a, b, xl, xr);\n    }\n\n    T query(T x) {\n        int i = distance(xs.begin(),\
-    \ lower_bound(xs.begin(), xs.end(), x));\n        assert(i != n && x == xs[i]);\n\
-    \        T v = inf;\n        for(i += n; i > 0; i >>= 1) v = min(v, ls[i].eval(x));\n\
-    \        return sgn * v;\n    }\n\n  private:\n    void update(T a, T b, int l,\
-    \ int r) {\n        a *= sgn, b *= sgn;\n        Line f(a, b);\n        for(l\
-    \ += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if(l & 1) descend(f, l++);\n\
-    \            if(r & 1) descend(f, --r);\n        }\n    }\n\n    void descend(Line\
-    \ g, int i) {\n        int l = i, r = i + 1;\n        while(l < n) l <<= 1, r\
-    \ <<= 1;\n        while(l < r) {\n            int m = (l + r) >> 1;\n        \
-    \    T xl = xs[l - n], xm = xs[m - n], xr = xs[r - 1 - n];\n            Line &f\
-    \ = ls[i];\n            if(f.eval(xl) <= g.eval(xl) && f.eval(xr) <= g.eval(xr))\
-    \ return;\n            if(f.eval(xl) >= g.eval(xl) && f.eval(xr) >= g.eval(xr))\
-    \ { f = g; return; }\n            if(f.eval(xm) >  g.eval(xm)) swap(f, g);\n \
-    \           if(f.eval(xl) >  g.eval(xl)) i = i << 1 | 0, r = m; else i = i <<\
-    \ 1 | 1, l = m;\n        }\n    }\n};\n#line 5 \"verify/library_checker/data_structure/line_add_get_min.test.cpp\"\
-    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
-    \ N,Q; cin >> N >> Q;\n    vector<pair<ll,ll>> lines(N);\n    for(auto &[a, b]\
-    \ : lines) cin >> a >> b;\n\n    vector<tuple<ll,ll,ll>> query(Q);\n    vector<ll>\
-    \ xs;\n    for(int i : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0)\
-    \ {\n            ll a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n \
-    \       } else {\n            ll x; cin >> x;\n            query[i] = {t, x, 0};\n\
-    \            xs.push_back(x);\n        }\n    }\n\n    CHT_offline_get_min<ll>\
-    \ cht(xs);\n    for(auto [a, b] : lines) cht.add_line(a, b);\n    for(int i :\
-    \ rep(Q)) {\n        auto [t, a, b] = query[i];\n        if(t == 0) {\n      \
-    \      cht.add_line(a, b);\n        } else {\n            cout << cht.query(a)\
-    \ << '\\n';\n        }\n    }\n}\n"
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 1 \"src/data_structure/cht_offline_get_min.hpp\"\ntemplate < class T\
+    \ > class CHT_offline_get_min {\n  private:\n    struct Line {\n        T a, b;\n\
+    \        Line(T a, T b) : a(a), b(b) {}\n        T eval(T x) { return a * x +\
+    \ b; }\n    };\n\n    T sgn;\n    int n;\n    vector< Line > ls;\n    vector<\
+    \ T > xs;\n\n  public:\n    T inf = numeric_limits< T >::max();\n\n    CHT_offline_get_min(vector<\
+    \ T > &x, bool is_min = true) : xs(x) {\n        sort(xs.begin(), xs.end());\n\
+    \        xs.erase(unique(xs.begin(), xs.end()), xs.end());\n        n = xs.size();\n\
+    \        ls.assign(n << 1, Line(0, inf));\n        sgn = is_min ? +1 : -1;\n \
+    \   }\n\n    void add_line(T a, T b) { update(a, b, 0, n); }\n\n    void add_segment(T\
+    \ a, T b, T l, T r) {\n        int xl = distance(xs.begin(), lower_bound(xs.begin(),\
+    \ xs.end(), l));\n        int xr = distance(xs.begin(), lower_bound(xs.begin(),\
+    \ xs.end(), r));\n        update(a, b, xl, xr);\n    }\n\n    T query(T x) {\n\
+    \        int i = distance(xs.begin(), lower_bound(xs.begin(), xs.end(), x));\n\
+    \        assert(i != n && x == xs[i]);\n        T v = inf;\n        for(i += n;\
+    \ i > 0; i >>= 1) v = min(v, ls[i].eval(x));\n        return sgn * v;\n    }\n\
+    \n  private:\n    void update(T a, T b, int l, int r) {\n        a *= sgn, b *=\
+    \ sgn;\n        Line f(a, b);\n        for(l += n, r += n; l < r; l >>= 1, r >>=\
+    \ 1) {\n            if(l & 1) descend(f, l++);\n            if(r & 1) descend(f,\
+    \ --r);\n        }\n    }\n\n    void descend(Line g, int i) {\n        int l\
+    \ = i, r = i + 1;\n        while(l < n) l <<= 1, r <<= 1;\n        while(l < r)\
+    \ {\n            int m = (l + r) >> 1;\n            T xl = xs[l - n], xm = xs[m\
+    \ - n], xr = xs[r - 1 - n];\n            Line &f = ls[i];\n            if(f.eval(xl)\
+    \ <= g.eval(xl) && f.eval(xr) <= g.eval(xr)) return;\n            if(f.eval(xl)\
+    \ >= g.eval(xl) && f.eval(xr) >= g.eval(xr)) { f = g; return; }\n            if(f.eval(xm)\
+    \ >  g.eval(xm)) swap(f, g);\n            if(f.eval(xl) >  g.eval(xl)) i = i <<\
+    \ 1 | 0, r = m; else i = i << 1 | 1, l = m;\n        }\n    }\n};\n#line 5 \"\
+    verify/library_checker/data_structure/line_add_get_min.test.cpp\"\n\nint main(){\n\
+    \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N,Q; cin >> N >>\
+    \ Q;\n    vector<pair<ll,ll>> lines(N);\n    for(auto &[a, b] : lines) cin >>\
+    \ a >> b;\n\n    vector<tuple<ll,ll,ll>> query(Q);\n    vector<ll> xs;\n    for(int\
+    \ i : rep(Q)) {\n        int t; cin >> t;\n        if(t == 0) {\n            ll\
+    \ a,b; cin >> a >> b;\n            query[i] = {t, a, b};\n        } else {\n \
+    \           ll x; cin >> x;\n            query[i] = {t, x, 0};\n            xs.push_back(x);\n\
+    \        }\n    }\n\n    CHT_offline_get_min<ll> cht(xs);\n    for(auto [a, b]\
+    \ : lines) cht.add_line(a, b);\n    for(int i : rep(Q)) {\n        auto [t, a,\
+    \ b] = query[i];\n        if(t == 0) {\n            cht.add_line(a, b);\n    \
+    \    } else {\n            cout << cht.query(a) << '\\n';\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include \"src/cp-template.hpp\"\n#include \"src/data_structure/cht_offline_get_min.hpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
@@ -146,11 +163,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/data_structure/cht_offline_get_min.hpp
   isVerificationFile: true
   path: verify/library_checker/data_structure/line_add_get_min.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/line_add_get_min.test.cpp

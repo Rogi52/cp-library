@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/cartesian_tree.hpp
     title: src/graph/tree/cartesian_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -89,14 +95,24 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 2 \"\
-    src/graph/tree/cartesian_tree.hpp\"\n\ntemplate < class T >\npair< vector<vector<int>>,\
-    \ int > cartesian_tree(vector< T > &a) {\n    int n = a.size();\n    vector<vector<int>>\
-    \ tree(n);\n    vector<int> parent(n, -1);\n    stack<int> st;\n    for(int i\
-    \ = 0; i < n; i++) {\n        int prev = -1;\n        while(!st.empty() && a[i]\
-    \ < a[st.top()]) { prev = st.top(); st.pop(); }\n        if(prev != -1) parent[prev]\
-    \ = i;\n        if(!st.empty()) parent[i] = st.top();\n        st.push(i);\n \
-    \   }\n\n    int root = -1;\n    for(int i = 0; i < n; i++) {\n        if(parent[i]\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
+    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
+    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
+    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
+    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
+    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
+    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
+    }\n#line 2 \"src/graph/tree/cartesian_tree.hpp\"\n\ntemplate < class T >\npair<\
+    \ vector<vector<int>>, int > cartesian_tree(vector< T > &a) {\n    int n = a.size();\n\
+    \    vector<vector<int>> tree(n);\n    vector<int> parent(n, -1);\n    stack<int>\
+    \ st;\n    for(int i = 0; i < n; i++) {\n        int prev = -1;\n        while(!st.empty()\
+    \ && a[i] < a[st.top()]) { prev = st.top(); st.pop(); }\n        if(prev != -1)\
+    \ parent[prev] = i;\n        if(!st.empty()) parent[i] = st.top();\n        st.push(i);\n\
+    \    }\n\n    int root = -1;\n    for(int i = 0; i < n; i++) {\n        if(parent[i]\
     \ == -1) root = i;\n        else tree[parent[i]].push_back(i);\n    }\n    return\
     \ {tree, root};\n}\n#line 5 \"verify/library_checker/graph/tree/cartesian_tree.test.cpp\"\
     \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
@@ -117,11 +133,13 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   - src/graph/tree/cartesian_tree.hpp
   isVerificationFile: true
   path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 23:48:31+09:00'
+  timestamp: '2023-10-18 21:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/tree/cartesian_tree.test.cpp
