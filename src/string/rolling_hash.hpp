@@ -1,34 +1,13 @@
+#include "../../src/cp-template.hpp"
+#include "../../src/utility/random.hpp"
+#include "../../src/utility/hash.hpp"
+
 template< int num_of_mod = 2 >
 struct rolling_hash {
-    static constexpr ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};
-    static constexpr ll BASE = 9973;
-    
-    struct hash : array<ll, num_of_mod> {
-        using array<ll, num_of_mod>::operator[];
-        static constexpr int n = num_of_mod;
-        hash() : array<ll,n>() {}
-        hash(ll x) : hash() { for(int i : rep(n)) (*this)[i] = x % MODS[i]; }
-        hash& operator+=(const hash& rhs) { for(int i : rep(n)) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator-=(const hash& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator*=(const hash& rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }
-        hash& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator-=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }
-        hash& operator*=(const ll rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i]; return *this; }
-        hash operator+(const hash& rhs) const { return hash(*this) += rhs; }
-        hash operator-(const hash& rhs) const { return hash(*this) -= rhs; }
-        hash operator*(const hash& rhs) const { return hash(*this) *= rhs; }
-        hash operator+(const ll rhs) const { return hash(*this) += rhs; }
-        hash operator-(const ll rhs) const { return hash(*this) -= rhs; }
-        hash operator*(const ll rhs) const { return hash(*this) *= rhs; }
-        hash operator-() const { return hash().fill(0) - *this; }
-        friend hash operator+(ll x, const hash& y) { return hash(x) + y; }
-        friend hash operator-(ll x, const hash& y) { return hash(x) + y; }
-        friend hash operator*(ll x, const hash& y) { return hash(x) * y; }
-        bool operator==(const hash& rhs) { for(int i : rep(n)) if((*this)[i] != rhs[i]) return false; return true ; }
-        bool operator!=(const hash& rhs) { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }
-    };
 
-    vector< hash > pb, hs;
+    static const ll BASE;
+
+    vector< hash_vector< num_of_mod > > pb, hs;
     rolling_hash() {}
     rolling_hash(const string& s) {
         int n = s.size();
@@ -41,7 +20,7 @@ struct rolling_hash {
     }
 
     // [l, r)
-    hash get(int l, int r) const {
+    hash_vector< num_of_mod > get(int l, int r) const {
         return hs[r] - hs[l] * pb[r - l];
     }
 
@@ -65,3 +44,6 @@ struct rolling_hash {
         return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);
     }
 };
+
+template < int num_of_mod >
+const ll rolling_hash< num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);
