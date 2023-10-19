@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/heap_rich.hpp
     title: src/data_structure/heap_rich.hpp
   - icon: ':question:'
@@ -30,54 +30,54 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
+    PROBLEM: https://judge.yosupo.jp/problem/double_ended_priority_queue
     links:
-    - https://judge.yosupo.jp/problem/set_xor_min
+    - https://judge.yosupo.jp/problem/double_ended_priority_queue
   bundledCode: "#line 1 \"verify/library_checker/data_structure/heap_rich.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\n\n#line 2 \"\
-    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
-    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
-    \  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
-    \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
-    \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
-    \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
-    \ itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n\
-    \    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++()\
-    \ noexcept { i += d; }\n    constexpr int operator*() const noexcept { return\
-    \ i; }\n    constexpr bool operator!=(const itr x) const noexcept {\n        return\
-    \ d > 0 ? i < x.i : i > x.i;\n    }\n};\n\ntemplate < class T > struct rep {\n\
-    \    const itr< T > s, t;\n    constexpr rep(const T t) noexcept : s(0), t(t)\
-    \ {}\n    constexpr rep(const T s, const T t) noexcept : s(s), t(t) {}\n    constexpr\
-    \ rep(const T s, const T t, const T d) noexcept : s(s, d), t(t, d) {}\n    constexpr\
-    \ auto begin() const noexcept { return s; }\n    constexpr auto end() const noexcept\
-    \ { return t; }\n};\n\ntemplate < class T > struct revrep {\n    const itr < T\
-    \ > s, t;\n    constexpr revrep(const T t) noexcept : s(t - 1, -1), t(-1, -1)\
-    \ {}\n    constexpr revrep(const T s, const T t) noexcept : s(t - 1, -1), t(s\
-    \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
-    \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
-    \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n#line\
-    \ 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
-    \ < class T > operator T() {\n            T s; cin >> s; return s;\n        }\n\
-    \    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n    \
-    \    template < class T > operator vector< T >() {\n            vector< T > v(n);\n\
-    \            for(T& x : v) cin >> x;\n            return v;\n        }\n    };\n\
-    \    struct mat {\n        int h,w;\n        mat(int h, int w) : h(h), w(w) {}\n\
-    \        template < class T > operator vector< vector< T > >() {\n           \
-    \ vector m(h, vector< T >(w));\n            for(vector< T >& v : m) for(T& x :\
-    \ v) cin >> x;\n            return m;\n        }\n    };\n    struct speedup {\n\
-    \        speedup() {\n            cin.tie(0);\n            ios::sync_with_stdio(0);\n\
-    \        }\n    } su;\n}\nscanner::sca in() { return scanner::sca(); }\nscanner::vec\
-    \ in(int n) { return scanner::vec(n); }\nscanner::mat in(int h, int w) { return\
-    \ scanner::mat(h, w); }\n\nnamespace printer {\n    void precision(int d) {\n\
-    \        cout << fixed << setprecision(d);\n    }\n    void flush() {\n      \
-    \  cout.flush();\n    }\n}\nint print() { cout << '\\n'; return 0; }\ntemplate\
-    \ < class head, class... tail > int print(head&& h, tail&&... t) {\n    cout <<\
-    \ h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
+    \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
+    \ int;\nusing ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate <\
+    \ class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false;\
+    \ }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true;\
+    \ } return false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T\
+    \ > struct itr {\n    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1)\
+    \ {}\n    constexpr itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void\
+    \ operator++() noexcept { i += d; }\n    constexpr int operator*() const noexcept\
+    \ { return i; }\n    constexpr bool operator!=(const itr x) const noexcept {\n\
+    \        return d > 0 ? i < x.i : i > x.i;\n    }\n};\n\ntemplate < class T >\
+    \ struct rep {\n    const itr< T > s, t;\n    constexpr rep(const T t) noexcept\
+    \ : s(0), t(t) {}\n    constexpr rep(const T s, const T t) noexcept : s(s), t(t)\
+    \ {}\n    constexpr rep(const T s, const T t, const T d) noexcept : s(s, d), t(t,\
+    \ d) {}\n    constexpr auto begin() const noexcept { return s; }\n    constexpr\
+    \ auto end() const noexcept { return t; }\n};\n\ntemplate < class T > struct revrep\
+    \ {\n    const itr < T > s, t;\n    constexpr revrep(const T t) noexcept : s(t\
+    \ - 1, -1), t(-1, -1) {}\n    constexpr revrep(const T s, const T t) noexcept\
+    \ : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const T s, const T t,\
+    \ const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin()\
+    \ const noexcept { return s; }\n    constexpr auto end() const noexcept { return\
+    \ t; }\n};\n#line 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca\
+    \ {\n        template < class T > operator T() {\n            T s; cin >> s; return\
+    \ s;\n        }\n    };\n    struct vec {\n        int n;\n        vec(int n)\
+    \ : n(n) {}\n        template < class T > operator vector< T >() {\n         \
+    \   vector< T > v(n);\n            for(T& x : v) cin >> x;\n            return\
+    \ v;\n        }\n    };\n    struct mat {\n        int h,w;\n        mat(int h,\
+    \ int w) : h(h), w(w) {}\n        template < class T > operator vector< vector<\
+    \ T > >() {\n            vector m(h, vector< T >(w));\n            for(vector<\
+    \ T >& v : m) for(T& x : v) cin >> x;\n            return m;\n        }\n    };\n\
+    \    struct speedup {\n        speedup() {\n            cin.tie(0);\n        \
+    \    ios::sync_with_stdio(0);\n        }\n    } su;\n}\nscanner::sca in() { return\
+    \ scanner::sca(); }\nscanner::vec in(int n) { return scanner::vec(n); }\nscanner::mat\
+    \ in(int h, int w) { return scanner::mat(h, w); }\n\nnamespace printer {\n   \
+    \ void precision(int d) {\n        cout << fixed << setprecision(d);\n    }\n\
+    \    void flush() {\n        cout.flush();\n    }\n}\nint print() { cout << '\\\
+    n'; return 0; }\ntemplate < class head, class... tail > int print(head&& h, tail&&...\
+    \ t) {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
     }\ntemplate < class T > int print(vector< T > a, char sep = ' ') {\n    int n\
     \ = a.size();\n    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\\\
     n');\n    return 0;\n}\ntemplate < class T > int print(vector< vector< T > > a)\
@@ -141,13 +141,13 @@ data:
     \        if(t == 0) {\n            int x = in();\n            q.push(x);\n   \
     \     }\n        if(t == 1) {\n            print(q.pop_min());\n        }\n  \
     \      if(t == 2) {\n            print(q.pop_max());\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\n\n#include\
-    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/heap_rich.hpp\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
+    \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/heap_rich.hpp\"\
     \n\nint main() {\n    int N = in(), Q = in();\n    vector<int> A = in(N);\n  \
     \  heap_minmax<int> q(A);\n\n    for(int _ : rep(Q)) {\n        int t = in();\n\
     \        if(t == 0) {\n            int x = in();\n            q.push(x);\n   \
     \     }\n        if(t == 1) {\n            print(q.pop_min());\n        }\n  \
-    \      if(t == 2) {\n            print(q.pop_max());\n        }\n    }\n}"
+    \      if(t == 2) {\n            print(q.pop_max());\n        }\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -161,8 +161,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/heap_rich.test.cpp
   requiredBy: []
-  timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-19 23:41:30+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/heap_rich.test.cpp
 layout: document

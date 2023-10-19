@@ -5,20 +5,20 @@ data:
     path: src/number/modint.hpp
     title: modint
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
   - icon: ':x:'
@@ -32,7 +32,7 @@ data:
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
@@ -169,7 +169,7 @@ data:
   - src/number/fps.hpp
   - src/number/fps_sparse.hpp
   timestamp: '2023-10-06 00:46:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp

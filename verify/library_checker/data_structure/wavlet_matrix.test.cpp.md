@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
   - icon: ':question:'
@@ -28,14 +28,14 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -196,7 +196,7 @@ data:
   path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/wavlet_matrix.test.cpp
 layout: document

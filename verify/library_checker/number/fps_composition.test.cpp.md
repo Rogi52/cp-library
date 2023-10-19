@@ -10,13 +10,13 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
   - icon: ':question:'
@@ -36,9 +36,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/composition_of_formal_power_series
@@ -295,7 +295,7 @@ data:
   path: verify/library_checker/number/fps_composition.test.cpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_composition.test.cpp
 layout: document

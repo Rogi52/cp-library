@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
   - icon: ':question:'
@@ -32,17 +32,17 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
   - icon: ':x:'
@@ -56,7 +56,7 @@ data:
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -375,7 +375,7 @@ data:
   - src/number/poly.hpp
   - src/number/fps_sparse.hpp
   timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp

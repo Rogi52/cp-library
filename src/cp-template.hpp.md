@@ -59,7 +59,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/heap_rich.hpp
     title: src/data_structure/heap_rich.hpp
   - icon: ':warning:'
@@ -83,46 +83,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
   - icon: ':warning:'
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
   - icon: ':x:'
@@ -131,13 +131,13 @@ data:
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   _extendedVerifiedWith:
@@ -177,7 +177,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/heap_rich.test.cpp
     title: verify/library_checker/data_structure/heap_rich.test.cpp
   - icon: ':heavy_check_mark:'
@@ -210,52 +210,52 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
     title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
   - icon: ':x:'

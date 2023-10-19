@@ -10,13 +10,13 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
@@ -28,7 +28,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'
@@ -39,9 +39,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -205,7 +205,7 @@ data:
   path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 layout: document

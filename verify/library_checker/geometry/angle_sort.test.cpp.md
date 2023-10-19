@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/angle_sort.hpp
     title: src/geometry/angle_sort.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/geometry/pointll.hpp
     title: src/geometry/pointll.hpp
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
@@ -156,7 +156,7 @@ data:
   path: verify/library_checker/geometry/angle_sort.test.cpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/geometry/angle_sort.test.cpp
 layout: document

@@ -31,7 +31,7 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/zip.hpp
     title: src/utility/zip.hpp
   _extendedRequiredBy: []
