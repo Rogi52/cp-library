@@ -11,11 +11,8 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':x:'
-    path: src/number/bicoef.hpp
-    title: src/number/bicoef.hpp
-  - icon: ':x:'
-    path: src/number/runtime_modint.hpp
-    title: src/number/runtime_modint.hpp
+    path: src/data_structure/heap_rich.hpp
+    title: src/data_structure/heap_rich.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -38,14 +35,14 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
+    PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
     links:
-    - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
-  bundledCode: "#line 1 \"verify/library_checker/number/bicoef.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
-    \n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
-    \ ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
+    - https://judge.yosupo.jp/problem/set_xor_min
+  bundledCode: "#line 1 \"verify/library_checker/data_structure/heap_rich.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\n\n#line 2 \"\
+    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
+    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
+    \  = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool\
     \ chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate\
     \ < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return\
     \ false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct\
@@ -115,58 +112,42 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 1 \"src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n  public:\n\
-    \    ll v = 0;\n    runtime_modint(ll v = 0) { s(v % get_mod() + get_mod()); }\n\
-    \    static void set_mod(ll m) { mod() = m; }\n    static void set_mod(ll m, int\
-    \ isp) { mod() = m; isprime() = isp; }\n    static ll get_mod() { return mod();\
-    \ }\n    using rtmint = runtime_modint;\n    rtmint& s(ll v) { this->v = v < get_mod()\
-    \ ? v : v - get_mod(); return *this; }\n    rtmint operator-() const { return\
-    \ rtmint() - *this; }\n    rtmint& operator+=(const rtmint& rhs) { return s(v\
-    \ + rhs.v); }\n    rtmint& operator-=(const rtmint& rhs) { return s(v + get_mod()\
-    \ - rhs.v); }\n    rtmint& operator*=(const rtmint& rhs) { v = ull(v) * rhs.v\
-    \ % get_mod(); return *this; }\n    rtmint& operator/=(const rtmint& rhs) { return\
-    \ *this *= inv(rhs); }\n    rtmint operator+(const rtmint& rhs) const { return\
-    \ rtmint(*this) += rhs; }\n    rtmint operator-(const rtmint& rhs) const { return\
-    \ rtmint(*this) -= rhs; }\n    rtmint operator*(const rtmint& rhs) const { return\
-    \ rtmint(*this) *= rhs; }\n    rtmint operator/(const rtmint& rhs) const { return\
-    \ rtmint(*this) /= rhs; }\n    friend rtmint pow(rtmint x, ll n) { rtmint res(1);\
-    \ while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend\
-    \ rtmint inv(rtmint v) {\n        if(isprime()) {\n            return pow(v, get_mod()\
-    \ - 2);\n        } else {\n            ll a = v.v, b = get_mod(), x = 1, y = 0,\
-    \ t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t *\
-    \ y, y); }\n            return rtmint(x);\n        }\n    }\n    friend rtmint\
-    \ operator+(int x, const rtmint& y) { return rtmint(x) + y; }\n    friend rtmint\
-    \ operator-(int x, const rtmint& y) { return rtmint(x) - y; }\n    friend rtmint\
-    \ operator*(int x, const rtmint& y) { return rtmint(x) * y; }\n    friend rtmint\
-    \ operator/(int x, const rtmint& y) { return rtmint(x) / y; }\n    friend istream&\
-    \ operator>>(istream& is, rtmint& m) { ll x; is >> x; m = rtmint(x); return is;\
-    \ }\n    friend ostream& operator<<(ostream& os, const rtmint& m) { return os\
-    \ << m.v; }\n    bool operator==(const rtmint& r) const { return v == r.v; }\n\
-    \    bool operator!=(const rtmint& r) const { return v != r.v; }\n  private:\n\
-    \    static ll &mod() {\n        static ll mod_ = 0;\n        return mod_;\n \
-    \   }\n    static int &isprime() {\n        static int isprime_ = 0;\n       \
-    \ return isprime_;\n    }\n};\nusing mint = runtime_modint;\n#line 1 \"src/number/bicoef.hpp\"\
-    \ntemplate < class mint >\nclass bicoef {\n    int N;\n    vector<mint> fact_,\
-    \ inv_, finv_;\n  public:\n    bicoef(int N) : N(N), fact_(N+1, 1), inv_(N+1,\
-    \ 1), finv_(N+1, 1) {\n        uint mod = mint::get_mod();\n        for(int i\
-    \ = 2; i <= N; i++) {\n            fact_[i] = fact_[i - 1] * i;\n            inv_\
-    \ [i] = - inv_[mod % i] * (mod / i);\n            finv_[i] = finv_[i - 1] * inv_[i];\n\
-    \        }\n    }\n    mint fact(int n) { assert(0 <= n && n <= N); return fact_[n];\
-    \ }\n    mint inv (int n) { assert(0 <= n && n <= N); return inv_ [n]; }\n   \
-    \ mint finv(int n) { assert(0 <= n && n <= N); return finv_[n]; }\n    mint comb(int\
-    \ n, int k) {\n        if(k < 0 || n < k) return mint(0);\n        return fact(n)\
-    \ * finv(k) * finv(n - k);\n    }\n    mint perm(int n, int k) { return fact(n)\
-    \ * finv(n - k); }\n    mint homo(int n, int k) { return comb(n + k - 1, k); }\n\
-    };\n#line 6 \"verify/library_checker/number/bicoef.test.cpp\"\n\nint main() {\n\
-    \    int T = in();\n    int m = in();\n    mint::set_mod(m);\n    bicoef<mint>\
-    \ c(min(m, 10'000'000));\n    for(int i : rep(T)) {\n        int n = in();\n \
-    \       int k = in();\n        print(c.comb(n, k));\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
-    \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/runtime_modint.hpp\"\
-    \n#include \"src/number/bicoef.hpp\"\n\nint main() {\n    int T = in();\n    int\
-    \ m = in();\n    mint::set_mod(m);\n    bicoef<mint> c(min(m, 10'000'000));\n\
-    \    for(int i : rep(T)) {\n        int n = in();\n        int k = in();\n   \
-    \     print(c.comb(n, k));\n    }\n}"
+    }\n#line 2 \"src/data_structure/heap_rich.hpp\"\n\nnamespace std_ex {\n\ntemplate\
+    \ < class T > T pop(std::queue < T >& c) { T x = c.front(); c.pop(); return x;\
+    \ }\ntemplate < class T > T pop(std::stack < T >& c) { T x = c.top();   c.pop();\
+    \ return x; }\ntemplate < class T > T pop(std::vector< T >& c) { T x = c.top();\
+    \   c.pop(); return x; } \ntemplate < class T > T pop(   heap_min< T >& c) { T\
+    \ x = c.top();   c.pop(); return x; }\ntemplate < class T > T pop(   heap_max<\
+    \ T >& c) { T x = c.top();   c.pop(); return x; }\n\n}\n\ntemplate < class container\
+    \ >\nstruct erasable {\n    using T = typename container::value_type;\n    container\
+    \ c, rm_c;\n\n    erasable() {}\n    erasable(std::vector< T >& a) : c(a.begin(),\
+    \ a.end()) {}\n    void push(T x) { c.push(x); }\n    int size() { return c.size()\
+    \ - rm_c.size(); }\n    int empty() { return size() == 0; }\n    T pop() { set();\
+    \ return std_ex::pop(c); }\n    T top() { set(); return c.top(); }\n    void erase(T\
+    \ x) { rm_c.push(x); }\n\n  private:\n    void set() { while(not rm_c.empty()\
+    \ and rm_c.top() == c.top()) rm_c.pop(), c.pop(); }\n};\n\n\ntemplate < class\
+    \ T >\nstruct heap_minmax {\n    erasable< heap_min< T > > h_min;\n    erasable<\
+    \ heap_max< T > > h_max;\n\n    heap_minmax() {}\n    heap_minmax(std::vector<\
+    \ T >& a) : h_min(a), h_max(a) {}\n    void push(T x) {\n        h_min.push(x),\
+    \ h_max.push(x);\n    }\n    int size() { return h_min.size(); }\n    int empty()\
+    \ { return size() == 0; }\n    T min() { return h_min.top(); }\n    T max() {\
+    \ return h_max.top(); }\n    T pop_min() {\n        T x = h_min.top(); h_min.pop();\n\
+    \        h_max.erase(x);\n        return x;\n    }\n    T pop_max() {\n      \
+    \  T x = h_max.top(); h_max.pop();\n        h_min.erase(x);\n        return x;\n\
+    \    }\n    void erase(T x) {\n        h_min.erase(x);\n        h_max.erase(x);\n\
+    \    }\n};\n#line 5 \"verify/library_checker/data_structure/heap_rich.test.cpp\"\
+    \n\nint main() {\n    int N = in(), Q = in();\n    vector<int> A = in(N);\n  \
+    \  heap_minmax<int> q(A);\n\n    for(int _ : rep(Q)) {\n        int t = in();\n\
+    \        if(t == 0) {\n            int x = in();\n            q.push(x);\n   \
+    \     }\n        if(t == 1) {\n            print(q.pop_min());\n        }\n  \
+    \      if(t == 2) {\n            print(q.pop_max());\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\n\n#include\
+    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/heap_rich.hpp\"\
+    \n\nint main() {\n    int N = in(), Q = in();\n    vector<int> A = in(N);\n  \
+    \  heap_minmax<int> q(A);\n\n    for(int _ : rep(Q)) {\n        int t = in();\n\
+    \        if(t == 0) {\n            int x = in();\n            q.push(x);\n   \
+    \     }\n        if(t == 1) {\n            print(q.pop_min());\n        }\n  \
+    \      if(t == 2) {\n            print(q.pop_max());\n        }\n    }\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -176,18 +157,17 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/number/runtime_modint.hpp
-  - src/number/bicoef.hpp
+  - src/data_structure/heap_rich.hpp
   isVerificationFile: true
-  path: verify/library_checker/number/bicoef.test.cpp
+  path: verify/library_checker/data_structure/heap_rich.test.cpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/library_checker/number/bicoef.test.cpp
+documentation_of: verify/library_checker/data_structure/heap_rich.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/number/bicoef.test.cpp
-- /verify/verify/library_checker/number/bicoef.test.cpp.html
-title: verify/library_checker/number/bicoef.test.cpp
+- /verify/verify/library_checker/data_structure/heap_rich.test.cpp
+- /verify/verify/library_checker/data_structure/heap_rich.test.cpp.html
+title: verify/library_checker/data_structure/heap_rich.test.cpp
 ---

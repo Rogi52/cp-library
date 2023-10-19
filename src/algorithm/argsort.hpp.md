@@ -1,22 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
@@ -47,7 +50,7 @@ data:
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -56,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
+  - icon: ':x:'
+    path: src/data_structure/heap_rich.hpp
+    title: src/data_structure/heap_rich.hpp
   - icon: ':warning:'
     path: src/data_structure/offline_multiset.hpp
     title: src/data_structure/offline_multiset.hpp
@@ -68,7 +74,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/sparse_segtree.hpp
     title: src/data_structure/sparse_segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -77,7 +83,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
   - icon: ':warning:'
@@ -86,52 +92,55 @@ data:
   - icon: ':warning:'
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':x:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   _extendedVerifiedWith:
@@ -171,6 +180,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/heap_rich.test.cpp
+    title: verify/library_checker/data_structure/heap_rich.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/lazy_segtree.test.cpp
     title: verify/library_checker/data_structure/lazy_segtree.test.cpp
@@ -201,75 +213,75 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
     title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/gaussian_integer.test.cpp
     title: verify/yukicoder/gaussian_integer.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/yukicoder/sparse_segtree.test.cpp
     title: verify/yukicoder/sparse_segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -330,7 +342,10 @@ data:
     \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
     \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
     \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
-    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 16 \"\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 3 \"\
+    src/utility/heap.hpp\"\n\ntemplate < class T > using heap_min = std::priority_queue<\
+    \ T, std::vector< T >, std::greater< T > >;\ntemplate < class T > using heap_max\
+    \ = std::priority_queue< T, std::vector< T >, std::less< T > >;\n\n#line 17 \"\
     src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
     \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
     \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
@@ -357,6 +372,7 @@ data:
   - src/utility/io.hpp
   - src/utility/key_val.hpp
   - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   isVerificationFile: false
   path: src/algorithm/argsort.hpp
@@ -380,6 +396,7 @@ data:
   - src/matrix/linear_equation.hpp
   - src/matrix/lgv.hpp
   - src/matrix/base.hpp
+  - src/utility/heap.hpp
   - src/utility/random.hpp
   - src/utility/hash.hpp
   - src/cp-template.hpp
@@ -391,6 +408,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/data_structure/fenwick_tree.hpp
   - src/data_structure/wavlet_matrix.hpp
+  - src/data_structure/heap_rich.hpp
   - src/data_structure/sparse_segtree.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
@@ -399,8 +417,8 @@ data:
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/range_freq.hpp
   - src/data_structure/binary_trie.hpp
-  timestamp: '2023-10-18 21:43:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 23:28:06+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yukicoder/gaussian_integer.test.cpp
   - verify/yukicoder/sparse_segtree.test.cpp
@@ -442,6 +460,7 @@ data:
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/line_add_get_min.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/heap_rich.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/range_freq.test.cpp
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp

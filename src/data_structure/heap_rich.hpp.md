@@ -28,8 +28,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: verify/library_checker/graph/tree/rerooting.test.cpp
-    title: verify/library_checker/graph/tree/rerooting.test.cpp
+    path: verify/library_checker/data_structure/heap_rich.test.cpp
+    title: verify/library_checker/data_structure/heap_rich.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':x:'
@@ -107,60 +107,54 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 2 \"src/graph/tree/rerooting.hpp\"\n\nstruct rerooting {\n    int N;\n\
-    \    vector<vector<pair<int,int>>> G;\n    rerooting(int N) : N(N), G(N) {}\n\
-    \    void add_edge(int u, int v, int i) {\n        G[u].push_back({v, i});\n \
-    \       G[v].push_back({u, i});\n    }\n\n    template < class S, class M, class\
-    \ E, class V >\n    vector< S > solve(const M& merge, const E& fe, const V& fv,\
-    \ const S unit) {\n        vector<vector< S >> dp(N);\n        for(int i : rep(N))\
-    \ dp[i].resize(G[i].size());\n\n        function<S(int,int)> dfs1 = [&](int v,\
-    \ int p) -> S {\n            S res = unit;\n            for(int i : rep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                if(to != p) {\n\
-    \                    dp[v][i] = dfs1(to, v);\n                    res = merge(res,\
-    \ fe(dp[v][i], id));\n                }\n            }\n            return fv(res,\
-    \ v);\n        }; dfs1(0, -1);\n\n        function<void(int,int,S)> dfs2 = [&](int\
-    \ v, int p, S dp_par) {\n            for(int i : rep(G[v].size())) {\n       \
-    \         auto [to, id] = G[v][i];\n                if(to == p) {\n          \
-    \          dp[v][i] = dp_par;\n                }\n            }\n\n          \
-    \  vector< S > R(G[v].size() + 1U);\n            R[G[v].size()] = unit;\n    \
-    \        for(int i : revrep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
-    \                R[i] = merge(R[i + 1], fe(dp[v][i], id));\n            }\n  \
-    \          S L = unit;\n            for(int i : rep(G[v].size())) {\n        \
-    \        auto [to, id] = G[v][i];\n                if(to != p) {\n           \
-    \         S val = merge(L, R[i + 1]);\n                    dfs2(to, v, fv(val,\
-    \ v));\n                }\n                L = merge(L, fe(dp[v][i], id));\n \
-    \           }\n        }; dfs2(0, -1, unit);\n\n        vector< S > res(N, unit);\n\
-    \        for(int v : rep(N)) {\n            for(int i : rep(G[v].size())) {\n\
-    \                auto [to, id] = G[v][i];\n                res[v] = merge(res[v],\
-    \ fe(dp[v][i], id));\n            }\n            res[v] = fv(res[v], v);\n   \
-    \     }\n        return res;\n    }\n};\n"
-  code: "#include \"../../../src/cp-template.hpp\"\n\nstruct rerooting {\n    int\
-    \ N;\n    vector<vector<pair<int,int>>> G;\n    rerooting(int N) : N(N), G(N)\
-    \ {}\n    void add_edge(int u, int v, int i) {\n        G[u].push_back({v, i});\n\
-    \        G[v].push_back({u, i});\n    }\n\n    template < class S, class M, class\
-    \ E, class V >\n    vector< S > solve(const M& merge, const E& fe, const V& fv,\
-    \ const S unit) {\n        vector<vector< S >> dp(N);\n        for(int i : rep(N))\
-    \ dp[i].resize(G[i].size());\n\n        function<S(int,int)> dfs1 = [&](int v,\
-    \ int p) -> S {\n            S res = unit;\n            for(int i : rep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                if(to != p) {\n\
-    \                    dp[v][i] = dfs1(to, v);\n                    res = merge(res,\
-    \ fe(dp[v][i], id));\n                }\n            }\n            return fv(res,\
-    \ v);\n        }; dfs1(0, -1);\n\n        function<void(int,int,S)> dfs2 = [&](int\
-    \ v, int p, S dp_par) {\n            for(int i : rep(G[v].size())) {\n       \
-    \         auto [to, id] = G[v][i];\n                if(to == p) {\n          \
-    \          dp[v][i] = dp_par;\n                }\n            }\n\n          \
-    \  vector< S > R(G[v].size() + 1U);\n            R[G[v].size()] = unit;\n    \
-    \        for(int i : revrep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
-    \                R[i] = merge(R[i + 1], fe(dp[v][i], id));\n            }\n  \
-    \          S L = unit;\n            for(int i : rep(G[v].size())) {\n        \
-    \        auto [to, id] = G[v][i];\n                if(to != p) {\n           \
-    \         S val = merge(L, R[i + 1]);\n                    dfs2(to, v, fv(val,\
-    \ v));\n                }\n                L = merge(L, fe(dp[v][i], id));\n \
-    \           }\n        }; dfs2(0, -1, unit);\n\n        vector< S > res(N, unit);\n\
-    \        for(int v : rep(N)) {\n            for(int i : rep(G[v].size())) {\n\
-    \                auto [to, id] = G[v][i];\n                res[v] = merge(res[v],\
-    \ fe(dp[v][i], id));\n            }\n            res[v] = fv(res[v], v);\n   \
-    \     }\n        return res;\n    }\n};"
+    }\n#line 2 \"src/data_structure/heap_rich.hpp\"\n\nnamespace std_ex {\n\ntemplate\
+    \ < class T > T pop(std::queue < T >& c) { T x = c.front(); c.pop(); return x;\
+    \ }\ntemplate < class T > T pop(std::stack < T >& c) { T x = c.top();   c.pop();\
+    \ return x; }\ntemplate < class T > T pop(std::vector< T >& c) { T x = c.top();\
+    \   c.pop(); return x; } \ntemplate < class T > T pop(   heap_min< T >& c) { T\
+    \ x = c.top();   c.pop(); return x; }\ntemplate < class T > T pop(   heap_max<\
+    \ T >& c) { T x = c.top();   c.pop(); return x; }\n\n}\n\ntemplate < class container\
+    \ >\nstruct erasable {\n    using T = typename container::value_type;\n    container\
+    \ c, rm_c;\n\n    erasable() {}\n    erasable(std::vector< T >& a) : c(a.begin(),\
+    \ a.end()) {}\n    void push(T x) { c.push(x); }\n    int size() { return c.size()\
+    \ - rm_c.size(); }\n    int empty() { return size() == 0; }\n    T pop() { set();\
+    \ return std_ex::pop(c); }\n    T top() { set(); return c.top(); }\n    void erase(T\
+    \ x) { rm_c.push(x); }\n\n  private:\n    void set() { while(not rm_c.empty()\
+    \ and rm_c.top() == c.top()) rm_c.pop(), c.pop(); }\n};\n\n\ntemplate < class\
+    \ T >\nstruct heap_minmax {\n    erasable< heap_min< T > > h_min;\n    erasable<\
+    \ heap_max< T > > h_max;\n\n    heap_minmax() {}\n    heap_minmax(std::vector<\
+    \ T >& a) : h_min(a), h_max(a) {}\n    void push(T x) {\n        h_min.push(x),\
+    \ h_max.push(x);\n    }\n    int size() { return h_min.size(); }\n    int empty()\
+    \ { return size() == 0; }\n    T min() { return h_min.top(); }\n    T max() {\
+    \ return h_max.top(); }\n    T pop_min() {\n        T x = h_min.top(); h_min.pop();\n\
+    \        h_max.erase(x);\n        return x;\n    }\n    T pop_max() {\n      \
+    \  T x = h_max.top(); h_max.pop();\n        h_min.erase(x);\n        return x;\n\
+    \    }\n    void erase(T x) {\n        h_min.erase(x);\n        h_max.erase(x);\n\
+    \    }\n};\n"
+  code: "#include \"../../src/cp-template.hpp\"\n\nnamespace std_ex {\n\ntemplate\
+    \ < class T > T pop(std::queue < T >& c) { T x = c.front(); c.pop(); return x;\
+    \ }\ntemplate < class T > T pop(std::stack < T >& c) { T x = c.top();   c.pop();\
+    \ return x; }\ntemplate < class T > T pop(std::vector< T >& c) { T x = c.top();\
+    \   c.pop(); return x; } \ntemplate < class T > T pop(   heap_min< T >& c) { T\
+    \ x = c.top();   c.pop(); return x; }\ntemplate < class T > T pop(   heap_max<\
+    \ T >& c) { T x = c.top();   c.pop(); return x; }\n\n}\n\ntemplate < class container\
+    \ >\nstruct erasable {\n    using T = typename container::value_type;\n    container\
+    \ c, rm_c;\n\n    erasable() {}\n    erasable(std::vector< T >& a) : c(a.begin(),\
+    \ a.end()) {}\n    void push(T x) { c.push(x); }\n    int size() { return c.size()\
+    \ - rm_c.size(); }\n    int empty() { return size() == 0; }\n    T pop() { set();\
+    \ return std_ex::pop(c); }\n    T top() { set(); return c.top(); }\n    void erase(T\
+    \ x) { rm_c.push(x); }\n\n  private:\n    void set() { while(not rm_c.empty()\
+    \ and rm_c.top() == c.top()) rm_c.pop(), c.pop(); }\n};\n\n\ntemplate < class\
+    \ T >\nstruct heap_minmax {\n    erasable< heap_min< T > > h_min;\n    erasable<\
+    \ heap_max< T > > h_max;\n\n    heap_minmax() {}\n    heap_minmax(std::vector<\
+    \ T >& a) : h_min(a), h_max(a) {}\n    void push(T x) {\n        h_min.push(x),\
+    \ h_max.push(x);\n    }\n    int size() { return h_min.size(); }\n    int empty()\
+    \ { return size() == 0; }\n    T min() { return h_min.top(); }\n    T max() {\
+    \ return h_max.top(); }\n    T pop_min() {\n        T x = h_min.top(); h_min.pop();\n\
+    \        h_max.erase(x);\n        return x;\n    }\n    T pop_max() {\n      \
+    \  T x = h_max.top(); h_max.pop();\n        h_min.erase(x);\n        return x;\n\
+    \    }\n    void erase(T x) {\n        h_min.erase(x);\n        h_max.erase(x);\n\
+    \    }\n};\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -171,16 +165,16 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   isVerificationFile: false
-  path: src/graph/tree/rerooting.hpp
+  path: src/data_structure/heap_rich.hpp
   requiredBy: []
   timestamp: '2023-10-19 23:28:06+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/graph/tree/rerooting.test.cpp
-documentation_of: src/graph/tree/rerooting.hpp
+  - verify/library_checker/data_structure/heap_rich.test.cpp
+documentation_of: src/data_structure/heap_rich.hpp
 layout: document
 redirect_from:
-- /library/src/graph/tree/rerooting.hpp
-- /library/src/graph/tree/rerooting.hpp.html
-title: src/graph/tree/rerooting.hpp
+- /library/src/data_structure/heap_rich.hpp
+- /library/src/data_structure/heap_rich.hpp.html
+title: src/data_structure/heap_rich.hpp
 ---
