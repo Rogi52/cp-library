@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
+#define PROBLEM "https://judge.yosupo.jp/problem/double_ended_priority_queue"
 
 #include "../../../src/cp-template.hpp"
 #include "../../../src/data_structure/heap_rich.hpp"
