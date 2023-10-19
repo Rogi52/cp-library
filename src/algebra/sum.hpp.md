@@ -42,12 +42,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/sparse_segtree.test.cpp
     title: verify/yukicoder/sparse_segtree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid\
@@ -71,7 +71,7 @@ data:
   - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
   timestamp: '2023-10-14 00:28:35+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/sparse_segtree.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
