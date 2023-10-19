@@ -62,22 +62,22 @@ data:
   isVerificationFile: false
   path: src/algebra/sum.hpp
   requiredBy:
-  - src/algebra/range_update_range_sum.hpp
   - src/algebra/range_add_range_sum.hpp
+  - src/algebra/range_update_range_sum.hpp
   - src/algebra/range_add_range_minmax.hpp
   - src/algebra/range_affine_range_sum.hpp
   - src/data_structure/offline_multiset.hpp
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/data_structure/range_add_range_min.test.cpp
-  - verify/aoj/data_structure/range_add_range_sum.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/aoj/data_structure/range_add_range_sum.test.cpp
+  - verify/aoj/data_structure/range_add_range_min.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/algebra/sum.hpp
 layout: document
 redirect_from:

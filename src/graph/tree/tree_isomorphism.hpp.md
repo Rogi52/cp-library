@@ -11,6 +11,9 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
+    path: src/graph/tree/dp_on_tree.hpp
+    title: src/graph/tree/dp_on_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':heavy_check_mark:'
@@ -31,8 +34,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/string/rolling_hash.test.cpp
-    title: verify/library_checker/string/rolling_hash.test.cpp
+    path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+    title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -107,79 +110,81 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 3 \"src/utility/random.hpp\"\n\nnamespace randnum {\n\nstatic uint seed;\n\
-    static std::mt19937 mt;\nstruct gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n\
-    \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
-    \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
-    \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
-    \ T >(L, R)(mt);\n}\n\n}\n#line 3 \"src/utility/hash.hpp\"\n\ntemplate < int num_of_mod\
-    \ = 2 >\nstruct hash_vector : public array<ll, num_of_mod> {\n    static constexpr\
-    \ ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n    static_assert(1\
-    \ <= num_of_mod and num_of_mod <= 4);\n    using array<ll, num_of_mod>::operator[];\n\
-    \    using H = hash_vector;\n    static constexpr int n = num_of_mod;\n    hash_vector()\
-    \ : array<ll,n>() {}\n    hash_vector(ll x) : H() { for(int i : rep(n)) (*this)[i]\
-    \ = x % MODS[i]; }\n    H& operator+=(const H& rhs) { for(int i : rep(n)) if(((*this)[i]\
-    \ += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ H& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i])\
-    \ (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const H& rhs) { for(int\
-    \ i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n  \
-    \  H& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i])\
-    \ >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >=\
-    \ MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const ll\
-    \ rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i];\
-    \ return *this; }\n    H operator+(const H& rhs) const { return H(*this) += rhs;\
-    \ }\n    H operator-(const H& rhs) const { return H(*this) -= rhs; }\n    H operator*(const\
-    \ H& rhs) const { return H(*this) *= rhs; }\n    H operator+(const ll rhs) const\
-    \ { return H(*this) += rhs; }\n    H operator-(const ll rhs) const { return H(*this)\
-    \ -= rhs; }\n    H operator*(const ll rhs) const { return H(*this) *= rhs; }\n\
-    \    H operator-() const { return H().fill(0) - *this; }\n    friend H operator+(ll\
-    \ x, const H& y) { return H(x) + y; }\n    friend H operator-(ll x, const H& y)\
-    \ { return H(x) + y; }\n    friend H operator*(ll x, const H& y) { return H(x)\
-    \ * y; }\n    bool operator==(const H& rhs) { for(int i : rep(n)) if((*this)[i]\
-    \ != rhs[i]) return false; return true ; }\n    bool operator!=(const H& rhs)\
-    \ { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }\n\
-    };\n#line 4 \"src/string/rolling_hash.hpp\"\n\ntemplate< int num_of_mod = 2 >\n\
-    struct rolling_hash {\n\n    static const ll BASE;\n\n    vector< hash_vector<\
-    \ num_of_mod > > pb, hs;\n    rolling_hash() {}\n    rolling_hash(const string&\
-    \ s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
-    \        pb.resize(n + 1); pb[0].fill(1);\n        for(int i : rep(n)) {\n   \
-    \         hs[i + 1] = hs[i] * BASE + s[i];\n            pb[i + 1] = pb[i] * BASE;\n\
-    \        }\n    }\n\n    // [l, r)\n    hash_vector< num_of_mod > get(int l, int\
-    \ r) const {\n        return hs[r] - hs[l] * pb[r - l];\n    }\n\n    template\
-    \ < int n >\n    static int lcp(const rolling_hash< n >& rh1, int l1, int r1,\
-    \ const rolling_hash< n >& rh2, int l2, int r2) {\n        int lo = -1, hi = min(r1\
-    \ - l1, r2 - l2) + 1;\n        while(hi - lo > 1) {\n            int mid = (lo\
-    \ + hi) / 2;\n            (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo\
-    \ : hi) = mid;\n        }\n        return lo;\n    }\n\n    template < int n >\n\
-    \    static int cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int\
-    \ r1,\n                   const string& s2, const rolling_hash< n >& rh2, int\
-    \ l2, int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len\
-    \ == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n\
-    \        if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 +\
-    \ len] ? -1 : +1);\n    }\n};\n\ntemplate < int num_of_mod >\nconst ll rolling_hash<\
-    \ num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);\n"
-  code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/utility/random.hpp\"\
-    \n#include \"../../src/utility/hash.hpp\"\n\ntemplate< int num_of_mod = 2 >\n\
-    struct rolling_hash {\n\n    static const ll BASE;\n\n    vector< hash_vector<\
-    \ num_of_mod > > pb, hs;\n    rolling_hash() {}\n    rolling_hash(const string&\
-    \ s) {\n        int n = s.size();\n        hs.resize(n + 1); hs[0].fill(0);\n\
-    \        pb.resize(n + 1); pb[0].fill(1);\n        for(int i : rep(n)) {\n   \
-    \         hs[i + 1] = hs[i] * BASE + s[i];\n            pb[i + 1] = pb[i] * BASE;\n\
-    \        }\n    }\n\n    // [l, r)\n    hash_vector< num_of_mod > get(int l, int\
-    \ r) const {\n        return hs[r] - hs[l] * pb[r - l];\n    }\n\n    template\
-    \ < int n >\n    static int lcp(const rolling_hash< n >& rh1, int l1, int r1,\
-    \ const rolling_hash< n >& rh2, int l2, int r2) {\n        int lo = -1, hi = min(r1\
-    \ - l1, r2 - l2) + 1;\n        while(hi - lo > 1) {\n            int mid = (lo\
-    \ + hi) / 2;\n            (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo\
-    \ : hi) = mid;\n        }\n        return lo;\n    }\n\n    template < int n >\n\
-    \    static int cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int\
-    \ r1,\n                   const string& s2, const rolling_hash< n >& rh2, int\
-    \ l2, int r2) {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len\
-    \ == r1 - l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n\
-    \        if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 +\
-    \ len] ? -1 : +1);\n    }\n};\n\ntemplate < int num_of_mod >\nconst ll rolling_hash<\
-    \ num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);\n"
+    }\n#line 2 \"src/graph/tree/dp_on_tree.hpp\"\n\nstruct dp_on_tree {\n    int n;\n\
+    \    std::vector< std::vector< std::pair<int, int> > > tree;\n    dp_on_tree(int\
+    \ n) : n(n), tree(n) {}\n    void add_edge(int u, int v, int i) {\n        tree[u].push_back({v,\
+    \ i});\n        tree[v].push_back({u, i});\n    }\n\n    template < class S, class\
+    \ M, class E, class V >\n    vector< S > solve(int root, const M& merge, const\
+    \ E& fe, const V& fv, const S unit) {\n        vector< S > dp(n);\n        function<S(int,int)>\
+    \ dfs = [&](int v, int p) -> S {\n            S res = unit;\n            for(auto\
+    \ [to, id] : tree[v]) {\n                if(to != p) res = merge(res, fe(dfs(to,\
+    \ v), id));\n            }\n            return dp[v] = fv(res, v);\n        };\
+    \ dfs(root, -1);\n        return dp;\n    }\n};\n#line 3 \"src/utility/hash.hpp\"\
+    \n\ntemplate < int num_of_mod = 2 >\nstruct hash_vector : public array<ll, num_of_mod>\
+    \ {\n    static constexpr ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n\
+    \    static_assert(1 <= num_of_mod and num_of_mod <= 4);\n    using array<ll,\
+    \ num_of_mod>::operator[];\n    using H = hash_vector;\n    static constexpr int\
+    \ n = num_of_mod;\n    hash_vector() : array<ll,n>() {}\n    hash_vector(ll x)\
+    \ : H() { for(int i : rep(n)) (*this)[i] = x % MODS[i]; }\n    H& operator+=(const\
+    \ H& rhs) { for(int i : rep(n)) if(((*this)[i] += rhs[i]) >= MODS[i]) (*this)[i]\
+    \ -= MODS[i]; return *this; }\n    H& operator-=(const H& rhs) { for(int i : rep(n))\
+    \ if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return\
+    \ *this; }\n    H& operator*=(const H& rhs) { for(int i : rep(n)) (*this)[i] =\
+    \ (*this)[i] * rhs[i] % MODS[i]; return *this; }\n    H& operator+=(const ll rhs)\
+    \ { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i]) >= MODS[i]) (*this)[i]\
+    \ -= MODS[i]; return *this; }\n    H& operator-=(const ll rhs) { for(int i : rep(n))\
+    \ if(((*this)[i] += MODS[i] - rhs % MODS[i]) >= MODS[i]) (*this)[i] -= MODS[i];\
+    \ return *this; }\n    H& operator*=(const ll rhs) { for(int i : rep(n)) (*this)[i]\
+    \ = (*this)[i] * (rhs % MODS[i]) % MODS[i]; return *this; }\n    H operator+(const\
+    \ H& rhs) const { return H(*this) += rhs; }\n    H operator-(const H& rhs) const\
+    \ { return H(*this) -= rhs; }\n    H operator*(const H& rhs) const { return H(*this)\
+    \ *= rhs; }\n    H operator+(const ll rhs) const { return H(*this) += rhs; }\n\
+    \    H operator-(const ll rhs) const { return H(*this) -= rhs; }\n    H operator*(const\
+    \ ll rhs) const { return H(*this) *= rhs; }\n    H operator-() const { return\
+    \ H().fill(0) - *this; }\n    friend H operator+(ll x, const H& y) { return H(x)\
+    \ + y; }\n    friend H operator-(ll x, const H& y) { return H(x) + y; }\n    friend\
+    \ H operator*(ll x, const H& y) { return H(x) * y; }\n    bool operator==(const\
+    \ H& rhs) { for(int i : rep(n)) if((*this)[i] != rhs[i]) return false; return\
+    \ true ; }\n    bool operator!=(const H& rhs) { for(int i : rep(n)) if((*this)[i]\
+    \ != rhs[i]) return true ; return false; }\n};\n#line 3 \"src/utility/random.hpp\"\
+    \n\nnamespace randnum {\n\nstatic uint seed;\nstatic std::mt19937 mt;\nstruct\
+    \ gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n     \
+    \   mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class T >\n\
+    T gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L, R - 1)(mt);\n\
+    }\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
+    \ T >(L, R)(mt);\n}\n\n}\n#line 5 \"src/graph/tree/tree_isomorphism.hpp\"\n\n\
+    struct subtree_hashing {\n    int n;\n    dp_on_tree tree;\n    subtree_hashing(int\
+    \ n) : n(n), tree(n) {}\n    void add_edge(int u, int v) {\n        static int\
+    \ i = 0;\n        tree.add_edge(u, v, i++);\n    }\n\n    template < int num_of_mod\
+    \ >\n    std::pair< int, std::vector<int> > solve(int root) {\n        using hv\
+    \ = hash_vector< num_of_mod >;\n        std::vector< hv > h(n);\n        for(int\
+    \ i : rep(n)) h[i] = hv(randnum::gen_int<int>(0, hv::MODS[0]));\n\n        using\
+    \ S = std::pair< hv, int >;\n        vector< S > dp = tree.solve(\n          \
+    \  root,\n            [&](S a, S b) { return S{a.first * b.first, std::max(a.second,\
+    \ b.second + 1)}; },\n            [&](S a, int i) { return a; },\n           \
+    \ [&](S a, int i) { return S{a.first + h[a.second], a.second}; },\n          \
+    \  S{hv(1), 0}\n        );\n\n        vector< S > key = dp;\n        std::sort(key.begin(),\
+    \ key.end());\n        key.erase(std::unique(key.begin(), key.end()), key.end());\n\
+    \        vector<int> id(n);\n        for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
+    \ key.end(), dp[i]) - key.begin();\n        return {key.size(), id};\n    }\n\
+    };\n"
+  code: "#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/graph/tree/dp_on_tree.hpp\"\
+    \n#include \"../../../src/utility/hash.hpp\"\n#include \"../../../src/utility/random.hpp\"\
+    \n\nstruct subtree_hashing {\n    int n;\n    dp_on_tree tree;\n    subtree_hashing(int\
+    \ n) : n(n), tree(n) {}\n    void add_edge(int u, int v) {\n        static int\
+    \ i = 0;\n        tree.add_edge(u, v, i++);\n    }\n\n    template < int num_of_mod\
+    \ >\n    std::pair< int, std::vector<int> > solve(int root) {\n        using hv\
+    \ = hash_vector< num_of_mod >;\n        std::vector< hv > h(n);\n        for(int\
+    \ i : rep(n)) h[i] = hv(randnum::gen_int<int>(0, hv::MODS[0]));\n\n        using\
+    \ S = std::pair< hv, int >;\n        vector< S > dp = tree.solve(\n          \
+    \  root,\n            [&](S a, S b) { return S{a.first * b.first, std::max(a.second,\
+    \ b.second + 1)}; },\n            [&](S a, int i) { return a; },\n           \
+    \ [&](S a, int i) { return S{a.first + h[a.second], a.second}; },\n          \
+    \  S{hv(1), 0}\n        );\n\n        vector< S > key = dp;\n        std::sort(key.begin(),\
+    \ key.end());\n        key.erase(std::unique(key.begin(), key.end()), key.end());\n\
+    \        vector<int> id(n);\n        for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
+    \ key.end(), dp[i]) - key.begin();\n        return {key.size(), id};\n    }\n\
+    };"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -188,26 +193,20 @@ data:
   - src/utility/vec_op.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/utility/random.hpp
+  - src/graph/tree/dp_on_tree.hpp
   - src/utility/hash.hpp
+  - src/utility/random.hpp
   isVerificationFile: false
-  path: src/string/rolling_hash.hpp
+  path: src/graph/tree/tree_isomorphism.hpp
   requiredBy: []
   timestamp: '2023-10-19 15:29:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/string/rolling_hash.test.cpp
-documentation_of: src/string/rolling_hash.hpp
+  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+documentation_of: src/graph/tree/tree_isomorphism.hpp
 layout: document
-title: Rolling Hash
+redirect_from:
+- /library/src/graph/tree/tree_isomorphism.hpp
+- /library/src/graph/tree/tree_isomorphism.hpp.html
+title: src/graph/tree/tree_isomorphism.hpp
 ---
-
-- $\mathrm{rolling}$ _ $\mathrm{hash}(s)$ : 文字列 $s$ のハッシュテーブルを構築する。 $O(\|S\|)$。
-- $\mathrm{get}(l, r)$ : $s_{[l, r)}$ のハッシュ値を返す。 $O(1)$。  
-
-長さが $O(N)$ の文字列 $s_1, s_2$ のハッシュテーブルをそれぞれ ${rh}_1, {rh}_2$ とする。
--  $\mathrm{lcp}({rh}_ 1, l_1, r_1, {rh}_ 2, l_2, r_2)$ : $s_{1[l_1, r_1)}$ と $s_{2[l_2, r_2)}$の最長共通接頭辞の長さを返す。 $O(\log N)$。
-- $\mathrm{cmp}(s_1, {rh}_ 1, l_1, r_1, s_2, {rh}_ 2, l_2, r_2)$  :   文字列を辞書順比較し、次の値を返す。 $O(\log N)$。
-	- $s_{1[l_1, r_1)} = s_{2[l_2, r_2)} \implies 0$
-	- $s_{1[l_1, r_1)} < s_{2[l_2, r_2)} \implies +1$
-	- $s_{1[l_1, r_1)} > s_{2[l_2, r_2)} \implies - 1$

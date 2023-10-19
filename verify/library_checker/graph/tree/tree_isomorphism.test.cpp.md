@@ -11,14 +11,23 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/binary_trie.hpp
-    title: src/data_structure/binary_trie.hpp
+    path: src/graph/tree/dp_on_tree.hpp
+    title: src/graph/tree/dp_on_tree.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/graph/tree/tree_isomorphism.hpp
+    title: src/graph/tree/tree_isomorphism.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/utility/hash.hpp
+    title: src/utility/hash.hpp
   - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
   - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
   - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
@@ -32,11 +41,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
+    PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B
-  bundledCode: "#line 1 \"verify/aoj/data_structure/binary_trie.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
+    - https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
+  bundledCode: "#line 1 \"verify/library_checker/graph/tree/tree_isomorphism.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
     \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
     \ int;\nusing ull  = unsigned long long;\nusing i128 = __int128_t;\ntemplate <\
@@ -106,49 +115,73 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 2 \"src/data_structure/binary_trie.hpp\"\n\ntemplate < class K, int L,\
-    \ class V >\nstruct binary_trie {\n    struct node_t {\n        array<int, 2>\
-    \ to = {};\n        V cnt;\n        vector<int> accept;\n        node_t() : cnt(0)\
-    \ { to[0] = to[1] = -1; }\n    };\n\n    vector<node_t> node;\n    int ROOT;\n\
-    \    K XOR;\n    binary_trie() : node(1), ROOT(0), XOR(0) {}\n\n    void xor_all(K\
-    \ x) {\n        XOR ^= x;\n    }\n    int insert(K x, V v = 1, int id = -1) {\n\
-    \        int u = ROOT;\n        node[u].cnt += v;\n        for(int i : revrep(L))\
-    \ {\n            int p = ((XOR >> i) & 1) ^ ((x >> i) & 1);\n            if(node[u].to[p]\
-    \ == -1) {\n                node[u].to[p] = node.size();\n                node.push_back(node_t());\n\
-    \            }\n            u = node[u].to[p];\n            node[u].cnt += v;\n\
-    \        }\n        if(id != -1) node[u].accept.push_back(id);\n        return\
-    \ u;\n    }\n    int erase(K x, V v = 1) {\n        return insert(x, -v, -1);\n\
-    \    }\n    int find(K x) {\n        int u = ROOT;\n        for(int i : revrep(L))\
-    \ {\n            int p = ((XOR >> i) & 1) ^ ((x >> i) & 1);\n            u = node[u].to[p];\n\
-    \            if(u == -1) return -1;\n        }\n        return u;\n    }\n   \
-    \ pair< K, int > kth(V k) {\n        assert(0 <= k && k < size());\n        K\
-    \ x(0);\n        int u = ROOT;\n        for(int i : revrep(L)) {\n           \
-    \ int p = (XOR >> i) & 1, v = node[u].to[p];\n            K c = v != -1 ? node[v].cnt\
-    \ : 0;\n            if(c <= k) {\n                k -= c;\n                x |=\
-    \ K(1) << i;\n                u = node[u].to[p ^ 1];\n            } else {\n \
-    \               u = node[u].to[p];\n            }\n        }\n        return {x,\
-    \ u};\n    }\n    pair< K, int > min() {\n        assert(not empty());\n     \
-    \   return kth(0);\n    }\n    pair< K, int > max() {\n        assert(not empty());\n\
-    \        return kth(size() - 1);\n    }\n    V count(K x) {\n        int i = find(x);\n\
-    \        return i == -1 ? 0 : node[i].cnt;\n    }\n    V count_less(K x) {\n \
-    \       int u = ROOT;\n        V v = 0;\n        for(int i : revrep(L)) {\n  \
-    \          int p = (XOR >> i) & 1, q = (x >> i) & 1;\n            if(q > 0 and\
-    \ node[u].to[p] != -1) v += node[node[u].to[p]].cnt;\n            if(node[u].to[p\
-    \ ^ q] != -1) { u = node[u].to[p ^ q]; } else break;\n        }\n        return\
-    \ v;\n    }\n    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty()\
-    \ {\n        return size() == 0;\n    }\n};\n#line 5 \"verify/aoj/data_structure/binary_trie.test.cpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    binary_trie<int,20,int> bt;\n\
-    \    for(int _ : rep(Q)) {\n        int c = in(), x = in(), y = in();\n      \
-    \  switch(c) {\n            case 0: {\n                bt.insert(x, y);\n    \
-    \        } break;\n\n            case 1: {\n                print(bt.count_less(y\
-    \ + 1) - bt.count_less(x));\n            } break;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\
-    \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/binary_trie.hpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    binary_trie<int,20,int> bt;\n\
-    \    for(int _ : rep(Q)) {\n        int c = in(), x = in(), y = in();\n      \
-    \  switch(c) {\n            case 0: {\n                bt.insert(x, y);\n    \
-    \        } break;\n\n            case 1: {\n                print(bt.count_less(y\
-    \ + 1) - bt.count_less(x));\n            } break;\n        }\n    }\n}"
+    }\n#line 3 \"src/utility/hash.hpp\"\n\ntemplate < int num_of_mod = 2 >\nstruct\
+    \ hash_vector : public array<ll, num_of_mod> {\n    static constexpr ll MODS[]\
+    \ = {999999937, 1000000007, 1000000009, 1000000021};\n    static_assert(1 <= num_of_mod\
+    \ and num_of_mod <= 4);\n    using array<ll, num_of_mod>::operator[];\n    using\
+    \ H = hash_vector;\n    static constexpr int n = num_of_mod;\n    hash_vector()\
+    \ : array<ll,n>() {}\n    hash_vector(ll x) : H() { for(int i : rep(n)) (*this)[i]\
+    \ = x % MODS[i]; }\n    H& operator+=(const H& rhs) { for(int i : rep(n)) if(((*this)[i]\
+    \ += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
+    \ H& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i])\
+    \ (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const H& rhs) { for(int\
+    \ i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n  \
+    \  H& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i])\
+    \ >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
+    \ ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >=\
+    \ MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const ll\
+    \ rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i];\
+    \ return *this; }\n    H operator+(const H& rhs) const { return H(*this) += rhs;\
+    \ }\n    H operator-(const H& rhs) const { return H(*this) -= rhs; }\n    H operator*(const\
+    \ H& rhs) const { return H(*this) *= rhs; }\n    H operator+(const ll rhs) const\
+    \ { return H(*this) += rhs; }\n    H operator-(const ll rhs) const { return H(*this)\
+    \ -= rhs; }\n    H operator*(const ll rhs) const { return H(*this) *= rhs; }\n\
+    \    H operator-() const { return H().fill(0) - *this; }\n    friend H operator+(ll\
+    \ x, const H& y) { return H(x) + y; }\n    friend H operator-(ll x, const H& y)\
+    \ { return H(x) + y; }\n    friend H operator*(ll x, const H& y) { return H(x)\
+    \ * y; }\n    bool operator==(const H& rhs) { for(int i : rep(n)) if((*this)[i]\
+    \ != rhs[i]) return false; return true ; }\n    bool operator!=(const H& rhs)\
+    \ { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }\n\
+    };\n#line 3 \"src/utility/random.hpp\"\n\nnamespace randnum {\n\nstatic uint seed;\n\
+    static std::mt19937 mt;\nstruct gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n\
+    \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
+    \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
+    \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
+    \ T >(L, R)(mt);\n}\n\n}\n#line 2 \"src/graph/tree/dp_on_tree.hpp\"\n\nstruct\
+    \ dp_on_tree {\n    int n;\n    std::vector< std::vector< std::pair<int, int>\
+    \ > > tree;\n    dp_on_tree(int n) : n(n), tree(n) {}\n    void add_edge(int u,\
+    \ int v, int i) {\n        tree[u].push_back({v, i});\n        tree[v].push_back({u,\
+    \ i});\n    }\n\n    template < class S, class M, class E, class V >\n    vector<\
+    \ S > solve(int root, const M& merge, const E& fe, const V& fv, const S unit)\
+    \ {\n        vector< S > dp(n);\n        function<S(int,int)> dfs = [&](int v,\
+    \ int p) -> S {\n            S res = unit;\n            for(auto [to, id] : tree[v])\
+    \ {\n                if(to != p) res = merge(res, fe(dfs(to, v), id));\n     \
+    \       }\n            return dp[v] = fv(res, v);\n        }; dfs(root, -1);\n\
+    \        return dp;\n    }\n};\n#line 5 \"src/graph/tree/tree_isomorphism.hpp\"\
+    \n\nstruct subtree_hashing {\n    int n;\n    dp_on_tree tree;\n    subtree_hashing(int\
+    \ n) : n(n), tree(n) {}\n    void add_edge(int u, int v) {\n        static int\
+    \ i = 0;\n        tree.add_edge(u, v, i++);\n    }\n\n    template < int num_of_mod\
+    \ >\n    std::pair< int, std::vector<int> > solve(int root) {\n        using hv\
+    \ = hash_vector< num_of_mod >;\n        std::vector< hv > h(n);\n        for(int\
+    \ i : rep(n)) h[i] = hv(randnum::gen_int<int>(0, hv::MODS[0]));\n\n        using\
+    \ S = std::pair< hv, int >;\n        vector< S > dp = tree.solve(\n          \
+    \  root,\n            [&](S a, S b) { return S{a.first * b.first, std::max(a.second,\
+    \ b.second + 1)}; },\n            [&](S a, int i) { return a; },\n           \
+    \ [&](S a, int i) { return S{a.first + h[a.second], a.second}; },\n          \
+    \  S{hv(1), 0}\n        );\n\n        vector< S > key = dp;\n        std::sort(key.begin(),\
+    \ key.end());\n        key.erase(std::unique(key.begin(), key.end()), key.end());\n\
+    \        vector<int> id(n);\n        for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
+    \ key.end(), dp[i]) - key.begin();\n        return {key.size(), id};\n    }\n\
+    };\n#line 7 \"verify/library_checker/graph/tree/tree_isomorphism.test.cpp\"\n\n\
+    int main() {\n    int N = in();\n    subtree_hashing g(N);\n    for(int i : rep(1,\
+    \ N)) {\n        int p = in();\n        g.add_edge(p, i);\n    }\n\n    auto [K,\
+    \ ans] = g.solve< 2 >(0);\n    print(K);\n    print(ans);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
+    \n\n#include \"../../../../src/cp-template.hpp\"\n#include \"../../../../src/utility/hash.hpp\"\
+    \n#include \"../../../../src/utility/random.hpp\"\n#include \"../../../../src/graph/tree/tree_isomorphism.hpp\"\
+    \n\nint main() {\n    int N = in();\n    subtree_hashing g(N);\n    for(int i\
+    \ : rep(1, N)) {\n        int p = in();\n        g.add_edge(p, i);\n    }\n\n\
+    \    auto [K, ans] = g.solve< 2 >(0);\n    print(K);\n    print(ans);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -157,17 +190,20 @@ data:
   - src/utility/vec_op.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/data_structure/binary_trie.hpp
+  - src/utility/hash.hpp
+  - src/utility/random.hpp
+  - src/graph/tree/tree_isomorphism.hpp
+  - src/graph/tree/dp_on_tree.hpp
   isVerificationFile: true
-  path: verify/aoj/data_structure/binary_trie.test.cpp
+  path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   requiredBy: []
-  timestamp: '2023-10-18 21:43:28+09:00'
+  timestamp: '2023-10-19 15:29:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/aoj/data_structure/binary_trie.test.cpp
+documentation_of: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/aoj/data_structure/binary_trie.test.cpp
-- /verify/verify/aoj/data_structure/binary_trie.test.cpp.html
-title: verify/aoj/data_structure/binary_trie.test.cpp
+- /verify/verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+- /verify/verify/library_checker/graph/tree/tree_isomorphism.test.cpp.html
+title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 ---
