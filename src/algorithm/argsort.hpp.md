@@ -69,6 +69,9 @@ data:
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/sparse_segtree.hpp
+    title: src/data_structure/sparse_segtree.hpp
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -261,6 +264,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/gaussian_integer.test.cpp
     title: verify/yukicoder/gaussian_integer.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/sparse_segtree.test.cpp
+    title: verify/yukicoder/sparse_segtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -385,6 +391,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/data_structure/fenwick_tree.hpp
   - src/data_structure/wavlet_matrix.hpp
+  - src/data_structure/sparse_segtree.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
   - src/data_structure/sliding_window_aggregation.hpp
@@ -396,6 +403,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/yukicoder/gaussian_integer.test.cpp
+  - verify/yukicoder/sparse_segtree.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_sum.test.cpp

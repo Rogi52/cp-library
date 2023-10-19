@@ -115,6 +115,9 @@ data:
       path: src/data_structure/sliding_window_aggregation.hpp
       title: src/data_structure/sliding_window_aggregation.hpp
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/sparse_segtree.hpp
+      title: src/data_structure/sparse_segtree.hpp
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
     - icon: ':heavy_check_mark:'
@@ -418,5 +421,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/yukicoder/gaussian_integer.test.cpp
       title: verify/yukicoder/gaussian_integer.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/yukicoder/sparse_segtree.test.cpp
+      title: verify/yukicoder/sparse_segtree.test.cpp
 layout: toppage
 ---

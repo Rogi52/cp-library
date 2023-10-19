@@ -42,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/yukicoder/sparse_segtree.test.cpp
+    title: verify/yukicoder/sparse_segtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,6 +73,7 @@ data:
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/yukicoder/sparse_segtree.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_min.test.cpp
