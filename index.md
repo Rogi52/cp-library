@@ -50,9 +50,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
-    - icon: ':warning:'
-      path: src/algorithm/binary_search.hpp
-      title: src/algorithm/binary_search.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
@@ -74,6 +71,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/sqrt_decomp.hpp
       title: src/algorithm/sqrt_decomp.hpp
+    - icon: ':warning:'
+      path: src/algorithm/ternary_search.hpp
+      title: src/algorithm/ternary_search.hpp
   - name: src
     pages:
     - icon: ':heavy_check_mark:'
