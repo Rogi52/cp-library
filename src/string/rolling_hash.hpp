@@ -24,6 +24,11 @@ struct rolling_hash {
         return hs[r] - hs[l] * pb[r - l];
     }
 
+    hash_vector< num_of_mod > concat(hash_vector< num_of_mod > h1, hash_vector< num_of_mod > h2, int h2_len) {
+        assert(0 <= h2_len and h2_len <= n);
+        return h1 * pb[h2_len] + h2;
+    }
+
     template < int n >
     static int lcp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2, int r2) {
         int lo = -1, hi = min(r1 - l1, r2 - l2) + 1;
