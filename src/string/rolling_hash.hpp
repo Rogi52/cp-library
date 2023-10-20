@@ -25,7 +25,7 @@ struct rolling_hash {
     }
 
     hash_vector< num_of_mod > concat(hash_vector< num_of_mod > h1, hash_vector< num_of_mod > h2, int h2_len) {
-        assert(0 <= h2_len and h2_len <= n);
+        assert(0 <= h2_len and h2_len < int(pb.size()));
         return h1 * pb[h2_len] + h2;
     }
 
