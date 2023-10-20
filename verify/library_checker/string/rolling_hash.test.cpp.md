@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/suffixarray
@@ -159,25 +159,25 @@ data:
     \        }\n    }\n\n    // [l, r)\n    hash_vector< num_of_mod > get(int l, int\
     \ r) const {\n        return hs[r] - hs[l] * pb[r - l];\n    }\n\n    hash_vector<\
     \ num_of_mod > concat(hash_vector< num_of_mod > h1, hash_vector< num_of_mod >\
-    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len <= n);\n        return\
-    \ h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static int lcp(const\
-    \ rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2,\
-    \ int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) + 1;\n        while(hi\
-    \ - lo > 1) {\n            int mid = (lo + hi) / 2;\n            (rh1.get(l1,\
-    \ l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n        }\n        return\
-    \ lo;\n    }\n\n    template < int n >\n    static int cmp(const string& s1, const\
-    \ rolling_hash< n >& rh1, int l1, int r1,\n                   const string& s2,\
-    \ const rolling_hash< n >& rh2, int l2, int r2) {\n        int len = lcp(rh1,\
-    \ l1, r1, rh2, l2, r2);\n        if(len == r1 - l1 && len == r2 - l2) return 0;\n\
-    \        if(len == r1 - l1) return -1;\n        if(len == r2 - l2) return +1;\n\
-    \        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);\n    }\n};\n\ntemplate\
-    \ < int num_of_mod >\nconst ll rolling_hash< num_of_mod >::BASE = randnum::gen_int<ll>(ll(0),\
-    \ hash_vector< num_of_mod >::MODS[0]);\n#line 5 \"verify/library_checker/string/rolling_hash.test.cpp\"\
-    \n\nint main() {\n    string s = in();\n    int n = s.size();\n    const int m\
-    \ = 2;\n    rolling_hash< m > rh(s);\n    vector<int> I(n);\n    iota(I.begin(),\
-    \ I.end(), 0);\n    sort(I.begin(), I.end(), [&](int i, int j) {\n        return\
-    \ rolling_hash< m >::cmp(s, rh, i, n, s, rh, j, n) < 0;\n    });\n    print(I);\n\
-    }\n"
+    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len < int(pb.size()));\n\
+    \        return h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static\
+    \ int lcp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n\
+    \ >& rh2, int l2, int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) +\
+    \ 1;\n        while(hi - lo > 1) {\n            int mid = (lo + hi) / 2;\n   \
+    \         (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n\
+    \        }\n        return lo;\n    }\n\n    template < int n >\n    static int\
+    \ cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int r1,\n      \
+    \             const string& s2, const rolling_hash< n >& rh2, int l2, int r2)\
+    \ {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len == r1 -\
+    \ l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n   \
+    \     if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 + len]\
+    \ ? -1 : +1);\n    }\n};\n\ntemplate < int num_of_mod >\nconst ll rolling_hash<\
+    \ num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);\n\
+    #line 5 \"verify/library_checker/string/rolling_hash.test.cpp\"\n\nint main()\
+    \ {\n    string s = in();\n    int n = s.size();\n    const int m = 2;\n    rolling_hash<\
+    \ m > rh(s);\n    vector<int> I(n);\n    iota(I.begin(), I.end(), 0);\n    sort(I.begin(),\
+    \ I.end(), [&](int i, int j) {\n        return rolling_hash< m >::cmp(s, rh, i,\
+    \ n, s, rh, j, n) < 0;\n    });\n    print(I);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\n\n#include\
     \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/string/rolling_hash.hpp\"\
     \n\nint main() {\n    string s = in();\n    int n = s.size();\n    const int m\
@@ -200,8 +200,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/string/rolling_hash.test.cpp
   requiredBy: []
-  timestamp: '2023-10-21 08:24:17+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-21 08:42:33+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/string/rolling_hash.test.cpp
 layout: document

@@ -41,13 +41,13 @@ data:
       title: src/algebra/xor.hpp
   - name: src/algorithm
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
     - icon: ':heavy_check_mark:'
@@ -76,7 +76,7 @@ data:
       title: src/algorithm/ternary_search.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -237,7 +237,7 @@ data:
       title: src/number/runtime_modint.hpp
   - name: src/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
     - icon: ':warning:'
@@ -248,25 +248,25 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/hash.hpp
       title: src/utility/hash.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/heap.hpp
       title: src/utility/heap.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/random.hpp
       title: src/utility/random.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
     - icon: ':heavy_check_mark:'
@@ -422,7 +422,7 @@ data:
       title: verify/library_checker/number/poly_taylor_shift.test.cpp
   - name: verify/library_checker/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/rolling_hash.test.cpp
       title: verify/library_checker/string/rolling_hash.test.cpp
   - name: verify/yukicoder

@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -154,20 +154,20 @@ data:
     \        }\n    }\n\n    // [l, r)\n    hash_vector< num_of_mod > get(int l, int\
     \ r) const {\n        return hs[r] - hs[l] * pb[r - l];\n    }\n\n    hash_vector<\
     \ num_of_mod > concat(hash_vector< num_of_mod > h1, hash_vector< num_of_mod >\
-    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len <= n);\n        return\
-    \ h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static int lcp(const\
-    \ rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2,\
-    \ int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) + 1;\n        while(hi\
-    \ - lo > 1) {\n            int mid = (lo + hi) / 2;\n            (rh1.get(l1,\
-    \ l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n        }\n        return\
-    \ lo;\n    }\n\n    template < int n >\n    static int cmp(const string& s1, const\
-    \ rolling_hash< n >& rh1, int l1, int r1,\n                   const string& s2,\
-    \ const rolling_hash< n >& rh2, int l2, int r2) {\n        int len = lcp(rh1,\
-    \ l1, r1, rh2, l2, r2);\n        if(len == r1 - l1 && len == r2 - l2) return 0;\n\
-    \        if(len == r1 - l1) return -1;\n        if(len == r2 - l2) return +1;\n\
-    \        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);\n    }\n};\n\ntemplate\
-    \ < int num_of_mod >\nconst ll rolling_hash< num_of_mod >::BASE = randnum::gen_int<ll>(ll(0),\
-    \ hash_vector< num_of_mod >::MODS[0]);\n"
+    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len < int(pb.size()));\n\
+    \        return h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static\
+    \ int lcp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n\
+    \ >& rh2, int l2, int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) +\
+    \ 1;\n        while(hi - lo > 1) {\n            int mid = (lo + hi) / 2;\n   \
+    \         (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n\
+    \        }\n        return lo;\n    }\n\n    template < int n >\n    static int\
+    \ cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int r1,\n      \
+    \             const string& s2, const rolling_hash< n >& rh2, int l2, int r2)\
+    \ {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len == r1 -\
+    \ l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n   \
+    \     if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 + len]\
+    \ ? -1 : +1);\n    }\n};\n\ntemplate < int num_of_mod >\nconst ll rolling_hash<\
+    \ num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);\n"
   code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/utility/random.hpp\"\
     \n#include \"../../src/utility/hash.hpp\"\n\ntemplate< int num_of_mod = 2 >\n\
     struct rolling_hash {\n\n    static const ll BASE;\n\n    vector< hash_vector<\
@@ -178,20 +178,20 @@ data:
     \        }\n    }\n\n    // [l, r)\n    hash_vector< num_of_mod > get(int l, int\
     \ r) const {\n        return hs[r] - hs[l] * pb[r - l];\n    }\n\n    hash_vector<\
     \ num_of_mod > concat(hash_vector< num_of_mod > h1, hash_vector< num_of_mod >\
-    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len <= n);\n        return\
-    \ h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static int lcp(const\
-    \ rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n >& rh2, int l2,\
-    \ int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) + 1;\n        while(hi\
-    \ - lo > 1) {\n            int mid = (lo + hi) / 2;\n            (rh1.get(l1,\
-    \ l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n        }\n        return\
-    \ lo;\n    }\n\n    template < int n >\n    static int cmp(const string& s1, const\
-    \ rolling_hash< n >& rh1, int l1, int r1,\n                   const string& s2,\
-    \ const rolling_hash< n >& rh2, int l2, int r2) {\n        int len = lcp(rh1,\
-    \ l1, r1, rh2, l2, r2);\n        if(len == r1 - l1 && len == r2 - l2) return 0;\n\
-    \        if(len == r1 - l1) return -1;\n        if(len == r2 - l2) return +1;\n\
-    \        return (s1[l1 + len] < s2[l2 + len] ? -1 : +1);\n    }\n};\n\ntemplate\
-    \ < int num_of_mod >\nconst ll rolling_hash< num_of_mod >::BASE = randnum::gen_int<ll>(ll(0),\
-    \ hash_vector< num_of_mod >::MODS[0]);\n"
+    \ h2, int h2_len) {\n        assert(0 <= h2_len and h2_len < int(pb.size()));\n\
+    \        return h1 * pb[h2_len] + h2;\n    }\n\n    template < int n >\n    static\
+    \ int lcp(const rolling_hash< n >& rh1, int l1, int r1, const rolling_hash< n\
+    \ >& rh2, int l2, int r2) {\n        int lo = -1, hi = min(r1 - l1, r2 - l2) +\
+    \ 1;\n        while(hi - lo > 1) {\n            int mid = (lo + hi) / 2;\n   \
+    \         (rh1.get(l1, l1 + mid) == rh2.get(l2, l2 + mid) ? lo : hi) = mid;\n\
+    \        }\n        return lo;\n    }\n\n    template < int n >\n    static int\
+    \ cmp(const string& s1, const rolling_hash< n >& rh1, int l1, int r1,\n      \
+    \             const string& s2, const rolling_hash< n >& rh2, int l2, int r2)\
+    \ {\n        int len = lcp(rh1, l1, r1, rh2, l2, r2);\n        if(len == r1 -\
+    \ l1 && len == r2 - l2) return 0;\n        if(len == r1 - l1) return -1;\n   \
+    \     if(len == r2 - l2) return +1;\n        return (s1[l1 + len] < s2[l2 + len]\
+    \ ? -1 : +1);\n    }\n};\n\ntemplate < int num_of_mod >\nconst ll rolling_hash<\
+    \ num_of_mod >::BASE = randnum::gen_int<ll>(ll(0), hash_vector< num_of_mod >::MODS[0]);\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -206,8 +206,8 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-10-21 08:24:17+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-21 08:42:33+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/string/rolling_hash.test.cpp
 documentation_of: src/string/rolling_hash.hpp
