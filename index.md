@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/size.hpp
       title: src/algebra/size.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/sum.hpp
       title: src/algebra/sum.hpp
     - icon: ':warning:'
@@ -41,13 +41,13 @@ data:
       title: src/algebra/xor.hpp
   - name: src/algorithm
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
     - icon: ':heavy_check_mark:'
@@ -76,7 +76,7 @@ data:
       title: src/algorithm/ternary_search.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -117,7 +117,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/sliding_window_aggregation.hpp
       title: src/data_structure/sliding_window_aggregation.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/sparse_segtree.hpp
       title: src/data_structure/sparse_segtree.hpp
     - icon: ':heavy_check_mark:'
@@ -214,13 +214,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/gaussian_integer.hpp
       title: src/number/gaussian_integer.hpp
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/modfunc.hpp
       title: src/number/modfunc.hpp
     - icon: ':heavy_check_mark:'
@@ -235,7 +235,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
     - icon: ':heavy_check_mark:'
@@ -244,12 +244,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/tetration.hpp
       title: src/number/tetration.hpp
   - name: src/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
     - icon: ':warning:'
@@ -260,25 +260,25 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/hash.hpp
       title: src/utility/hash.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/heap.hpp
       title: src/utility/heap.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/random.hpp
       title: src/utility/random.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
     - icon: ':heavy_check_mark:'
@@ -446,20 +446,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/primitive_root.test.cpp
       title: verify/library_checker/number/primitive_root.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/tetration.test.cpp
       title: verify/library_checker/number/tetration.test.cpp
   - name: verify/library_checker/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/string/rolling_hash.test.cpp
       title: verify/library_checker/string/rolling_hash.test.cpp
   - name: verify/yukicoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/gaussian_integer.test.cpp
       title: verify/yukicoder/gaussian_integer.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/sparse_segtree.test.cpp
       title: verify/yukicoder/sparse_segtree.test.cpp
 layout: toppage

@@ -1,54 +1,54 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
+    PROBLEM: https://judge.yosupo.jp/problem/tetration_mod
     links:
-    - https://judge.yosupo.jp/problem/sqrt_mod
+    - https://judge.yosupo.jp/problem/tetration_mod
   bundledCode: "#line 1 \"verify/library_checker/number/tetration.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#line 2 \"src/cp-template.hpp\"\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/tetration_mod\"\n\n#line 2 \"src/cp-template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
     using i32 = int;\nusing u32 = unsigned int;\nusing i64 = long long;\nusing u64\
@@ -183,7 +183,7 @@ data:
     \ 64), a), mod);\n}\n#line 5 \"verify/library_checker/number/tetration.test.cpp\"\
     \n\nint main() {\n    int T = in();\n    for(int _ : rep(T)) {\n        int A\
     \ = in(), B = in(), M = in();\n        print(tetration(A, B, M));\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#include\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tetration_mod\"\n\n#include\
     \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/tetration.hpp\"\
     \n\nint main() {\n    int T = in();\n    for(int _ : rep(T)) {\n        int A\
     \ = in(), B = in(), M = in();\n        print(tetration(A, B, M));\n    }\n}\n"
@@ -203,8 +203,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/tetration.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 04:26:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-24 05:10:40+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/tetration.test.cpp
 layout: document
