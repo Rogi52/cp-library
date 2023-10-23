@@ -28,7 +28,7 @@ namespace scanner {
             cin.tie(0);
             ios::sync_with_stdio(0);
         }
-    } su;
+    } speedup_instance;
 }
 scanner::sca in() { return scanner::sca(); }
 scanner::vec in(int n) { return scanner::vec(n); }
@@ -42,19 +42,22 @@ namespace printer {
         cout.flush();
     }
 }
+
+template < class T >
+ostream& operator<<(ostream& os, const std::vector< T > a) {
+    int n = a.size();
+    for(int i : rep(n)) { os << a[i]; if(i != n - 1) os << ' '; }
+    return os;
+}
+
 int print() { cout << '\n'; return 0; }
 template < class head, class... tail > int print(head&& h, tail&&... t) {
     cout << h; if(sizeof...(tail)) cout << ' ';
     return print(forward<tail>(t)...);
 }
-template < class T > int print(vector< T > a, char sep = ' ') {
+
+template < class T > int print_n(const std::vector< T > a) {
     int n = a.size();
-    for(int i : rep(n)) cout << a[i] << (i != n - 1 ? sep : '\n');
-    return 0;
-}
-template < class T > int print(vector< vector< T > > a) {
-    if(a.empty()) return 0;
-    int h = a.size(), w = a[0].size();
-    for(int i : rep(h)) for(int j : rep(w)) cout << a[i][j] << (j != w - 1 ? ' ' : '\n');
+    for(int i : rep(n)) cout << a[i] << "\n";
     return 0;
 }
