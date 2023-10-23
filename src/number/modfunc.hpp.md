@@ -1,12 +1,6 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/size.hpp
-    title: src/algebra/size.hpp
-  - icon: ':question:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
   - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
@@ -25,20 +19,44 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
   - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: src/number/prime.hpp
+    title: src/number/prime.hpp
+  - icon: ':x:'
+    path: src/number/primitive_root.hpp
+    title: src/number/primitive_root.hpp
+  - icon: ':x:'
+    path: src/number/tetration.hpp
+    title: src/number/tetration.hpp
+  - icon: ':warning:'
+    path: verify/library_checker/number/factorize.cpp
+    title: verify/library_checker/number/factorize.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_add_range_sum.test.cpp
-    title: verify/aoj/data_structure/range_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/library_checker/number/modsqrt.test.cpp
+    title: verify/library_checker/number/modsqrt.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/primality_test.test.cpp
+    title: verify/library_checker/number/primality_test.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/primitive_root.test.cpp
+    title: verify/library_checker/number/primitive_root.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/tetration.test.cpp
+    title: verify/library_checker/number/tetration.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -113,30 +131,41 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid {\n\
-    \  public:\n    using set = T;\n    static constexpr T op(const T &l, const T\
-    \ &r) { return l + r; }\n    static constexpr T id() { return T(0); }\n    static\
-    \ constexpr T inv(const T &x) { return -x; }\n    static constexpr T pow(const\
-    \ T &x, const ll n) { return x * n; }\n    static constexpr bool comm = true;\n\
-    };\n#line 2 \"src/algebra/size.hpp\"\n\ntemplate < class M, class T >\nstruct\
-    \ with_size {\n  public:\n    struct VS {\n        using V = typename M::set;\n\
-    \        mutable V value;\n        T size;\n    };\n    using set = VS;\n    static\
-    \ constexpr set op(const set& l, const set& r) {\n        return set{M::op(l.value,\
-    \ r.value), l.size + r.size};\n    }\n    static constexpr set id() {\n      \
-    \  return set{M::id(), 0};\n    }\n};\n#line 4 \"src/algebra/range_add_range_sum.hpp\"\
-    \n\ntemplate < class T > class range_add_range_sum {\n  public:\n    using value_structure\
-    \ = with_size< sum_monoid< T >, T >;\n    using operator_structure = sum_monoid<\
-    \ T >;\n  private:\n    using S = typename value_structure::set;\n    using F\
-    \ = typename operator_structure::set;\n  public:\n    static constexpr S op(const\
-    \ S& x, const F& f) {\n        return S{x.value + f * x.size, x.size};\n    }\n\
-    };\n"
-  code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/algebra/sum.hpp\"\
-    \n#include \"../../src/algebra/size.hpp\"\n\ntemplate < class T > class range_add_range_sum\
-    \ {\n  public:\n    using value_structure = with_size< sum_monoid< T >, T >;\n\
-    \    using operator_structure = sum_monoid< T >;\n  private:\n    using S = typename\
-    \ value_structure::set;\n    using F = typename operator_structure::set;\n  public:\n\
-    \    static constexpr S op(const S& x, const F& f) {\n        return S{x.value\
-    \ + f * x.size, x.size};\n    }\n};"
+    }\n#line 3 \"src/utility/random.hpp\"\n\nnamespace randnum {\n\nstatic uint seed;\n\
+    static std::mt19937 mt;\nstruct gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n\
+    \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
+    \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
+    \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
+    \ T >(L, R)(mt);\n}\n\n}\n#line 4 \"src/number/modfunc.hpp\"\n\nu64 modpow64(u64\
+    \ a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n\
+    \        if(n % 2 == 1) res = i128(res) * a % mod;\n        a = i128(a) * a %\
+    \ mod;\n        n /= 2;\n    }\n    return res;\n}\n\nu64 modpow(u64 a, u64 n,\
+    \ u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n        if(n\
+    \ % 2 == 1) res = res * a % mod;\n        a = a * a % mod;\n        n /= 2;\n\
+    \    }\n    return res;\n}\n\n// solve x^2 = a (mod p)\n// return x\n// or No\
+    \ Solution (-1)\ni32 modsqrt(i32 a, i32 p) {\n    if(p == 2) return a;\n    a\
+    \ %= p;\n    if(a == 0) return 0;\n    if(modpow(a, (p - 1) / 2, p) != 1) return\
+    \ -1;\n    i32 q = p - 1, m = 0; while(q % 2 == 0) q /= 2, m++;\n    i32 z; do\
+    \ { z = randnum::gen_int<i32>(1, p); } while(modpow(z, (p - 1) / 2, p) != p -\
+    \ 1);\n    i64 c = modpow(z, q, p), t = modpow(a, q, p), r = modpow(a, (q + 1)\
+    \ / 2, p);\n    while(m > 1) {\n        if(modpow(t, 1 << (m - 2), p) != 1) r\
+    \ = r * c % p, t = t * (c * c % p) % p;\n        c = c * c % p;\n        m -=\
+    \ 1;\n    }\n    return r;\n}\n"
+  code: "#pragma once\n#include \"../../src/cp-template.hpp\"\n#include \"../../src/utility/random.hpp\"\
+    \n\nu64 modpow64(u64 a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n \
+    \   while(n > 0) {\n        if(n % 2 == 1) res = i128(res) * a % mod;\n      \
+    \  a = i128(a) * a % mod;\n        n /= 2;\n    }\n    return res;\n}\n\nu64 modpow(u64\
+    \ a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n\
+    \        if(n % 2 == 1) res = res * a % mod;\n        a = a * a % mod;\n     \
+    \   n /= 2;\n    }\n    return res;\n}\n\n// solve x^2 = a (mod p)\n// return\
+    \ x\n// or No Solution (-1)\ni32 modsqrt(i32 a, i32 p) {\n    if(p == 2) return\
+    \ a;\n    a %= p;\n    if(a == 0) return 0;\n    if(modpow(a, (p - 1) / 2, p)\
+    \ != 1) return -1;\n    i32 q = p - 1, m = 0; while(q % 2 == 0) q /= 2, m++;\n\
+    \    i32 z; do { z = randnum::gen_int<i32>(1, p); } while(modpow(z, (p - 1) /\
+    \ 2, p) != p - 1);\n    i64 c = modpow(z, q, p), t = modpow(a, q, p), r = modpow(a,\
+    \ (q + 1) / 2, p);\n    while(m > 1) {\n        if(modpow(t, 1 << (m - 2), p)\
+    \ != 1) r = r * c % p, t = t * (c * c % p) % p;\n        c = c * c % p;\n    \
+    \    m -= 1;\n    }\n    return r;\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -146,19 +175,25 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/algebra/sum.hpp
-  - src/algebra/size.hpp
+  - src/utility/random.hpp
   isVerificationFile: false
-  path: src/algebra/range_add_range_sum.hpp
-  requiredBy: []
+  path: src/number/modfunc.hpp
+  requiredBy:
+  - verify/library_checker/number/factorize.cpp
+  - src/number/primitive_root.hpp
+  - src/number/prime.hpp
+  - src/number/tetration.hpp
   timestamp: '2023-10-24 04:26:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/aoj/data_structure/range_add_range_sum.test.cpp
-documentation_of: src/algebra/range_add_range_sum.hpp
+  - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/modsqrt.test.cpp
+  - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/primality_test.test.cpp
+documentation_of: src/number/modfunc.hpp
 layout: document
 redirect_from:
-- /library/src/algebra/range_add_range_sum.hpp
-- /library/src/algebra/range_add_range_sum.hpp.html
-title: src/algebra/range_add_range_sum.hpp
+- /library/src/number/modfunc.hpp
+- /library/src/number/modfunc.hpp.html
+title: src/number/modfunc.hpp
 ---

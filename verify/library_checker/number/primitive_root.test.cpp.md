@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
-  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
   - icon: ':question:'
@@ -13,9 +10,15 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/data_structure/fenwick_tree.hpp
-    title: src/data_structure/fenwick_tree.hpp
+  - icon: ':x:'
+    path: src/number/modfunc.hpp
+    title: src/number/modfunc.hpp
+  - icon: ':x:'
+    path: src/number/prime.hpp
+    title: src/number/prime.hpp
+  - icon: ':x:'
+    path: src/number/primitive_root.hpp
+    title: src/number/primitive_root.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -25,6 +28,9 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
   - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
@@ -33,18 +39,18 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    PROBLEM: https://judge.yosupo.jp/problem/primitive_root
     links:
-    - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
+    - https://judge.yosupo.jp/problem/primitive_root
+  bundledCode: "#line 1 \"verify/library_checker/number/primitive_root.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n\n#line 2\
+    \ \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
     \ i64 = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\n\
     template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }\
@@ -115,49 +121,67 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 2 \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate < class comm_monoid\
-    \ > class fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\
-    \n  private:\n    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n)\
-    \ {\n        int x = 1;\n        while(x < n) x <<= 1;\n        return x;\n  \
-    \  }\n\n  public:\n    fenwick_tree() : fenwick_tree(0) {}\n    fenwick_tree(int\
-    \ n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id()) { assert(comm_monoid::comm);\
-    \ }\n    fenwick_tree(const vector< T > &a) : n(a.size()), n2(ceil_pow2(n)), data(a)\
-    \ {\n        assert(comm_monoid::comm);\n        data.insert(data.begin(), {comm_monoid::id()});\n\
-    \        for(int i = 1; i <= n; i++) {\n            int p = i + (i & -i);\n  \
-    \          if(p <= n) data[p] = comm_monoid::op(data[i], data[p]);\n        }\n\
-    \    }\n\n    void add(int i, T x) {\n        for(int p = i + 1; p <= n; p +=\
-    \ p & -p) data[p] = comm_monoid::op(data[p], x);\n    }\n    // [0, r)\n    T\
-    \ fold(int r) {\n        T s = comm_monoid::id();\n        for(int p = r; p >\
-    \ 0; p -= p & -p) s = comm_monoid::op(data[p], s);\n        return s;\n    }\n\
-    \    // [l, r)\n    T fold(int l, int r) {\n        return comm_monoid::op(comm_monoid::inv(fold(l)),\
-    \ fold(r));\n    }\n    T get(int i) {\n        return fold(i, i + 1);\n    }\n\
-    \    void set(int i, T x) {\n        add(i, comm_monoid::op(comm_monoid::inv(get(i)),\
-    \ x));\n    }\n    template< class func > int search(const func &f) {\n      \
-    \  T s = comm_monoid::id();\n        if(f(s)) return 0;\n        int i = 0, k\
-    \ = n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
-    \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/sum.hpp\"\ntemplate\
-    \ < class T > class sum_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return l + r; }\n    static constexpr T id()\
-    \ { return T(0); }\n    static constexpr T inv(const T &x) { return -x; }\n  \
-    \  static constexpr T pow(const T &x, const ll n) { return x * n; }\n    static\
-    \ constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
-    \n\nint main(){\n    int N = in();\n    int Q = in();\n    vector<ll> a = in(N);\n\
-    \    fenwick_tree< sum_monoid< ll > > tree(a);\n\n    for(int _ : rep(Q)) {\n\
-    \        int t = in();\n        switch(t) {\n            case 0: {\n         \
-    \       int p = in(), x = in();\n                tree.add(p, x);\n           \
-    \ } break;\n\n            case 1: {\n                int l = in(), r = in();\n\
-    \                print(tree.fold(l, r));\n            } break;\n        }\n  \
-    \  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    \n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/fenwick_tree.hpp\"\
-    \n#include \"../../../src/algebra/sum.hpp\"\n\nint main(){\n    int N = in();\n\
-    \    int Q = in();\n    vector<ll> a = in(N);\n    fenwick_tree< sum_monoid< ll\
-    \ > > tree(a);\n\n    for(int _ : rep(Q)) {\n        int t = in();\n        switch(t)\
-    \ {\n            case 0: {\n                int p = in(), x = in();\n        \
-    \        tree.add(p, x);\n            } break;\n\n            case 1: {\n    \
-    \            int l = in(), r = in();\n                print(tree.fold(l, r));\n\
-    \            } break;\n        }\n    }\n}\n"
+    }\n#line 3 \"src/utility/random.hpp\"\n\nnamespace randnum {\n\nstatic uint seed;\n\
+    static std::mt19937 mt;\nstruct gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n\
+    \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
+    \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
+    \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
+    \ T >(L, R)(mt);\n}\n\n}\n#line 4 \"src/number/modfunc.hpp\"\n\nu64 modpow64(u64\
+    \ a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n\
+    \        if(n % 2 == 1) res = i128(res) * a % mod;\n        a = i128(a) * a %\
+    \ mod;\n        n /= 2;\n    }\n    return res;\n}\n\nu64 modpow(u64 a, u64 n,\
+    \ u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n        if(n\
+    \ % 2 == 1) res = res * a % mod;\n        a = a * a % mod;\n        n /= 2;\n\
+    \    }\n    return res;\n}\n\n// solve x^2 = a (mod p)\n// return x\n// or No\
+    \ Solution (-1)\ni32 modsqrt(i32 a, i32 p) {\n    if(p == 2) return a;\n    a\
+    \ %= p;\n    if(a == 0) return 0;\n    if(modpow(a, (p - 1) / 2, p) != 1) return\
+    \ -1;\n    i32 q = p - 1, m = 0; while(q % 2 == 0) q /= 2, m++;\n    i32 z; do\
+    \ { z = randnum::gen_int<i32>(1, p); } while(modpow(z, (p - 1) / 2, p) != p -\
+    \ 1);\n    i64 c = modpow(z, q, p), t = modpow(a, q, p), r = modpow(a, (q + 1)\
+    \ / 2, p);\n    while(m > 1) {\n        if(modpow(t, 1 << (m - 2), p) != 1) r\
+    \ = r * c % p, t = t * (c * c % p) % p;\n        c = c * c % p;\n        m -=\
+    \ 1;\n    }\n    return r;\n}\n#line 5 \"src/number/prime.hpp\"\n\nbool miller_rabin(u64\
+    \ n, std::vector<u64> witness) {\n    if(n == 1) return false;\n    if(n % 2 ==\
+    \ 0) return n == 2;\n\n    u64 d = n - 1;\n    while(d % 2 == 0) d /= 2;\n   \
+    \ for(u64 a : witness) if(a < n) {\n        u64 y = modpow64(a, d, n), t = d;\n\
+    \        while(t != n - 1 and y != 1 and y != n - 1) {\n            y = i128(y)\
+    \ * y % n;\n            t *= 2;\n        }\n        if(y != n - 1 and t % 2 ==\
+    \ 0) return false;\n    }\n    return true;\n}\n\nbool prime_test(u64 n) {\n \
+    \   if(n < (u64(1) << 32)) return miller_rabin(n, {2, 7, 61});\n    return miller_rabin(n,\
+    \ {2, 325, 9375, 28178, 450775, 9780504, 1795265022});\n}\n\nu64 pollard_rho(u64\
+    \ n) {\n    if(n % 2 == 0) return 2;\n    if(prime_test(n)) return n;\n    while(true)\
+    \ {\n        u64 R = randnum::gen_int<u64>(2, n), x, y = randnum::gen_int<u64>(2,\
+    \ n), ys, q = 1, g = 1, m = 128;\n        auto f = [&](u64 x) {\n            return\
+    \ (i128(x) * x % n + R) % n;\n        };\n        for(int r = 1; g == 1; r *=\
+    \ 2) {\n            x = y;\n            for(int i : rep(r)) y = f(y);\n      \
+    \      for(int k = 0; g == 1 and k < r; k += m) {\n                ys = y;\n \
+    \               for(int i = 0; i < m and i < r - k; i++) {\n                 \
+    \   q = i128(q) * ((x - (y = f(y)) + n) % n) % n;\n                }\n       \
+    \         g = gcd(q, n);\n            }\n        }\n        if(g == n) { do {\
+    \ g = gcd((x - (ys = f(ys))), n); } while(g == 1); }\n        if(g != n) return\
+    \ g;\n    }\n    return 0;\n}\n\nstd::vector<u64> factor(u64 n) {\n    function<std::vector<u64>(u64)>\
+    \ dfs = [&](u64 n) {\n        if(n <= 1) return std::vector<u64>{};\n        u64\
+    \ d = pollard_rho(n);\n        if(d == n) return std::vector<u64>{n};\n      \
+    \  std::vector<u64> L = dfs(d), R = dfs(n / d);\n        L.insert(L.end(), R.begin(),\
+    \ R.end());\n        return L;\n    };\n    std::vector<u64> res = dfs(n);\n \
+    \   sort(res.begin(), res.end());\n    return res;\n}\n\nstd::vector<std::pair<u64,\
+    \ i32>> factor_pair(u64 n) {\n    std::vector<u64> pf = factor(n);\n    std::vector<std::pair<u64,\
+    \ i32>> res;\n    if(pf.empty()) return res;\n    res.push_back({pf[0], 1});\n\
+    \    for(int i : rep(1, int(pf.size()))) {\n        if(res.back().first == pf[i])\
+    \ res.back().second++;\n        else res.push_back({pf[i], 1});\n    }\n    return\
+    \ res;\n}\n\nu64 euler_phi(u64 n) {\n    std::vector<std::pair<u64,i32>> pf =\
+    \ factor_pair(n);\n    for(auto [p, e] : pf) n -= n / p;\n    return n;\n}\n#line\
+    \ 4 \"src/number/primitive_root.hpp\"\n\nu64 primitive_root(u64 p) {\n    std::vector<std::pair<u64,\
+    \ i32>> pf = factor_pair(p - 1);\n    while(true) {\n        u64 g = randnum::gen_int<u64>(1,\
+    \ p);\n        int ok = 1;\n        for(auto [q, e] : pf) ok &= modpow64(g, (p\
+    \ - 1) / q, p) != 1;\n        if(ok) return g;\n    }\n    return 0;\n}\n#line\
+    \ 5 \"verify/library_checker/number/primitive_root.test.cpp\"\n\nint main() {\n\
+    \    int Q = in();\n    for(int _ : rep(Q)) {\n        u64 p = in();\n       \
+    \ print(primitive_root(p));\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n\n#include\
+    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/primitive_root.hpp\"\
+    \n\nint main() {\n    int Q = in();\n    for(int _ : rep(Q)) {\n        u64 p\
+    \ = in();\n        print(primitive_root(p));\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -167,18 +191,20 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/data_structure/fenwick_tree.hpp
-  - src/algebra/sum.hpp
+  - src/number/primitive_root.hpp
+  - src/number/prime.hpp
+  - src/number/modfunc.hpp
+  - src/utility/random.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/fenwick_tree.test.cpp
+  path: verify/library_checker/number/primitive_root.test.cpp
   requiredBy: []
   timestamp: '2023-10-24 04:26:14+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp
+documentation_of: verify/library_checker/number/primitive_root.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/fenwick_tree.test.cpp
-- /verify/verify/library_checker/data_structure/fenwick_tree.test.cpp.html
-title: verify/library_checker/data_structure/fenwick_tree.test.cpp
+- /verify/verify/library_checker/number/primitive_root.test.cpp
+- /verify/verify/library_checker/number/primitive_root.test.cpp.html
+title: verify/library_checker/number/primitive_root.test.cpp
 ---

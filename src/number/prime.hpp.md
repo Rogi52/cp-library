@@ -10,6 +10,9 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
+  - icon: ':x:'
+    path: src/number/modfunc.hpp
+    title: src/number/modfunc.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -19,6 +22,9 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
   - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
@@ -27,33 +33,15 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
   - icon: ':x:'
-    path: src/graph/tree/tree_isomorphism.hpp
-    title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
-    path: src/number/modfunc.hpp
-    title: src/number/modfunc.hpp
-  - icon: ':x:'
-    path: src/number/prime.hpp
-    title: src/number/prime.hpp
-  - icon: ':x:'
     path: src/number/primitive_root.hpp
     title: src/number/primitive_root.hpp
   - icon: ':x:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
-  - icon: ':x:'
-    path: src/string/rolling_hash.hpp
-    title: Rolling Hash
   - icon: ':warning:'
     path: verify/library_checker/number/factorize.cpp
     title: verify/library_checker/number/factorize.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-    title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/modsqrt.test.cpp
-    title: verify/library_checker/number/modsqrt.test.cpp
   - icon: ':x:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
@@ -63,9 +51,6 @@ data:
   - icon: ':x:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/string/rolling_hash.test.cpp
-    title: verify/library_checker/string/rolling_hash.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':x:'
@@ -148,14 +133,83 @@ data:
     \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
     \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
     \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
-    \ T >(L, R)(mt);\n}\n\n}\n"
-  code: "#pragma once\n#include \"../../src/cp-template.hpp\"\n\nnamespace randnum\
-    \ {\n\nstatic uint seed;\nstatic std::mt19937 mt;\nstruct gen_seed {\n    gen_seed()\
-    \ {\n        seed = std::random_device()();\n        mt = std::mt19937(seed);\n\
-    \    }\n} gs;\n\n// [L, R)\ntemplate < class T >\nT gen_int(T L, T R) {\n    return\
-    \ std::uniform_int_distribution< T >(L, R - 1)(mt);\n}\n\ntemplate < class T >\n\
-    T get_real(T L, T R) {\n    return std::uniform_real_distribution< T >(L, R)(mt);\n\
-    }\n\n}"
+    \ T >(L, R)(mt);\n}\n\n}\n#line 4 \"src/number/modfunc.hpp\"\n\nu64 modpow64(u64\
+    \ a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n\
+    \        if(n % 2 == 1) res = i128(res) * a % mod;\n        a = i128(a) * a %\
+    \ mod;\n        n /= 2;\n    }\n    return res;\n}\n\nu64 modpow(u64 a, u64 n,\
+    \ u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n        if(n\
+    \ % 2 == 1) res = res * a % mod;\n        a = a * a % mod;\n        n /= 2;\n\
+    \    }\n    return res;\n}\n\n// solve x^2 = a (mod p)\n// return x\n// or No\
+    \ Solution (-1)\ni32 modsqrt(i32 a, i32 p) {\n    if(p == 2) return a;\n    a\
+    \ %= p;\n    if(a == 0) return 0;\n    if(modpow(a, (p - 1) / 2, p) != 1) return\
+    \ -1;\n    i32 q = p - 1, m = 0; while(q % 2 == 0) q /= 2, m++;\n    i32 z; do\
+    \ { z = randnum::gen_int<i32>(1, p); } while(modpow(z, (p - 1) / 2, p) != p -\
+    \ 1);\n    i64 c = modpow(z, q, p), t = modpow(a, q, p), r = modpow(a, (q + 1)\
+    \ / 2, p);\n    while(m > 1) {\n        if(modpow(t, 1 << (m - 2), p) != 1) r\
+    \ = r * c % p, t = t * (c * c % p) % p;\n        c = c * c % p;\n        m -=\
+    \ 1;\n    }\n    return r;\n}\n#line 5 \"src/number/prime.hpp\"\n\nbool miller_rabin(u64\
+    \ n, std::vector<u64> witness) {\n    if(n == 1) return false;\n    if(n % 2 ==\
+    \ 0) return n == 2;\n\n    u64 d = n - 1;\n    while(d % 2 == 0) d /= 2;\n   \
+    \ for(u64 a : witness) if(a < n) {\n        u64 y = modpow64(a, d, n), t = d;\n\
+    \        while(t != n - 1 and y != 1 and y != n - 1) {\n            y = i128(y)\
+    \ * y % n;\n            t *= 2;\n        }\n        if(y != n - 1 and t % 2 ==\
+    \ 0) return false;\n    }\n    return true;\n}\n\nbool prime_test(u64 n) {\n \
+    \   if(n < (u64(1) << 32)) return miller_rabin(n, {2, 7, 61});\n    return miller_rabin(n,\
+    \ {2, 325, 9375, 28178, 450775, 9780504, 1795265022});\n}\n\nu64 pollard_rho(u64\
+    \ n) {\n    if(n % 2 == 0) return 2;\n    if(prime_test(n)) return n;\n    while(true)\
+    \ {\n        u64 R = randnum::gen_int<u64>(2, n), x, y = randnum::gen_int<u64>(2,\
+    \ n), ys, q = 1, g = 1, m = 128;\n        auto f = [&](u64 x) {\n            return\
+    \ (i128(x) * x % n + R) % n;\n        };\n        for(int r = 1; g == 1; r *=\
+    \ 2) {\n            x = y;\n            for(int i : rep(r)) y = f(y);\n      \
+    \      for(int k = 0; g == 1 and k < r; k += m) {\n                ys = y;\n \
+    \               for(int i = 0; i < m and i < r - k; i++) {\n                 \
+    \   q = i128(q) * ((x - (y = f(y)) + n) % n) % n;\n                }\n       \
+    \         g = gcd(q, n);\n            }\n        }\n        if(g == n) { do {\
+    \ g = gcd((x - (ys = f(ys))), n); } while(g == 1); }\n        if(g != n) return\
+    \ g;\n    }\n    return 0;\n}\n\nstd::vector<u64> factor(u64 n) {\n    function<std::vector<u64>(u64)>\
+    \ dfs = [&](u64 n) {\n        if(n <= 1) return std::vector<u64>{};\n        u64\
+    \ d = pollard_rho(n);\n        if(d == n) return std::vector<u64>{n};\n      \
+    \  std::vector<u64> L = dfs(d), R = dfs(n / d);\n        L.insert(L.end(), R.begin(),\
+    \ R.end());\n        return L;\n    };\n    std::vector<u64> res = dfs(n);\n \
+    \   sort(res.begin(), res.end());\n    return res;\n}\n\nstd::vector<std::pair<u64,\
+    \ i32>> factor_pair(u64 n) {\n    std::vector<u64> pf = factor(n);\n    std::vector<std::pair<u64,\
+    \ i32>> res;\n    if(pf.empty()) return res;\n    res.push_back({pf[0], 1});\n\
+    \    for(int i : rep(1, int(pf.size()))) {\n        if(res.back().first == pf[i])\
+    \ res.back().second++;\n        else res.push_back({pf[i], 1});\n    }\n    return\
+    \ res;\n}\n\nu64 euler_phi(u64 n) {\n    std::vector<std::pair<u64,i32>> pf =\
+    \ factor_pair(n);\n    for(auto [p, e] : pf) n -= n / p;\n    return n;\n}\n"
+  code: "#pragma once\n#include \"../../src/cp-template.hpp\"\n#include \"../../src/number/modfunc.hpp\"\
+    \n#include \"../../src/utility/random.hpp\"\n\nbool miller_rabin(u64 n, std::vector<u64>\
+    \ witness) {\n    if(n == 1) return false;\n    if(n % 2 == 0) return n == 2;\n\
+    \n    u64 d = n - 1;\n    while(d % 2 == 0) d /= 2;\n    for(u64 a : witness)\
+    \ if(a < n) {\n        u64 y = modpow64(a, d, n), t = d;\n        while(t != n\
+    \ - 1 and y != 1 and y != n - 1) {\n            y = i128(y) * y % n;\n       \
+    \     t *= 2;\n        }\n        if(y != n - 1 and t % 2 == 0) return false;\n\
+    \    }\n    return true;\n}\n\nbool prime_test(u64 n) {\n    if(n < (u64(1) <<\
+    \ 32)) return miller_rabin(n, {2, 7, 61});\n    return miller_rabin(n, {2, 325,\
+    \ 9375, 28178, 450775, 9780504, 1795265022});\n}\n\nu64 pollard_rho(u64 n) {\n\
+    \    if(n % 2 == 0) return 2;\n    if(prime_test(n)) return n;\n    while(true)\
+    \ {\n        u64 R = randnum::gen_int<u64>(2, n), x, y = randnum::gen_int<u64>(2,\
+    \ n), ys, q = 1, g = 1, m = 128;\n        auto f = [&](u64 x) {\n            return\
+    \ (i128(x) * x % n + R) % n;\n        };\n        for(int r = 1; g == 1; r *=\
+    \ 2) {\n            x = y;\n            for(int i : rep(r)) y = f(y);\n      \
+    \      for(int k = 0; g == 1 and k < r; k += m) {\n                ys = y;\n \
+    \               for(int i = 0; i < m and i < r - k; i++) {\n                 \
+    \   q = i128(q) * ((x - (y = f(y)) + n) % n) % n;\n                }\n       \
+    \         g = gcd(q, n);\n            }\n        }\n        if(g == n) { do {\
+    \ g = gcd((x - (ys = f(ys))), n); } while(g == 1); }\n        if(g != n) return\
+    \ g;\n    }\n    return 0;\n}\n\nstd::vector<u64> factor(u64 n) {\n    function<std::vector<u64>(u64)>\
+    \ dfs = [&](u64 n) {\n        if(n <= 1) return std::vector<u64>{};\n        u64\
+    \ d = pollard_rho(n);\n        if(d == n) return std::vector<u64>{n};\n      \
+    \  std::vector<u64> L = dfs(d), R = dfs(n / d);\n        L.insert(L.end(), R.begin(),\
+    \ R.end());\n        return L;\n    };\n    std::vector<u64> res = dfs(n);\n \
+    \   sort(res.begin(), res.end());\n    return res;\n}\n\nstd::vector<std::pair<u64,\
+    \ i32>> factor_pair(u64 n) {\n    std::vector<u64> pf = factor(n);\n    std::vector<std::pair<u64,\
+    \ i32>> res;\n    if(pf.empty()) return res;\n    res.push_back({pf[0], 1});\n\
+    \    for(int i : rep(1, int(pf.size()))) {\n        if(res.back().first == pf[i])\
+    \ res.back().second++;\n        else res.push_back({pf[i], 1});\n    }\n    return\
+    \ res;\n}\n\nu64 euler_phi(u64 n) {\n    std::vector<std::pair<u64,i32>> pf =\
+    \ factor_pair(n);\n    for(auto [p, e] : pf) n -= n / p;\n    return n;\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -165,29 +219,24 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
+  - src/number/modfunc.hpp
+  - src/utility/random.hpp
   isVerificationFile: false
-  path: src/utility/random.hpp
+  path: src/number/prime.hpp
   requiredBy:
   - verify/library_checker/number/factorize.cpp
-  - src/graph/tree/tree_isomorphism.hpp
   - src/number/primitive_root.hpp
-  - src/number/prime.hpp
-  - src/number/modfunc.hpp
   - src/number/tetration.hpp
-  - src/string/rolling_hash.hpp
   timestamp: '2023-10-24 04:26:14+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
-  - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/primality_test.test.cpp
-  - verify/library_checker/string/rolling_hash.test.cpp
-documentation_of: src/utility/random.hpp
+documentation_of: src/number/prime.hpp
 layout: document
 redirect_from:
-- /library/src/utility/random.hpp
-- /library/src/utility/random.hpp.html
-title: src/utility/random.hpp
+- /library/src/number/prime.hpp
+- /library/src/number/prime.hpp.html
+title: src/number/prime.hpp
 ---

@@ -11,8 +11,8 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':x:'
-    path: src/number/gaussian_integer.hpp
-    title: src/number/gaussian_integer.hpp
+    path: src/number/modfunc.hpp
+    title: src/number/modfunc.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -22,6 +22,9 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
   - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
@@ -35,13 +38,13 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/321
+    PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
     links:
-    - https://yukicoder.me/problems/no/321
-  bundledCode: "#line 1 \"verify/yukicoder/gaussian_integer.test.cpp\"\n#define PROBLEM\
-    \ \"https://yukicoder.me/problems/no/321\"\n\n#line 2 \"src/cp-template.hpp\"\n\
-    #include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing ld\
-    \ = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
+    - https://judge.yosupo.jp/problem/sqrt_mod
+  bundledCode: "#line 1 \"verify/library_checker/number/modsqrt.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#line 2 \"src/cp-template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
     using i32 = int;\nusing u32 = unsigned int;\nusing i64 = long long;\nusing u64\
     \ = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool chmin(T&\
     \ a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate < class\
@@ -112,42 +115,32 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 2 \"src/number/gaussian_integer.hpp\"\n\nstruct gaussian_integer {\n\
-    \    using gint = gaussian_integer;\n    ll x, y;\n    gaussian_integer() : x(0),\
-    \ y(0) {}\n    gaussian_integer(ll x) : x(x), y(0) {}\n    gaussian_integer(ll\
-    \ x, ll y) : x(x), y(y) {}\n\n    friend ll abs(const gint& a) {\n        return\
-    \ a.x * a.x + a.y * a.y;\n    }\n    friend gint conj(const gint& a) {\n     \
-    \   return gint(a.x, -a.y);\n    }\n    gint operator-() { return gint(-x, -y);\
-    \ }\n    gint operator+(const gint& r) { return gint(*this) += r; }\n    gint\
-    \ operator-(const gint& r) { return gint(*this) -= r; }\n    gint operator*(const\
-    \ gint& r) { return gint(*this) *= r; }\n    gint operator/(const gint& r) { return\
-    \ gint(*this) /= r; }\n    gint operator%(const gint& r) { return gint(*this)\
-    \ %= r; }\n    gint& operator+=(const gint& r) { x += r.x, y += r.y; return *this;\
-    \ }\n    gint& operator-=(const gint& r) { x -= r.x, y -= r.y; return *this; }\n\
-    \    gint& operator*=(const gint& r) { std::tie(x, y) = std::make_pair(x * r.x\
-    \ - y * r.y, x * r.y + y * r.x); return *this; }\n    gint& operator/=(const gint&\
-    \ r) {\n        assert(not(r.x == 0 and r.y == 0));\n\n        auto near = [](ll\
-    \ a, ll b) {\n            ll q = a / b, r = a - q * b;\n            if(abs(r)\
-    \ > abs(r - b)) return q + 1;\n            if(abs(r) > abs(r + b)) return q -\
-    \ 1;\n            return q;\n        };\n\n        gint u = (*this) * conj(r);\n\
-    \        return *this = gint(near(u.x, abs(r)), near(u.y, abs(r)));\n    }\n \
-    \   gint& operator%=(const gint& r) { return *this -= (*this) / r * r; }\n   \
-    \ bool operator==(const gint& r) { return x == r.x and y == r.y; }\n    bool operator!=(const\
-    \ gint& r) { return x != r.x or  y != r.y; }\n    friend gint gcd(gint a, gint\
-    \ b) {\n        if(b == gint(0, 0)) return a;\n        return gcd(b, a % b);\n\
-    \    }\n};\n#line 5 \"verify/yukicoder/gaussian_integer.test.cpp\"\n\nint main()\
-    \ {\n    using gint = gaussian_integer;\n    gint t; t.x = in(), t.y = in();\n\
-    \    gint g = gcd(t, conj(t));\n\n    int N = in();\n    int ans = 0;\n    for(int\
-    \ _ : rep(N)) {\n        gint v; v.x = in(), v.y = in();\n        if(g == 0) {\n\
-    \            if(v == 0) ans++;\n        } else {\n            if(v % g == 0) ans++;\n\
-    \        }\n    }\n    print(ans);\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/321\"\n\n#include \"../../src/cp-template.hpp\"\
-    \n#include \"../../src/number/gaussian_integer.hpp\"\n\nint main() {\n    using\
-    \ gint = gaussian_integer;\n    gint t; t.x = in(), t.y = in();\n    gint g =\
-    \ gcd(t, conj(t));\n\n    int N = in();\n    int ans = 0;\n    for(int _ : rep(N))\
-    \ {\n        gint v; v.x = in(), v.y = in();\n        if(g == 0) {\n         \
-    \   if(v == 0) ans++;\n        } else {\n            if(v % g == 0) ans++;\n \
-    \       }\n    }\n    print(ans);\n}"
+    }\n#line 3 \"src/utility/random.hpp\"\n\nnamespace randnum {\n\nstatic uint seed;\n\
+    static std::mt19937 mt;\nstruct gen_seed {\n    gen_seed() {\n        seed = std::random_device()();\n\
+    \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
+    \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
+    \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
+    \ T >(L, R)(mt);\n}\n\n}\n#line 4 \"src/number/modfunc.hpp\"\n\nu64 modpow64(u64\
+    \ a, u64 n, u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n\
+    \        if(n % 2 == 1) res = i128(res) * a % mod;\n        a = i128(a) * a %\
+    \ mod;\n        n /= 2;\n    }\n    return res;\n}\n\nu64 modpow(u64 a, u64 n,\
+    \ u64 mod) {\n    a %= mod;\n    u64 res = 1;\n    while(n > 0) {\n        if(n\
+    \ % 2 == 1) res = res * a % mod;\n        a = a * a % mod;\n        n /= 2;\n\
+    \    }\n    return res;\n}\n\n// solve x^2 = a (mod p)\n// return x\n// or No\
+    \ Solution (-1)\ni32 modsqrt(i32 a, i32 p) {\n    if(p == 2) return a;\n    a\
+    \ %= p;\n    if(a == 0) return 0;\n    if(modpow(a, (p - 1) / 2, p) != 1) return\
+    \ -1;\n    i32 q = p - 1, m = 0; while(q % 2 == 0) q /= 2, m++;\n    i32 z; do\
+    \ { z = randnum::gen_int<i32>(1, p); } while(modpow(z, (p - 1) / 2, p) != p -\
+    \ 1);\n    i64 c = modpow(z, q, p), t = modpow(a, q, p), r = modpow(a, (q + 1)\
+    \ / 2, p);\n    while(m > 1) {\n        if(modpow(t, 1 << (m - 2), p) != 1) r\
+    \ = r * c % p, t = t * (c * c % p) % p;\n        c = c * c % p;\n        m -=\
+    \ 1;\n    }\n    return r;\n}\n#line 5 \"verify/library_checker/number/modsqrt.test.cpp\"\
+    \n\nint main() {\n    int T = in();\n    for(int _ : rep(T)) {\n        int Y\
+    \ = in(), P = in();\n        print(modsqrt(Y, P));\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#include\
+    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modfunc.hpp\"\
+    \n\nint main() {\n    int T = in();\n    for(int _ : rep(T)) {\n        int Y\
+    \ = in(), P = in();\n        print(modsqrt(Y, P));\n    }\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -157,17 +150,18 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/number/gaussian_integer.hpp
+  - src/number/modfunc.hpp
+  - src/utility/random.hpp
   isVerificationFile: true
-  path: verify/yukicoder/gaussian_integer.test.cpp
+  path: verify/library_checker/number/modsqrt.test.cpp
   requiredBy: []
   timestamp: '2023-10-24 04:26:14+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/yukicoder/gaussian_integer.test.cpp
+documentation_of: verify/library_checker/number/modsqrt.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/yukicoder/gaussian_integer.test.cpp
-- /verify/verify/yukicoder/gaussian_integer.test.cpp.html
-title: verify/yukicoder/gaussian_integer.test.cpp
+- /verify/verify/library_checker/number/modsqrt.test.cpp
+- /verify/verify/library_checker/number/modsqrt.test.cpp.html
+title: verify/library_checker/number/modsqrt.test.cpp
 ---
