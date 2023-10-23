@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/sqrt_mod"
+#define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include "../../../src/cp-template.hpp"
 #include "../../../src/number/tetration.hpp"
