@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'

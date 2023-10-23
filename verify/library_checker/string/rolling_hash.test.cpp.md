@@ -13,7 +13,7 @@ data:
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
@@ -25,7 +25,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'
