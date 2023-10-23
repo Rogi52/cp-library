@@ -38,12 +38,14 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
     - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"verify/library_checker/number/factorize.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/factorize\"\n\n#line 2 \"src/cp-template.hpp\"\
+  bundledCode: "#line 1 \"verify/library_checker/number/factorize.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#line 2 \"src/cp-template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
     using i32 = int;\nusing u32 = unsigned int;\nusing i64 = long long;\nusing u64\
@@ -166,8 +168,8 @@ data:
     \ res.back().second++;\n        else res.push_back({pf[i], 1});\n    }\n    return\
     \ res;\n}\n\nu64 euler_phi(u64 n) {\n    std::vector<std::pair<u64,i32>> pf =\
     \ factor_pair(n);\n    for(auto [p, e] : pf) n -= n / p;\n    return n;\n}\n#line\
-    \ 5 \"verify/library_checker/number/factorize.cpp\"\n\nint main() {\n    int Q\
-    \ = in();\n    for(int _ : rep(Q)) {\n        u64 a = in();\n        std::vector<u64>\
+    \ 5 \"verify/library_checker/number/factorize.test.cpp\"\n\nint main() {\n   \
+    \ int Q = in();\n    for(int _ : rep(Q)) {\n        u64 a = in();\n        std::vector<u64>\
     \ pf = factor(a);\n        print(pf.size(), pf);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
     \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/prime.hpp\"\
@@ -186,16 +188,16 @@ data:
   - src/number/prime.hpp
   - src/number/modfunc.hpp
   - src/utility/random.hpp
-  isVerificationFile: false
-  path: verify/library_checker/number/factorize.cpp
+  isVerificationFile: true
+  path: verify/library_checker/number/factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 04:26:14+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-10-24 05:27:20+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/number/factorize.cpp
+documentation_of: verify/library_checker/number/factorize.test.cpp
 layout: document
 redirect_from:
-- /library/verify/library_checker/number/factorize.cpp
-- /library/verify/library_checker/number/factorize.cpp.html
-title: verify/library_checker/number/factorize.cpp
+- /verify/verify/library_checker/number/factorize.test.cpp
+- /verify/verify/library_checker/number/factorize.test.cpp.html
+title: verify/library_checker/number/factorize.test.cpp
 ---

@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
-  - icon: ':warning:'
-    path: verify/library_checker/number/factorize.cpp
-    title: verify/library_checker/number/factorize.cpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/factorize.test.cpp
+    title: verify/library_checker/number/factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/modsqrt.test.cpp
     title: verify/library_checker/number/modsqrt.test.cpp
@@ -179,7 +179,6 @@ data:
   isVerificationFile: false
   path: src/number/modfunc.hpp
   requiredBy:
-  - verify/library_checker/number/factorize.cpp
   - src/number/primitive_root.hpp
   - src/number/prime.hpp
   - src/number/tetration.hpp
@@ -187,6 +186,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/primality_test.test.cpp

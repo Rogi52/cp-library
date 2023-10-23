@@ -44,13 +44,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':warning:'
-    path: verify/library_checker/number/factorize.cpp
-    title: verify/library_checker/number/factorize.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/factorize.test.cpp
+    title: verify/library_checker/number/factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/modsqrt.test.cpp
     title: verify/library_checker/number/modsqrt.test.cpp
@@ -168,7 +168,6 @@ data:
   isVerificationFile: false
   path: src/utility/random.hpp
   requiredBy:
-  - verify/library_checker/number/factorize.cpp
   - src/graph/tree/tree_isomorphism.hpp
   - src/number/primitive_root.hpp
   - src/number/prime.hpp
@@ -180,6 +179,7 @@ data:
   verifiedWith:
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/primality_test.test.cpp

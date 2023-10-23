@@ -284,11 +284,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
-  - name: verify/library_checker/number
-    pages:
-    - icon: ':warning:'
-      path: verify/library_checker/number/factorize.cpp
-      title: verify/library_checker/number/factorize.cpp
   verificationCategories:
   - name: .
     pages:
@@ -413,6 +408,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bicoef.test.cpp
       title: verify/library_checker/number/bicoef.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/factorize.test.cpp
+      title: verify/library_checker/number/factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_composition.test.cpp
       title: verify/library_checker/number/fps_composition.test.cpp

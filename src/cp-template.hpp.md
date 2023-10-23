@@ -152,9 +152,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':warning:'
-    path: verify/library_checker/number/factorize.cpp
-    title: verify/library_checker/number/factorize.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/data_structure/binary_trie.test.cpp
@@ -258,6 +255,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bicoef.test.cpp
     title: verify/library_checker/number/bicoef.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/factorize.test.cpp
+    title: verify/library_checker/number/factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
@@ -439,7 +439,6 @@ data:
   isVerificationFile: false
   path: src/cp-template.hpp
   requiredBy:
-  - verify/library_checker/number/factorize.cpp
   - src/graph/tree/tree_isomorphism.hpp
   - src/graph/tree/dp_on_tree.hpp
   - src/graph/tree/rerooting.hpp
@@ -503,6 +502,7 @@ data:
   - verify/library_checker/number/primitive_root.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/number/nim_product.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
   - verify/library_checker/number/gcd_convolution.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
