@@ -83,7 +83,6 @@ fps<mint> pow(const fps_sparse<mint>& f, ll n, int deg) {
     for(int i : rep(1, deg - offset)) for(auto [j, fj] : fr)
             if(j != 0 and 0 <= i - j) g[i] += fj * g[i - j] * (mint(n) * mint(j) - mint(i - j)) * inv<mint>(i);
     g *= pow(c, n);
-    g >>= offset;
     return g;
 }
 
