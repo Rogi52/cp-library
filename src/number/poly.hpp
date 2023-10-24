@@ -2,6 +2,7 @@
 #include "../cp-template.hpp"
 #include "../number/ntt.hpp"
 #include "../number/fps.hpp"
+#include "../../src/number/binom_mod.hpp"
 
 template < class mint > struct poly : std::vector<mint> {
     using std::vector<mint>::vector;
@@ -68,32 +69,20 @@ template < class mint > struct poly : std::vector<mint> {
         for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);
         return g;
     }
-
-    poly operator->*(mint c) {
-        int n = size();
-        std::vector<mint> fact(n);
-        fact[0] = 1;
-        for(int i : rep(1, n)) fact[i] = i * fact[i - 1];
+    friend poly taylor_shift(const poly& f, mint c) {
+        int n = f.size();
         std::vector<mint> c_pow(n);
         c_pow[0] = 1;
         for(int i : rep(1, n)) c_pow[i] = c * c_pow[i - 1];
 
         poly<mint> p(n), q(n);
-        for(int i : rep(n)) p[i] = (*this)[i] * fact[i];
-        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];
+        for(int i : rep(n)) p[i] = f[i] * fact<mint>(i);
+        for(int i : rep(n)) q[i] = c_pow[i] * fact_inv<mint>(i);
         poly<mint> r = (p * rev(q)) >> n - 1;
-        for(int i : rep(n)) r[i] /= fact[i];
+        for(int i : rep(n)) r[i] *= fact_inv<mint>(i);
         return r;
     }
 };
-
-template < class mint > int print(const poly<mint> f, char sep = ' ') {
-    int n = f.size();
-    if(n == 0) { std::cout << "\n"; return 0; }
-    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\n');
-    return 0;
-}
-
 
 template < class mint >
 poly<mint> all_product(vector< poly<mint> >& fs) {

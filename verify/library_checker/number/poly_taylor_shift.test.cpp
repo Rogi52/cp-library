@@ -7,7 +7,6 @@
 int main() {
     using mint = mint998244353;
     int N = in(); mint c = in();
-    poly<mint> f(N);
-    for(int i : rep(N)) f[i] = in();
-    print(f->*c);
+    poly<mint> f(in(N));
+    print(taylor_shift(f, c));
 }
