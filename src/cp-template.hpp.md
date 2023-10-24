@@ -57,6 +57,9 @@ data:
     path: src/data_structure/binary_trie.hpp
     title: src/data_structure/binary_trie.hpp
   - icon: ':heavy_check_mark:'
+    path: src/data_structure/disjoint_sparse_table.hpp
+    title: src/data_structure/disjoint_sparse_table.hpp
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -198,6 +201,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+    title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/fenwick_tree.test.cpp
     title: verify/library_checker/data_structure/fenwick_tree.test.cpp
@@ -533,6 +539,7 @@ data:
   - src/geometry/convex_hull.hpp
   - src/string/rolling_hash.hpp
   - src/data_structure/fenwick_tree.hpp
+  - src/data_structure/disjoint_sparse_table.hpp
   - src/data_structure/wavlet_matrix.hpp
   - src/data_structure/heap_rich.hpp
   - src/data_structure/sparse_segtree.hpp
@@ -609,6 +616,7 @@ data:
   - verify/library_checker/data_structure/heap_rich.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/range_freq.test.cpp
+  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - verify/library_checker/data_structure/segment_add_get_min.test.cpp
 documentation_of: src/cp-template.hpp

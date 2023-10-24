@@ -94,6 +94,9 @@ data:
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
     - icon: ':heavy_check_mark:'
+      path: src/data_structure/disjoint_sparse_table.hpp
+      title: src/data_structure/disjoint_sparse_table.hpp
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -335,6 +338,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
       title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+      title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp

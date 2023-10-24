@@ -25,20 +25,8 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_add_range_minmax.hpp
-    title: src/algebra/range_add_range_minmax.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_update_range_minmax.hpp
-    title: src/algebra/range_update_range_minmax.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_add_range_min.test.cpp
-    title: verify/aoj/data_structure/range_add_range_min.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_update_range_min.test.cpp
-    title: verify/aoj/data_structure/range_update_range_min.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
     title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
@@ -119,22 +107,36 @@ data:
     \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
     \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
     \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 3 \"src/algebra/minmax.hpp\"\n\ntemplate < class T > class min_monoid\
-    \ {\n  public:\n    using set = T;\n    static constexpr T op(const T &l, const\
-    \ T &r) { return std::min(l, r); }\n    static constexpr T id() { return std::numeric_limits<\
-    \ T >::max(); }\n    static constexpr bool comm = true;\n};\n\ntemplate < class\
-    \ T > class max_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return std::max(l, r); }\n    static constexpr\
-    \ T id() { return std::numeric_limits< T >::min(); }\n    static constexpr bool\
-    \ comm = true;\n};\n"
-  code: "#pragma once\n#include \"../../src/cp-template.hpp\"\n\ntemplate < class\
-    \ T > class min_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return std::min(l, r); }\n    static constexpr\
-    \ T id() { return std::numeric_limits< T >::max(); }\n    static constexpr bool\
-    \ comm = true;\n};\n\ntemplate < class T > class max_monoid {\n  public:\n   \
-    \ using set = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
-    \ r); }\n    static constexpr T id() { return std::numeric_limits< T >::min();\
-    \ }\n    static constexpr bool comm = true;\n};\n"
+    }\n#line 2 \"src/data_structure/disjoint_sparse_table.hpp\"\n\ntemplate < class\
+    \ semi_group >\nstruct disjoint_sparse_table {\n    using T = typename semi_group::set;\n\
+    \    std::vector<std::vector< T >> table;\n    vector<int> msb;\n    disjoint_sparse_table(const\
+    \ std::vector< T >& a) : table(1, a), msb(2) {\n        int n = a.size();\n  \
+    \      for(int i = 2; i < n; i <<= 1) {\n            std::vector< T > v;\n   \
+    \         for(int j = i; j < n; j += i << 1) {\n                v.push_back(a[j\
+    \ - 1]);\n                for(int k = 2; k <= i; k++)\n                    v.push_back(semi_group::op(a[j\
+    \ - k], v.back()));\n                v.push_back(a[j]);\n                for(int\
+    \ k = 1; k < i and j + k < n; k++)\n                    v.push_back(semi_group::op(v.back(),\
+    \ a[j + k]));\n            }\n            table.push_back(v);\n        }\n   \
+    \ }\n\n    // [L, R)\n    T fold(int L, int R) {\n        if(L == --R) return\
+    \ table.front()[L];\n        else {\n            while(msb.size() <= (L ^ R))\
+    \ msb.push_back(msb[msb.size() >> 1] + 1);\n            int p = msb[L ^ R];\n\
+    \            return semi_group::op(table[p][L ^ (1 << p) - 1], table[p][R]);\n\
+    \        }\n    }\n};\n"
+  code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class semi_group >\n\
+    struct disjoint_sparse_table {\n    using T = typename semi_group::set;\n    std::vector<std::vector<\
+    \ T >> table;\n    vector<int> msb;\n    disjoint_sparse_table(const std::vector<\
+    \ T >& a) : table(1, a), msb(2) {\n        int n = a.size();\n        for(int\
+    \ i = 2; i < n; i <<= 1) {\n            std::vector< T > v;\n            for(int\
+    \ j = i; j < n; j += i << 1) {\n                v.push_back(a[j - 1]);\n     \
+    \           for(int k = 2; k <= i; k++)\n                    v.push_back(semi_group::op(a[j\
+    \ - k], v.back()));\n                v.push_back(a[j]);\n                for(int\
+    \ k = 1; k < i and j + k < n; k++)\n                    v.push_back(semi_group::op(v.back(),\
+    \ a[j + k]));\n            }\n            table.push_back(v);\n        }\n   \
+    \ }\n\n    // [L, R)\n    T fold(int L, int R) {\n        if(L == --R) return\
+    \ table.front()[L];\n        else {\n            while(msb.size() <= (L ^ R))\
+    \ msb.push_back(msb[msb.size() >> 1] + 1);\n            int p = msb[L ^ R];\n\
+    \            return semi_group::op(table[p][L ^ (1 << p) - 1], table[p][R]);\n\
+    \        }\n    }\n};"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -145,20 +147,16 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   isVerificationFile: false
-  path: src/algebra/minmax.hpp
-  requiredBy:
-  - src/algebra/range_update_range_minmax.hpp
-  - src/algebra/range_add_range_minmax.hpp
-  timestamp: '2023-10-24 04:26:14+09:00'
+  path: src/data_structure/disjoint_sparse_table.hpp
+  requiredBy: []
+  timestamp: '2023-10-25 04:25:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/data_structure/range_add_range_min.test.cpp
-  - verify/aoj/data_structure/range_update_range_min.test.cpp
   - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-documentation_of: src/algebra/minmax.hpp
+documentation_of: src/data_structure/disjoint_sparse_table.hpp
 layout: document
 redirect_from:
-- /library/src/algebra/minmax.hpp
-- /library/src/algebra/minmax.hpp.html
-title: src/algebra/minmax.hpp
+- /library/src/data_structure/disjoint_sparse_table.hpp
+- /library/src/data_structure/disjoint_sparse_table.hpp.html
+title: src/data_structure/disjoint_sparse_table.hpp
 ---
