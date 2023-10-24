@@ -11,6 +11,7 @@
 "verify/library_checker/algorithm/lis.test.cpp": "2023-10-24 04:26:14 +0900",
 "verify/library_checker/data_structure/binary_trie.test.cpp": "2023-10-24 04:26:14 +0900",
 "verify/library_checker/data_structure/deque_operate_all_composite.test.cpp": "2023-10-24 23:33:31 +0900",
+"verify/library_checker/data_structure/disjoint_sparse_table.test.cpp": "2023-10-25 04:25:12 +0900",
 "verify/library_checker/data_structure/fenwick_tree.test.cpp": "2023-10-24 04:26:14 +0900",
 "verify/library_checker/data_structure/heap_rich.test.cpp": "2023-10-24 04:26:14 +0900",
 "verify/library_checker/data_structure/lazy_segtree.test.cpp": "2023-10-24 23:33:31 +0900",
