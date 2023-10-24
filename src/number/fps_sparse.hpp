@@ -79,10 +79,11 @@ fps<mint> pow(const fps_sparse<mint>& f, ll n, int deg) {
     fps_sparse<mint> fr;
     for(auto [i, fi] : f) fr.push_back({i - d, fi * c_inv});
 
-    fps<mint> g = to_dense(fps_sparse<mint>{{0, 1}}, deg);
+    fps<mint> g = to_dense(fps_sparse<mint>{{0, 1}}, deg - offset);
     for(int i : rep(1, deg - offset)) for(auto [j, fj] : fr)
             if(j != 0 and 0 <= i - j) g[i] += fj * g[i - j] * (mint(n) * mint(j) - mint(i - j)) * inv<mint>(i);
     g *= pow(c, n);
+    g <<= offset;
     return g;
 }
 
