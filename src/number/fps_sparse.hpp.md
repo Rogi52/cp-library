@@ -45,24 +45,24 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
   - icon: ':x:'
     path: verify/library_checker/number/fps_pow_sparse.test.cpp
     title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
     title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -432,7 +432,7 @@ data:
   path: src/number/fps_sparse.hpp
   requiredBy: []
   timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_pow_sparse.test.cpp

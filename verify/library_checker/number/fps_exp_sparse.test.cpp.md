@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':question:'
@@ -48,16 +48,16 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse
     links:
-    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
+    - https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse
   bundledCode: "#line 1 \"verify/library_checker/number/fps_exp_sparse.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse\"\
     \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
     \ int;\nusing ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned\
@@ -363,7 +363,7 @@ data:
     \n\nint main() {\n    int N = in(), K = in();\n    using mint = mint998244353;\n\
     \    fps_sparse<mint> f;\n    for(int k : rep(K)) {\n        int i = in(), a =\
     \ in();\n        f.push_back({i, a});\n    }\n    print(exp(f, N));\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse\"\
     \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
     \n#include \"../../../src/number/fps_sparse.hpp\"\n\nint main() {\n    int N =\
     \ in(), K = in();\n    using mint = mint998244353;\n    fps_sparse<mint> f;\n\
@@ -388,8 +388,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/fps_exp_sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-24 23:48:05+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_exp_sparse.test.cpp
 layout: document

@@ -26,26 +26,26 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
   - icon: ':x:'
     path: verify/library_checker/number/fps_pow_sparse.test.cpp
     title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
     title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
   _isVerificationFailed: true

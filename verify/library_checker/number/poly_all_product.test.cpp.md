@@ -22,7 +22,7 @@ data:
   - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':question:'
@@ -45,9 +45,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/product_of_polynomial_sequence
@@ -382,7 +382,7 @@ data:
   path: verify/library_checker/number/poly_all_product.test.cpp
   requiredBy: []
   timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/poly_all_product.test.cpp
 layout: document
