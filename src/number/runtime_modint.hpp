@@ -3,8 +3,9 @@ struct runtime_modint {
     ll v = 0;
     runtime_modint(ll v = 0) { s(v % get_mod() + get_mod()); }
     static void set_mod(ll m) { mod() = m; }
-    static void set_mod(ll m, int isp) { mod() = m; isprime() = isp; }
+    static void set_mod(ll m, int isp) { mod() = m; prime() = isp; }
     static ll get_mod() { return mod(); }
+    static int is_prime() { return prime(); }
     using rtmint = runtime_modint;
     rtmint& s(ll v) { this->v = v < get_mod() ? v : v - get_mod(); return *this; }
     rtmint operator-() const { return rtmint() - *this; }
@@ -18,7 +19,7 @@ struct runtime_modint {
     rtmint operator/(const rtmint& rhs) const { return rtmint(*this) /= rhs; }
     friend rtmint pow(rtmint x, ll n) { rtmint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }
     friend rtmint inv(rtmint v) {
-        if(isprime()) {
+        if(prime()) {
             return pow(v, get_mod() - 2);
         } else {
             ll a = v.v, b = get_mod(), x = 1, y = 0, t;
@@ -39,9 +40,8 @@ struct runtime_modint {
         static ll mod_ = 0;
         return mod_;
     }
-    static int &isprime() {
-        static int isprime_ = 0;
-        return isprime_;
+    static int &prime() {
+        static int prime_ = 0;
+        return prime_;
     }
 };
-using mint = runtime_modint;

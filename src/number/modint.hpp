@@ -36,6 +36,7 @@ struct modint {
     bool operator==(const modint& r) const { return v == r.v; }
     bool operator!=(const modint& r) const { return v != r.v; }
     static uint get_mod() { return mod; }
+    static int is_prime() { return isprime; }
 };
 constexpr modinfo base998244353 { 998244353, 3, 1 };
 constexpr modinfo base1000000007 { 1000000007, 0, 1 };

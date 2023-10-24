@@ -1,6 +1,7 @@
 #pragma once
 #include "../cp-template.hpp"
-#include "../number/ntt.hpp"
+#include "../../src/number/ntt.hpp"
+#include "../../src/number/modfunc.hpp"
 
 class undefined {};
 template < class mint > struct fps : std::vector<mint> {
@@ -101,7 +102,7 @@ template < class mint > struct fps : std::vector<mint> {
         for(int i : revrep(0, n)) if(f[i] != 0) d = i;
         if(d == n) return f;
         if(d % 2 == 1) throw undefined();
-        mint y = f[d], x = sqrt(y);
+        mint y = f[d], x = modsqrt(y.v, mint::get_mod());
         if(x * x != y) throw undefined();
         mint c = mint(1) / y;
         fps g(n - d);
@@ -150,8 +151,3 @@ template < class mint > struct fps : std::vector<mint> {
     }
 };
 
-template < class mint > int print(const fps<mint> f, char sep = ' ') {
-    int n = f.size();
-    for(int i : rep(n)) std::cout << f[i] << (i != n - 1 ? sep : '\n');
-    return 0;
-}
