@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
   - icon: ':heavy_check_mark:'
     path: src/algorithm/count_subseq.hpp
     title: src/algorithm/count_subseq.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -143,17 +143,18 @@ data:
     \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
     \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
     \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
-    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
-    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
-    using mint998244353 = modint< base998244353 >;\nusing mint1000000007 = modint<\
-    \ base1000000007 >;\n#line 1 \"src/algorithm/count_subseq.hpp\"\ntemplate < class\
-    \ mint, class T >\nmint count_subseq(const vector< T >& a) {\n    int n = a.size();\n\
-    \    unordered_map< T, int > mp;\n    vector<mint> dp(n + 1);\n    dp[0] = 1;\n\
-    \    for(int i : rep(n)) {\n        dp[i + 1] = dp[i] + dp[i];\n        if(mp.count(a[i]))\
-    \ dp[i + 1] -= dp[mp[a[i]]];\n        mp[a[i]] = i;\n    }\n    return dp[n];\n\
-    }\n#line 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\n\nint main(){\n\
-    \    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int N = in();\n    vector<int>\
-    \ A = in(N);\n    print(count_subseq<mint998244353>(A) - 1);\n}\n"
+    \  static uint get_mod() { return mod; }\n    static int is_prime() { return isprime;\
+    \ }\n};\nconstexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo\
+    \ base1000000007 { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353\
+    \ >;\nusing mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/algorithm/count_subseq.hpp\"\
+    \ntemplate < class mint, class T >\nmint count_subseq(const vector< T >& a) {\n\
+    \    int n = a.size();\n    unordered_map< T, int > mp;\n    vector<mint> dp(n\
+    \ + 1);\n    dp[0] = 1;\n    for(int i : rep(n)) {\n        dp[i + 1] = dp[i]\
+    \ + dp[i];\n        if(mp.count(a[i])) dp[i + 1] -= dp[mp[a[i]]];\n        mp[a[i]]\
+    \ = i;\n    }\n    return dp[n];\n}\n#line 6 \"verify/library_checker/algorithm/count_subseq.test.cpp\"\
+    \n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n    \n    int\
+    \ N = in();\n    vector<int> A = in(N);\n    print(count_subseq<mint998244353>(A)\
+    \ - 1);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include \"src/cp-template.hpp\"\n#include \"src/number/modint.hpp\"\n#include\
     \ \"src/algorithm/count_subseq.hpp\"\n\nint main(){\n    cin.tie(0);\n    ios::sync_with_stdio(0);\n\
@@ -173,7 +174,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/algorithm/count_subseq.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 04:26:14+09:00'
+  timestamp: '2023-10-24 23:33:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/algorithm/count_subseq.test.cpp

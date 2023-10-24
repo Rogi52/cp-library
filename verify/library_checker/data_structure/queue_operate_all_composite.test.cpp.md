@@ -4,34 +4,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/affine.hpp
     title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
@@ -179,19 +179,20 @@ data:
     \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
     \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
     \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n};\n\
-    constexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo base1000000007\
-    \ { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353 >;\nusing\
-    \ mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/algebra/affine.hpp\"\
-    \ntemplate < class T > class affine {\n  public:\n    T a, b; // ax + b\n    constexpr\
-    \ affine() = default;\n    constexpr affine(const T &a, const T &b) : a(a), b(b)\
-    \ {}\n    constexpr T eval(const T &x) const { return x * a + b; }\n    constexpr\
-    \ affine composite(const affine &r) const {\n        return affine(a * r.a, b\
-    \ * r.a + r.b);\n    }\n    static constexpr affine id() {\n        return affine(T(1),\
-    \ T(0));\n    }\n};\n\ntemplate < class T > class affine_composite_monoid {\n\
-    \  public:\n    using F = affine< T >;\n    using set = F;\n    static constexpr\
-    \ F op(const F &l, const F &r) { return l.composite(r); }\n    static constexpr\
-    \ F id() { return F::id(); }\n};\n#line 7 \"verify/library_checker/data_structure/queue_operate_all_composite.test.cpp\"\
+    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n    static\
+    \ int is_prime() { return isprime; }\n};\nconstexpr modinfo base998244353 { 998244353,\
+    \ 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint998244353\
+    \ = modint< base998244353 >;\nusing mint1000000007 = modint< base1000000007 >;\n\
+    #line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine {\n  public:\n\
+    \    T a, b; // ax + b\n    constexpr affine() = default;\n    constexpr affine(const\
+    \ T &a, const T &b) : a(a), b(b) {}\n    constexpr T eval(const T &x) const {\
+    \ return x * a + b; }\n    constexpr affine composite(const affine &r) const {\n\
+    \        return affine(a * r.a, b * r.a + r.b);\n    }\n    static constexpr affine\
+    \ id() {\n        return affine(T(1), T(0));\n    }\n};\n\ntemplate < class T\
+    \ > class affine_composite_monoid {\n  public:\n    using F = affine< T >;\n \
+    \   using set = F;\n    static constexpr F op(const F &l, const F &r) { return\
+    \ l.composite(r); }\n    static constexpr F id() { return F::id(); }\n};\n#line\
+    \ 7 \"verify/library_checker/data_structure/queue_operate_all_composite.test.cpp\"\
     \n\nint main() {\n    using mint = mint998244353;\n    swag_queue<affine_composite_monoid<mint>>\
     \ que;\n\n    int Q = in();\n    for(int _ : rep(Q)) {\n        int t = in();\n\
     \        if(t == 0) {\n            mint a = in(), b = in();\n            que.push(affine<mint>(a,\
@@ -222,7 +223,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 04:26:14+09:00'
+  timestamp: '2023-10-24 23:33:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp

@@ -1,34 +1,43 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
+  - icon: ':question:'
+    path: src/number/fps.hpp
+    title: src/number/fps.hpp
+  - icon: ':x:'
+    path: src/number/fps_sparse.hpp
+    title: src/number/fps_sparse.hpp
+  - icon: ':x:'
+    path: src/number/poly.hpp
+    title: src/number/poly.hpp
   - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
@@ -43,8 +52,50 @@ data:
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/fps_composition.test.cpp
+    title: verify/library_checker/number/fps_composition.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/fps_exp.test.cpp
+    title: verify/library_checker/number/fps_exp.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_exp_sparse.test.cpp
+    title: verify/library_checker/number/fps_exp_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_inv.test.cpp
+    title: verify/library_checker/number/fps_inv.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_inv_sparse.test.cpp
+    title: verify/library_checker/number/fps_inv_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_log.test.cpp
+    title: verify/library_checker/number/fps_log.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_log_sparse.test.cpp
+    title: verify/library_checker/number/fps_log_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_pow.test.cpp
+    title: verify/library_checker/number/fps_pow.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_pow_sparse.test.cpp
+    title: verify/library_checker/number/fps_pow_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_sqrt.test.cpp
+    title: verify/library_checker/number/fps_sqrt.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+    title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/modsqrt.test.cpp
     title: verify/library_checker/number/modsqrt.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/poly_all_product.test.cpp
+    title: verify/library_checker/number/poly_all_product.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/poly_division.test.cpp
+    title: verify/library_checker/number/poly_division.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/poly_taylor_shift.test.cpp
+    title: verify/library_checker/number/poly_taylor_shift.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
@@ -54,9 +105,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -179,17 +230,34 @@ data:
   isVerificationFile: false
   path: src/number/modfunc.hpp
   requiredBy:
+  - src/number/poly.hpp
   - src/number/primitive_root.hpp
+  - src/number/fps.hpp
+  - src/number/fps_sparse.hpp
   - src/number/prime.hpp
   - src/number/tetration.hpp
   timestamp: '2023-10-24 04:26:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
+  - verify/library_checker/number/fps_pow.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/number/factorize.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
   - verify/library_checker/number/primality_test.test.cpp
+  - verify/library_checker/number/poly_division.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/fps_exp.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
 documentation_of: src/number/modfunc.hpp
 layout: document
 redirect_from:

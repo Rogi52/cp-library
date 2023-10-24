@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -16,22 +16,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []

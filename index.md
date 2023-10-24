@@ -41,13 +41,13 @@ data:
       title: src/algebra/xor.hpp
   - name: src/algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
     - icon: ':heavy_check_mark:'
@@ -76,7 +76,7 @@ data:
       title: src/algorithm/ternary_search.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
@@ -196,22 +196,22 @@ data:
       title: "\u884C\u5217\u6728\u5B9A\u7406"
   - name: src/number
     pages:
-    - icon: ':heavy_check_mark:'
-      path: src/number/bicoef.hpp
-      title: src/number/bicoef.hpp
+    - icon: ':question:'
+      path: src/number/binom_mod.hpp
+      title: src/number/binom_mod.hpp
     - icon: ':warning:'
-      path: src/number/bicoef_table.hpp
-      title: src/number/bicoef_table.hpp
+      path: src/number/binom_table.hpp
+      title: src/number/binom_table.hpp
     - icon: ':warning:'
       path: src/number/czt.hpp
       title: src/number/czt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/number/eratosthenes.hpp
       title: src/number/eratosthenes.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
     - icon: ':heavy_check_mark:'
@@ -220,19 +220,19 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/modfunc.hpp
       title: src/number/modfunc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
       path: src/number/nim_product.hpp
       title: src/number/nim_product.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
     - icon: ':heavy_check_mark:'
@@ -263,22 +263,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/utility/hash.hpp
       title: src/utility/hash.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/heap.hpp
       title: src/utility/heap.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/random.hpp
       title: src/utility/random.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
     - icon: ':heavy_check_mark:'
@@ -406,8 +406,8 @@ data:
   - name: verify/library_checker/number
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/library_checker/number/bicoef.test.cpp
-      title: verify/library_checker/number/bicoef.test.cpp
+      path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+      title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/factorize.test.cpp
       title: verify/library_checker/number/factorize.test.cpp
@@ -415,12 +415,39 @@ data:
       path: verify/library_checker/number/fps_composition.test.cpp
       title: verify/library_checker/number/fps_composition.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/fps_exp.test.cpp
+      title: verify/library_checker/number/fps_exp.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_exp_sparse.test.cpp
+      title: verify/library_checker/number/fps_exp_sparse.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_inv.test.cpp
+      title: verify/library_checker/number/fps_inv.test.cpp
+    - icon: ':x:'
       path: verify/library_checker/number/fps_inv_sparse.test.cpp
       title: verify/library_checker/number/fps_inv_sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_log.test.cpp
+      title: verify/library_checker/number/fps_log.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_log_sparse.test.cpp
+      title: verify/library_checker/number/fps_log_sparse.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_pow.test.cpp
+      title: verify/library_checker/number/fps_pow.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_pow_sparse.test.cpp
+      title: verify/library_checker/number/fps_pow_sparse.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_sqrt.test.cpp
+      title: verify/library_checker/number/fps_sqrt.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+      title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+    - icon: ':x:'
       path: verify/library_checker/number/gcd_convolution.test.cpp
       title: verify/library_checker/number/gcd_convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/lcm_convolution.test.cpp
       title: verify/library_checker/number/lcm_convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -429,13 +456,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/poly_division.test.cpp
       title: verify/library_checker/number/poly_division.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/poly_taylor_shift.test.cpp
       title: verify/library_checker/number/poly_taylor_shift.test.cpp
     - icon: ':heavy_check_mark:'

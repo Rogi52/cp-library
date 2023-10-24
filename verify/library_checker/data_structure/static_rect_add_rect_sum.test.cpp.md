@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -22,22 +22,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   - icon: ':heavy_check_mark:'
@@ -243,15 +243,15 @@ data:
     \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
     \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
     \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
-    \  static uint get_mod() { return mod; }\n};\nconstexpr modinfo base998244353\
-    \ { 998244353, 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\n\
-    using mint998244353 = modint< base998244353 >;\nusing mint1000000007 = modint<\
-    \ base1000000007 >;\n#line 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class\
-    \ sum_monoid {\n  public:\n    using set = T;\n    static constexpr T op(const\
-    \ T &l, const T &r) { return l + r; }\n    static constexpr T id() { return T(0);\
-    \ }\n    static constexpr T inv(const T &x) { return -x; }\n    static constexpr\
-    \ T pow(const T &x, const ll n) { return x * n; }\n    static constexpr bool comm\
-    \ = true;\n};\n#line 6 \"verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp\"\
+    \  static uint get_mod() { return mod; }\n    static int is_prime() { return isprime;\
+    \ }\n};\nconstexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo\
+    \ base1000000007 { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353\
+    \ >;\nusing mint1000000007 = modint< base1000000007 >;\n#line 1 \"src/algebra/sum.hpp\"\
+    \ntemplate < class T > class sum_monoid {\n  public:\n    using set = T;\n   \
+    \ static constexpr T op(const T &l, const T &r) { return l + r; }\n    static\
+    \ constexpr T id() { return T(0); }\n    static constexpr T inv(const T &x) {\
+    \ return -x; }\n    static constexpr T pow(const T &x, const ll n) { return x\
+    \ * n; }\n    static constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp\"\
     \n\nint main() {\n    int N = in(), Q = in();\n    using mint = mint998244353;\n\
     \    rect_sum< tag::STATIC, tag::RECTANGLE, ll, sum_monoid<mint> > rs;\n    for(int\
     \ i : rep(N)) {\n        int l = in(), d = in(), r = in(), u = in(), w = in();\n\
@@ -285,7 +285,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 04:26:14+09:00'
+  timestamp: '2023-10-24 23:33:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp

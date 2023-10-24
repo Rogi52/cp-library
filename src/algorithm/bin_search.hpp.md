@@ -20,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/size.hpp
     title: src/algebra/size.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
   - icon: ':warning:'
@@ -32,7 +32,7 @@ data:
   - icon: ':warning:'
     path: src/algorithm/selection.hpp
     title: src/algorithm/selection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
@@ -92,25 +92,31 @@ data:
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/number/binom_mod.hpp
+    title: src/number/binom_mod.hpp
+  - icon: ':warning:'
+    path: src/number/binom_table.hpp
+    title: src/number/binom_table.hpp
+  - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':heavy_check_mark:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':heavy_check_mark:'
@@ -128,10 +134,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   _extendedVerifiedWith:
@@ -235,8 +241,8 @@ data:
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/bicoef.test.cpp
-    title: verify/library_checker/number/bicoef.test.cpp
+    path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+    title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
@@ -244,12 +250,39 @@ data:
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/fps_exp.test.cpp
+    title: verify/library_checker/number/fps_exp.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_exp_sparse.test.cpp
+    title: verify/library_checker/number/fps_exp_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_inv.test.cpp
+    title: verify/library_checker/number/fps_inv.test.cpp
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_log.test.cpp
+    title: verify/library_checker/number/fps_log.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_log_sparse.test.cpp
+    title: verify/library_checker/number/fps_log_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_pow.test.cpp
+    title: verify/library_checker/number/fps_pow.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_pow_sparse.test.cpp
+    title: verify/library_checker/number/fps_pow_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_sqrt.test.cpp
+    title: verify/library_checker/number/fps_sqrt.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+    title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - icon: ':x:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -258,13 +291,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
   - icon: ':heavy_check_mark:'
@@ -285,9 +318,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/yukicoder/sparse_segtree.test.cpp
     title: verify/yukicoder/sparse_segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate < class T, class\
@@ -322,7 +355,9 @@ data:
   - src/number/nim_product.hpp
   - src/number/prime.hpp
   - src/number/modfunc.hpp
+  - src/number/binom_table.hpp
   - src/number/tetration.hpp
+  - src/number/binom_mod.hpp
   - src/number/gaussian_integer.hpp
   - src/matrix/matrix-tree.hpp
   - src/matrix/linear_equation.hpp
@@ -350,7 +385,7 @@ data:
   - src/data_structure/range_freq.hpp
   - src/data_structure/binary_trie.hpp
   timestamp: '2023-07-29 19:05:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/yukicoder/gaussian_integer.test.cpp
   - verify/yukicoder/sparse_segtree.test.cpp
@@ -366,18 +401,27 @@ data:
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
+  - verify/library_checker/number/fps_pow.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
   - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/number/nim_product.test.cpp
   - verify/library_checker/number/factorize.test.cpp
   - verify/library_checker/number/gcd_convolution.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
   - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/lcm_convolution.test.cpp
+  - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
   - verify/library_checker/number/primality_test.test.cpp
   - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/bicoef.test.cpp
   - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/fps_exp.test.cpp
   - verify/library_checker/number/poly_all_product.test.cpp
   - verify/library_checker/matrix/determinant.test.cpp
   - verify/library_checker/matrix/linear_equation.test.cpp
