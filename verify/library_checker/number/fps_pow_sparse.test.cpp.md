@@ -1,56 +1,56 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/bin_search.hpp
     title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/rep_itr.hpp
     title: src/utility/rep_itr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_formal_power_series_sparse
@@ -349,19 +349,20 @@ data:
     \    if((deg + n - 1) / n <= d) return fps<mint>(deg, 0);\n    int offset = d\
     \ * n;\n    mint c = f[0].second, c_inv = mint(1) / c;\n    fps_sparse<mint> fr;\n\
     \    for(auto [i, fi] : f) fr.push_back({i - d, fi * c_inv});\n\n    fps<mint>\
-    \ g = to_dense(fps_sparse<mint>{{0, 1}}, deg);\n    for(int i : rep(1, deg - offset))\
-    \ for(auto [j, fj] : fr)\n            if(j != 0 and 0 <= i - j) g[i] += fj * g[i\
-    \ - j] * (mint(n) * mint(j) - mint(i - j)) * inv<mint>(i);\n    g *= pow(c, n);\n\
-    \    return g;\n}\n\n\ntemplate < class mint >\nfps<mint> sqrt(const fps_sparse<mint>&\
-    \ f, int deg) {\n    if(f.empty()) return fps<mint>(deg, 0);\n    int d = f[0].first;\n\
-    \    if(d % 2 == 1) throw undefined();\n    mint y = f[0].second, x = modsqrt(y.v,\
-    \ mint::get_mod());\n    if(x * x != y) throw undefined();\n    mint c = mint(1)\
-    \ / y;\n    fps_sparse<mint> g;\n    for(auto [i, v] : f) g.push_back({i - d,\
-    \ v * c});\n    fps h = pow(g, inv(mint(2)).v, deg);\n    for(int i : rep(deg))\
-    \ h[i] *= x;\n    for(int i : revrep(deg)) h[i] = (i >= d / 2 ? h[i - d / 2] :\
-    \ 0);\n    return h;\n}\n#line 6 \"verify/library_checker/number/fps_pow_sparse.test.cpp\"\
-    \n\nint main() {\n    int N = in(), K = in(); ll M = in();\n    using mint = mint998244353;\n\
-    \    fps_sparse<mint> f;\n    for(int k : rep(K)) {\n        int i = in(), a =\
+    \ g = to_dense(fps_sparse<mint>{{0, 1}}, deg - offset);\n    for(int i : rep(1,\
+    \ deg - offset)) for(auto [j, fj] : fr)\n            if(j != 0 and 0 <= i - j)\
+    \ g[i] += fj * g[i - j] * (mint(n) * mint(j) - mint(i - j)) * inv<mint>(i);\n\
+    \    g *= pow(c, n);\n    g <<= offset;\n    return g;\n}\n\n\ntemplate < class\
+    \ mint >\nfps<mint> sqrt(const fps_sparse<mint>& f, int deg) {\n    if(f.empty())\
+    \ return fps<mint>(deg, 0);\n    int d = f[0].first;\n    if(d % 2 == 1) throw\
+    \ undefined();\n    mint y = f[0].second, x = modsqrt(y.v, mint::get_mod());\n\
+    \    if(x * x != y) throw undefined();\n    mint c = mint(1) / y;\n    fps_sparse<mint>\
+    \ g;\n    for(auto [i, v] : f) g.push_back({i - d, v * c});\n    fps h = pow(g,\
+    \ inv(mint(2)).v, deg);\n    for(int i : rep(deg)) h[i] *= x;\n    for(int i :\
+    \ revrep(deg)) h[i] = (i >= d / 2 ? h[i - d / 2] : 0);\n    return h;\n}\n#line\
+    \ 6 \"verify/library_checker/number/fps_pow_sparse.test.cpp\"\n\nint main() {\n\
+    \    int N = in(), K = in(); ll M = in();\n    using mint = mint998244353;\n \
+    \   fps_sparse<mint> f;\n    for(int k : rep(K)) {\n        int i = in(), a =\
     \ in();\n        f.push_back({i, a});\n    }\n    print(pow(f, M, N));\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series_sparse\"\
     \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
@@ -388,8 +389,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/fps_pow_sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-25 00:09:32+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-25 00:20:03+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_pow_sparse.test.cpp
 layout: document

@@ -50,9 +50,9 @@ data:
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
 documentation_of: src/algebra/affine.hpp
 layout: document
