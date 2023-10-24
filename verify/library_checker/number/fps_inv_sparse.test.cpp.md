@@ -352,14 +352,14 @@ data:
     \ g = to_dense(fps_sparse<mint>{{0, 1}}, deg);\n    for(int i : rep(1, deg - offset))\
     \ for(auto [j, fj] : fr)\n            if(j != 0 and 0 <= i - j) g[i] += fj * g[i\
     \ - j] * (mint(n) * mint(j) - mint(i - j)) * inv<mint>(i);\n    g *= pow(c, n);\n\
-    \    g >>= offset;\n    return g;\n}\n\n\ntemplate < class mint >\nfps<mint> sqrt(const\
-    \ fps_sparse<mint>& f, int deg) {\n    if(f.empty()) return fps<mint>(deg, 0);\n\
-    \    int d = f[0].first;\n    if(d % 2 == 1) throw undefined();\n    mint y =\
-    \ f[0].second, x = modsqrt(y.v, mint::get_mod());\n    if(x * x != y) throw undefined();\n\
-    \    mint c = mint(1) / y;\n    fps_sparse<mint> g;\n    for(auto [i, v] : f)\
-    \ g.push_back({i - d, v * c});\n    fps h = pow(g, inv(mint(2)).v, deg);\n   \
-    \ for(int i : rep(deg)) h[i] *= x;\n    for(int i : revrep(deg)) h[i] = (i >=\
-    \ d / 2 ? h[i - d / 2] : 0);\n    return h;\n}\n#line 6 \"verify/library_checker/number/fps_inv_sparse.test.cpp\"\
+    \    return g;\n}\n\n\ntemplate < class mint >\nfps<mint> sqrt(const fps_sparse<mint>&\
+    \ f, int deg) {\n    if(f.empty()) return fps<mint>(deg, 0);\n    int d = f[0].first;\n\
+    \    if(d % 2 == 1) throw undefined();\n    mint y = f[0].second, x = modsqrt(y.v,\
+    \ mint::get_mod());\n    if(x * x != y) throw undefined();\n    mint c = mint(1)\
+    \ / y;\n    fps_sparse<mint> g;\n    for(auto [i, v] : f) g.push_back({i - d,\
+    \ v * c});\n    fps h = pow(g, inv(mint(2)).v, deg);\n    for(int i : rep(deg))\
+    \ h[i] *= x;\n    for(int i : revrep(deg)) h[i] = (i >= d / 2 ? h[i - d / 2] :\
+    \ 0);\n    return h;\n}\n#line 6 \"verify/library_checker/number/fps_inv_sparse.test.cpp\"\
     \n\nint main() {\n    int N = in(), K = in();\n    using mint = mint998244353;\n\
     \    fps_sparse<mint> f;\n    for(int k : rep(K)) {\n        int i = in(), a =\
     \ in();\n        f.push_back({i, a});\n    }\n    fps<mint> g = inv(f, N);\n \
@@ -389,7 +389,7 @@ data:
   isVerificationFile: true
   path: verify/library_checker/number/fps_inv_sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 23:33:31+09:00'
+  timestamp: '2023-10-25 00:09:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/fps_inv_sparse.test.cpp

@@ -232,7 +232,7 @@ data:
     - icon: ':question:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
     - icon: ':heavy_check_mark:'
@@ -459,10 +459,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_division.test.cpp
       title: verify/library_checker/number/poly_division.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_taylor_shift.test.cpp
       title: verify/library_checker/number/poly_taylor_shift.test.cpp
     - icon: ':heavy_check_mark:'

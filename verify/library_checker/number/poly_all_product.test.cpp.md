@@ -22,7 +22,7 @@ data:
   - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':question:'
