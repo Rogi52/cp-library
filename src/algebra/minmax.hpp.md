@@ -144,13 +144,13 @@ data:
   isVerificationFile: false
   path: src/algebra/minmax.hpp
   requiredBy:
-  - src/algebra/range_add_range_minmax.hpp
   - src/algebra/range_update_range_minmax.hpp
+  - src/algebra/range_add_range_minmax.hpp
   timestamp: '2023-10-24 04:26:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/data_structure/range_update_range_min.test.cpp
   - verify/aoj/data_structure/range_add_range_min.test.cpp
+  - verify/aoj/data_structure/range_update_range_min.test.cpp
 documentation_of: src/algebra/minmax.hpp
 layout: document
 redirect_from:

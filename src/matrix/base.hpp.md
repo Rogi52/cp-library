@@ -275,14 +275,14 @@ data:
   path: src/matrix/base.hpp
   requiredBy:
   - src/matrix/matrix-tree.hpp
-  - src/matrix/lgv.hpp
   - src/matrix/linear_equation.hpp
+  - src/matrix/lgv.hpp
   timestamp: '2023-10-24 04:26:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/matrix/inverse.test.cpp
-  - verify/library_checker/matrix/linear_equation.test.cpp
   - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/matrix/product.test.cpp
 documentation_of: src/matrix/base.hpp
 layout: document

@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/number/montmort.test.cpp
+    title: verify/library_checker/number/montmort.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,6 +83,7 @@ data:
   timestamp: '2023-10-24 23:33:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/library_checker/number/montmort.test.cpp
   - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
 documentation_of: src/number/runtime_modint.hpp
 layout: document

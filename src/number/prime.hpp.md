@@ -229,10 +229,10 @@ data:
   timestamp: '2023-10-24 04:26:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/number/primality_test.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
-  - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/factorize.test.cpp
+  - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/primality_test.test.cpp
 documentation_of: src/number/prime.hpp
 layout: document
 redirect_from:

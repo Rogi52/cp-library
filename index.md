@@ -209,6 +209,9 @@ data:
       path: src/number/eratosthenes.hpp
       title: src/number/eratosthenes.hpp
     - icon: ':heavy_check_mark:'
+      path: src/number/famous_number.hpp
+      title: src/number/famous_number.hpp
+    - icon: ':heavy_check_mark:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
     - icon: ':heavy_check_mark:'
@@ -244,6 +247,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/number/sharp_p_subset_sum.hpp
+      title: src/number/sharp_p_subset_sum.hpp
     - icon: ':heavy_check_mark:'
       path: src/number/tetration.hpp
       title: src/number/tetration.hpp
@@ -406,6 +412,9 @@ data:
   - name: verify/library_checker/number
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/bernoulli.test.cpp
+      title: verify/library_checker/number/bernoulli.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
       title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     - icon: ':heavy_check_mark:'
@@ -454,8 +463,14 @@ data:
       path: verify/library_checker/number/modsqrt.test.cpp
       title: verify/library_checker/number/modsqrt.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/montmort.test.cpp
+      title: verify/library_checker/number/montmort.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/partition.test.cpp
+      title: verify/library_checker/number/partition.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
@@ -471,6 +486,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/primitive_root.test.cpp
       title: verify/library_checker/number/primitive_root.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
+      title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/stirling_1st.test.cpp
+      title: verify/library_checker/number/stirling_1st.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/number/stirling_2nd.test.cpp
+      title: verify/library_checker/number/stirling_2nd.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/tetration.test.cpp
       title: verify/library_checker/number/tetration.test.cpp

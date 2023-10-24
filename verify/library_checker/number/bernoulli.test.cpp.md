@@ -14,6 +14,9 @@ data:
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':heavy_check_mark:'
+    path: src/number/famous_number.hpp
+    title: src/number/famous_number.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -53,76 +56,76 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/product_of_polynomial_sequence
+    PROBLEM: https://judge.yosupo.jp/problem/bernoulli_number
     links:
-    - https://judge.yosupo.jp/problem/product_of_polynomial_sequence
-  bundledCode: "#line 1 \"verify/library_checker/number/poly_all_product.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n\n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned\
-    \ int;\nusing ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned\
-    \ int;\nusing i64 = long long;\nusing u64 = unsigned long long;\nusing i128 =\
-    \ __int128_t;\ntemplate < class T > bool chmin(T& a, T b) { if(a > b) { a = b;\
-    \ return true; } return false; }\ntemplate < class T > bool chmax(T& a, T b) {\
-    \ if(a < b) { a = b; return true; } return false; }\n\n#line 2 \"src/utility/rep_itr.hpp\"\
-    \ntemplate < class T > struct itr {\n    T i, d;\n    constexpr itr(const T i)\
-    \ noexcept : i(i), d(1) {}\n    constexpr itr(const T i, const T d) noexcept :\
-    \ i(i), d(d) {}\n    void operator++() noexcept { i += d; }\n    constexpr int\
-    \ operator*() const noexcept { return i; }\n    constexpr bool operator!=(const\
-    \ itr x) const noexcept {\n        return d > 0 ? i < x.i : i > x.i;\n    }\n\
-    };\n\ntemplate < class T > struct rep {\n    const itr< T > s, t;\n    constexpr\
-    \ rep(const T t) noexcept : s(0), t(t) {}\n    constexpr rep(const T s, const\
-    \ T t) noexcept : s(s), t(t) {}\n    constexpr rep(const T s, const T t, const\
-    \ T d) noexcept : s(s, d), t(t, d) {}\n    constexpr auto begin() const noexcept\
-    \ { return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n\n\
-    template < class T > struct revrep {\n    const itr < T > s, t;\n    constexpr\
-    \ revrep(const T t) noexcept : s(t - 1, -1), t(-1, -1) {}\n    constexpr revrep(const\
-    \ T s, const T t) noexcept : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const\
-    \ T s, const T t, const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr\
+    - https://judge.yosupo.jp/problem/bernoulli_number
+  bundledCode: "#line 1 \"verify/library_checker/number/bernoulli.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/bernoulli_number\"\n\n#line 2 \"src/cp-template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing uint = unsigned int;\nusing ull  = unsigned long long;\n\
+    using i32 = int;\nusing u32 = unsigned int;\nusing i64 = long long;\nusing u64\
+    \ = unsigned long long;\nusing i128 = __int128_t;\ntemplate < class T > bool chmin(T&\
+    \ a, T b) { if(a > b) { a = b; return true; } return false; }\ntemplate < class\
+    \ T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return false;\
+    \ }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct itr {\n\
+    \    T i, d;\n    constexpr itr(const T i) noexcept : i(i), d(1) {}\n    constexpr\
+    \ itr(const T i, const T d) noexcept : i(i), d(d) {}\n    void operator++() noexcept\
+    \ { i += d; }\n    constexpr int operator*() const noexcept { return i; }\n  \
+    \  constexpr bool operator!=(const itr x) const noexcept {\n        return d >\
+    \ 0 ? i < x.i : i > x.i;\n    }\n};\n\ntemplate < class T > struct rep {\n   \
+    \ const itr< T > s, t;\n    constexpr rep(const T t) noexcept : s(0), t(t) {}\n\
+    \    constexpr rep(const T s, const T t) noexcept : s(s), t(t) {}\n    constexpr\
+    \ rep(const T s, const T t, const T d) noexcept : s(s, d), t(t, d) {}\n    constexpr\
     \ auto begin() const noexcept { return s; }\n    constexpr auto end() const noexcept\
-    \ { return t; }\n};\n#line 2 \"src/utility/io.hpp\"\nnamespace scanner {\n   \
-    \ struct sca {\n        template < class T > operator T() {\n            T s;\
-    \ cin >> s; return s;\n        }\n    };\n    struct vec {\n        int n;\n \
-    \       vec(int n) : n(n) {}\n        template < class T > operator vector< T\
-    \ >() {\n            vector< T > v(n);\n            for(T& x : v) cin >> x;\n\
-    \            return v;\n        }\n    };\n    struct mat {\n        int h,w;\n\
-    \        mat(int h, int w) : h(h), w(w) {}\n        template < class T > operator\
-    \ vector< vector< T > >() {\n            vector m(h, vector< T >(w));\n      \
-    \      for(vector< T >& v : m) for(T& x : v) cin >> x;\n            return m;\n\
-    \        }\n    };\n    struct speedup {\n        speedup() {\n            cin.tie(0);\n\
-    \            ios::sync_with_stdio(0);\n        }\n    } speedup_instance;\n}\n\
-    scanner::sca in() { return scanner::sca(); }\nscanner::vec in(int n) { return\
-    \ scanner::vec(n); }\nscanner::mat in(int h, int w) { return scanner::mat(h, w);\
-    \ }\n\nnamespace printer {\n    void precision(int d) {\n        cout << fixed\
-    \ << setprecision(d);\n    }\n    void flush() {\n        cout.flush();\n    }\n\
-    }\n\ntemplate < class T >\nostream& operator<<(ostream& os, const std::vector<\
-    \ T > a) {\n    int n = a.size();\n    for(int i : rep(n)) { os << a[i]; if(i\
-    \ != n - 1) os << ' '; }\n    return os;\n}\n\nint print() { cout << '\\n'; return\
-    \ 0; }\ntemplate < class head, class... tail > int print(head&& h, tail&&... t)\
-    \ {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return print(forward<tail>(t)...);\n\
-    }\n\ntemplate < class T > int print_n(const std::vector< T > a) {\n    int n =\
-    \ a.size();\n    for(int i : rep(n)) cout << a[i] << \"\\n\";\n    return 0;\n\
-    }\n#line 2 \"src/utility/key_val.hpp\"\ntemplate < class K, class V >\nstruct\
-    \ key_val {\n    K key; V val;\n    key_val() {}\n    key_val(K key, V val) :\
-    \ key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\ntemplate < class\
-    \ T >\nkey_val< int, T > max_of(const vector< T >& a) {\n    int i = max_element(a.begin(),\
-    \ a.end()) - a.begin();\n    return {i, a[i]};\n}\n\ntemplate < class T >\nkey_val<\
-    \ int, T > min_of(const vector< T >& a) {\n    int i = min_element(a.begin(),\
-    \ a.end()) - a.begin();\n    return {i, a[i]};\n}\n\ntemplate < class T >\nT sum_of(const\
-    \ vector< T >& a) {\n    T sum = 0;\n    for(const T x : a) sum += x;\n    return\
-    \ sum;\n}\n\ntemplate < class T >\nvector<int> freq_of(const vector< T >& a, T\
-    \ L, T R) {\n    vector<int> res(R - L);\n    for(const T x : a) res[x - L]++;\n\
-    \    return res;\n}\n\ntemplate < class T >\nvector<int> freq_of(const vector<\
-    \ T >& a, T R) {\n    return freq_of(a, T(0), R);\n}\n\ntemplate < class T >\n\
-    struct prefix_sum {\n    vector< T > s;\n    prefix_sum(const vector< T >& a)\
-    \ : s(a) {\n        s.insert(s.begin(), T(0));\n        for(int i : rep(a.size()))\
-    \ s[i + 1] += s[i];\n    }\n    // [L, R)\n    T sum(int L, int R) {\n       \
-    \ return s[R] - s[L];\n    }\n};\n#line 3 \"src/utility/heap.hpp\"\n\ntemplate\
-    \ < class T > using heap_min = std::priority_queue< T, std::vector< T >, std::greater<\
-    \ T > >;\ntemplate < class T > using heap_max = std::priority_queue< T, std::vector<\
-    \ T >, std::less< T > >;\n\n#line 21 \"src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\
-    \ntemplate < class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok\
-    \ - ng) > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
+    \ { return t; }\n};\n\ntemplate < class T > struct revrep {\n    const itr < T\
+    \ > s, t;\n    constexpr revrep(const T t) noexcept : s(t - 1, -1), t(-1, -1)\
+    \ {}\n    constexpr revrep(const T s, const T t) noexcept : s(t - 1, -1), t(s\
+    \ - 1, -1) {}\n    constexpr revrep(const T s, const T t, const T d) noexcept\
+    \ : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin() const noexcept {\
+    \ return s; }\n    constexpr auto end() const noexcept { return t; }\n};\n#line\
+    \ 2 \"src/utility/io.hpp\"\nnamespace scanner {\n    struct sca {\n        template\
+    \ < class T > operator T() {\n            T s; cin >> s; return s;\n        }\n\
+    \    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n    \
+    \    template < class T > operator vector< T >() {\n            vector< T > v(n);\n\
+    \            for(T& x : v) cin >> x;\n            return v;\n        }\n    };\n\
+    \    struct mat {\n        int h,w;\n        mat(int h, int w) : h(h), w(w) {}\n\
+    \        template < class T > operator vector< vector< T > >() {\n           \
+    \ vector m(h, vector< T >(w));\n            for(vector< T >& v : m) for(T& x :\
+    \ v) cin >> x;\n            return m;\n        }\n    };\n    struct speedup {\n\
+    \        speedup() {\n            cin.tie(0);\n            ios::sync_with_stdio(0);\n\
+    \        }\n    } speedup_instance;\n}\nscanner::sca in() { return scanner::sca();\
+    \ }\nscanner::vec in(int n) { return scanner::vec(n); }\nscanner::mat in(int h,\
+    \ int w) { return scanner::mat(h, w); }\n\nnamespace printer {\n    void precision(int\
+    \ d) {\n        cout << fixed << setprecision(d);\n    }\n    void flush() {\n\
+    \        cout.flush();\n    }\n}\n\ntemplate < class T >\nostream& operator<<(ostream&\
+    \ os, const std::vector< T > a) {\n    int n = a.size();\n    for(int i : rep(n))\
+    \ { os << a[i]; if(i != n - 1) os << ' '; }\n    return os;\n}\n\nint print()\
+    \ { cout << '\\n'; return 0; }\ntemplate < class head, class... tail > int print(head&&\
+    \ h, tail&&... t) {\n    cout << h; if(sizeof...(tail)) cout << ' ';\n    return\
+    \ print(forward<tail>(t)...);\n}\n\ntemplate < class T > int print_n(const std::vector<\
+    \ T > a) {\n    int n = a.size();\n    for(int i : rep(n)) cout << a[i] << \"\\\
+    n\";\n    return 0;\n}\n#line 2 \"src/utility/key_val.hpp\"\ntemplate < class\
+    \ K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n    key_val(K\
+    \ key, V val) : key(key), val(val) {}\n};\n#line 2 \"src/utility/vec_op.hpp\"\n\
+    template < class T >\nkey_val< int, T > max_of(const vector< T >& a) {\n    int\
+    \ i = max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n}\n\
+    \ntemplate < class T >\nkey_val< int, T > min_of(const vector< T >& a) {\n   \
+    \ int i = min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
+    }\n\ntemplate < class T >\nT sum_of(const vector< T >& a) {\n    T sum = 0;\n\
+    \    for(const T x : a) sum += x;\n    return sum;\n}\n\ntemplate < class T >\n\
+    vector<int> freq_of(const vector< T >& a, T L, T R) {\n    vector<int> res(R -\
+    \ L);\n    for(const T x : a) res[x - L]++;\n    return res;\n}\n\ntemplate <\
+    \ class T >\nvector<int> freq_of(const vector< T >& a, T R) {\n    return freq_of(a,\
+    \ T(0), R);\n}\n\ntemplate < class T >\nstruct prefix_sum {\n    vector< T > s;\n\
+    \    prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), T(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    T sum(int L, int R) {\n        return s[R] - s[L];\n    }\n};\n#line 3 \"\
+    src/utility/heap.hpp\"\n\ntemplate < class T > using heap_min = std::priority_queue<\
+    \ T, std::vector< T >, std::greater< T > >;\ntemplate < class T > using heap_max\
+    \ = std::priority_queue< T, std::vector< T >, std::less< T > >;\n\n#line 21 \"\
+    src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate <\
+    \ class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok - ng)\
+    \ > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
     \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
     \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
     \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
@@ -367,18 +370,31 @@ data:
     \ P >> pq;\n    for(int i : rep(fs.size())) pq.push({fs[i].size(), i});\n    while(int(pq.size())\
     \ >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n        auto [n2, i2]\
     \ = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n        pq.push({n1 + n2,\
-    \ i1});\n    }\n    return fs[pq.top().second];\n}\n#line 6 \"verify/library_checker/number/poly_all_product.test.cpp\"\
-    \n\nint main() {\n    int N = in();\n    using mint = mint998244353;\n    vector<\
-    \ poly<mint> > fs(N);\n    for(int i : rep(N)) {\n        int d = in();\n    \
-    \    fs[i] = poly<mint>(d + 1);\n        for(int j : rep(d + 1)) fs[i][j] = in();\n\
-    \    }\n\n    poly<mint> f = all_product(fs);\n    print(f);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
-    \n#include \"../../../src/number/poly.hpp\"\n\nint main() {\n    int N = in();\n\
-    \    using mint = mint998244353;\n    vector< poly<mint> > fs(N);\n    for(int\
-    \ i : rep(N)) {\n        int d = in();\n        fs[i] = poly<mint>(d + 1);\n \
-    \       for(int j : rep(d + 1)) fs[i][j] = in();\n    }\n\n    poly<mint> f =\
-    \ all_product(fs);\n    print(f);\n}\n"
+    \ i1});\n    }\n    return fs[pq.top().second];\n}\n#line 4 \"src/number/famous_number.hpp\"\
+    \n\ntemplate < class mint >\nstd::vector<mint> stirling_1st(int n) {\n    if(n\
+    \ == 0) return {1};\n    if(n == 1) return {0, 1};\n    poly f = stirling_1st<mint>(n\
+    \ / 2);\n    f *= taylor_shift(f, - mint(n / 2));\n    if(n % 2 == 1) f *= poly<mint>{-(n\
+    \ - 1), 1};\n    return f;\n}\n\ntemplate < class mint >\nstd::vector<mint> stirling_2nd(int\
+    \ n) {\n    poly<mint> f(n + 1), g(n + 1);\n    for(int i : rep(n + 1)) {\n  \
+    \      f[i] = fact_inv<mint>(i) * pow(mint(i), n);\n        g[i] = fact_inv<mint>(i)\
+    \ * mint(i % 2 == 0 ? +1 : -1);\n    }\n    return (f * g).low(n + 1);\n}\n\n\
+    template < class mint >\nstd::vector<mint> bernoulli(int n) {\n    fps<mint> f(n\
+    \ + 1);\n    for(int i : rep(n + 1)) f[i] = fact_inv<mint>(i + 1);\n    f = inv(f);\n\
+    \    for(int i : rep(n + 1)) f[i] *= fact<mint>(i);\n    return f;\n}\n\ntemplate\
+    \ < class mint >\nstd::vector<mint> partition(int n) {\n    fps<mint> f(n + 1);\n\
+    \    f[0] = 1;\n    for(int i : rep(1, n + 1)) {\n        int p = +i * (3 * (+i)\
+    \ + 1) / 2;\n        int q = -i * (3 * (-i) + 1) / 2;\n        int c = i % 2 ==\
+    \ 0 ? +1 : -1;\n        if(p <= n) f[p] += c;\n        if(q <= n) f[q] += c;\n\
+    \        if(n < p and n < q) break;\n    }\n    return inv(f);\n}\n\ntemplate\
+    \ < class mint >\nstd::vector<mint> montmort(int n) {\n    std::vector<mint> a(n\
+    \ + 1, 0);\n    if(2 <= n) a[2] = 1;\n    if(3 <= n) a[3] = 2;\n    for(int i\
+    \ : rep(4, n + 1)) a[i] = (a[i - 1] + a[i - 2]) * (i - 1);\n    return a;\n}\n\
+    #line 6 \"verify/library_checker/number/bernoulli.test.cpp\"\n\nint main() {\n\
+    \    int N = in();\n    print(bernoulli<mint998244353>(N));\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bernoulli_number\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
+    \n#include \"../../../src/number/famous_number.hpp\"\n\nint main() {\n    int\
+    \ N = in();\n    print(bernoulli<mint998244353>(N));\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -389,6 +405,7 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   - src/number/modint.hpp
+  - src/number/famous_number.hpp
   - src/number/poly.hpp
   - src/number/ntt.hpp
   - src/number/fps.hpp
@@ -396,15 +413,15 @@ data:
   - src/utility/random.hpp
   - src/number/binom_mod.hpp
   isVerificationFile: true
-  path: verify/library_checker/number/poly_all_product.test.cpp
+  path: verify/library_checker/number/bernoulli.test.cpp
   requiredBy: []
   timestamp: '2023-10-25 01:48:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/number/poly_all_product.test.cpp
+documentation_of: verify/library_checker/number/bernoulli.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/number/poly_all_product.test.cpp
-- /verify/verify/library_checker/number/poly_all_product.test.cpp.html
-title: verify/library_checker/number/poly_all_product.test.cpp
+- /verify/verify/library_checker/number/bernoulli.test.cpp
+- /verify/verify/library_checker/number/bernoulli.test.cpp.html
+title: verify/library_checker/number/bernoulli.test.cpp
 ---

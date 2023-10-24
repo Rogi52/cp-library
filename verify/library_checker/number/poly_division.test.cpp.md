@@ -11,6 +11,9 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
+    path: src/number/binom_mod.hpp
+    title: src/number/binom_mod.hpp
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -295,31 +298,49 @@ data:
     \ rep(k)) gs[i + 1] = (gs[i] * bs[k]).low(n);\n\n        fps<mint> h(n);\n   \
     \     for(int i : rep(0, n, k)) {\n            fps<mint> c;\n            for(int\
     \ j : rep(i, min(i + k, n))) c += bs[j - i] * f[j];\n            h += (c * gs[i\
-    \ / k]).low(n);\n        }\n        return h;\n    }\n};\n\n#line 5 \"src/number/poly.hpp\"\
-    \n\ntemplate < class mint > struct poly : std::vector<mint> {\n    using std::vector<mint>::vector;\n\
-    \    poly(const std::vector<mint>& f) : std::vector<mint>(f) {}\n    int size()\
-    \ const { return int(std::vector<mint>::size()); }\n    void ups(int s) { if(size()\
-    \ < s) this->resize(s, 0); }\n    poly low(int s) const {\n        return poly(this->begin(),\
-    \ this->begin() + min(this->size(), s));\n    }\n    friend poly rev(const poly&\
-    \ f) {\n        return poly(f.rbegin(), f.rend());\n    }\n    poly operator-()\
-    \ const {\n        poly g = *this;\n        for(int i : rep(g.size())) g[i] =\
-    \ -g[i];\n        return g;\n    }\n    poly operator+(const mint& v) const {\
-    \ return poly(*this) += v; }\n    poly operator-(const mint& v) const { return\
-    \ poly(*this) -= v; }\n    poly operator*(const mint& v) const { return poly(*this)\
-    \ *= v; }\n    poly operator/(const mint& v) const { return poly(*this) /= v;\
-    \ }\n    poly operator+(const poly& r) const { return poly(*this) += r; }\n  \
-    \  poly operator-(const poly& r) const { return poly(*this) -= r; }\n    poly\
-    \ operator*(const poly& r) const { return poly(*this) *= r; }\n    poly operator/(const\
-    \ poly& r) const { return poly(*this) /= r; }\n    poly operator%(const poly&\
-    \ r) const { return poly(*this) %= r; }\n    poly operator<<(int s) const { return\
-    \ poly(*this) <<= s; }\n    poly operator>>(int s) const { return poly(*this)\
-    \ >>= s; }\n    poly& operator+=(const poly& r) { ups(r.size()); for(int i : rep(r.size()))\
-    \ (*this)[i] += r[i]; return *this; }\n    poly& operator-=(const poly& r) { ups(r.size());\
-    \ for(int i : rep(r.size())) (*this)[i] -= r[i]; return *this; }\n    poly& operator*=(const\
-    \ poly& r) { return *this = ntt::mul(*this, r); }\n    poly& operator/=(const\
-    \ poly& r) {\n        assert(r.size() > 0);\n        assert(r.back() != 0);\n\
-    \        int s = size() - r.size() + 1;\n        if(s <= 0) return *this = poly{0};\n\
-    \        return *this = rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n\
+    \ / k]).low(n);\n        }\n        return h;\n    }\n};\n\n#line 2 \"src/number/binom_mod.hpp\"\
+    \n\ntemplate < class mint >\nmint fact(int n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n\
+    \    static const uint mod = mint::get_mod();\n    static std::vector<mint> data\
+    \ = {1, 1};\n    while(int(data.size()) <= n) {\n        int i = data.size();\n\
+    \        data.push_back(data.back() * i);\n    }\n    return data[n];\n}\n\ntemplate\
+    \ < class mint >\nmint inv(int n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n\
+    \    static const uint mod = mint::get_mod();\n    static std::vector<mint> data\
+    \ = {1, 1};\n    while(int(data.size()) <= n) {\n        int i = data.size();\n\
+    \        data.push_back(- data[mod % i] * (mod / i));\n    }\n    return data[n];\n\
+    }\n\ntemplate < class mint >\nmint fact_inv(int n) {\n    assert(0 <= n);\n  \
+    \  assert(mint::is_prime());\n    static const uint mod = mint::get_mod();\n \
+    \   static std::vector<mint> data = {1, 1};\n    while(int(data.size()) <= n)\
+    \ {\n        int i = data.size();\n        data.push_back(data.back() * inv<mint>(i));\n\
+    \    }\n    return data[n];\n}\n\ntemplate < class mint >\nmint comb(int n, int\
+    \ k) {\n    if(k < 0 or n < k) return 0;\n    return fact<mint>(n) * fact_inv<mint>(k)\
+    \ * fact_inv<mint>(n - k);\n}\n\ntemplate < class mint >\nmint perm(int n, int\
+    \ k) {\n    return fact<mint>(n) * fact_inv<mint>(n - k);\n}\n\ntemplate < class\
+    \ mint >\nmint homo(int n, int k) {\n    return comb<mint>(n + k - 1, k);\n}\n\
+    #line 6 \"src/number/poly.hpp\"\n\ntemplate < class mint > struct poly : std::vector<mint>\
+    \ {\n    using std::vector<mint>::vector;\n    poly(const std::vector<mint>& f)\
+    \ : std::vector<mint>(f) {}\n    int size() const { return int(std::vector<mint>::size());\
+    \ }\n    void ups(int s) { if(size() < s) this->resize(s, 0); }\n    poly low(int\
+    \ s) const {\n        return poly(this->begin(), this->begin() + min(this->size(),\
+    \ s));\n    }\n    friend poly rev(const poly& f) {\n        return poly(f.rbegin(),\
+    \ f.rend());\n    }\n    poly operator-() const {\n        poly g = *this;\n \
+    \       for(int i : rep(g.size())) g[i] = -g[i];\n        return g;\n    }\n \
+    \   poly operator+(const mint& v) const { return poly(*this) += v; }\n    poly\
+    \ operator-(const mint& v) const { return poly(*this) -= v; }\n    poly operator*(const\
+    \ mint& v) const { return poly(*this) *= v; }\n    poly operator/(const mint&\
+    \ v) const { return poly(*this) /= v; }\n    poly operator+(const poly& r) const\
+    \ { return poly(*this) += r; }\n    poly operator-(const poly& r) const { return\
+    \ poly(*this) -= r; }\n    poly operator*(const poly& r) const { return poly(*this)\
+    \ *= r; }\n    poly operator/(const poly& r) const { return poly(*this) /= r;\
+    \ }\n    poly operator%(const poly& r) const { return poly(*this) %= r; }\n  \
+    \  poly operator<<(int s) const { return poly(*this) <<= s; }\n    poly operator>>(int\
+    \ s) const { return poly(*this) >>= s; }\n    poly& operator+=(const poly& r)\
+    \ { ups(r.size()); for(int i : rep(r.size())) (*this)[i] += r[i]; return *this;\
+    \ }\n    poly& operator-=(const poly& r) { ups(r.size()); for(int i : rep(r.size()))\
+    \ (*this)[i] -= r[i]; return *this; }\n    poly& operator*=(const poly& r) { return\
+    \ *this = ntt::mul(*this, r); }\n    poly& operator/=(const poly& r) {\n     \
+    \   assert(r.size() > 0);\n        assert(r.back() != 0);\n        int s = size()\
+    \ - r.size() + 1;\n        if(s <= 0) return *this = poly{0};\n        return\
+    \ *this = rev((rev(*this).low(s) * inv(fps<mint>(rev(r)), s).low(s)).low(s));\n\
     \    }\n    poly& operator%=(const poly& r) {\n        *this -= *this / r * r;\n\
     \        return *this = low(r.size() - 1);\n    }\n    template < class T > poly&\
     \ operator+=(T v) { ups(1); (*this)[0] += v; return *this; }\n    template < class\
@@ -334,29 +355,25 @@ data:
     \ n)) g[i - 1] = f[i] * i;\n        return g;\n    }\n    friend poly integral_(const\
     \ poly& f) { // std \u3068\u885D\u7A81\n        int n = f.size();\n        poly\
     \ g(n + 1, 0);\n        for(int i : rep(0, n)) g[i + 1] = f[i] / (i + 1);\n  \
-    \      return g;\n    }\n\n    poly operator->*(mint c) {\n        int n = size();\n\
-    \        std::vector<mint> fact(n);\n        fact[0] = 1;\n        for(int i :\
-    \ rep(1, n)) fact[i] = i * fact[i - 1];\n        std::vector<mint> c_pow(n);\n\
-    \        c_pow[0] = 1;\n        for(int i : rep(1, n)) c_pow[i] = c * c_pow[i\
-    \ - 1];\n\n        poly<mint> p(n), q(n);\n        for(int i : rep(n)) p[i] =\
-    \ (*this)[i] * fact[i];\n        for(int i : rep(n)) q[i] = c_pow[i] / fact[i];\n\
-    \        poly<mint> r = (p * rev(q)) >> n - 1;\n        for(int i : rep(n)) r[i]\
-    \ /= fact[i];\n        return r;\n    }\n};\n\ntemplate < class mint > int print(const\
-    \ poly<mint> f, char sep = ' ') {\n    int n = f.size();\n    if(n == 0) { std::cout\
-    \ << \"\\n\"; return 0; }\n    for(int i : rep(n)) std::cout << f[i] << (i !=\
-    \ n - 1 ? sep : '\\n');\n    return 0;\n}\n\n\ntemplate < class mint >\npoly<mint>\
-    \ all_product(vector< poly<mint> >& fs) {\n    if(int(fs.size()) == 0) return\
-    \ {1};\n    using P = std::pair<int, int>;\n    std::priority_queue< P, std::vector<\
-    \ P >, std::greater< P >> pq;\n    for(int i : rep(fs.size())) pq.push({fs[i].size(),\
-    \ i});\n    while(int(pq.size()) >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n\
-    \        auto [n2, i2] = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n    \
-    \    pq.push({n1 + n2, i1});\n    }\n    return fs[pq.top().second];\n}\n#line\
-    \ 6 \"verify/library_checker/number/poly_division.test.cpp\"\n\nint main() {\n\
-    \    int N = in(), M = in();\n    using mint = mint998244353;\n    poly<mint>\
-    \ f(N), g(M);\n    for(int i : rep(N)) f[i] = in();\n    for(int i : rep(M)) g[i]\
-    \ = in();\n\n    poly<mint> q = f / g, r = f % g;\n    while(q.size() >= 1 and\
-    \ q.back() == 0) q.pop_back();\n    while(r.size() >= 1 and r.back() == 0) r.pop_back();\n\
-    \    print(q.size(), r.size());\n    print(q);\n    print(r);\n}\n"
+    \      return g;\n    }\n    friend poly taylor_shift(const poly& f, mint c) {\n\
+    \        int n = f.size();\n        std::vector<mint> c_pow(n);\n        c_pow[0]\
+    \ = 1;\n        for(int i : rep(1, n)) c_pow[i] = c * c_pow[i - 1];\n\n      \
+    \  poly<mint> p(n), q(n);\n        for(int i : rep(n)) p[i] = f[i] * fact<mint>(i);\n\
+    \        for(int i : rep(n)) q[i] = c_pow[i] * fact_inv<mint>(i);\n        poly<mint>\
+    \ r = (p * rev(q)) >> n - 1;\n        for(int i : rep(n)) r[i] *= fact_inv<mint>(i);\n\
+    \        return r;\n    }\n};\n\ntemplate < class mint >\npoly<mint> all_product(vector<\
+    \ poly<mint> >& fs) {\n    if(int(fs.size()) == 0) return {1};\n    using P =\
+    \ std::pair<int, int>;\n    std::priority_queue< P, std::vector< P >, std::greater<\
+    \ P >> pq;\n    for(int i : rep(fs.size())) pq.push({fs[i].size(), i});\n    while(int(pq.size())\
+    \ >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n        auto [n2, i2]\
+    \ = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n        pq.push({n1 + n2,\
+    \ i1});\n    }\n    return fs[pq.top().second];\n}\n#line 6 \"verify/library_checker/number/poly_division.test.cpp\"\
+    \n\nint main() {\n    int N = in(), M = in();\n    using mint = mint998244353;\n\
+    \    poly<mint> f(N), g(M);\n    for(int i : rep(N)) f[i] = in();\n    for(int\
+    \ i : rep(M)) g[i] = in();\n\n    poly<mint> q = f / g, r = f % g;\n    while(q.size()\
+    \ >= 1 and q.back() == 0) q.pop_back();\n    while(r.size() >= 1 and r.back()\
+    \ == 0) r.pop_back();\n    print(q.size(), r.size());\n    print(q);\n    print(r);\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\
     \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/number/modint.hpp\"\
     \n#include \"../../../src/number/poly.hpp\"\n\nint main() {\n    int N = in(),\
@@ -380,10 +397,11 @@ data:
   - src/number/fps.hpp
   - src/number/modfunc.hpp
   - src/utility/random.hpp
+  - src/number/binom_mod.hpp
   isVerificationFile: true
   path: verify/library_checker/number/poly_division.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 23:33:31+09:00'
+  timestamp: '2023-10-25 01:48:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/poly_division.test.cpp

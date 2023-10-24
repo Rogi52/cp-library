@@ -435,10 +435,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
   - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
   - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
 documentation_of: src/number/fps_sparse.hpp
 layout: document
 redirect_from:
