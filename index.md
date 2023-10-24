@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
+    - icon: ':warning:'
+      path: src/algebra/index.hpp
+      title: src/algebra/index.hpp
     - icon: ':heavy_check_mark:'
       path: src/algebra/minmax.hpp
       title: src/algebra/minmax.hpp

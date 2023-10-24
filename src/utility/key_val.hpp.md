@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/algebra/index.hpp
+    title: src/algebra/index.hpp
   - icon: ':heavy_check_mark:'
     path: src/algebra/minmax.hpp
     title: src/algebra/minmax.hpp
@@ -369,6 +372,7 @@ data:
   - src/algebra/minmax.hpp
   - src/algebra/size.hpp
   - src/algebra/range_update_range_minmax.hpp
+  - src/algebra/index.hpp
   - src/algebra/range_add_range_sum.hpp
   - src/algebra/range_update_range_sum.hpp
   - src/algebra/range_add_range_minmax.hpp
