@@ -152,10 +152,10 @@ data:
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/aoj/data_structure/range_update_range_min.test.cpp
+  - verify/aoj/data_structure/range_add_range_min.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_sum.test.cpp
-  - verify/aoj/data_structure/range_add_range_min.test.cpp
-  - verify/aoj/data_structure/range_update_range_min.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
 documentation_of: src/data_structure/lazy_segtree.hpp
 layout: document

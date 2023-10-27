@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/montmort.test.cpp
     title: verify/library_checker/number/montmort.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n\
@@ -81,10 +81,10 @@ data:
   path: src/number/runtime_modint.hpp
   requiredBy: []
   timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/number/montmort.test.cpp
   - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
 documentation_of: src/number/runtime_modint.hpp
 layout: document
 redirect_from:
