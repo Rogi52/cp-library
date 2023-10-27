@@ -12,6 +12,8 @@ using u64 = unsigned long long;
 using i128 = __int128_t;
 template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return false; }
 template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return false; }
+template < class T, class U > T ceil (T x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y); }
+template < class T, class U > T floor(T x, U y) { return (x > 0 ?           x / y : (x - y + 1) / y); }
 
 #include "./utility/rep_itr.hpp"
 #include "./utility/io.hpp"
