@@ -8,4 +8,5 @@ ll floor_sum(ll n, ll m, ll a, ll b) {
     ans += n * (b / m), b %= m;
     ll y_max = a * n + b;
     ans += floor_sum(y_max / m, a, m, y_max % m);
+    return ans;
 }
