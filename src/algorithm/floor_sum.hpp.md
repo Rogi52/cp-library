@@ -26,10 +26,13 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/yukicoder/stern-brocot_tree_search.test.cpp
+    title: verify/yukicoder/stern-brocot_tree_search.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -125,12 +128,12 @@ data:
     \ / m) \nll floor_sum(ll n, ll m, ll a, ll b) {\n    if(n == 0) return ll(0);\n\
     \    ll ans = 0;\n    ans += (n - 1) * n / 2 * (a / m), a %= m;\n    ans += n\
     \ * (b / m), b %= m;\n    ll y_max = a * n + b;\n    ans += floor_sum(y_max /\
-    \ m, a, m, y_max % m);\n}\n"
+    \ m, a, m, y_max % m);\n    return ans;\n}\n"
   code: "#include \"../cp-template.hpp\"\n\n// sum_{i in [0, n)} floor((a * i + b)\
     \ / m) \nll floor_sum(ll n, ll m, ll a, ll b) {\n    if(n == 0) return ll(0);\n\
     \    ll ans = 0;\n    ans += (n - 1) * n / 2 * (a / m), a %= m;\n    ans += n\
     \ * (b / m), b %= m;\n    ll y_max = a * n + b;\n    ans += floor_sum(y_max /\
-    \ m, a, m, y_max % m);\n}"
+    \ m, a, m, y_max % m);\n    return ans;\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -143,9 +146,10 @@ data:
   isVerificationFile: false
   path: src/algorithm/floor_sum.hpp
   requiredBy: []
-  timestamp: '2023-10-28 05:38:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-10-31 17:44:36+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/yukicoder/stern-brocot_tree_search.test.cpp
 documentation_of: src/algorithm/floor_sum.hpp
 layout: document
 redirect_from:

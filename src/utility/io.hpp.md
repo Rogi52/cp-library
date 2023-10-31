@@ -50,7 +50,7 @@ data:
   - icon: ':warning:'
     path: src/algorithm/beam_search.hpp
     title: src/algorithm/beam_search.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/algorithm/floor_sum.hpp
     title: src/algorithm/floor_sum.hpp
   - icon: ':warning:'
@@ -98,28 +98,28 @@ data:
   - icon: ':warning:'
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':warning:'
@@ -128,10 +128,10 @@ data:
   - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':x:'
@@ -140,16 +140,16 @@ data:
   - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':x:'
@@ -159,18 +159,21 @@ data:
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
   - icon: ':x:'
+    path: src/number/stern-brocot_tree.hpp
+    title: src/number/stern-brocot_tree.hpp
+  - icon: ':x:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   _extendedVerifiedWith:
@@ -258,34 +261,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - icon: ':x:'
     path: verify/library_checker/io/int128.test.cpp
     title: verify/library_checker/io/int128.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
   - icon: ':x:'
@@ -358,6 +361,9 @@ data:
     path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
   - icon: ':x:'
+    path: verify/library_checker/number/stern-brocot_tree.test.cpp
+    title: verify/library_checker/number/stern-brocot_tree.test.cpp
+  - icon: ':x:'
     path: verify/library_checker/number/stirling_1st.test.cpp
     title: verify/library_checker/number/stirling_1st.test.cpp
   - icon: ':x:'
@@ -375,6 +381,9 @@ data:
   - icon: ':x:'
     path: verify/yukicoder/sparse_segtree.test.cpp
     title: verify/yukicoder/sparse_segtree.test.cpp
+  - icon: ':x:'
+    path: verify/yukicoder/stern-brocot_tree_search.test.cpp
+    title: verify/yukicoder/stern-brocot_tree_search.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -517,6 +526,7 @@ data:
   - src/number/modfunc.hpp
   - src/number/binom_mod.hpp
   - src/number/poly.hpp
+  - src/number/stern-brocot_tree.hpp
   - src/number/sharp_p_subset_sum.hpp
   - src/number/fps.hpp
   - src/number/binom_table.hpp
@@ -581,6 +591,7 @@ data:
   - verify/library_checker/number/fps_composition.test.cpp
   - verify/library_checker/number/montmort.test.cpp
   - verify/library_checker/number/fps_log.test.cpp
+  - verify/library_checker/number/stern-brocot_tree.test.cpp
   - verify/library_checker/number/fps_exp_sparse.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
   - verify/library_checker/number/modsqrt.test.cpp
@@ -629,6 +640,7 @@ data:
   - verify/library_checker/matrix/determinant.test.cpp
   - verify/library_checker/matrix/product.test.cpp
   - verify/yukicoder/sparse_segtree.test.cpp
+  - verify/yukicoder/stern-brocot_tree_search.test.cpp
   - verify/yukicoder/gaussian_integer.test.cpp
 documentation_of: src/utility/io.hpp
 layout: document
