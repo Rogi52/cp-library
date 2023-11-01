@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
@@ -25,7 +25,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'
@@ -36,12 +36,12 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -224,7 +224,7 @@ data:
   path: src/graph/tree/tree_isomorphism.hpp
   requiredBy: []
   timestamp: '2023-11-01 09:21:37+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 documentation_of: src/graph/tree/tree_isomorphism.hpp

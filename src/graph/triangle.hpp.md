@@ -25,68 +25,14 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':question:'
-    path: src/number/famous_number.hpp
-    title: src/number/famous_number.hpp
-  - icon: ':question:'
-    path: src/number/fps_sparse.hpp
-    title: src/number/fps_sparse.hpp
-  - icon: ':question:'
-    path: src/number/poly.hpp
-    title: src/number/poly.hpp
-  - icon: ':x:'
-    path: src/number/sharp_p_subset_sum.hpp
-    title: src/number/sharp_p_subset_sum.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/bernoulli.test.cpp
-    title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-    title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/fps_exp_sparse.test.cpp
-    title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/fps_inv_sparse.test.cpp
-    title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/fps_log_sparse.test.cpp
-    title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/fps_pow_sparse.test.cpp
-    title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-    title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/montmort.test.cpp
-    title: verify/library_checker/number/montmort.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/partition.test.cpp
-    title: verify/library_checker/number/partition.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/poly_all_product.test.cpp
-    title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/poly_division.test.cpp
-    title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/poly_taylor_shift.test.cpp
-    title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-    title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/stirling_1st.test.cpp
-    title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/number/stirling_2nd.test.cpp
-    title: verify/library_checker/number/stirling_2nd.test.cpp
-  _isVerificationFailed: true
+    path: verify/library_checker/graph/enumerate_triangles.test.cpp
+    title: verify/library_checker/graph/enumerate_triangles.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -178,42 +124,22 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/number/binom_mod.hpp\"\n\ntemplate < class mint >\nmint fact(int n)\
-    \ {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static const uint\
-    \ mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n    while(int(data.size())\
-    \ <= n) {\n        int i = data.size();\n        data.push_back(data.back() *\
-    \ i);\n    }\n    return data[n];\n}\n\ntemplate < class mint >\nmint inv(int\
-    \ n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static const uint\
-    \ mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n    while(int(data.size())\
-    \ <= n) {\n        int i = data.size();\n        data.push_back(- data[mod % i]\
-    \ * (mod / i));\n    }\n    return data[n];\n}\n\ntemplate < class mint >\nmint\
-    \ fact_inv(int n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static\
-    \ const uint mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n\
-    \    while(int(data.size()) <= n) {\n        int i = data.size();\n        data.push_back(data.back()\
-    \ * inv<mint>(i));\n    }\n    return data[n];\n}\n\ntemplate < class mint >\n\
-    mint comb(int n, int k) {\n    if(k < 0 or n < k) return 0;\n    return fact<mint>(n)\
-    \ * fact_inv<mint>(k) * fact_inv<mint>(n - k);\n}\n\ntemplate < class mint >\n\
-    mint perm(int n, int k) {\n    return fact<mint>(n) * fact_inv<mint>(n - k);\n\
-    }\n\ntemplate < class mint >\nmint homo(int n, int k) {\n    return comb<mint>(n\
-    \ + k - 1, k);\n}\n"
-  code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class mint >\nmint fact(int\
-    \ n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static const uint\
-    \ mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n    while(int(data.size())\
-    \ <= n) {\n        int i = data.size();\n        data.push_back(data.back() *\
-    \ i);\n    }\n    return data[n];\n}\n\ntemplate < class mint >\nmint inv(int\
-    \ n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static const uint\
-    \ mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n    while(int(data.size())\
-    \ <= n) {\n        int i = data.size();\n        data.push_back(- data[mod % i]\
-    \ * (mod / i));\n    }\n    return data[n];\n}\n\ntemplate < class mint >\nmint\
-    \ fact_inv(int n) {\n    assert(0 <= n);\n    assert(mint::is_prime());\n    static\
-    \ const uint mod = mint::get_mod();\n    static std::vector<mint> data = {1, 1};\n\
-    \    while(int(data.size()) <= n) {\n        int i = data.size();\n        data.push_back(data.back()\
-    \ * inv<mint>(i));\n    }\n    return data[n];\n}\n\ntemplate < class mint >\n\
-    mint comb(int n, int k) {\n    if(k < 0 or n < k) return 0;\n    return fact<mint>(n)\
-    \ * fact_inv<mint>(k) * fact_inv<mint>(n - k);\n}\n\ntemplate < class mint >\n\
-    mint perm(int n, int k) {\n    return fact<mint>(n) * fact_inv<mint>(n - k);\n\
-    }\n\ntemplate < class mint >\nmint homo(int n, int k) {\n    return comb<mint>(n\
-    \ + k - 1, k);\n}\n"
+    \ 2 \"src/graph/triangle.hpp\"\n\ntemplate < class F >\nvoid for_each_triangle(const\
+    \ std::vector<std::vector<int>>& g, const F& f) {\n    int N = g.size();\n   \
+    \ std::vector<std::vector<int>> h(N);\n    for(int u : rep(N)) for(int v : g[u])\n\
+    \        if(std::make_pair(g[u].size(), u) > std::make_pair(g[v].size(), v))\n\
+    \            h[u].push_back(v);\n\n    std::vector<int> used(N, 0);\n    for(int\
+    \ x : rep(N)) {\n        for(int z : h[x]) used[z] = 1;\n        for(int y : h[x])\
+    \ for(int z : h[y]) if(used[z]) f(x, y, z);\n        for(int z : h[x]) used[z]\
+    \ = 0;\n    }\n}\n"
+  code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class F >\nvoid for_each_triangle(const\
+    \ std::vector<std::vector<int>>& g, const F& f) {\n    int N = g.size();\n   \
+    \ std::vector<std::vector<int>> h(N);\n    for(int u : rep(N)) for(int v : g[u])\n\
+    \        if(std::make_pair(g[u].size(), u) > std::make_pair(g[v].size(), v))\n\
+    \            h[u].push_back(v);\n\n    std::vector<int> used(N, 0);\n    for(int\
+    \ x : rep(N)) {\n        for(int z : h[x]) used[z] = 1;\n        for(int y : h[x])\
+    \ for(int z : h[y]) if(used[z]) f(x, y, z);\n        for(int z : h[x]) used[z]\
+    \ = 0;\n    }\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -224,34 +150,16 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   isVerificationFile: false
-  path: src/number/binom_mod.hpp
-  requiredBy:
-  - src/number/poly.hpp
-  - src/number/sharp_p_subset_sum.hpp
-  - src/number/famous_number.hpp
-  - src/number/fps_sparse.hpp
-  timestamp: '2023-11-01 09:21:37+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  path: src/graph/triangle.hpp
+  requiredBy: []
+  timestamp: '2023-11-01 11:00:19+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/number/stirling_2nd.test.cpp
-  - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
-  - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
-  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - verify/library_checker/number/poly_division.test.cpp
-documentation_of: src/number/binom_mod.hpp
+  - verify/library_checker/graph/enumerate_triangles.test.cpp
+documentation_of: src/graph/triangle.hpp
 layout: document
 redirect_from:
-- /library/src/number/binom_mod.hpp
-- /library/src/number/binom_mod.hpp.html
-title: src/number/binom_mod.hpp
+- /library/src/graph/triangle.hpp
+- /library/src/graph/triangle.hpp.html
+title: src/graph/triangle.hpp
 ---

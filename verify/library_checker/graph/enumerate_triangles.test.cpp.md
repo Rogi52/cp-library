@@ -11,8 +11,8 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/graph/tree/rerooting.hpp
-    title: src/graph/tree/rerooting.hpp
+    path: src/graph/triangle.hpp
+    title: src/graph/triangle.hpp
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
+    PROBLEM: https://judge.yosupo.jp/problem/enumerate_triangles
     links:
-    - https://judge.yosupo.jp/problem/tree_path_composite_sum
-  bundledCode: "#line 1 \"verify/library_checker/graph/tree/rerooting.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\n\n\
+    - https://judge.yosupo.jp/problem/enumerate_triangles
+  bundledCode: "#line 1 \"verify/library_checker/graph/enumerate_triangles.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_triangles\"\n\n\
     #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
@@ -132,87 +132,59 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/graph/tree/rerooting.hpp\"\n\nstruct rerooting {\n    int N;\n    vector<vector<pair<int,int>>>\
-    \ G;\n    rerooting(int N) : N(N), G(N) {}\n    void add_edge(int u, int v, int\
-    \ i) {\n        G[u].push_back({v, i});\n        G[v].push_back({u, i});\n   \
-    \ }\n\n    template < class S, class M, class E, class V >\n    vector< S > solve(const\
-    \ M& merge, const E& fe, const V& fv, const S unit) {\n        vector<vector<\
-    \ S >> dp(N);\n        for(int i : rep(N)) dp[i].resize(G[i].size());\n\n    \
-    \    function<S(int,int)> dfs1 = [&](int v, int p) -> S {\n            S res =\
-    \ unit;\n            for(int i : rep(G[v].size())) {\n                auto [to,\
-    \ id] = G[v][i];\n                if(to != p) {\n                    dp[v][i]\
-    \ = dfs1(to, v);\n                    res = merge(res, fe(dp[v][i], id));\n  \
-    \              }\n            }\n            return fv(res, v);\n        }; dfs1(0,\
-    \ -1);\n\n        function<void(int,int,S)> dfs2 = [&](int v, int p, S dp_par)\
-    \ {\n            for(int i : rep(G[v].size())) {\n                auto [to, id]\
-    \ = G[v][i];\n                if(to == p) {\n                    dp[v][i] = dp_par;\n\
-    \                }\n            }\n\n            vector< S > R(G[v].size() + 1U);\n\
-    \            R[G[v].size()] = unit;\n            for(int i : revrep(G[v].size()))\
-    \ {\n                auto [to, id] = G[v][i];\n                R[i] = merge(R[i\
-    \ + 1], fe(dp[v][i], id));\n            }\n            S L = unit;\n         \
-    \   for(int i : rep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
-    \                if(to != p) {\n                    S val = merge(L, R[i + 1]);\n\
-    \                    dfs2(to, v, fv(val, v));\n                }\n           \
-    \     L = merge(L, fe(dp[v][i], id));\n            }\n        }; dfs2(0, -1, unit);\n\
-    \n        vector< S > res(N, unit);\n        for(int v : rep(N)) {\n         \
-    \   for(int i : rep(G[v].size())) {\n                auto [to, id] = G[v][i];\n\
-    \                res[v] = merge(res[v], fe(dp[v][i], id));\n            }\n  \
-    \          res[v] = fv(res[v], v);\n        }\n        return res;\n    }\n};\n\
-    #line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\n\
-    template < modinfo const &ref >\nstruct modint {\n    static constexpr uint const\
-    \ &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static\
-    \ constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr\
-    \ modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr\
-    \ modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-() const { return\
-    \ modint() - *this; }\n    modint& operator+=(const modint& rhs) { return s(v\
-    \ + rhs.v); }\n    modint& operator-=(const modint& rhs) { return s(v + mod -\
-    \ rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v %\
-    \ mod; return *this; }\n    modint& operator/=(const modint& rhs) { return *this\
-    \ *= inv(rhs); }\n    modint operator+(const modint& rhs) const { return modint(*this)\
-    \ += rhs; }\n    modint operator-(const modint& rhs) const { return modint(*this)\
-    \ -= rhs; }\n    modint operator*(const modint& rhs) const { return modint(*this)\
-    \ *= rhs; }\n    modint operator/(const modint& rhs) const { return modint(*this)\
-    \ /= rhs; }\n    friend modint pow(modint x, ll n) { modint res(1); while(n >\
-    \ 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint\
-    \ inv(modint v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n\
-    \        } else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n\
-    \            while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y);\
-    \ }\n            return modint(x);\n        }\n    }\n    friend modint operator+(int\
-    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
-    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
-    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
-    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
-    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
-    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
-    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
-    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n    static\
-    \ int is_prime() { return isprime; }\n};\nconstexpr modinfo base998244353 { 998244353,\
-    \ 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint998244353\
-    \ = modint< base998244353 >;\nusing mint1000000007 = modint< base1000000007 >;\n\
-    #line 6 \"verify/library_checker/graph/tree/rerooting.test.cpp\"\n\nint main()\
-    \ {\n    int N = in();\n    rerooting rr(N);\n    using mint = mint998244353;\n\
-    \    vector<mint> a = in(N), b(N - 1), c(N - 1);\n    for(int i : rep(N - 1))\
-    \ {\n        int u = in(), v = in(); rr.add_edge(u, v, i);\n        b[i] = in(),\
-    \ c[i] = in();\n    }\n\n    using S = pair<mint,mint>;\n    S id = {0, 0};\n\
-    \    auto merge = [&](S x, S y) -> S {\n        return {x.first + y.first, x.second\
-    \ + y.second};\n    };\n    auto fe = [&](S x, int e) -> S {\n        return {b[e]\
-    \ * x.first + c[e] * x.second, x.second};\n    };\n    auto fv = [&](S x, int\
-    \ v) -> S {\n        return {x.first + a[v], x.second + 1};\n    };\n\n    vector<\
-    \ S > res = rr.solve(merge, fe, fv, id);\n    vector<mint> ans(N);\n    for(int\
-    \ i : rep(N)) ans[i] = res[i].first;\n    print(ans);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
-    \n\n#include \"../../../../src/cp-template.hpp\"\n#include \"../../../../src/graph/tree/rerooting.hpp\"\
-    \n#include \"../../../../src/number/modint.hpp\"\n\nint main() {\n    int N =\
-    \ in();\n    rerooting rr(N);\n    using mint = mint998244353;\n    vector<mint>\
-    \ a = in(N), b(N - 1), c(N - 1);\n    for(int i : rep(N - 1)) {\n        int u\
-    \ = in(), v = in(); rr.add_edge(u, v, i);\n        b[i] = in(), c[i] = in();\n\
-    \    }\n\n    using S = pair<mint,mint>;\n    S id = {0, 0};\n    auto merge =\
-    \ [&](S x, S y) -> S {\n        return {x.first + y.first, x.second + y.second};\n\
-    \    };\n    auto fe = [&](S x, int e) -> S {\n        return {b[e] * x.first\
-    \ + c[e] * x.second, x.second};\n    };\n    auto fv = [&](S x, int v) -> S {\n\
-    \        return {x.first + a[v], x.second + 1};\n    };\n\n    vector< S > res\
-    \ = rr.solve(merge, fe, fv, id);\n    vector<mint> ans(N);\n    for(int i : rep(N))\
-    \ ans[i] = res[i].first;\n    print(ans);\n}\n"
+    \ 2 \"src/graph/triangle.hpp\"\n\ntemplate < class F >\nvoid for_each_triangle(const\
+    \ std::vector<std::vector<int>>& g, const F& f) {\n    int N = g.size();\n   \
+    \ std::vector<std::vector<int>> h(N);\n    for(int u : rep(N)) for(int v : g[u])\n\
+    \        if(std::make_pair(g[u].size(), u) > std::make_pair(g[v].size(), v))\n\
+    \            h[u].push_back(v);\n\n    std::vector<int> used(N, 0);\n    for(int\
+    \ x : rep(N)) {\n        for(int z : h[x]) used[z] = 1;\n        for(int y : h[x])\
+    \ for(int z : h[y]) if(used[z]) f(x, y, z);\n        for(int z : h[x]) used[z]\
+    \ = 0;\n    }\n}\n#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod,\
+    \ root, isprime; };\ntemplate < modinfo const &ref >\nstruct modint {\n    static\
+    \ constexpr uint const &mod = ref.mod;\n    static constexpr uint const &root\
+    \ = ref.root;\n    static constexpr uint const &isprime = ref.isprime;\n    uint\
+    \ v = 0;\n    constexpr modint& s(uint v) { this->v = v < mod ? v : v - mod; return\
+    \ *this; }\n    constexpr modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-()\
+    \ const { return modint() - *this; }\n    modint& operator+=(const modint& rhs)\
+    \ { return s(v + rhs.v); }\n    modint& operator-=(const modint& rhs) { return\
+    \ s(v + mod - rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v)\
+    \ * rhs.v % mod; return *this; }\n    modint& operator/=(const modint& rhs) {\
+    \ return *this *= inv(rhs); }\n    modint operator+(const modint& rhs) const {\
+    \ return modint(*this) += rhs; }\n    modint operator-(const modint& rhs) const\
+    \ { return modint(*this) -= rhs; }\n    modint operator*(const modint& rhs) const\
+    \ { return modint(*this) *= rhs; }\n    modint operator/(const modint& rhs) const\
+    \ { return modint(*this) /= rhs; }\n    friend modint pow(modint x, ll n) { modint\
+    \ res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n\
+    \    friend modint inv(modint v) {\n        if(isprime) {\n            return\
+    \ pow(v, mod - 2);\n        } else {\n            ll a = v.v, b = modint::mod,\
+    \ x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a -= t * b, b);\
+    \ swap(x -= t * y, y); }\n            return modint(x);\n        }\n    }\n  \
+    \  friend modint operator+(int x, const modint& y) { return modint(x) + y; }\n\
+    \    friend modint operator-(int x, const modint& y) { return modint(x) - y; }\n\
+    \    friend modint operator*(int x, const modint& y) { return modint(x) * y; }\n\
+    \    friend modint operator/(int x, const modint& y) { return modint(x) / y; }\n\
+    \    friend istream& operator>>(istream& is, modint& m) { ll x; is >> x; m = modint(x);\
+    \ return is; }\n    friend ostream& operator<<(ostream& os, const modint& m) {\
+    \ return os << m.v; }\n    bool operator==(const modint& r) const { return v ==\
+    \ r.v; }\n    bool operator!=(const modint& r) const { return v != r.v; }\n  \
+    \  static uint get_mod() { return mod; }\n    static int is_prime() { return isprime;\
+    \ }\n};\nconstexpr modinfo base998244353 { 998244353, 3, 1 };\nconstexpr modinfo\
+    \ base1000000007 { 1000000007, 0, 1 };\nusing mint998244353 = modint< base998244353\
+    \ >;\nusing mint1000000007 = modint< base1000000007 >;\n#line 6 \"verify/library_checker/graph/enumerate_triangles.test.cpp\"\
+    \n\nint main(){\n    int N = in(), M = in();\n    using mint = mint998244353;\n\
+    \    std::vector<mint> x = in(N);\n    std::vector<std::vector<int>> g(N);\n \
+    \   for(int i : rep(M)) {\n        int u = in(), v = in();\n        g[u].push_back(v);\n\
+    \        g[v].push_back(u);\n    }\n    \n    mint ans = 0;\n    for_each_triangle(g,\
+    \ [&](int a, int b, int c) {\n        ans += x[a] * x[b] * x[c];\n    });\n  \
+    \  print(ans);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_triangles\"\n\
+    \n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/graph/triangle.hpp\"\
+    \n#include \"../../../src/number/modint.hpp\"\n\nint main(){\n    int N = in(),\
+    \ M = in();\n    using mint = mint998244353;\n    std::vector<mint> x = in(N);\n\
+    \    std::vector<std::vector<int>> g(N);\n    for(int i : rep(M)) {\n        int\
+    \ u = in(), v = in();\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
+    \    }\n    \n    mint ans = 0;\n    for_each_triangle(g, [&](int a, int b, int\
+    \ c) {\n        ans += x[a] * x[b] * x[c];\n    });\n    print(ans);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -222,18 +194,18 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/graph/tree/rerooting.hpp
+  - src/graph/triangle.hpp
   - src/number/modint.hpp
   isVerificationFile: true
-  path: verify/library_checker/graph/tree/rerooting.test.cpp
+  path: verify/library_checker/graph/enumerate_triangles.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 09:21:37+09:00'
+  timestamp: '2023-11-01 11:00:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/graph/tree/rerooting.test.cpp
+documentation_of: verify/library_checker/graph/enumerate_triangles.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/graph/tree/rerooting.test.cpp
-- /verify/verify/library_checker/graph/tree/rerooting.test.cpp.html
-title: verify/library_checker/graph/tree/rerooting.test.cpp
+- /verify/verify/library_checker/graph/enumerate_triangles.test.cpp
+- /verify/verify/library_checker/graph/enumerate_triangles.test.cpp.html
+title: verify/library_checker/graph/enumerate_triangles.test.cpp
 ---

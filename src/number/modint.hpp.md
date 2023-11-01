@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':x:'
@@ -39,46 +39,49 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/enumerate_triangles.test.cpp
+    title: verify/library_checker/graph/enumerate_triangles.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv.test.cpp
     title: verify/library_checker/number/fps_inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log.test.cpp
     title: verify/library_checker/number/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
   - icon: ':x:'
@@ -229,6 +232,7 @@ data:
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/graph/enumerate_triangles.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/matrix/linear_equation.test.cpp

@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'
@@ -29,19 +29,19 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':x:'
@@ -54,34 +54,34 @@ data:
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv.test.cpp
     title: verify/library_checker/number/fps_inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log.test.cpp
     title: verify/library_checker/number/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
   - icon: ':x:'
@@ -131,7 +131,7 @@ data:
     title: verify/library_checker/number/tetration.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -280,7 +280,7 @@ data:
   - src/number/prime.hpp
   - src/number/fps_sparse.hpp
   timestamp: '2023-11-01 09:21:37+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/stirling_2nd.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp
