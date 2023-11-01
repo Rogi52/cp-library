@@ -157,12 +157,21 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs.hpp
       title: src/graph/bfs.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/chromatic_number.hpp
+      title: src/graph/chromatic_number.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/clique.hpp
+      title: src/graph/clique.hpp
     - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: src/graph/max_flow.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/graph/maximum_independent_set.hpp
+      title: src/graph/maximum_independent_set.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: src/graph/min_cost_flow.hpp
@@ -194,13 +203,13 @@ data:
       title: src/graph/tree/tree_isomorphism.hpp
   - name: src/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/matrix/base.hpp
       title: src/matrix/base.hpp
     - icon: ':warning:'
       path: src/matrix/lgv.hpp
       title: "LGV \u516C\u5F0F"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/matrix/linear_equation.hpp
       title: src/matrix/linear_equation.hpp
     - icon: ':warning:'
@@ -208,7 +217,7 @@ data:
       title: "\u884C\u5217\u6728\u5B9A\u7406"
   - name: src/number
     pages:
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/binom_mod.hpp
       title: src/number/binom_mod.hpp
     - icon: ':warning:'
@@ -223,13 +232,13 @@ data:
     - icon: ':warning:'
       path: src/number/extgcd.hpp
       title: src/number/extgcd.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/famous_number.hpp
       title: src/number/famous_number.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
     - icon: ':x:'
@@ -238,7 +247,7 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/modfunc.hpp
       title: src/number/modfunc.hpp
     - icon: ':question:'
@@ -247,19 +256,19 @@ data:
     - icon: ':x:'
       path: src/number/nim_product.hpp
       title: src/number/nim_product.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
     - icon: ':x:'
       path: src/number/primitive_root.hpp
       title: src/number/primitive_root.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
     - icon: ':x:'
@@ -403,8 +412,17 @@ data:
   - name: verify/library_checker/graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/chromatic_number.test.cpp
+      title: verify/library_checker/graph/chromatic_number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/enumerate_cliques.test.cpp
+      title: verify/library_checker/graph/enumerate_cliques.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/enumerate_triangles.test.cpp
       title: verify/library_checker/graph/enumerate_triangles.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/library_checker/graph/maximum_independent_set.test.cpp
+      title: verify/library_checker/graph/maximum_independent_set.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/shortest_path.test.cpp
       title: verify/library_checker/graph/shortest_path.test.cpp
@@ -426,51 +444,51 @@ data:
       title: verify/library_checker/io/int128.test.cpp
   - name: verify/library_checker/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/matrix/determinant.test.cpp
       title: verify/library_checker/matrix/determinant.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/matrix/inverse.test.cpp
       title: verify/library_checker/matrix/inverse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/matrix/linear_equation.test.cpp
       title: verify/library_checker/matrix/linear_equation.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/matrix/product.test.cpp
       title: verify/library_checker/matrix/product.test.cpp
   - name: verify/library_checker/number
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/bernoulli.test.cpp
       title: verify/library_checker/number/bernoulli.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
       title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/factorize.test.cpp
       title: verify/library_checker/number/factorize.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_composition.test.cpp
       title: verify/library_checker/number/fps_composition.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_exp.test.cpp
       title: verify/library_checker/number/fps_exp.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_exp_sparse.test.cpp
       title: verify/library_checker/number/fps_exp_sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_inv.test.cpp
       title: verify/library_checker/number/fps_inv.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_inv_sparse.test.cpp
       title: verify/library_checker/number/fps_inv_sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_log.test.cpp
       title: verify/library_checker/number/fps_log.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_log_sparse.test.cpp
       title: verify/library_checker/number/fps_log_sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/library_checker/number/fps_pow.test.cpp
       title: verify/library_checker/number/fps_pow.test.cpp
     - icon: ':x:'

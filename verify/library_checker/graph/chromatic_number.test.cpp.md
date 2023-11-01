@@ -1,9 +1,6 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/minmax.hpp
-    title: src/algebra/minmax.hpp
   - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
@@ -14,8 +11,8 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/disjoint_sparse_table.hpp
-    title: src/data_structure/disjoint_sparse_table.hpp
+    path: src/graph/chromatic_number.hpp
+    title: src/graph/chromatic_number.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -38,22 +35,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/staticrmq
+    PROBLEM: https://judge.yosupo.jp/problem/chromatic_number
     links:
-    - https://judge.yosupo.jp/problem/staticrmq
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/disjoint_sparse_table.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#line 2 \"\
-    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
-    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
-    \  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing i64\
-    \ = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\ntemplate\
-    \ < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return\
-    \ false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return\
-    \ true; } return false; }\ntemplate < class T, class U > T ceil (T x, U y) { return\
-    \ (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate < class T, class U\
-    \ > T floor(T x, U y) { return (x > 0 ?           x / y : (x - y + 1) / y); }\n\
-    int popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32 x) { return\
-    \ __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
+    - https://judge.yosupo.jp/problem/chromatic_number
+  bundledCode: "#line 1 \"verify/library_checker/graph/chromatic_number.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n\n#line\
+    \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
+    \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
+    \ i64 = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\n\
+    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }\
+    \ return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a\
+    \ = b; return true; } return false; }\ntemplate < class T, class U > T ceil (T\
+    \ x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate <\
+    \ class T, class U > T floor(T x, U y) { return (x > 0 ?           x / y : (x\
+    \ - y + 1) / y); }\nint popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32\
+    \ x) { return __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
     \ }\nint popcnt(u64 x) { return __builtin_popcountll(x); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\
     \ntemplate < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const\
     \ T i) noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
@@ -134,38 +131,24 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/data_structure/disjoint_sparse_table.hpp\"\n\ntemplate < class semi_group\
-    \ >\nstruct disjoint_sparse_table {\n    using T = typename semi_group::set;\n\
-    \    std::vector<std::vector< T >> table;\n    vector<int> msb;\n    disjoint_sparse_table(const\
-    \ std::vector< T >& a) : table(1, a), msb(2) {\n        int n = a.size();\n  \
-    \      for(int i = 2; i < n; i <<= 1) {\n            std::vector< T > v;\n   \
-    \         for(int j = i; j < n; j += i << 1) {\n                v.push_back(a[j\
-    \ - 1]);\n                for(int k = 2; k <= i; k++)\n                    v.push_back(semi_group::op(a[j\
-    \ - k], v.back()));\n                v.push_back(a[j]);\n                for(int\
-    \ k = 1; k < i and j + k < n; k++)\n                    v.push_back(semi_group::op(v.back(),\
-    \ a[j + k]));\n            }\n            table.push_back(v);\n        }\n   \
-    \ }\n\n    // [L, R)\n    T fold(int L, int R) {\n        if(L == --R) return\
-    \ table.front()[L];\n        else {\n            while(msb.size() <= (L ^ R))\
-    \ msb.push_back(msb[msb.size() >> 1] + 1);\n            int p = msb[L ^ R];\n\
-    \            return semi_group::op(table[p][L ^ (1 << p) - 1], table[p][R]);\n\
-    \        }\n    }\n};\n#line 3 \"src/algebra/minmax.hpp\"\n\ntemplate < class\
-    \ T > class min_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return std::min(l, r); }\n    static constexpr\
-    \ T id() { return std::numeric_limits< T >::max(); }\n    static constexpr bool\
-    \ comm = true;\n};\n\ntemplate < class T > class max_monoid {\n  public:\n   \
-    \ using set = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
-    \ r); }\n    static constexpr T id() { return std::numeric_limits< T >::min();\
-    \ }\n    static constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/disjoint_sparse_table.test.cpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    std::vector<int> a = in(N);\n\
-    \    disjoint_sparse_table< min_monoid<int> > table(a);\n    for(int _ : rep(Q))\
-    \ {\n        int l = in(), r = in();\n        print(table.fold(l, r));\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/disjoint_sparse_table.hpp\"\
-    \n#include \"../../../src/algebra/minmax.hpp\"\n\nint main() {\n    int N = in(),\
-    \ Q = in();\n    std::vector<int> a = in(N);\n    disjoint_sparse_table< min_monoid<int>\
-    \ > table(a);\n    for(int _ : rep(Q)) {\n        int l = in(), r = in();\n  \
-    \      print(table.fold(l, r));\n    }\n}"
+    \ 2 \"src/graph/chromatic_number.hpp\"\n\nint chromatic_number(const std::vector<std::vector<int>>&\
+    \ g) {\n    int N = g.size();\n    std::vector<int> h(N);\n    for(int i : rep(N))\
+    \ for(int j : rep(N)) if(g[i][j]) h[i] |= 1 << j;\n\n    const int mod = 1e9+7;\n\
+    \    std::vector<int> ind(1 << N), s(1 << N);\n    for(int i : rep(1 << N)) s[i]\
+    \ = ((N - popcnt(i)) & 1 ? -1 : +1);\n    ind[0] = 1;\n    for(int i : rep(1,\
+    \ 1 << N)) {\n        int ctz = __builtin_ctz(i);\n        ind[i] = ind[i - (1\
+    \ << ctz)] + ind[(i - (1 << ctz)) & ~h[ctz]];\n        if(ind[i] >= mod) ind[i]\
+    \ -= mod;\n    }\n    for(int k : rep(1, N)) {\n        i64 sum = 0;\n       \
+    \ for(int i : rep(1 << N)) sum += (s[i] = i64(s[i]) * ind[i] % mod);\n       \
+    \ if(sum % mod != 0) return k;\n    }\n    return N;\n}\n#line 5 \"verify/library_checker/graph/chromatic_number.test.cpp\"\
+    \n\nint main() {\n    int N = in(), M = in();\n    std::vector g(N, std::vector(N,\
+    \ 0));\n    for(int i : rep(M)) {\n        int u = in(), v = in();\n        g[u][v]\
+    \ = g[v][u] = 1;\n    }\n    print(chromatic_number(g));\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/graph/chromatic_number.hpp\"\
+    \n\nint main() {\n    int N = in(), M = in();\n    std::vector g(N, std::vector(N,\
+    \ 0));\n    for(int i : rep(M)) {\n        int u = in(), v = in();\n        g[u][v]\
+    \ = g[v][u] = 1;\n    }\n    print(chromatic_number(g));\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -175,18 +158,17 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/data_structure/disjoint_sparse_table.hpp
-  - src/algebra/minmax.hpp
+  - src/graph/chromatic_number.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+  path: verify/library_checker/graph/chromatic_number.test.cpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+documentation_of: verify/library_checker/graph/chromatic_number.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-- /verify/verify/library_checker/data_structure/disjoint_sparse_table.test.cpp.html
-title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+- /verify/verify/library_checker/graph/chromatic_number.test.cpp
+- /verify/verify/library_checker/graph/chromatic_number.test.cpp.html
+title: verify/library_checker/graph/chromatic_number.test.cpp
 ---

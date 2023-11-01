@@ -5,47 +5,47 @@ data:
     path: src/number/modint.hpp
     title: modint
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':x:'
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv.test.cpp
     title: verify/library_checker/number/fps_inv.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_log.test.cpp
     title: verify/library_checker/number/fps_log.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
   - icon: ':x:'
@@ -83,7 +83,7 @@ data:
     title: verify/library_checker/number/stirling_2nd.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root,\
@@ -222,7 +222,7 @@ data:
   - src/number/famous_number.hpp
   - src/number/fps_sparse.hpp
   timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number/stirling_2nd.test.cpp
   - verify/library_checker/number/fps_inv_sparse.test.cpp

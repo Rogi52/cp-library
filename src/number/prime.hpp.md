@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':question:'
@@ -39,7 +39,7 @@ data:
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
   - icon: ':x:'
@@ -53,7 +53,7 @@ data:
     title: verify/library_checker/number/tetration.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -65,41 +65,44 @@ data:
     \ if(a < b) { a = b; return true; } return false; }\ntemplate < class T, class\
     \ U > T ceil (T x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y);\
     \ }\ntemplate < class T, class U > T floor(T x, U y) { return (x > 0 ?       \
-    \    x / y : (x - y + 1) / y); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate\
-    \ < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const T i)\
-    \ noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
-    \ : i(i), d(d) {}\n    void operator++() noexcept { i += d; }\n    constexpr int\
-    \ operator*() const noexcept { return i; }\n    constexpr bool operator!=(const\
-    \ itr_rep x) const noexcept { return d > 0 ? i < x.i : i > x.i; }\n};\n\ntemplate\
-    \ < class T > struct rep {\n    const itr_rep< T > s, t;\n    constexpr rep(const\
-    \ T t) noexcept : s(0), t(t) {}\n    constexpr rep(const T s, const T t) noexcept\
-    \ : s(s), t(t) {}\n    constexpr rep(const T s, const T t, const T d) noexcept\
-    \ : s(s, d), t(t, d) {}\n    constexpr auto begin() const noexcept { return s;\
-    \ }\n    constexpr auto end  () const noexcept { return t; }\n};\n\ntemplate <\
-    \ class T > struct revrep {\n    const itr_rep < T > s, t;\n    constexpr revrep(const\
-    \ T t) noexcept : s(t - 1, -1), t(-1, -1) {}\n    constexpr revrep(const T s,\
-    \ const T t) noexcept : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const\
-    \ T s, const T t, const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr\
-    \ auto begin() const noexcept { return s; }\n    constexpr auto end  () const\
-    \ noexcept { return t; }\n};\n#line 3 \"src/utility/io.hpp\"\n\n/* 128bit integer\
-    \ */\nistream& operator>>(istream& is, i128& x) {\n    std::string s; is >> s;\n\
-    \    int pm = (s[0] == '-');\n    x = 0;\n    for(int i : rep(pm, int(s.size())))\
-    \ x = x * 10 + (s[i] - '0');\n    if(pm) x *= -1;\n    return is;\n}\nostream&\
-    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << '0';\n\
-    \    i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
-    \    std::vector<int> ny;\n    while(y > 0) {\n        ny.push_back(y % 10);\n\
-    \        y /= 10;\n    }\n    for(int i : revrep(ny.size())) os << ny[i];\n  \
-    \  return os;\n}\n\nnamespace scanner {\n    struct sca {\n        template <\
-    \ class T > operator T() {\n            T s; std::cin >> s; return s;\n      \
-    \  }\n    };\n    struct vec {\n        int n;\n        vec(int n) : n(n) {}\n\
-    \        template < class T > operator std::vector< T >() {\n            std::vector<\
-    \ T > v(n);\n            for(T& x : v) std::cin >> x;\n            return v;\n\
-    \        }\n    };\n    struct mat {\n        int h, w;\n        mat(int h, int\
-    \ w) : h(h), w(w) {}\n        template < class T > operator std::vector< std::vector<\
-    \ T > >() {\n            std::vector m(h, std::vector< T >(w));\n            for(std::vector<\
-    \ T >& v : m) for(T& x : v) std::cin >> x;\n            return m;\n        }\n\
-    \    };\n    struct speedup {\n        speedup() {\n            std::cin.tie(0);\n\
-    \            std::ios::sync_with_stdio(0);\n        }\n    } speedup_instance;\n\
+    \    x / y : (x - y + 1) / y); }\nint popcnt(i32 x) { return __builtin_popcount(x);\
+    \ }\nint popcnt(u32 x) { return __builtin_popcount(x); }\nint popcnt(i64 x) {\
+    \ return __builtin_popcountll(x); }\nint popcnt(u64 x) { return __builtin_popcountll(x);\
+    \ }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct itr_rep\
+    \ {\n    T i, d;\n    constexpr itr_rep(const T i) noexcept : i(i), d(1) {}\n\
+    \    constexpr itr_rep(const T i, const T d) noexcept : i(i), d(d) {}\n    void\
+    \ operator++() noexcept { i += d; }\n    constexpr int operator*() const noexcept\
+    \ { return i; }\n    constexpr bool operator!=(const itr_rep x) const noexcept\
+    \ { return d > 0 ? i < x.i : i > x.i; }\n};\n\ntemplate < class T > struct rep\
+    \ {\n    const itr_rep< T > s, t;\n    constexpr rep(const T t) noexcept : s(0),\
+    \ t(t) {}\n    constexpr rep(const T s, const T t) noexcept : s(s), t(t) {}\n\
+    \    constexpr rep(const T s, const T t, const T d) noexcept : s(s, d), t(t, d)\
+    \ {}\n    constexpr auto begin() const noexcept { return s; }\n    constexpr auto\
+    \ end  () const noexcept { return t; }\n};\n\ntemplate < class T > struct revrep\
+    \ {\n    const itr_rep < T > s, t;\n    constexpr revrep(const T t) noexcept :\
+    \ s(t - 1, -1), t(-1, -1) {}\n    constexpr revrep(const T s, const T t) noexcept\
+    \ : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const T s, const T t,\
+    \ const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin()\
+    \ const noexcept { return s; }\n    constexpr auto end  () const noexcept { return\
+    \ t; }\n};\n#line 3 \"src/utility/io.hpp\"\n\n/* 128bit integer */\nistream& operator>>(istream&\
+    \ is, i128& x) {\n    std::string s; is >> s;\n    int pm = (s[0] == '-');\n \
+    \   x = 0;\n    for(int i : rep(pm, int(s.size()))) x = x * 10 + (s[i] - '0');\n\
+    \    if(pm) x *= -1;\n    return is;\n}\nostream& operator<<(ostream& os, const\
+    \ i128& x) {\n    if(x == 0) return os << '0';\n    i128 y = x;\n    if(y < 0)\
+    \ {\n        os << '-';\n        y *= -1;\n    }\n    std::vector<int> ny;\n \
+    \   while(y > 0) {\n        ny.push_back(y % 10);\n        y /= 10;\n    }\n \
+    \   for(int i : revrep(ny.size())) os << ny[i];\n    return os;\n}\n\nnamespace\
+    \ scanner {\n    struct sca {\n        template < class T > operator T() {\n \
+    \           T s; std::cin >> s; return s;\n        }\n    };\n    struct vec {\n\
+    \        int n;\n        vec(int n) : n(n) {}\n        template < class T > operator\
+    \ std::vector< T >() {\n            std::vector< T > v(n);\n            for(T&\
+    \ x : v) std::cin >> x;\n            return v;\n        }\n    };\n    struct\
+    \ mat {\n        int h, w;\n        mat(int h, int w) : h(h), w(w) {}\n      \
+    \  template < class T > operator std::vector< std::vector< T > >() {\n       \
+    \     std::vector m(h, std::vector< T >(w));\n            for(std::vector< T >&\
+    \ v : m) for(T& x : v) std::cin >> x;\n            return m;\n        }\n    };\n\
+    \    struct speedup {\n        speedup() {\n            std::cin.tie(0);\n   \
+    \         std::ios::sync_with_stdio(0);\n        }\n    } speedup_instance;\n\
     }\nscanner::sca in() { return scanner::sca(); }\nscanner::vec in(int n) { return\
     \ scanner::vec(n); }\nscanner::mat in(int h, int w) { return scanner::mat(h, w);\
     \ }\n\nnamespace printer {\n    void precision(int d) { std::cout << std::fixed\
@@ -134,7 +137,7 @@ data:
     \    S sum(int L, int R) { return s[R] - s[L]; }\n};\n#line 3 \"src/utility/heap.hpp\"\
     \n\ntemplate < class T > using heap_min = std::priority_queue< T, std::vector<\
     \ T >, std::greater< T > >;\ntemplate < class T > using heap_max = std::priority_queue<\
-    \ T, std::vector< T >, std::less< T > >;\n\n#line 23 \"src/cp-template.hpp\"\n\
+    \ T, std::vector< T >, std::less< T > >;\n\n#line 27 \"src/cp-template.hpp\"\n\
     \n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate < class T, class F >\nT bin_search(T\
     \ ok, T ng, F& f) {\n    while(abs(ok - ng) > 1) {\n        T mid = (ok + ng)\
     \ / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate\
@@ -243,8 +246,8 @@ data:
   requiredBy:
   - src/number/primitive_root.hpp
   - src/number/tetration.hpp
-  timestamp: '2023-11-01 09:21:37+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number/primality_test.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp

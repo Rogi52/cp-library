@@ -1,9 +1,6 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/minmax.hpp
-    title: src/algebra/minmax.hpp
   - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
@@ -14,8 +11,11 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':heavy_check_mark:'
-    path: src/data_structure/disjoint_sparse_table.hpp
-    title: src/data_structure/disjoint_sparse_table.hpp
+    path: src/graph/clique.hpp
+    title: src/graph/clique.hpp
+  - icon: ':question:'
+    path: src/number/modint.hpp
+    title: modint
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -38,22 +38,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/staticrmq
+    PROBLEM: https://judge.yosupo.jp/problem/enumerate_cliques
     links:
-    - https://judge.yosupo.jp/problem/staticrmq
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/disjoint_sparse_table.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#line 2 \"\
-    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
-    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
-    \  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing i64\
-    \ = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\ntemplate\
-    \ < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return\
-    \ false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return\
-    \ true; } return false; }\ntemplate < class T, class U > T ceil (T x, U y) { return\
-    \ (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate < class T, class U\
-    \ > T floor(T x, U y) { return (x > 0 ?           x / y : (x - y + 1) / y); }\n\
-    int popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32 x) { return\
-    \ __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
+    - https://judge.yosupo.jp/problem/enumerate_cliques
+  bundledCode: "#line 1 \"verify/library_checker/graph/enumerate_cliques.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n#line\
+    \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
+    \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
+    \ i64 = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\n\
+    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }\
+    \ return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a\
+    \ = b; return true; } return false; }\ntemplate < class T, class U > T ceil (T\
+    \ x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate <\
+    \ class T, class U > T floor(T x, U y) { return (x > 0 ?           x / y : (x\
+    \ - y + 1) / y); }\nint popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32\
+    \ x) { return __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
     \ }\nint popcnt(u64 x) { return __builtin_popcountll(x); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\
     \ntemplate < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const\
     \ T i) noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
@@ -134,38 +134,66 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/data_structure/disjoint_sparse_table.hpp\"\n\ntemplate < class semi_group\
-    \ >\nstruct disjoint_sparse_table {\n    using T = typename semi_group::set;\n\
-    \    std::vector<std::vector< T >> table;\n    vector<int> msb;\n    disjoint_sparse_table(const\
-    \ std::vector< T >& a) : table(1, a), msb(2) {\n        int n = a.size();\n  \
-    \      for(int i = 2; i < n; i <<= 1) {\n            std::vector< T > v;\n   \
-    \         for(int j = i; j < n; j += i << 1) {\n                v.push_back(a[j\
-    \ - 1]);\n                for(int k = 2; k <= i; k++)\n                    v.push_back(semi_group::op(a[j\
-    \ - k], v.back()));\n                v.push_back(a[j]);\n                for(int\
-    \ k = 1; k < i and j + k < n; k++)\n                    v.push_back(semi_group::op(v.back(),\
-    \ a[j + k]));\n            }\n            table.push_back(v);\n        }\n   \
-    \ }\n\n    // [L, R)\n    T fold(int L, int R) {\n        if(L == --R) return\
-    \ table.front()[L];\n        else {\n            while(msb.size() <= (L ^ R))\
-    \ msb.push_back(msb[msb.size() >> 1] + 1);\n            int p = msb[L ^ R];\n\
-    \            return semi_group::op(table[p][L ^ (1 << p) - 1], table[p][R]);\n\
-    \        }\n    }\n};\n#line 3 \"src/algebra/minmax.hpp\"\n\ntemplate < class\
-    \ T > class min_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return std::min(l, r); }\n    static constexpr\
-    \ T id() { return std::numeric_limits< T >::max(); }\n    static constexpr bool\
-    \ comm = true;\n};\n\ntemplate < class T > class max_monoid {\n  public:\n   \
-    \ using set = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
-    \ r); }\n    static constexpr T id() { return std::numeric_limits< T >::min();\
-    \ }\n    static constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/disjoint_sparse_table.test.cpp\"\
-    \n\nint main() {\n    int N = in(), Q = in();\n    std::vector<int> a = in(N);\n\
-    \    disjoint_sparse_table< min_monoid<int> > table(a);\n    for(int _ : rep(Q))\
-    \ {\n        int l = in(), r = in();\n        print(table.fold(l, r));\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/disjoint_sparse_table.hpp\"\
-    \n#include \"../../../src/algebra/minmax.hpp\"\n\nint main() {\n    int N = in(),\
-    \ Q = in();\n    std::vector<int> a = in(N);\n    disjoint_sparse_table< min_monoid<int>\
-    \ > table(a);\n    for(int _ : rep(Q)) {\n        int l = in(), r = in();\n  \
-    \      print(table.fold(l, r));\n    }\n}"
+    \ 2 \"src/graph/clique.hpp\"\n\ntemplate < class F >\nvoid for_each_clique(const\
+    \ std::vector<std::vector<int>>& g, const F& f) {\n    int N = g.size();\n   \
+    \ std::vector<int> deg(N, 0), S(N, 1);\n    for(int i : rep(N)) for(int j : rep(N))\
+    \ if(i < j and g[i][j]) deg[i]++, deg[j]++;\n\n    for(int _ : rep(N)) {\n   \
+    \     int v = -1, min_deg = N;\n        for(int i : rep(N)) if(S[i] and chmin(min_deg,\
+    \ deg[i])) v = i;\n        std::vector<int> c = {v}, to;\n        for(int i :\
+    \ rep(N)) if(S[i] and g[v][i]) to.push_back(i);\n\n        std::function<void(int)>\
+    \ dfs = [&](int i) -> void {\n            f(c);\n            for(int k : rep(i,\
+    \ int(to.size()))) {\n                int ok = 1;\n                for(int x :\
+    \ c) if(not g[x][to[k]]) { ok = 0; break; }\n                if(ok) {\n      \
+    \              c.push_back(to[k]);\n                    dfs(k + 1);\n        \
+    \            c.pop_back();\n                }\n            }\n        }; dfs(0);\n\
+    \        \n        S[v] = 0;\n        for(int i : to) deg[i]--;\n    }\n}\n#line\
+    \ 2 \"src/number/modint.hpp\"\nstruct modinfo { uint mod, root, isprime; };\n\
+    template < modinfo const &ref >\nstruct modint {\n    static constexpr uint const\
+    \ &mod = ref.mod;\n    static constexpr uint const &root = ref.root;\n    static\
+    \ constexpr uint const &isprime = ref.isprime;\n    uint v = 0;\n    constexpr\
+    \ modint& s(uint v) { this->v = v < mod ? v : v - mod; return *this; }\n    constexpr\
+    \ modint(ll v = 0) { s(v % mod + mod); }\n    modint operator-() const { return\
+    \ modint() - *this; }\n    modint& operator+=(const modint& rhs) { return s(v\
+    \ + rhs.v); }\n    modint& operator-=(const modint& rhs) { return s(v + mod -\
+    \ rhs.v); }\n    modint& operator*=(const modint& rhs) { v = ull(v) * rhs.v %\
+    \ mod; return *this; }\n    modint& operator/=(const modint& rhs) { return *this\
+    \ *= inv(rhs); }\n    modint operator+(const modint& rhs) const { return modint(*this)\
+    \ += rhs; }\n    modint operator-(const modint& rhs) const { return modint(*this)\
+    \ -= rhs; }\n    modint operator*(const modint& rhs) const { return modint(*this)\
+    \ *= rhs; }\n    modint operator/(const modint& rhs) const { return modint(*this)\
+    \ /= rhs; }\n    friend modint pow(modint x, ll n) { modint res(1); while(n >\
+    \ 0) { if(n & 1) res *= x; x *= x; n >>= 1; } return res; }\n    friend modint\
+    \ inv(modint v) {\n        if(isprime) {\n            return pow(v, mod - 2);\n\
+    \        } else {\n            ll a = v.v, b = modint::mod, x = 1, y = 0, t;\n\
+    \            while(b > 0) { t = a / b; swap(a -= t * b, b); swap(x -= t * y, y);\
+    \ }\n            return modint(x);\n        }\n    }\n    friend modint operator+(int\
+    \ x, const modint& y) { return modint(x) + y; }\n    friend modint operator-(int\
+    \ x, const modint& y) { return modint(x) - y; }\n    friend modint operator*(int\
+    \ x, const modint& y) { return modint(x) * y; }\n    friend modint operator/(int\
+    \ x, const modint& y) { return modint(x) / y; }\n    friend istream& operator>>(istream&\
+    \ is, modint& m) { ll x; is >> x; m = modint(x); return is; }\n    friend ostream&\
+    \ operator<<(ostream& os, const modint& m) { return os << m.v; }\n    bool operator==(const\
+    \ modint& r) const { return v == r.v; }\n    bool operator!=(const modint& r)\
+    \ const { return v != r.v; }\n    static uint get_mod() { return mod; }\n    static\
+    \ int is_prime() { return isprime; }\n};\nconstexpr modinfo base998244353 { 998244353,\
+    \ 3, 1 };\nconstexpr modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint998244353\
+    \ = modint< base998244353 >;\nusing mint1000000007 = modint< base1000000007 >;\n\
+    #line 6 \"verify/library_checker/graph/enumerate_cliques.test.cpp\"\n\nint main()\
+    \ {\n    int N = in(), M = in();\n    using mint = mint998244353;\n    std::vector<mint>\
+    \ x = in(N);\n    std::vector g(N, std::vector(N, 0));\n    for(int i : rep(M))\
+    \ {\n        int u = in(), v = in();\n        g[u][v] = g[v][u] = 1;\n    }\n\n\
+    \    mint ans = 0;\n    for_each_clique(g, [&](std::vector<int>& c) {\n      \
+    \  mint prod = 1;\n        for(int i : c) prod *= x[i];\n        ans += prod;\n\
+    \    });\n    print(ans);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/graph/clique.hpp\"\
+    \n#include \"../../../src/number/modint.hpp\"\n\nint main() {\n    int N = in(),\
+    \ M = in();\n    using mint = mint998244353;\n    std::vector<mint> x = in(N);\n\
+    \    std::vector g(N, std::vector(N, 0));\n    for(int i : rep(M)) {\n       \
+    \ int u = in(), v = in();\n        g[u][v] = g[v][u] = 1;\n    }\n\n    mint ans\
+    \ = 0;\n    for_each_clique(g, [&](std::vector<int>& c) {\n        mint prod =\
+    \ 1;\n        for(int i : c) prod *= x[i];\n        ans += prod;\n    });\n  \
+    \  print(ans);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -175,18 +203,18 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/data_structure/disjoint_sparse_table.hpp
-  - src/algebra/minmax.hpp
+  - src/graph/clique.hpp
+  - src/number/modint.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+  path: verify/library_checker/graph/enumerate_cliques.test.cpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+documentation_of: verify/library_checker/graph/enumerate_cliques.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-- /verify/verify/library_checker/data_structure/disjoint_sparse_table.test.cpp.html
-title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+- /verify/verify/library_checker/graph/enumerate_cliques.test.cpp
+- /verify/verify/library_checker/graph/enumerate_cliques.test.cpp.html
+title: verify/library_checker/graph/enumerate_cliques.test.cpp
 ---

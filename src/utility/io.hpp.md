@@ -99,6 +99,15 @@ data:
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
   - icon: ':heavy_check_mark:'
+    path: src/graph/chromatic_number.hpp
+    title: src/graph/chromatic_number.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/graph/clique.hpp
+    title: src/graph/clique.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/graph/maximum_independent_set.hpp
+    title: src/graph/maximum_independent_set.hpp
+  - icon: ':heavy_check_mark:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -110,19 +119,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/triangle.hpp
     title: src/graph/triangle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':warning:'
@@ -131,28 +140,28 @@ data:
   - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':x:'
@@ -259,8 +268,17 @@ data:
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/chromatic_number.test.cpp
+    title: verify/library_checker/graph/chromatic_number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/enumerate_cliques.test.cpp
+    title: verify/library_checker/graph/enumerate_cliques.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/enumerate_triangles.test.cpp
     title: verify/library_checker/graph/enumerate_triangles.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/graph/maximum_independent_set.test.cpp
+    title: verify/library_checker/graph/maximum_independent_set.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
@@ -276,49 +294,49 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/io/int128.test.cpp
     title: verify/library_checker/io/int128.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv.test.cpp
     title: verify/library_checker/number/fps_inv.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_log.test.cpp
     title: verify/library_checker/number/fps_log.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
   - icon: ':x:'
@@ -404,57 +422,60 @@ data:
     \ if(a < b) { a = b; return true; } return false; }\ntemplate < class T, class\
     \ U > T ceil (T x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y);\
     \ }\ntemplate < class T, class U > T floor(T x, U y) { return (x > 0 ?       \
-    \    x / y : (x - y + 1) / y); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate\
-    \ < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const T i)\
-    \ noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
-    \ : i(i), d(d) {}\n    void operator++() noexcept { i += d; }\n    constexpr int\
-    \ operator*() const noexcept { return i; }\n    constexpr bool operator!=(const\
-    \ itr_rep x) const noexcept { return d > 0 ? i < x.i : i > x.i; }\n};\n\ntemplate\
-    \ < class T > struct rep {\n    const itr_rep< T > s, t;\n    constexpr rep(const\
-    \ T t) noexcept : s(0), t(t) {}\n    constexpr rep(const T s, const T t) noexcept\
-    \ : s(s), t(t) {}\n    constexpr rep(const T s, const T t, const T d) noexcept\
-    \ : s(s, d), t(t, d) {}\n    constexpr auto begin() const noexcept { return s;\
-    \ }\n    constexpr auto end  () const noexcept { return t; }\n};\n\ntemplate <\
-    \ class T > struct revrep {\n    const itr_rep < T > s, t;\n    constexpr revrep(const\
-    \ T t) noexcept : s(t - 1, -1), t(-1, -1) {}\n    constexpr revrep(const T s,\
-    \ const T t) noexcept : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const\
-    \ T s, const T t, const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr\
-    \ auto begin() const noexcept { return s; }\n    constexpr auto end  () const\
-    \ noexcept { return t; }\n};\n#line 2 \"src/utility/key_val.hpp\"\n\ntemplate\
-    \ < class K, class V >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n\
-    \    key_val(K key, V val) : key(key), val(val) {}\n    template < std::size_t\
-    \ Index >\n    std::tuple_element_t< Index, key_val >& get() {\n        if constexpr\
-    \ (Index == 0) return key;\n        if constexpr (Index == 1) return val;\n  \
-    \  }\n};\n\nnamespace std {\n\ntemplate < class K, class V > struct tuple_size\
-    \ < key_val< K, V > > : integral_constant< size_t, 2 > {};\ntemplate < class K,\
-    \ class V > struct tuple_element < 0, key_val< K, V > > { using type = K; };\n\
-    template < class K, class V > struct tuple_element < 1, key_val< K, V > > { using\
-    \ type = V; };\n\n}\n#line 2 \"src/utility/vec_op.hpp\"\ntemplate < class T >\
-    \ key_val< int, T > max_of(const vector< T >& a) {\n    int i = std::max_element(a.begin(),\
-    \ a.end()) - a.begin();\n    return {i, a[i]};\n}\ntemplate < class T > key_val<\
-    \ int, T > min_of(const vector< T >& a) {\n    int i = std::min_element(a.begin(),\
-    \ a.end()) - a.begin();\n    return {i, a[i]};\n}\ntemplate < class S, class T\
-    \ > S sum_of(const vector< T >& a) {\n    S sum = 0;\n    for(const T x : a) sum\
-    \ += x;\n    return sum;\n}\ntemplate < class S, class T > vector< S > freq_of(const\
-    \ vector< T >& a, T L, T R) {\n    vector< S > res(R - L, S(0));\n    for(const\
-    \ T x : a) res[x - L] += 1;\n    return res;\n}\ntemplate < class S, class T >\
-    \ struct prefix_sum {\n    vector< S > s;\n    prefix_sum(const vector< T >& a)\
-    \ : s(a) {\n        s.insert(s.begin(), S(0));\n        for(int i : rep(a.size()))\
-    \ s[i + 1] += s[i];\n    }\n    // [L, R)\n    S sum(int L, int R) { return s[R]\
-    \ - s[L]; }\n};\n#line 3 \"src/utility/heap.hpp\"\n\ntemplate < class T > using\
-    \ heap_min = std::priority_queue< T, std::vector< T >, std::greater< T > >;\n\
-    template < class T > using heap_max = std::priority_queue< T, std::vector< T >,\
-    \ std::less< T > >;\n\n#line 23 \"src/cp-template.hpp\"\n\n#line 1 \"src/algorithm/bin_search.hpp\"\
-    \ntemplate < class T, class F >\nT bin_search(T ok, T ng, F& f) {\n    while(abs(ok\
-    \ - ng) > 1) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n\
-    \    }\n    return ok;\n}\n\ntemplate < class T, class F >\nT bin_search_real(T\
-    \ ok, T ng, F& f, int step = 80) {\n    while(step--) {\n        T mid = (ok +\
-    \ ng) / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n#line\
-    \ 2 \"src/algorithm/argsort.hpp\"\n\ntemplate < class T > std::vector< int > argsort(const\
-    \ std::vector< T > &a) {\n    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(),\
-    \ ids.end(), 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n\
-    \        return a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n\
-    }\n#line 3 \"src/utility/io.hpp\"\n\n/* 128bit integer */\nistream& operator>>(istream&\
+    \    x / y : (x - y + 1) / y); }\nint popcnt(i32 x) { return __builtin_popcount(x);\
+    \ }\nint popcnt(u32 x) { return __builtin_popcount(x); }\nint popcnt(i64 x) {\
+    \ return __builtin_popcountll(x); }\nint popcnt(u64 x) { return __builtin_popcountll(x);\
+    \ }\n\n#line 2 \"src/utility/rep_itr.hpp\"\ntemplate < class T > struct itr_rep\
+    \ {\n    T i, d;\n    constexpr itr_rep(const T i) noexcept : i(i), d(1) {}\n\
+    \    constexpr itr_rep(const T i, const T d) noexcept : i(i), d(d) {}\n    void\
+    \ operator++() noexcept { i += d; }\n    constexpr int operator*() const noexcept\
+    \ { return i; }\n    constexpr bool operator!=(const itr_rep x) const noexcept\
+    \ { return d > 0 ? i < x.i : i > x.i; }\n};\n\ntemplate < class T > struct rep\
+    \ {\n    const itr_rep< T > s, t;\n    constexpr rep(const T t) noexcept : s(0),\
+    \ t(t) {}\n    constexpr rep(const T s, const T t) noexcept : s(s), t(t) {}\n\
+    \    constexpr rep(const T s, const T t, const T d) noexcept : s(s, d), t(t, d)\
+    \ {}\n    constexpr auto begin() const noexcept { return s; }\n    constexpr auto\
+    \ end  () const noexcept { return t; }\n};\n\ntemplate < class T > struct revrep\
+    \ {\n    const itr_rep < T > s, t;\n    constexpr revrep(const T t) noexcept :\
+    \ s(t - 1, -1), t(-1, -1) {}\n    constexpr revrep(const T s, const T t) noexcept\
+    \ : s(t - 1, -1), t(s - 1, -1) {}\n    constexpr revrep(const T s, const T t,\
+    \ const T d) noexcept : s(t - 1, -d), t(s - 1, -d) {}\n    constexpr auto begin()\
+    \ const noexcept { return s; }\n    constexpr auto end  () const noexcept { return\
+    \ t; }\n};\n#line 2 \"src/utility/key_val.hpp\"\n\ntemplate < class K, class V\
+    \ >\nstruct key_val {\n    K key; V val;\n    key_val() {}\n    key_val(K key,\
+    \ V val) : key(key), val(val) {}\n    template < std::size_t Index >\n    std::tuple_element_t<\
+    \ Index, key_val >& get() {\n        if constexpr (Index == 0) return key;\n \
+    \       if constexpr (Index == 1) return val;\n    }\n};\n\nnamespace std {\n\n\
+    template < class K, class V > struct tuple_size < key_val< K, V > > : integral_constant<\
+    \ size_t, 2 > {};\ntemplate < class K, class V > struct tuple_element < 0, key_val<\
+    \ K, V > > { using type = K; };\ntemplate < class K, class V > struct tuple_element\
+    \ < 1, key_val< K, V > > { using type = V; };\n\n}\n#line 2 \"src/utility/vec_op.hpp\"\
+    \ntemplate < class T > key_val< int, T > max_of(const vector< T >& a) {\n    int\
+    \ i = std::max_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
+    }\ntemplate < class T > key_val< int, T > min_of(const vector< T >& a) {\n   \
+    \ int i = std::min_element(a.begin(), a.end()) - a.begin();\n    return {i, a[i]};\n\
+    }\ntemplate < class S, class T > S sum_of(const vector< T >& a) {\n    S sum =\
+    \ 0;\n    for(const T x : a) sum += x;\n    return sum;\n}\ntemplate < class S,\
+    \ class T > vector< S > freq_of(const vector< T >& a, T L, T R) {\n    vector<\
+    \ S > res(R - L, S(0));\n    for(const T x : a) res[x - L] += 1;\n    return res;\n\
+    }\ntemplate < class S, class T > struct prefix_sum {\n    vector< S > s;\n   \
+    \ prefix_sum(const vector< T >& a) : s(a) {\n        s.insert(s.begin(), S(0));\n\
+    \        for(int i : rep(a.size())) s[i + 1] += s[i];\n    }\n    // [L, R)\n\
+    \    S sum(int L, int R) { return s[R] - s[L]; }\n};\n#line 3 \"src/utility/heap.hpp\"\
+    \n\ntemplate < class T > using heap_min = std::priority_queue< T, std::vector<\
+    \ T >, std::greater< T > >;\ntemplate < class T > using heap_max = std::priority_queue<\
+    \ T, std::vector< T >, std::less< T > >;\n\n#line 27 \"src/cp-template.hpp\"\n\
+    \n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate < class T, class F >\nT bin_search(T\
+    \ ok, T ng, F& f) {\n    while(abs(ok - ng) > 1) {\n        T mid = (ok + ng)\
+    \ / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate\
+    \ < class T, class F >\nT bin_search_real(T ok, T ng, F& f, int step = 80) {\n\
+    \    while(step--) {\n        T mid = (ok + ng) / 2;\n        (f(mid) ? ok : ng)\
+    \ = mid;\n    }\n    return ok;\n}\n#line 2 \"src/algorithm/argsort.hpp\"\n\n\
+    template < class T > std::vector< int > argsort(const std::vector< T > &a) {\n\
+    \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
+    \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
+    \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
+    \ 3 \"src/utility/io.hpp\"\n\n/* 128bit integer */\nistream& operator>>(istream&\
     \ is, i128& x) {\n    std::string s; is >> s;\n    int pm = (s[0] == '-');\n \
     \   x = 0;\n    for(int i : rep(pm, int(s.size()))) x = x * 10 + (s[i] - '0');\n\
     \    if(pm) x *= -1;\n    return is;\n}\nostream& operator<<(ostream& os, const\
@@ -559,6 +580,9 @@ data:
   - src/data_structure/heap_rich.hpp
   - src/cp-template.hpp
   - src/geometry/convex_hull.hpp
+  - src/graph/clique.hpp
+  - src/graph/maximum_independent_set.hpp
+  - src/graph/chromatic_number.hpp
   - src/graph/tree/dp_on_tree.hpp
   - src/graph/tree/rerooting.hpp
   - src/graph/tree/tree_isomorphism.hpp
@@ -577,7 +601,7 @@ data:
   - src/matrix/matrix-tree.hpp
   - src/matrix/lgv.hpp
   - src/matrix/linear_equation.hpp
-  timestamp: '2023-11-01 09:21:37+09:00'
+  timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/aoj/data_structure/range_update_range_min.test.cpp
@@ -639,10 +663,13 @@ data:
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
   - verify/library_checker/graph/enumerate_triangles.test.cpp
+  - verify/library_checker/graph/chromatic_number.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/graph/maximum_independent_set.test.cpp
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/graph/enumerate_cliques.test.cpp
   - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/matrix/linear_equation.test.cpp
   - verify/library_checker/matrix/determinant.test.cpp

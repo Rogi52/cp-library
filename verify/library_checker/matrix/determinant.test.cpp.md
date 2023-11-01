@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -51,8 +51,11 @@ data:
     \ T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return false;\
     \ }\ntemplate < class T, class U > T ceil (T x, U y) { return (x > 0 ? (x + y\
     \ - 1) / y :           x / y); }\ntemplate < class T, class U > T floor(T x, U\
-    \ y) { return (x > 0 ?           x / y : (x - y + 1) / y); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\
-    \ntemplate < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const\
+    \ y) { return (x > 0 ?           x / y : (x - y + 1) / y); }\nint popcnt(i32 x)\
+    \ { return __builtin_popcount(x); }\nint popcnt(u32 x) { return __builtin_popcount(x);\
+    \ }\nint popcnt(i64 x) { return __builtin_popcountll(x); }\nint popcnt(u64 x)\
+    \ { return __builtin_popcountll(x); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\n\
+    template < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const\
     \ T i) noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
     \ : i(i), d(d) {}\n    void operator++() noexcept { i += d; }\n    constexpr int\
     \ operator*() const noexcept { return i; }\n    constexpr bool operator!=(const\
@@ -120,7 +123,7 @@ data:
     \    S sum(int L, int R) { return s[R] - s[L]; }\n};\n#line 3 \"src/utility/heap.hpp\"\
     \n\ntemplate < class T > using heap_min = std::priority_queue< T, std::vector<\
     \ T >, std::greater< T > >;\ntemplate < class T > using heap_max = std::priority_queue<\
-    \ T, std::vector< T >, std::less< T > >;\n\n#line 23 \"src/cp-template.hpp\"\n\
+    \ T, std::vector< T >, std::less< T > >;\n\n#line 27 \"src/cp-template.hpp\"\n\
     \n#line 1 \"src/algorithm/bin_search.hpp\"\ntemplate < class T, class F >\nT bin_search(T\
     \ ok, T ng, F& f) {\n    while(abs(ok - ng) > 1) {\n        T mid = (ok + ng)\
     \ / 2;\n        (f(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate\
@@ -251,8 +254,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/matrix/determinant.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 09:21:37+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/determinant.test.cpp
 layout: document

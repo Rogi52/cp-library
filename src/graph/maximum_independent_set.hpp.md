@@ -25,23 +25,14 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/graph/tree/tree_isomorphism.hpp
-    title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
-    path: src/string/rolling_hash.hpp
-    title: Rolling Hash
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-    title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
-    path: verify/library_checker/string/rolling_hash.test.cpp
-    title: verify/library_checker/string/rolling_hash.test.cpp
-  _isVerificationFailed: true
+    path: verify/library_checker/graph/maximum_independent_set.test.cpp
+    title: verify/library_checker/graph/maximum_independent_set.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -136,62 +127,36 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 3 \"src/utility/hash.hpp\"\n\ntemplate < int num_of_mod = 2 >\nstruct hash_vector\
-    \ : public array<ll, num_of_mod> {\n    static constexpr ll MODS[] = {999999937,\
-    \ 1000000007, 1000000009, 1000000021};\n    static_assert(1 <= num_of_mod and\
-    \ num_of_mod <= 4);\n    using array<ll, num_of_mod>::operator[];\n    using H\
-    \ = hash_vector;\n    static constexpr int n = num_of_mod;\n    hash_vector()\
-    \ : array<ll,n>() {}\n    hash_vector(ll x) : H() { for(int i : rep(n)) (*this)[i]\
-    \ = x % MODS[i]; }\n    H& operator+=(const H& rhs) { for(int i : rep(n)) if(((*this)[i]\
-    \ += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ H& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i])\
-    \ (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const H& rhs) { for(int\
-    \ i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n  \
-    \  H& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i])\
-    \ >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >=\
-    \ MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const ll\
-    \ rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i];\
-    \ return *this; }\n    H operator+(const H& rhs) const { return H(*this) += rhs;\
-    \ }\n    H operator-(const H& rhs) const { return H(*this) -= rhs; }\n    H operator*(const\
-    \ H& rhs) const { return H(*this) *= rhs; }\n    H operator+(const ll rhs) const\
-    \ { return H(*this) += rhs; }\n    H operator-(const ll rhs) const { return H(*this)\
-    \ -= rhs; }\n    H operator*(const ll rhs) const { return H(*this) *= rhs; }\n\
-    \    H operator-() const { return H().fill(0) - *this; }\n    friend H operator+(ll\
-    \ x, const H& y) { return H(x) + y; }\n    friend H operator-(ll x, const H& y)\
-    \ { return H(x) + y; }\n    friend H operator*(ll x, const H& y) { return H(x)\
-    \ * y; }\n    bool operator==(const H& rhs) { for(int i : rep(n)) if((*this)[i]\
-    \ != rhs[i]) return false; return true ; }\n    bool operator!=(const H& rhs)\
-    \ { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }\n\
-    };\n"
-  code: "#pragma once\n#include \"../../src/cp-template.hpp\"\n\ntemplate < int num_of_mod\
-    \ = 2 >\nstruct hash_vector : public array<ll, num_of_mod> {\n    static constexpr\
-    \ ll MODS[] = {999999937, 1000000007, 1000000009, 1000000021};\n    static_assert(1\
-    \ <= num_of_mod and num_of_mod <= 4);\n    using array<ll, num_of_mod>::operator[];\n\
-    \    using H = hash_vector;\n    static constexpr int n = num_of_mod;\n    hash_vector()\
-    \ : array<ll,n>() {}\n    hash_vector(ll x) : H() { for(int i : rep(n)) (*this)[i]\
-    \ = x % MODS[i]; }\n    H& operator+=(const H& rhs) { for(int i : rep(n)) if(((*this)[i]\
-    \ += rhs[i]) >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ H& rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs[i]) >= MODS[i])\
-    \ (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const H& rhs) { for(int\
-    \ i : rep(n)) (*this)[i] = (*this)[i] * rhs[i] % MODS[i]; return *this; }\n  \
-    \  H& operator+=(const ll rhs) { for(int i : rep(n)) if(((*this)[i] += rhs % MODS[i])\
-    \ >= MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator-=(const\
-    \ ll rhs) { for(int i : rep(n)) if(((*this)[i] += MODS[i] - rhs % MODS[i]) >=\
-    \ MODS[i]) (*this)[i] -= MODS[i]; return *this; }\n    H& operator*=(const ll\
-    \ rhs) { for(int i : rep(n)) (*this)[i] = (*this)[i] * (rhs % MODS[i]) % MODS[i];\
-    \ return *this; }\n    H operator+(const H& rhs) const { return H(*this) += rhs;\
-    \ }\n    H operator-(const H& rhs) const { return H(*this) -= rhs; }\n    H operator*(const\
-    \ H& rhs) const { return H(*this) *= rhs; }\n    H operator+(const ll rhs) const\
-    \ { return H(*this) += rhs; }\n    H operator-(const ll rhs) const { return H(*this)\
-    \ -= rhs; }\n    H operator*(const ll rhs) const { return H(*this) *= rhs; }\n\
-    \    H operator-() const { return H().fill(0) - *this; }\n    friend H operator+(ll\
-    \ x, const H& y) { return H(x) + y; }\n    friend H operator-(ll x, const H& y)\
-    \ { return H(x) + y; }\n    friend H operator*(ll x, const H& y) { return H(x)\
-    \ * y; }\n    bool operator==(const H& rhs) { for(int i : rep(n)) if((*this)[i]\
-    \ != rhs[i]) return false; return true ; }\n    bool operator!=(const H& rhs)\
-    \ { for(int i : rep(n)) if((*this)[i] != rhs[i]) return true ; return false; }\n\
-    };\n"
+    \ 2 \"src/graph/maximum_independent_set.hpp\"\n\nstd::vector<int> maximum_independent_set(const\
+    \ std::vector<std::vector<int>>& g) {\n    int N = g.size();\n    assert(N <=\
+    \ 64);\n    std::vector<u64> h(N);\n    for(int i : rep(N)) for(int j : rep(N))\
+    \ if(g[i][j]) h[i] |= u64(1) << j;\n\n    std::function<u64(u64)> dfs = [&](u64\
+    \ S) -> u64 {\n        u64 now = 0;\n        int v, d, ok;\n        do {\n   \
+    \         v = -1, d = -1, ok = 0;\n            for(int i : rep(N)) if(S & (u64(1)\
+    \ << i)) {\n                int c = popcnt(h[i] & S);\n                if(chmax(d,\
+    \ c)) v = i;\n                if(c <= 1) {\n                    S &= ~(h[i] |\
+    \ (u64(1) << i));\n                    now |= u64(1) << i;\n                 \
+    \   ok = 1;\n                }\n            }\n        } while(ok);\n        if(S\
+    \ == 0) return now;\n        S &= ~(u64(1) << v);\n        u64 x = now | dfs(S);\n\
+    \        u64 y = now | dfs(S & ~h[v]) | (u64(1) << v);\n        return (popcnt(x)\
+    \ > popcnt(y) ? x : y);\n    };\n\n    u64 S = 0;\n    for(int i : rep(N)) S |=\
+    \ u64(1) << i;\n    S = dfs(S);\n    std::vector<int> ans;\n    for(int i : rep(N))\
+    \ if(S & (u64(1) << i)) ans.push_back(i);\n    return ans;\n}\n"
+  code: "#include \"../../src/cp-template.hpp\"\n\nstd::vector<int> maximum_independent_set(const\
+    \ std::vector<std::vector<int>>& g) {\n    int N = g.size();\n    assert(N <=\
+    \ 64);\n    std::vector<u64> h(N);\n    for(int i : rep(N)) for(int j : rep(N))\
+    \ if(g[i][j]) h[i] |= u64(1) << j;\n\n    std::function<u64(u64)> dfs = [&](u64\
+    \ S) -> u64 {\n        u64 now = 0;\n        int v, d, ok;\n        do {\n   \
+    \         v = -1, d = -1, ok = 0;\n            for(int i : rep(N)) if(S & (u64(1)\
+    \ << i)) {\n                int c = popcnt(h[i] & S);\n                if(chmax(d,\
+    \ c)) v = i;\n                if(c <= 1) {\n                    S &= ~(h[i] |\
+    \ (u64(1) << i));\n                    now |= u64(1) << i;\n                 \
+    \   ok = 1;\n                }\n            }\n        } while(ok);\n        if(S\
+    \ == 0) return now;\n        S &= ~(u64(1) << v);\n        u64 x = now | dfs(S);\n\
+    \        u64 y = now | dfs(S & ~h[v]) | (u64(1) << v);\n        return (popcnt(x)\
+    \ > popcnt(y) ? x : y);\n    };\n\n    u64 S = 0;\n    for(int i : rep(N)) S |=\
+    \ u64(1) << i;\n    S = dfs(S);\n    std::vector<int> ans;\n    for(int i : rep(N))\
+    \ if(S & (u64(1) << i)) ans.push_back(i);\n    return ans;\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -202,19 +167,16 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   isVerificationFile: false
-  path: src/utility/hash.hpp
-  requiredBy:
-  - src/string/rolling_hash.hpp
-  - src/graph/tree/tree_isomorphism.hpp
+  path: src/graph/maximum_independent_set.hpp
+  requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/string/rolling_hash.test.cpp
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-documentation_of: src/utility/hash.hpp
+  - verify/library_checker/graph/maximum_independent_set.test.cpp
+documentation_of: src/graph/maximum_independent_set.hpp
 layout: document
 redirect_from:
-- /library/src/utility/hash.hpp
-- /library/src/utility/hash.hpp.html
-title: src/utility/hash.hpp
+- /library/src/graph/maximum_independent_set.hpp
+- /library/src/graph/maximum_independent_set.hpp.html
+title: src/graph/maximum_independent_set.hpp
 ---
