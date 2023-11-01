@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':question:'

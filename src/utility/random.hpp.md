@@ -29,22 +29,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':x:'
@@ -63,34 +63,34 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv.test.cpp
     title: verify/library_checker/number/fps_inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log.test.cpp
     title: verify/library_checker/number/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
   - icon: ':x:'

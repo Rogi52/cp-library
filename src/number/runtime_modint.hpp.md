@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: verify/library_checker/number/montmort.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/number/runtime_modint.hpp\"\nstruct runtime_modint {\n\
@@ -81,7 +81,7 @@ data:
   path: src/number/runtime_modint.hpp
   requiredBy: []
   timestamp: '2023-10-24 23:33:31+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
   - verify/library_checker/number/montmort.test.cpp

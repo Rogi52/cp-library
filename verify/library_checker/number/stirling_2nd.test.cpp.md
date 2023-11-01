@@ -10,25 +10,25 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':question:'

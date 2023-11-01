@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':question:'
@@ -36,9 +36,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations
@@ -286,7 +286,7 @@ data:
   path: verify/library_checker/matrix/linear_equation.test.cpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/linear_equation.test.cpp
 layout: document
