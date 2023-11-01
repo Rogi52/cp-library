@@ -11,7 +11,7 @@ istream& operator>>(istream& is, i128& x) {
     return is;
 }
 ostream& operator<<(ostream& os, const i128& x) {
-    if(x == 0) return os << x;
+    if(x == 0) return os << '0';
     i128 y = x;
     if(y < 0) {
         os << '-';
