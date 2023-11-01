@@ -14,6 +14,10 @@ template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } r
 template < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return true; } return false; }
 template < class T, class U > T ceil (T x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y); }
 template < class T, class U > T floor(T x, U y) { return (x > 0 ?           x / y : (x - y + 1) / y); }
+int popcnt(i32 x) { return __builtin_popcount(x); }
+int popcnt(u32 x) { return __builtin_popcount(x); }
+int popcnt(i64 x) { return __builtin_popcountll(x); }
+int popcnt(u64 x) { return __builtin_popcountll(x); }
 
 #include "./utility/rep_itr.hpp"
 #include "./utility/io.hpp"
