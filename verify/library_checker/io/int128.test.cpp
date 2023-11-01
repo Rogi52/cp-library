@@ -8,4 +8,5 @@ int main() {
         i128 A = in(), B = in();
         print(A + B);
     }
+    return 0;
 }
