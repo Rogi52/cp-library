@@ -36,5 +36,11 @@
 "verify/library_checker/matrix/product.test.cpp": "2023-10-28 05:38:28 +0900",
 "verify/library_checker/number/bernoulli.test.cpp": "2023-10-28 05:38:28 +0900",
 "verify/library_checker/number/binom_coeff_prime_mod.test.cpp": "2023-10-28 05:38:28 +0900",
-"verify/library_checker/number/factorize.test.cpp": "2023-10-28 05:38:28 +0900"
+"verify/library_checker/number/factorize.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_composition.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_exp.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_exp_sparse.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_inv.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_inv_sparse.test.cpp": "2023-10-28 05:38:28 +0900",
+"verify/library_checker/number/fps_log.test.cpp": "2023-10-28 05:38:28 +0900"
 }
