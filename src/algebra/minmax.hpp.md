@@ -76,8 +76,8 @@ data:
     \ */\nistream& operator>>(istream& is, i128& x) {\n    std::string s; is >> s;\n\
     \    int pm = (s[0] == '-');\n    x = 0;\n    for(int i : rep(pm, int(s.size())))\
     \ x = x * 10 + (s[i] - '0');\n    if(pm) x *= -1;\n    return is;\n}\nostream&\
-    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << x;\n \
-    \   i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
+    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << '0';\n\
+    \    i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
     \    std::vector<int> ny;\n    while(y > 0) {\n        ny.push_back(y % 10);\n\
     \        y /= 10;\n    }\n    for(int i : revrep(ny.size())) os << ny[i];\n  \
     \  return os;\n}\n\nnamespace scanner {\n    struct sca {\n        template <\
@@ -166,7 +166,7 @@ data:
   requiredBy:
   - src/algebra/range_add_range_minmax.hpp
   - src/algebra/range_update_range_minmax.hpp
-  timestamp: '2023-10-28 05:38:28+09:00'
+  timestamp: '2023-11-01 09:21:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aoj/data_structure/range_update_range_min.test.cpp

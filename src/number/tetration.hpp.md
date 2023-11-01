@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':question:'
@@ -25,7 +25,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'
@@ -73,8 +73,8 @@ data:
     \ */\nistream& operator>>(istream& is, i128& x) {\n    std::string s; is >> s;\n\
     \    int pm = (s[0] == '-');\n    x = 0;\n    for(int i : rep(pm, int(s.size())))\
     \ x = x * 10 + (s[i] - '0');\n    if(pm) x *= -1;\n    return is;\n}\nostream&\
-    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << x;\n \
-    \   i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
+    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << '0';\n\
+    \    i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
     \    std::vector<int> ny;\n    while(y > 0) {\n        ny.push_back(y % 10);\n\
     \        y /= 10;\n    }\n    for(int i : revrep(ny.size())) os << ny[i];\n  \
     \  return os;\n}\n\nnamespace scanner {\n    struct sca {\n        template <\
@@ -219,7 +219,7 @@ data:
   isVerificationFile: false
   path: src/number/tetration.hpp
   requiredBy: []
-  timestamp: '2023-10-28 05:38:28+09:00'
+  timestamp: '2023-11-01 09:21:37+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/number/tetration.test.cpp

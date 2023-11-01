@@ -29,28 +29,28 @@ data:
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -82,8 +82,8 @@ data:
     \ */\nistream& operator>>(istream& is, i128& x) {\n    std::string s; is >> s;\n\
     \    int pm = (s[0] == '-');\n    x = 0;\n    for(int i : rep(pm, int(s.size())))\
     \ x = x * 10 + (s[i] - '0');\n    if(pm) x *= -1;\n    return is;\n}\nostream&\
-    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << x;\n \
-    \   i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
+    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << '0';\n\
+    \    i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
     \    std::vector<int> ny;\n    while(y > 0) {\n        ny.push_back(y % 10);\n\
     \        y /= 10;\n    }\n    for(int i : revrep(ny.size())) os << ny[i];\n  \
     \  return os;\n}\n\nnamespace scanner {\n    struct sca {\n        template <\
@@ -294,8 +294,8 @@ data:
   - src/matrix/matrix-tree.hpp
   - src/matrix/lgv.hpp
   - src/matrix/linear_equation.hpp
-  timestamp: '2023-10-28 05:38:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-11-01 09:21:37+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/matrix/linear_equation.test.cpp

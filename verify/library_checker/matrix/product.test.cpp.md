@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -71,8 +71,8 @@ data:
     \ */\nistream& operator>>(istream& is, i128& x) {\n    std::string s; is >> s;\n\
     \    int pm = (s[0] == '-');\n    x = 0;\n    for(int i : rep(pm, int(s.size())))\
     \ x = x * 10 + (s[i] - '0');\n    if(pm) x *= -1;\n    return is;\n}\nostream&\
-    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << x;\n \
-    \   i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
+    \ operator<<(ostream& os, const i128& x) {\n    if(x == 0) return os << '0';\n\
+    \    i128 y = x;\n    if(y < 0) {\n        os << '-';\n        y *= -1;\n    }\n\
     \    std::vector<int> ny;\n    while(y > 0) {\n        ny.push_back(y % 10);\n\
     \        y /= 10;\n    }\n    for(int i : revrep(ny.size())) os << ny[i];\n  \
     \  return os;\n}\n\nnamespace scanner {\n    struct sca {\n        template <\
@@ -255,8 +255,8 @@ data:
   isVerificationFile: true
   path: verify/library_checker/matrix/product.test.cpp
   requiredBy: []
-  timestamp: '2023-10-28 05:38:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-11-01 09:21:37+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/matrix/product.test.cpp
 layout: document
