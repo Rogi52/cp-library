@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':question:'
@@ -22,10 +22,10 @@ data:
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':question:'
@@ -51,21 +51,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/montmort.test.cpp
     title: verify/library_checker/number/montmort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/partition.test.cpp
     title: verify/library_checker/number/partition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_1st.test.cpp
     title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_2nd.test.cpp
     title: verify/library_checker/number/stirling_2nd.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -456,13 +456,13 @@ data:
   path: src/number/famous_number.hpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/number/stirling_2nd.test.cpp
-  - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
   - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/stirling_2nd.test.cpp
 documentation_of: src/number/famous_number.hpp
 layout: document
 redirect_from:

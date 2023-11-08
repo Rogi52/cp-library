@@ -11,14 +11,8 @@ data:
     path: src/cp-template.hpp
     title: src/cp-template.hpp
   - icon: ':x:'
-    path: src/graph/tree/rerooting.hpp
-    title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
     path: src/graph/tree/tree.hpp
     title: src/graph/tree/tree.hpp
-  - icon: ':question:'
-    path: src/number/modint.hpp
-    title: modint
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -41,22 +35,22 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
+    PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
-    - https://judge.yosupo.jp/problem/tree_path_composite_sum
-  bundledCode: "#line 1 \"verify/library_checker/graph/tree/rerooting.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\n\n\
-    #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
-    \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
-    \ i64 = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\n\
-    template < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; }\
-    \ return false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a\
-    \ = b; return true; } return false; }\ntemplate < class T, class U > T ceil (T\
-    \ x, U y) { return (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate <\
-    \ class T, class U > T floor(T x, U y) { return (x > 0 ?           x / y : (x\
-    \ - y + 1) / y); }\nint popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32\
-    \ x) { return __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
+    - https://judge.yosupo.jp/problem/tree_diameter
+  bundledCode: "#line 1 \"verify/library_checker/graph/tree/diameter.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#line 2 \"\
+    src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
+    \ = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing ull\
+    \  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing i64\
+    \ = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\ntemplate\
+    \ < class T > bool chmin(T& a, T b) { if(a > b) { a = b; return true; } return\
+    \ false; }\ntemplate < class T > bool chmax(T& a, T b) { if(a < b) { a = b; return\
+    \ true; } return false; }\ntemplate < class T, class U > T ceil (T x, U y) { return\
+    \ (x > 0 ? (x + y - 1) / y :           x / y); }\ntemplate < class T, class U\
+    \ > T floor(T x, U y) { return (x > 0 ?           x / y : (x - y + 1) / y); }\n\
+    int popcnt(i32 x) { return __builtin_popcount(x); }\nint popcnt(u32 x) { return\
+    \ __builtin_popcount(x); }\nint popcnt(i64 x) { return __builtin_popcountll(x);\
     \ }\nint popcnt(u64 x) { return __builtin_popcountll(x); }\n\n#line 2 \"src/utility/rep_itr.hpp\"\
     \ntemplate < class T > struct itr_rep {\n    T i, d;\n    constexpr itr_rep(const\
     \ T i) noexcept : i(i), d(1) {}\n    constexpr itr_rep(const T i, const T d) noexcept\
@@ -207,97 +201,19 @@ data:
     \ -= depth[u] - depth[x];\n        if(d <= depth[v] - depth[x]) return la(v, depth[v]\
     \ - depth[x] - d);\n        return -1;\n    }\n    int in_subtree(int r, int v)\
     \ {\n        return down[v] < down[r] and up[r] <= up[v];\n    }\n};\n\n#line\
-    \ 3 \"src/graph/tree/rerooting.hpp\"\n\ntemplate < class S, class TREE, class\
-    \ EE, class EV, class VP, class I >\nstruct dp_on_tree {\n    TREE& tree;\n  \
-    \  \n    std::vector< S > dp, dp_rev, answer;\n    std::vector<std::vector< S\
-    \ >> dp_sub;\n    EE f_ee;\n    EV f_ev;\n    VP f_vp;\n    I id;\n    int root;\n\
-    \    dp_on_tree(TREE& tree, const EE f_ee, const EV f_ev, const VP f_vp, const\
-    \ I id) : tree(tree), f_ee(f_ee), f_ev(f_ev), f_vp(f_vp), id(id) {}\n    \n  \
-    \  void solve(int root) {\n        this->root = root;\n        dp.assign(tree.n,\
-    \ id());\n        dp_sub.resize(tree.n);\n        for(int v : rep(tree.n)) dp_sub[v].resize(tree.g_org[v].size());\n\
-    \        std::function<S(int,int)> dfs = [&](int v, int p) -> S {\n          \
-    \  for(int i : rep(tree.g_org[v].size())) {\n                auto e = tree.g_org[v][i];\n\
-    \                if(e.to != p) {\n                    dp_sub[v][i] = dfs(e.to,\
-    \ v);\n                    dp[v] = f_ee(dp[v], f_ev(dp_sub[v][i], e.id));\n  \
-    \              }\n            }\n            return dp[v] = f_vp(dp[v], v);\n\
-    \        }; dfs(root, -1);\n    }\n\n    void reroot() {\n        tree.heavy_light_decomposition(root);\n\
-    \        auto g = tree.g_org;\n        dp_rev.assign(tree.n, id());\n        std::function<void(int,int,S)>\
-    \ dfs = [&](int v, int p, S s) -> void {\n            for(int i : rep(g[v].size()))\
-    \ {\n                auto e = g[v][i];\n                if(e.to == p) dp_sub[v][i]\
-    \ = s;\n            }\n            std::vector< S > R(g[v].size() + 1u);\n   \
-    \         R[g[v].size()] = id();\n            for(int i : revrep(g[v].size()))\
-    \ {\n                auto e = g[v][i];\n                R[i] = f_ee(R[i + 1],\
-    \ f_ev(dp_sub[v][i], e.id));\n            }\n            S L = id();\n       \
-    \     for(int i : rep(g[v].size())) {\n                auto e = g[v][i];\n   \
-    \             if(e.to != p) {\n                    dfs(e.to, v, f_vp(f_ee(L, R[i\
-    \ + 1]), v));\n                }\n                dp_rev[e.to] = f_vp(f_ee(L,\
-    \ R[i + 1]), v);\n                L = f_ee(L, f_ev(dp_sub[v][i], e.id));\n   \
-    \         }\n        }; dfs(root, -1, id());\n        \n        answer.assign(tree.n,\
-    \ id());\n        for(int v : rep(tree.n)) {\n            for(int i : rep(g[v].size()))\
-    \ {\n                auto e = g[v][i];\n                answer[v] = f_ee(answer[v],\
-    \ f_ev(dp_sub[v][i], e.id));\n            }\n            answer[v] = f_vp(answer[v],\
-    \ v);\n        }\n    }\n\n    S get(int root, int v) {\n        if(root == v)\
-    \ return answer[v];\n        if(not tree.in_subtree(root, v)) return dp[v];\n\
-    \        return dp_rev[tree.jump(v, root, 1)];\n    }\n};\n#line 2 \"src/number/modint.hpp\"\
-    \nstruct modinfo { uint mod, root, isprime; };\ntemplate < modinfo const &ref\
-    \ >\nstruct modint {\n    static constexpr uint const &mod = ref.mod;\n    static\
-    \ constexpr uint const &root = ref.root;\n    static constexpr uint const &isprime\
-    \ = ref.isprime;\n    uint v = 0;\n    constexpr modint& s(uint v) { this->v =\
-    \ v < mod ? v : v - mod; return *this; }\n    constexpr modint(ll v = 0) { s(v\
-    \ % mod + mod); }\n    modint operator-() const { return modint() - *this; }\n\
-    \    modint& operator+=(const modint& rhs) { return s(v + rhs.v); }\n    modint&\
-    \ operator-=(const modint& rhs) { return s(v + mod - rhs.v); }\n    modint& operator*=(const\
-    \ modint& rhs) { v = ull(v) * rhs.v % mod; return *this; }\n    modint& operator/=(const\
-    \ modint& rhs) { return *this *= inv(rhs); }\n    modint operator+(const modint&\
-    \ rhs) const { return modint(*this) += rhs; }\n    modint operator-(const modint&\
-    \ rhs) const { return modint(*this) -= rhs; }\n    modint operator*(const modint&\
-    \ rhs) const { return modint(*this) *= rhs; }\n    modint operator/(const modint&\
-    \ rhs) const { return modint(*this) /= rhs; }\n    friend modint pow(modint x,\
-    \ ll n) { modint res(1); while(n > 0) { if(n & 1) res *= x; x *= x; n >>= 1; }\
-    \ return res; }\n    friend modint inv(modint v) {\n        if(isprime) {\n  \
-    \          return pow(v, mod - 2);\n        } else {\n            ll a = v.v,\
-    \ b = modint::mod, x = 1, y = 0, t;\n            while(b > 0) { t = a / b; swap(a\
-    \ -= t * b, b); swap(x -= t * y, y); }\n            return modint(x);\n      \
-    \  }\n    }\n    friend modint operator+(int x, const modint& y) { return modint(x)\
-    \ + y; }\n    friend modint operator-(int x, const modint& y) { return modint(x)\
-    \ - y; }\n    friend modint operator*(int x, const modint& y) { return modint(x)\
-    \ * y; }\n    friend modint operator/(int x, const modint& y) { return modint(x)\
-    \ / y; }\n    friend istream& operator>>(istream& is, modint& m) { ll x; is >>\
-    \ x; m = modint(x); return is; }\n    friend ostream& operator<<(ostream& os,\
-    \ const modint& m) { return os << m.v; }\n    bool operator==(const modint& r)\
-    \ const { return v == r.v; }\n    bool operator!=(const modint& r) const { return\
-    \ v != r.v; }\n    static uint get_mod() { return mod; }\n    static int is_prime()\
-    \ { return isprime; }\n};\nconstexpr modinfo base998244353 { 998244353, 3, 1 };\n\
-    constexpr modinfo base1000000007 { 1000000007, 0, 1 };\nusing mint998244353 =\
-    \ modint< base998244353 >;\nusing mint1000000007 = modint< base1000000007 >;\n\
-    #line 7 \"verify/library_checker/graph/tree/rerooting.test.cpp\"\n\nint main()\
-    \ {\n    int N = in();\n    tree_graph<int> g(N);\n    using mint = mint998244353;\n\
-    \    vector<mint> a = in(N), b(N - 1), c(N - 1);\n    for(int i : rep(N - 1))\
-    \ {\n        int u = in(), v = in();\n        g.add_edge(u, v, i);\n        b[i]\
-    \ = in(), c[i] = in();\n    }\n\n    using S = pair<mint,mint>;\n    auto merge\
-    \ = [&](S x, S y) -> S {\n        return {x.first + y.first, x.second + y.second};\n\
-    \    };\n    auto fe = [&](S x, int e) -> S {\n        return {b[e] * x.first\
-    \ + c[e] * x.second, x.second};\n    };\n    auto fv = [&](S x, int v) -> S {\n\
-    \        return {x.first + a[v], x.second + 1};\n    };\n    auto id = [&]() {\n\
-    \        return S{0, 0};\n    };\n\n    dp_on_tree< S, tree_graph<int>, decltype(merge),\
-    \ decltype(fe), decltype(fv), decltype(id) > solver(g, merge, fe, fv, id);\n \
-    \   solver.solve(0);\n    solver.reroot();\n    vector<mint> ans(N);\n    for(int\
-    \ i : rep(N)) ans[i] = solver.answer[i].first;\n    print(ans);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
-    \n\n#include \"../../../../src/cp-template.hpp\"\n#include \"../../../../src/graph/tree/tree.hpp\"\
-    \n#include \"../../../../src/graph/tree/rerooting.hpp\"\n#include \"../../../../src/number/modint.hpp\"\
-    \n\nint main() {\n    int N = in();\n    tree_graph<int> g(N);\n    using mint\
-    \ = mint998244353;\n    vector<mint> a = in(N), b(N - 1), c(N - 1);\n    for(int\
-    \ i : rep(N - 1)) {\n        int u = in(), v = in();\n        g.add_edge(u, v,\
-    \ i);\n        b[i] = in(), c[i] = in();\n    }\n\n    using S = pair<mint,mint>;\n\
-    \    auto merge = [&](S x, S y) -> S {\n        return {x.first + y.first, x.second\
-    \ + y.second};\n    };\n    auto fe = [&](S x, int e) -> S {\n        return {b[e]\
-    \ * x.first + c[e] * x.second, x.second};\n    };\n    auto fv = [&](S x, int\
-    \ v) -> S {\n        return {x.first + a[v], x.second + 1};\n    };\n    auto\
-    \ id = [&]() {\n        return S{0, 0};\n    };\n\n    dp_on_tree< S, tree_graph<int>,\
-    \ decltype(merge), decltype(fe), decltype(fv), decltype(id) > solver(g, merge,\
-    \ fe, fv, id);\n    solver.solve(0);\n    solver.reroot();\n    vector<mint> ans(N);\n\
-    \    for(int i : rep(N)) ans[i] = solver.answer[i].first;\n    print(ans);\n}\n"
+    \ 5 \"verify/library_checker/graph/tree/diameter.test.cpp\"\n\nint main() {\n\
+    \    int N = in();\n    tree_graph<ll> g(N);\n    for(int i : rep(N - 1)) {\n\
+    \        int a = in(), b = in(), c = in();\n        g.add_edge(a, b, c);\n   \
+    \ }\n\n    auto [p, diameter] = g.diameter();\n    auto [u, v] = p;\n    std::vector<int>\
+    \ path = g.path(u, v);\n\n    print(diameter, path.size());\n    print(path);\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
+    \ \"../../../../src/cp-template.hpp\"\n#include \"../../../../src/graph/tree/tree.hpp\"\
+    \n\nint main() {\n    int N = in();\n    tree_graph<ll> g(N);\n    for(int i :\
+    \ rep(N - 1)) {\n        int a = in(), b = in(), c = in();\n        g.add_edge(a,\
+    \ b, c);\n    }\n\n    auto [p, diameter] = g.diameter();\n    auto [u, v] = p;\n\
+    \    std::vector<int> path = g.path(u, v);\n\n    print(diameter, path.size());\n\
+    \    print(path);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -308,18 +224,16 @@ data:
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
   - src/graph/tree/tree.hpp
-  - src/graph/tree/rerooting.hpp
-  - src/number/modint.hpp
   isVerificationFile: true
-  path: verify/library_checker/graph/tree/rerooting.test.cpp
+  path: verify/library_checker/graph/tree/diameter.test.cpp
   requiredBy: []
   timestamp: '2023-11-08 12:27:03+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/library_checker/graph/tree/rerooting.test.cpp
+documentation_of: verify/library_checker/graph/tree/diameter.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/graph/tree/rerooting.test.cpp
-- /verify/verify/library_checker/graph/tree/rerooting.test.cpp.html
-title: verify/library_checker/graph/tree/rerooting.test.cpp
+- /verify/verify/library_checker/graph/tree/diameter.test.cpp
+- /verify/verify/library_checker/graph/tree/diameter.test.cpp.html
+title: verify/library_checker/graph/tree/diameter.test.cpp
 ---

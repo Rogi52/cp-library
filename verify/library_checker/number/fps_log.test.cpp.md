@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':question:'
@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
   - icon: ':question:'

@@ -165,8 +165,8 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aoj/data_structure/range_update_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_sum.test.cpp
+  - verify/aoj/data_structure/range_update_range_sum.test.cpp
 documentation_of: src/algebra/size.hpp
 layout: document
 redirect_from:

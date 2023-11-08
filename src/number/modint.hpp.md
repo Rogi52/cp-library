@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
   _extendedVerifiedWith:
@@ -48,7 +48,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/maximum_independent_set.test.cpp
     title: verify/library_checker/graph/maximum_independent_set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,43 +90,43 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow_sparse.test.cpp
     title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt.test.cpp
     title: verify/library_checker/number/fps_sqrt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
     title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/montmort.test.cpp
     title: verify/library_checker/number/montmort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/partition.test.cpp
     title: verify/library_checker/number/partition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_1st.test.cpp
     title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_2nd.test.cpp
     title: verify/library_checker/number/stirling_2nd.test.cpp
   _isVerificationFailed: true
@@ -201,51 +201,51 @@ data:
   isVerificationFile: false
   path: src/number/modint.hpp
   requiredBy:
-  - src/number/ntt.hpp
-  - src/number/poly.hpp
   - src/number/sharp_p_subset_sum.hpp
+  - src/number/poly.hpp
   - src/number/fps.hpp
+  - src/number/ntt.hpp
   - src/number/famous_number.hpp
   - src/number/fps_sparse.hpp
   timestamp: '2023-10-24 23:33:31+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/number/stirling_2nd.test.cpp
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/lcm_convolution.test.cpp
-  - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/fps_composition.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/fps_log.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
-  - verify/library_checker/number/gcd_convolution.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
-  - verify/library_checker/number/fps_sqrt.test.cpp
-  - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
-  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
-  - verify/library_checker/number/fps_pow.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/fps_exp.test.cpp
-  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/fps_inv.test.cpp
   - verify/library_checker/algorithm/count_subseq.test.cpp
-  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/graph/enumerate_triangles.test.cpp
+  - verify/library_checker/graph/maximum_independent_set.test.cpp
+  - verify/library_checker/graph/enumerate_cliques.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/data_structure/lazy_segtree.test.cpp
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/segtree.test.cpp
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - verify/library_checker/graph/enumerate_triangles.test.cpp
-  - verify/library_checker/graph/maximum_independent_set.test.cpp
-  - verify/library_checker/graph/tree/rerooting.test.cpp
-  - verify/library_checker/graph/enumerate_cliques.test.cpp
-  - verify/library_checker/matrix/inverse.test.cpp
-  - verify/library_checker/matrix/linear_equation.test.cpp
-  - verify/library_checker/matrix/determinant.test.cpp
-  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/poly_division.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/number/fps_pow.test.cpp
+  - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_exp.test.cpp
+  - verify/library_checker/number/lcm_convolution.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
+  - verify/library_checker/number/gcd_convolution.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/stirling_2nd.test.cpp
 documentation_of: src/number/modint.hpp
 layout: document
 title: modint

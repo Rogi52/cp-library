@@ -32,7 +32,7 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/primitive_root.hpp
     title: src/number/primitive_root.hpp
   - icon: ':x:'
@@ -42,10 +42,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primitive_root.test.cpp
     title: verify/library_checker/number/primitive_root.test.cpp
   - icon: ':x:'
@@ -244,14 +244,14 @@ data:
   isVerificationFile: false
   path: src/number/prime.hpp
   requiredBy:
-  - src/number/primitive_root.hpp
   - src/number/tetration.hpp
+  - src/number/primitive_root.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/number/primality_test.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
   - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/primality_test.test.cpp
   - verify/library_checker/number/factorize.test.cpp
 documentation_of: src/number/prime.hpp
 layout: document

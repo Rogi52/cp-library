@@ -107,13 +107,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/maximum_independent_set.hpp
     title: src/graph/maximum_independent_set.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/graph/tree/tree.hpp
+    title: src/graph/tree/tree.hpp
+  - icon: ':x:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
   - icon: ':heavy_check_mark:'
@@ -131,22 +134,22 @@ data:
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':warning:'
     path: src/number/binom_table.hpp
     title: src/number/binom_table.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':x:'
@@ -155,28 +158,28 @@ data:
   - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/primitive_root.hpp
     title: src/number/primitive_root.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/stern-brocot_tree.hpp
     title: src/number/stern-brocot_tree.hpp
   - icon: ':x:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':question:'
@@ -285,10 +288,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: verify/library_checker/graph/tree/diameter.test.cpp
+    title: verify/library_checker/graph/tree/diameter.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/graph/tree/jump_on_tree.test.cpp
+    title: verify/library_checker/graph/tree/jump_on_tree.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/graph/tree/lca.test.cpp
+    title: verify/library_checker/graph/tree/lca.test.cpp
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - icon: ':heavy_check_mark:'
@@ -339,64 +351,64 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow.test.cpp
     title: verify/library_checker/number/fps_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow_sparse.test.cpp
     title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt.test.cpp
     title: verify/library_checker/number/fps_sqrt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
     title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/gcd_convolution.test.cpp
     title: verify/library_checker/number/gcd_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/lcm_convolution.test.cpp
     title: verify/library_checker/number/lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/modsqrt.test.cpp
     title: verify/library_checker/number/modsqrt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/montmort.test.cpp
     title: verify/library_checker/number/montmort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/nim_product.test.cpp
     title: verify/library_checker/number/nim_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/partition.test.cpp
     title: verify/library_checker/number/partition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primitive_root.test.cpp
     title: verify/library_checker/number/primitive_root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stern-brocot_tree.test.cpp
     title: verify/library_checker/number/stern-brocot_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_1st.test.cpp
     title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_2nd.test.cpp
     title: verify/library_checker/number/stirling_2nd.test.cpp
   - icon: ':x:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
   - icon: ':x:'
@@ -546,137 +558,141 @@ data:
   isVerificationFile: false
   path: src/utility/io.hpp
   requiredBy:
-  - src/string/rolling_hash.hpp
-  - src/number/eratosthenes.hpp
-  - src/number/nim_product.hpp
-  - src/number/gaussian_integer.hpp
-  - src/number/modfunc.hpp
-  - src/number/binom_mod.hpp
-  - src/number/poly.hpp
-  - src/number/stern-brocot_tree.hpp
-  - src/number/sharp_p_subset_sum.hpp
-  - src/number/fps.hpp
-  - src/number/binom_table.hpp
-  - src/number/primitive_root.hpp
-  - src/number/tetration.hpp
-  - src/number/famous_number.hpp
-  - src/number/prime.hpp
-  - src/number/fps_sparse.hpp
-  - src/algorithm/beam_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/algorithm/floor_sum.hpp
   - src/algorithm/selection.hpp
-  - src/data_structure/range_freq.hpp
-  - src/data_structure/static_rect_add_rect_sum.hpp
-  - src/data_structure/sliding_window_aggregation.hpp
-  - src/data_structure/point_add_rect_sum.hpp
-  - src/data_structure/wavlet_matrix.hpp
-  - src/data_structure/sparse_segtree.hpp
-  - src/data_structure/offline_multiset.hpp
-  - src/data_structure/static_point_add_rect_sum.hpp
-  - src/data_structure/fenwick_tree.hpp
-  - src/data_structure/disjoint_sparse_table.hpp
-  - src/data_structure/binary_trie.hpp
-  - src/data_structure/heap_rich.hpp
-  - src/cp-template.hpp
-  - src/geometry/convex_hull.hpp
-  - src/graph/clique.hpp
-  - src/graph/maximum_independent_set.hpp
-  - src/graph/chromatic_number.hpp
+  - src/algorithm/floor_sum.hpp
+  - src/algorithm/argsort.hpp
+  - src/algorithm/beam_search.hpp
   - src/graph/tree/dp_on_tree.hpp
   - src/graph/tree/rerooting.hpp
+  - src/graph/tree/tree.hpp
   - src/graph/tree/tree_isomorphism.hpp
   - src/graph/triangle.hpp
+  - src/graph/maximum_independent_set.hpp
+  - src/graph/clique.hpp
+  - src/graph/chromatic_number.hpp
+  - src/cp-template.hpp
   - src/algebra/size.hpp
-  - src/algebra/minmax.hpp
   - src/algebra/range_add_range_sum.hpp
-  - src/algebra/range_add_range_minmax.hpp
   - src/algebra/index.hpp
-  - src/algebra/range_update_range_sum.hpp
+  - src/algebra/minmax.hpp
   - src/algebra/range_update_range_minmax.hpp
-  - src/utility/hash.hpp
-  - src/utility/random.hpp
-  - src/utility/heap.hpp
-  - src/matrix/base.hpp
-  - src/matrix/matrix-tree.hpp
+  - src/algebra/range_add_range_minmax.hpp
+  - src/algebra/range_update_range_sum.hpp
   - src/matrix/lgv.hpp
+  - src/matrix/matrix-tree.hpp
   - src/matrix/linear_equation.hpp
+  - src/matrix/base.hpp
+  - src/utility/random.hpp
+  - src/utility/hash.hpp
+  - src/utility/heap.hpp
+  - src/data_structure/disjoint_sparse_table.hpp
+  - src/data_structure/sparse_segtree.hpp
+  - src/data_structure/heap_rich.hpp
+  - src/data_structure/offline_multiset.hpp
+  - src/data_structure/fenwick_tree.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/range_freq.hpp
+  - src/data_structure/wavlet_matrix.hpp
+  - src/data_structure/binary_trie.hpp
+  - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/static_point_add_rect_sum.hpp
+  - src/data_structure/sliding_window_aggregation.hpp
+  - src/geometry/convex_hull.hpp
+  - src/number/eratosthenes.hpp
+  - src/number/binom_mod.hpp
+  - src/number/sharp_p_subset_sum.hpp
+  - src/number/binom_table.hpp
+  - src/number/prime.hpp
+  - src/number/poly.hpp
+  - src/number/modfunc.hpp
+  - src/number/fps.hpp
+  - src/number/gaussian_integer.hpp
+  - src/number/nim_product.hpp
+  - src/number/tetration.hpp
+  - src/number/famous_number.hpp
+  - src/number/fps_sparse.hpp
+  - src/number/stern-brocot_tree.hpp
+  - src/number/primitive_root.hpp
+  - src/string/rolling_hash.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/aoj/data_structure/range_update_range_min.test.cpp
-  - verify/aoj/data_structure/binary_trie.test.cpp
-  - verify/aoj/data_structure/range_add_range_min.test.cpp
-  - verify/aoj/data_structure/min_cost_flow.test.cpp
-  - verify/aoj/data_structure/range_update_range_sum.test.cpp
-  - verify/aoj/data_structure/max_flow.test.cpp
-  - verify/aoj/data_structure/range_add_range_sum.test.cpp
-  - verify/library_checker/string/rolling_hash.test.cpp
-  - verify/library_checker/number/stirling_2nd.test.cpp
-  - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/primality_test.test.cpp
-  - verify/library_checker/number/lcm_convolution.test.cpp
-  - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/fps_composition.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/fps_log.test.cpp
-  - verify/library_checker/number/stern-brocot_tree.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
-  - verify/library_checker/number/primitive_root.test.cpp
-  - verify/library_checker/number/modsqrt.test.cpp
-  - verify/library_checker/number/gcd_convolution.test.cpp
-  - verify/library_checker/number/nim_product.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
-  - verify/library_checker/number/fps_sqrt.test.cpp
-  - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
-  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
-  - verify/library_checker/number/tetration.test.cpp
-  - verify/library_checker/number/fps_pow.test.cpp
-  - verify/library_checker/number/factorize.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/fps_exp.test.cpp
-  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/fps_inv.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/yukicoder/gaussian_integer.test.cpp
+  - verify/yukicoder/stern-brocot_tree_search.test.cpp
+  - verify/yukicoder/sparse_segtree.test.cpp
   - verify/library_checker/algorithm/lis.test.cpp
-  - verify/library_checker/io/int128.test.cpp
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/binary_trie.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/heap_rich.test.cpp
-  - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/graph/chromatic_number.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/graph/tree/jump_on_tree.test.cpp
+  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  - verify/library_checker/graph/tree/lca.test.cpp
+  - verify/library_checker/graph/tree/diameter.test.cpp
+  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
+  - verify/library_checker/graph/enumerate_triangles.test.cpp
+  - verify/library_checker/graph/maximum_independent_set.test.cpp
+  - verify/library_checker/graph/enumerate_cliques.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
   - verify/library_checker/data_structure/range_freq.test.cpp
   - verify/library_checker/data_structure/wavlet_matrix.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/heap_rich.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+  - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/union_find.test.cpp
   - verify/library_checker/geometry/angle_sort.test.cpp
-  - verify/library_checker/graph/enumerate_triangles.test.cpp
-  - verify/library_checker/graph/chromatic_number.test.cpp
-  - verify/library_checker/graph/shortest_path.test.cpp
-  - verify/library_checker/graph/maximum_independent_set.test.cpp
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - verify/library_checker/graph/tree/rerooting.test.cpp
-  - verify/library_checker/graph/enumerate_cliques.test.cpp
-  - verify/library_checker/matrix/inverse.test.cpp
-  - verify/library_checker/matrix/linear_equation.test.cpp
-  - verify/library_checker/matrix/determinant.test.cpp
-  - verify/library_checker/matrix/product.test.cpp
-  - verify/yukicoder/sparse_segtree.test.cpp
-  - verify/yukicoder/stern-brocot_tree_search.test.cpp
-  - verify/yukicoder/gaussian_integer.test.cpp
+  - verify/library_checker/io/int128.test.cpp
+  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/poly_division.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
+  - verify/library_checker/number/nim_product.test.cpp
+  - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/number/fps_pow.test.cpp
+  - verify/library_checker/number/primality_test.test.cpp
+  - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/number/stern-brocot_tree.test.cpp
+  - verify/library_checker/number/modsqrt.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_exp.test.cpp
+  - verify/library_checker/number/lcm_convolution.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
+  - verify/library_checker/number/gcd_convolution.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/stirling_2nd.test.cpp
+  - verify/library_checker/string/rolling_hash.test.cpp
+  - verify/aoj/data_structure/min_cost_flow.test.cpp
+  - verify/aoj/data_structure/binary_trie.test.cpp
+  - verify/aoj/data_structure/range_add_range_sum.test.cpp
+  - verify/aoj/data_structure/max_flow.test.cpp
+  - verify/aoj/data_structure/range_add_range_min.test.cpp
+  - verify/aoj/data_structure/range_update_range_sum.test.cpp
+  - verify/aoj/data_structure/range_update_range_min.test.cpp
 documentation_of: src/utility/io.hpp
 layout: document
 redirect_from:

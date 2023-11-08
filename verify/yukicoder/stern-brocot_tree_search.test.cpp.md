@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/stern-brocot_tree.hpp
     title: src/number/stern-brocot_tree.hpp
   - icon: ':question:'

@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   - icon: ':question:'
     path: src/number/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/ntt.hpp
     title: src/number/ntt.hpp
   - icon: ':question:'
@@ -54,15 +54,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_pow_sparse.test.cpp
     title: verify/library_checker/number/fps_pow_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
     title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -452,13 +452,13 @@ data:
   path: src/number/fps_sparse.hpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
-  - verify/library_checker/number/fps_pow_sparse.test.cpp
   - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
   - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
 documentation_of: src/number/fps_sparse.hpp
 layout: document
 redirect_from:

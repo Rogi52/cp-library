@@ -25,17 +25,11 @@ data:
   - icon: ':question:'
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/graph/tree/tree_isomorphism.hpp
-    title: src/graph/tree/tree_isomorphism.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-    title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -161,12 +155,10 @@ data:
   - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/graph/tree/dp_on_tree.hpp
-  requiredBy:
-  - src/graph/tree/tree_isomorphism.hpp
+  requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/graph/tree/dp_on_tree.hpp
 layout: document
 redirect_from:

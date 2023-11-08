@@ -10,10 +10,13 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/graph/tree/dp_on_tree.hpp
-    title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: src/graph/tree/rerooting.hpp
+    title: src/graph/tree/rerooting.hpp
+  - icon: ':x:'
+    path: src/graph/tree/tree.hpp
+    title: src/graph/tree/tree.hpp
+  - icon: ':x:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
   - icon: ':question:'
@@ -39,9 +42,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -173,41 +176,130 @@ data:
     \        mt = std::mt19937(seed);\n    }\n} gs;\n\n// [L, R)\ntemplate < class\
     \ T >\nT gen_int(T L, T R) {\n    return std::uniform_int_distribution< T >(L,\
     \ R - 1)(mt);\n}\n\ntemplate < class T >\nT get_real(T L, T R) {\n    return std::uniform_real_distribution<\
-    \ T >(L, R)(mt);\n}\n\n}\n#line 2 \"src/graph/tree/dp_on_tree.hpp\"\n\nstruct\
-    \ dp_on_tree {\n    int n;\n    std::vector< std::vector< std::pair<int, int>\
-    \ > > tree;\n    dp_on_tree(int n) : n(n), tree(n) {}\n    void add_edge(int u,\
-    \ int v, int i) {\n        tree[u].push_back({v, i});\n        tree[v].push_back({u,\
-    \ i});\n    }\n\n    template < class S, class M, class E, class V >\n    vector<\
-    \ S > solve(int root, const M& merge, const E& fe, const V& fv, const S unit)\
-    \ {\n        vector< S > dp(n);\n        function<S(int,int)> dfs = [&](int v,\
-    \ int p) -> S {\n            S res = unit;\n            for(auto [to, id] : tree[v])\
-    \ {\n                if(to != p) res = merge(res, fe(dfs(to, v), id));\n     \
-    \       }\n            return dp[v] = fv(res, v);\n        }; dfs(root, -1);\n\
-    \        return dp;\n    }\n};\n#line 5 \"src/graph/tree/tree_isomorphism.hpp\"\
-    \n\nstruct subtree_hashing {\n    int n;\n    dp_on_tree tree;\n    subtree_hashing(int\
-    \ n) : n(n), tree(n) {}\n    void add_edge(int u, int v) {\n        static int\
-    \ i = 0;\n        tree.add_edge(u, v, i++);\n    }\n\n    template < int num_of_mod\
-    \ >\n    std::pair< int, std::vector<int> > solve(int root) {\n        using hv\
-    \ = hash_vector< num_of_mod >;\n        std::vector< hv > h(n);\n        for(int\
-    \ i : rep(n)) h[i] = hv(randnum::gen_int<int>(0, hv::MODS[0]));\n\n        using\
-    \ S = std::pair< hv, int >;\n        vector< S > dp = tree.solve(\n          \
-    \  root,\n            [&](S a, S b) { return S{a.first * b.first, std::max(a.second,\
-    \ b.second + 1)}; },\n            [&](S a, int i) { return a; },\n           \
-    \ [&](S a, int i) { return S{a.first + h[a.second], a.second}; },\n          \
-    \  S{hv(1), 0}\n        );\n\n        vector< S > key = dp;\n        std::sort(key.begin(),\
-    \ key.end());\n        key.erase(std::unique(key.begin(), key.end()), key.end());\n\
-    \        vector<int> id(n);\n        for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
-    \ key.end(), dp[i]) - key.begin();\n        return {key.size(), id};\n    }\n\
-    };\n#line 7 \"verify/library_checker/graph/tree/tree_isomorphism.test.cpp\"\n\n\
-    int main() {\n    int N = in();\n    subtree_hashing g(N);\n    for(int i : rep(1,\
-    \ N)) {\n        int p = in();\n        g.add_edge(p, i);\n    }\n\n    auto [K,\
-    \ ans] = g.solve< 2 >(0);\n    print(K);\n    print(ans);\n}\n"
+    \ T >(L, R)(mt);\n}\n\n}\n#line 3 \"src/graph/tree/tree.hpp\"\n\ntemplate < class\
+    \ T >\nstruct tree_graph {\n    int n;\n    struct edge {\n        int from, to,\
+    \ id; T cost;\n    };\n    std::vector<std::vector< edge >> g, g_org;\n    tree_graph(int\
+    \ n) : n(n), g(n), g_org(n) {}\n\n    void add_edge(int u, int v, int i = 0, T\
+    \ c = 1) {\n        g[u].push_back(edge{u, v, i, c});\n        g[v].push_back(edge{v,\
+    \ u, i, c});\n        g_org[u].push_back(edge{u, v, i, c});\n        g_org[v].push_back(edge{v,\
+    \ u, i, c});\n    }\n\n    std::pair< std::pair<int,int>, T > diameter() {\n \
+    \       std::vector< T > dist(n);\n        std::function<void(int,int)> dfs =\
+    \ [&](int v, int p) -> void {\n            for(auto [to, c] : g[v]) if(to != p)\
+    \ {\n                dist[to] = dist[v] + c;\n                dfs(to, v);\n  \
+    \          }\n        };\n        dist[0] = 0; dfs(0, -1);\n        int u = max_of(dist).key;\n\
+    \        dist[u] = 0; dfs(u, -1);\n        auto [v, d] = max_of(dist);\n     \
+    \   return {{u, v}, d};\n    }\n\n    std::vector<int> path(int u, int v) {\n\
+    \        std::vector<int> parent(n, -1);\n        std::function<void(int,int)>\
+    \ dfs = [&](int v, int p) -> void {\n            parent[v] = p;\n            for(auto\
+    \ e : g[v]) if(e.to != p) dfs(e.to, v);\n        };\n        dfs(v, -1);\n   \
+    \     std::vector<int> res;\n        while(u != -1) res.push_back(u), u = parent[u];\n\
+    \        return res;\n    }\n\n    int id, root, heavy_light_decomposed;\n   \
+    \ std::vector<int> size, depth, down, up, nxt, par, tour;\n\n    void heavy_light_decomposition(int\
+    \ root = 0) {\n        id = 0;\n        this->root = root;\n        size .assign(n,\
+    \ 0);\n        depth.assign(n, 0);\n        down.assign(n, -1);\n        up  .assign(n,\
+    \ -1);\n        tour.assign(n, -1);\n        nxt.assign(n, root);\n        par.assign(n,\
+    \ root);\n        dfs_size(root);\n        dfs_hld(root);\n        heavy_light_decomposed\
+    \ = 1;\n    }\n\n    void dfs_size(int v) {\n        size[v] = 1;\n        for(auto&\
+    \ e : g[v]) {\n            if(e.to == par[v]) {\n                if(std::ssize(g[v])\
+    \ >= 2 and e.to == g[v][0].to) {\n                    std::swap(g[v][0], g[v][1]);\n\
+    \                } else continue;\n            }\n            depth[e.to] = depth[v]\
+    \ + 1;\n            par[e.to] = v;\n            dfs_size(e.to);\n            size[v]\
+    \ += size[e.to];\n            if(size[e.to] > size[g[v][0].to]) std::swap(e, g[v][0]);\n\
+    \        }\n    }\n    void dfs_hld(int v) {\n        down[v] = id++;\n      \
+    \  tour[down[v]] = v;\n        for(auto e : g[v]) if(e.to != par[v]) {\n     \
+    \       nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to);\n\
+    \        }\n        up[v] = id;\n    }\n\n    std::vector<std::pair<int,int>>\
+    \ ascend(int u, int v) {\n        assert(heavy_light_decomposed);\n        std::vector<std::pair<int,int>>\
+    \ res;\n        while(nxt[u] != nxt[v]) res.push_back({down[u] + 1, down[nxt[v]]}),\
+    \ u = par[nxt[u]];\n        if(u != v) res.push_back({down[u] + 1, down[v] + 1});\n\
+    \        return res;\n    }\n    std::vector<std::pair<int,int>> descend(int u,\
+    \ int v) {\n        assert(heavy_light_decomposed);\n        if(u == v) return\
+    \ {};\n        if(nxt[u] == nxt[v]) return {{down[u] + 1, down[v] + 1}};\n   \
+    \     std::vector<std::pair<int,int>> res = descend(u, par[nxt[v]]);\n       \
+    \ res.push_back({down[nxt[v]], down[v] + 1});\n        return res;\n    }\n  \
+    \  std::pair<int,int> idx(int v) { \n        assert(heavy_light_decomposed);\n\
+    \        return {down[v], up[v]};\n    }\n\n    template < class func >\n    void\
+    \ path_query_comm(int u, int v, bool vertex, const func& f) {\n        assert(heavy_light_decomposed);\n\
+    \        int x = lca(u, v);\n        for(auto [a, b] : ascend(u, x)) {\n     \
+    \       std::tie(a, b) = std::minmax({a, b});\n            f(a, b);\n        }\n\
+    \        if(vertex) f(down[x], down[x] + 1);\n        for(auto [a, b] : descend(x,\
+    \ v)) {\n            std::tie(a, b) = std::minmax({a, b});\n            f(a, b);\n\
+    \        }\n    }\n    template < class func >\n    void path_query(int u, int\
+    \ v, bool vertex, const func& f) {\n        assert(heavy_light_decomposed);\n\
+    \        int x = lca(u, v);\n        for(auto [a, b] : ascend(u, x)) f(a, b);\n\
+    \        if(vertex) f(down[x], down[x] + 1);\n        for(auto [a, b] : descend(x,\
+    \ v)) f(a, b);\n    }\n    template < class func >\n    void subtree_query(int\
+    \ v, bool vertex, const func& f) {\n        assert(heavy_light_decomposed);\n\
+    \        f(down[v] + !vertex, up[v]);\n    }\n    int parent(int v) {\n      \
+    \  assert(heavy_light_decomposed);\n        return v == root ? -1 : par[v];\n\
+    \    }\n    int la(int v, int d) {\n        assert(heavy_light_decomposed);\n\
+    \        while(v != -1) {\n            int u = nxt[v];\n            if(down[v]\
+    \ - d >= down[u]) return tour[down[v] - d];\n            d -= down[v] - down[u]\
+    \ + 1;\n            v = parent(u);\n        }\n        return v;\n    }\n    int\
+    \ lca(int u, int v) {\n        assert(heavy_light_decomposed);\n        while(nxt[u]\
+    \ != nxt[v]) {\n            if(down[u] < down[v]) std::swap(u, v);\n         \
+    \   u = par[nxt[u]];\n        }\n        return depth[u] < depth[v] ? u : v;\n\
+    \    }\n    int dist(int u, int v) {\n        assert(heavy_light_decomposed);\n\
+    \        return depth[u] + depth[v] - depth[lca(u, v)] * 2;\n    }\n    int jump(int\
+    \ u, int v, int d) {\n        assert(heavy_light_decomposed);\n        int x =\
+    \ lca(u, v);\n        if(d <= depth[u] - depth[x]) return la(u, d);\n        d\
+    \ -= depth[u] - depth[x];\n        if(d <= depth[v] - depth[x]) return la(v, depth[v]\
+    \ - depth[x] - d);\n        return -1;\n    }\n    int in_subtree(int r, int v)\
+    \ {\n        return down[v] < down[r] and up[r] <= up[v];\n    }\n};\n\n#line\
+    \ 3 \"src/graph/tree/rerooting.hpp\"\n\ntemplate < class S, class TREE, class\
+    \ EE, class EV, class VP, class I >\nstruct dp_on_tree {\n    TREE& tree;\n  \
+    \  \n    std::vector< S > dp, dp_rev, answer;\n    std::vector<std::vector< S\
+    \ >> dp_sub;\n    EE f_ee;\n    EV f_ev;\n    VP f_vp;\n    I id;\n    int root;\n\
+    \    dp_on_tree(TREE& tree, const EE f_ee, const EV f_ev, const VP f_vp, const\
+    \ I id) : tree(tree), f_ee(f_ee), f_ev(f_ev), f_vp(f_vp), id(id) {}\n    \n  \
+    \  void solve(int root) {\n        this->root = root;\n        dp.assign(tree.n,\
+    \ id());\n        dp_sub.resize(tree.n);\n        for(int v : rep(tree.n)) dp_sub[v].resize(tree.g_org[v].size());\n\
+    \        std::function<S(int,int)> dfs = [&](int v, int p) -> S {\n          \
+    \  for(int i : rep(tree.g_org[v].size())) {\n                auto e = tree.g_org[v][i];\n\
+    \                if(e.to != p) {\n                    dp_sub[v][i] = dfs(e.to,\
+    \ v);\n                    dp[v] = f_ee(dp[v], f_ev(dp_sub[v][i], e.id));\n  \
+    \              }\n            }\n            return dp[v] = f_vp(dp[v], v);\n\
+    \        }; dfs(root, -1);\n    }\n\n    void reroot() {\n        tree.heavy_light_decomposition(root);\n\
+    \        auto g = tree.g_org;\n        dp_rev.assign(tree.n, id());\n        std::function<void(int,int,S)>\
+    \ dfs = [&](int v, int p, S s) -> void {\n            for(int i : rep(g[v].size()))\
+    \ {\n                auto e = g[v][i];\n                if(e.to == p) dp_sub[v][i]\
+    \ = s;\n            }\n            std::vector< S > R(g[v].size() + 1u);\n   \
+    \         R[g[v].size()] = id();\n            for(int i : revrep(g[v].size()))\
+    \ {\n                auto e = g[v][i];\n                R[i] = f_ee(R[i + 1],\
+    \ f_ev(dp_sub[v][i], e.id));\n            }\n            S L = id();\n       \
+    \     for(int i : rep(g[v].size())) {\n                auto e = g[v][i];\n   \
+    \             if(e.to != p) {\n                    dfs(e.to, v, f_vp(f_ee(L, R[i\
+    \ + 1]), v));\n                }\n                dp_rev[e.to] = f_vp(f_ee(L,\
+    \ R[i + 1]), v);\n                L = f_ee(L, f_ev(dp_sub[v][i], e.id));\n   \
+    \         }\n        }; dfs(root, -1, id());\n        \n        answer.assign(tree.n,\
+    \ id());\n        for(int v : rep(tree.n)) {\n            for(int i : rep(g[v].size()))\
+    \ {\n                auto e = g[v][i];\n                answer[v] = f_ee(answer[v],\
+    \ f_ev(dp_sub[v][i], e.id));\n            }\n            answer[v] = f_vp(answer[v],\
+    \ v);\n        }\n    }\n\n    S get(int root, int v) {\n        if(root == v)\
+    \ return answer[v];\n        if(not tree.in_subtree(root, v)) return dp[v];\n\
+    \        return dp_rev[tree.jump(v, root, 1)];\n    }\n};\n#line 5 \"src/graph/tree/tree_isomorphism.hpp\"\
+    \n\ntemplate < int num_of_mod, class TREE >\nstd::pair< int, std::vector<int>\
+    \ > subtree_hashing(TREE& tree, int root = 0) {\n    using hv = hash_vector< num_of_mod\
+    \ >;\n    std::vector< hv > h(n);\n    for(int i : rep(n)) h[i] = hv(randnum::gen_int<int>(0,\
+    \ hv::MODS[0]));\n\n    using S = std::pair< hv, int >;\n    dp_on_tree< S > x(\n\
+    \        tree,\n        [&](S a, S b) { return S{a.first * b.first, std::max(a.second,\
+    \ b.second + 1)}; },\n        [&](S a, int i) { return a; },\n        [&](S a,\
+    \ int i) { return S{a.first + h[a.second], a.second}; },\n        [&]() { return\
+    \ S{hv(1), 0}}\n    );\n    x.solve()\n\n    vector< S > key = x.dp;\n    std::sort(key.begin(),\
+    \ key.end());\n    key.erase(std::unique(key.begin(), key.end()), key.end());\n\
+    \    vector<int> id(n);\n    for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
+    \ key.end(), dp[i]) - key.begin();\n    return {key.size(), id};\n};\n#line 8\
+    \ \"verify/library_checker/graph/tree/tree_isomorphism.test.cpp\"\n\nint main()\
+    \ {\n    int N = in();\n    tree_graph<int> g(N);\n    for(int i : rep(1, N))\
+    \ {\n        int p = in();\n        g.add_edge(p, i);\n    }\n    auto [K, ans]\
+    \ = subtree_hashing< 2 >(g, 0);\n    print(K);\n    print(ans);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
     \n\n#include \"../../../../src/cp-template.hpp\"\n#include \"../../../../src/utility/hash.hpp\"\
-    \n#include \"../../../../src/utility/random.hpp\"\n#include \"../../../../src/graph/tree/tree_isomorphism.hpp\"\
-    \n\nint main() {\n    int N = in();\n    subtree_hashing g(N);\n    for(int i\
-    \ : rep(1, N)) {\n        int p = in();\n        g.add_edge(p, i);\n    }\n\n\
-    \    auto [K, ans] = g.solve< 2 >(0);\n    print(K);\n    print(ans);\n}\n"
+    \n#include \"../../../../src/utility/random.hpp\"\n#include \"../../../../src/graph/tree/tree.hpp\"\
+    \n#include \"../../../../src/graph/tree/tree_isomorphism.hpp\"\n\nint main() {\n\
+    \    int N = in();\n    tree_graph<int> g(N);\n    for(int i : rep(1, N)) {\n\
+    \        int p = in();\n        g.add_edge(p, i);\n    }\n    auto [K, ans] =\
+    \ subtree_hashing< 2 >(g, 0);\n    print(K);\n    print(ans);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -219,13 +311,14 @@ data:
   - src/algorithm/argsort.hpp
   - src/utility/hash.hpp
   - src/utility/random.hpp
+  - src/graph/tree/tree.hpp
   - src/graph/tree/tree_isomorphism.hpp
-  - src/graph/tree/dp_on_tree.hpp
+  - src/graph/tree/rerooting.hpp
   isVerificationFile: true
   path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-11-08 12:27:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 layout: document
