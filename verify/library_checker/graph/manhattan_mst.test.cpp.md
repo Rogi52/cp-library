@@ -1,9 +1,6 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
   - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
@@ -13,9 +10,12 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/data_structure/fenwick_tree.hpp
-    title: src/data_structure/fenwick_tree.hpp
+  - icon: ':question:'
+    path: src/data_structure/union_find.hpp
+    title: src/data_structure/union_find.hpp
+  - icon: ':x:'
+    path: src/geometry/manhattan_mst.hpp
+    title: src/geometry/manhattan_mst.hpp
   - icon: ':question:'
     path: src/utility/heap.hpp
     title: src/utility/heap.hpp
@@ -33,17 +33,17 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    PROBLEM: https://judge.yosupo.jp/problem/enumerate_cliques
     links:
-    - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
-    #line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    - https://judge.yosupo.jp/problem/enumerate_cliques
+  bundledCode: "#line 1 \"verify/library_checker/graph/manhattan_mst.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n#line\
+    \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\nusing\
     \ ull  = unsigned long long;\nusing i32 = int;\nusing u32 = unsigned int;\nusing\
     \ i64 = long long;\nusing u64 = unsigned long long;\nusing i128 = __int128_t;\n\
@@ -134,49 +134,41 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/data_structure/fenwick_tree.hpp\"\n\ntemplate < class comm_monoid >\
-    \ class fenwick_tree {\n  public:\n    using T = typename comm_monoid::set;\n\n\
-    \  private:\n    int n, n2;\n    vector< T > data;\n\n    int ceil_pow2(int n)\
-    \ {\n        int x = 1;\n        while(x < n) x <<= 1;\n        return x;\n  \
-    \  }\n\n  public:\n    fenwick_tree() : fenwick_tree(0) {}\n    fenwick_tree(int\
-    \ n) : n(n), n2(ceil_pow2(n)), data(n + 1, comm_monoid::id()) { assert(comm_monoid::comm);\
-    \ }\n    fenwick_tree(const vector< T > &a) : n(a.size()), n2(ceil_pow2(n)), data(a)\
-    \ {\n        assert(comm_monoid::comm);\n        data.insert(data.begin(), {comm_monoid::id()});\n\
-    \        for(int i = 1; i <= n; i++) {\n            int p = i + (i & -i);\n  \
-    \          if(p <= n) data[p] = comm_monoid::op(data[i], data[p]);\n        }\n\
-    \    }\n\n    void add(int i, T x) {\n        for(int p = i + 1; p <= n; p +=\
-    \ p & -p) data[p] = comm_monoid::op(data[p], x);\n    }\n    // [0, r)\n    T\
-    \ fold(int r) {\n        T s = comm_monoid::id();\n        for(int p = r; p >\
-    \ 0; p -= p & -p) s = comm_monoid::op(data[p], s);\n        return s;\n    }\n\
-    \    // [l, r)\n    T fold(int l, int r) {\n        return comm_monoid::op(comm_monoid::inv(fold(l)),\
-    \ fold(r));\n    }\n    T get(int i) {\n        return fold(i, i + 1);\n    }\n\
-    \    void set(int i, T x) {\n        add(i, comm_monoid::op(comm_monoid::inv(get(i)),\
-    \ x));\n    }\n    template< class func > int search(const func &f) {\n      \
-    \  T s = comm_monoid::id();\n        if(f(s)) return 0;\n        int i = 0, k\
-    \ = n2;\n        while(k >>= 1) {\n            int p = i | k;\n            if(p\
-    \ <= n && !f(comm_monoid::op(s, data[p]))) s = comm_monoid::op(s, data[i = p]);\n\
-    \        }\n        return i;\n    }\n};\n#line 1 \"src/algebra/sum.hpp\"\ntemplate\
-    \ < class T > class sum_monoid {\n  public:\n    using set = T;\n    static constexpr\
-    \ T op(const T &l, const T &r) { return l + r; }\n    static constexpr T id()\
-    \ { return T(0); }\n    static constexpr T inv(const T &x) { return -x; }\n  \
-    \  static constexpr T pow(const T &x, const ll n) { return x * n; }\n    static\
-    \ constexpr bool comm = true;\n};\n#line 6 \"verify/library_checker/data_structure/fenwick_tree.test.cpp\"\
-    \n\nint main(){\n    int N = in();\n    int Q = in();\n    vector<ll> a = in(N);\n\
-    \    fenwick_tree< sum_monoid< ll > > tree(a);\n\n    for(int _ : rep(Q)) {\n\
-    \        int t = in();\n        switch(t) {\n            case 0: {\n         \
-    \       int p = in(), x = in();\n                tree.add(p, x);\n           \
-    \ } break;\n\n            case 1: {\n                int l = in(), r = in();\n\
-    \                print(tree.fold(l, r));\n            } break;\n        }\n  \
-    \  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    \n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/data_structure/fenwick_tree.hpp\"\
-    \n#include \"../../../src/algebra/sum.hpp\"\n\nint main(){\n    int N = in();\n\
-    \    int Q = in();\n    vector<ll> a = in(N);\n    fenwick_tree< sum_monoid< ll\
-    \ > > tree(a);\n\n    for(int _ : rep(Q)) {\n        int t = in();\n        switch(t)\
-    \ {\n            case 0: {\n                int p = in(), x = in();\n        \
-    \        tree.add(p, x);\n            } break;\n\n            case 1: {\n    \
-    \            int l = in(), r = in();\n                print(tree.fold(l, r));\n\
-    \            } break;\n        }\n    }\n}\n"
+    \ 2 \"src/geometry/manhattan_mst.hpp\"\n\ntemplate < class T >\nstd::vector< std::tuple<\
+    \ T, int, int > > manhattan_mst(std::vector< T > x, std::vector< T > y) {\n  \
+    \  int n = x.size();\n    std::vector<int> I(n);\n    std::iota(I.begin(), I.end(),\
+    \ 0);\n    std::vector< std::tuple< T, int, int > > edges;\n    for(int a : {0,\
+    \ 1}) {\n        for(int b : {0, 1}) {\n            std::sort(I.begin(), I.end(),\
+    \ [&](int i, int j) { return x[i] + y[i] < x[j] + y[j]; });\n            std::map<\
+    \ T, int > mp;\n            for(int i : I) {\n                for(auto it = mp.lower_bound(-y[i]);\
+    \ it != mp.end(); it = mp.erase(it)) {\n                    int j = it->second;\n\
+    \                    T dx = x[i] - x[j], dy = y[i] - y[j];\n                 \
+    \   if(dy <= dx) {\n                        edges.emplace_back(std::abs(dx) +\
+    \ std::abs(dy), i, j);\n                    } else break;\n                }\n\
+    \                mp[-y[i]] = i;\n            }\n            std::swap(x, y);\n\
+    \        }\n        for(T& xi : x) xi *= -1;\n    }\n    std::sort(edges.begin(),\
+    \ edges.end());\n    return edges;\n}\n#line 1 \"src/data_structure/union_find.hpp\"\
+    \nclass union_find {\n  public:\n    union_find(int n) : data(n, -1) {}\n    int\
+    \ unite(int x, int y) {\n        x = root(x), y = root(y);\n        if(x != y)\
+    \ {\n            if(size(x) < size(y)) swap(x, y);\n            data[x] += data[y];\n\
+    \            return data[y] = x;\n        }\n        return -1;\n    }\n    int\
+    \ root(int x) { return data[x] < 0 ? x : data[x] = root(data[x]); }\n    int size(int\
+    \ x) { return -data[root(x)]; }\n    bool same(int x, int y) { return root(x)\
+    \ == root(y); }\n\n  private:\n    vector<int> data;\n};\n#line 6 \"verify/library_checker/graph/manhattan_mst.test.cpp\"\
+    \n\nint main() {\n    int N = in();\n    std::vector<int> x(N), y(N);\n    for(int\
+    \ i : rep(N)) x[i] = in(), y[i] = in();\n\n    ll X = 0;\n    union_find uf(N);\n\
+    \    std::vector<std::pair<int,int>> edges;\n    for(auto [w, u, v] : manhattan_mst(x,\
+    \ y)) {\n        if(uf.unite(u, v) != -1) {\n            X += w;\n           \
+    \ edges.push_back({u, v});\n        }\n    }\n\n    print(X);\n    for(auto [u,\
+    \ v] : edges) print(u, v);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n\
+    #include \"../../../src/cp-template.hpp\"\n#include \"../../../src/geometry/manhattan_mst.hpp\"\
+    \n#include \"../../../src/data_structure/union_find.hpp\"\n\nint main() {\n  \
+    \  int N = in();\n    std::vector<int> x(N), y(N);\n    for(int i : rep(N)) x[i]\
+    \ = in(), y[i] = in();\n\n    ll X = 0;\n    union_find uf(N);\n    std::vector<std::pair<int,int>>\
+    \ edges;\n    for(auto [w, u, v] : manhattan_mst(x, y)) {\n        if(uf.unite(u,\
+    \ v) != -1) {\n            X += w;\n            edges.push_back({u, v});\n   \
+    \     }\n    }\n\n    print(X);\n    for(auto [u, v] : edges) print(u, v);\n}\n"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -186,18 +178,18 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/data_structure/fenwick_tree.hpp
-  - src/algebra/sum.hpp
+  - src/geometry/manhattan_mst.hpp
+  - src/data_structure/union_find.hpp
   isVerificationFile: true
-  path: verify/library_checker/data_structure/fenwick_tree.test.cpp
+  path: verify/library_checker/graph/manhattan_mst.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-11-12 19:02:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/library_checker/data_structure/fenwick_tree.test.cpp
+documentation_of: verify/library_checker/graph/manhattan_mst.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/library_checker/data_structure/fenwick_tree.test.cpp
-- /verify/verify/library_checker/data_structure/fenwick_tree.test.cpp.html
-title: verify/library_checker/data_structure/fenwick_tree.test.cpp
+- /verify/verify/library_checker/graph/manhattan_mst.test.cpp
+- /verify/verify/library_checker/graph/manhattan_mst.test.cpp.html
+title: verify/library_checker/graph/manhattan_mst.test.cpp
 ---

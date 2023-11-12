@@ -62,7 +62,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/sliding_window_aggregation.hpp
     title: src/data_structure/sliding_window_aggregation.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/sparse_segtree.hpp
     title: src/data_structure/sparse_segtree.hpp
   - icon: ':heavy_check_mark:'
@@ -77,6 +77,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
+  - icon: ':x:'
+    path: src/geometry/manhattan_mst.hpp
+    title: src/geometry/manhattan_mst.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/chromatic_number.hpp
     title: src/graph/chromatic_number.hpp
@@ -131,7 +134,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
   - icon: ':question:'
@@ -261,6 +264,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/enumerate_triangles.test.cpp
     title: verify/library_checker/graph/enumerate_triangles.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/graph/manhattan_mst.test.cpp
+    title: verify/library_checker/graph/manhattan_mst.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/maximum_independent_set.test.cpp
     title: verify/library_checker/graph/maximum_independent_set.test.cpp
@@ -393,10 +399,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/gaussian_integer.test.cpp
     title: verify/yukicoder/gaussian_integer.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/yukicoder/sparse_segtree.test.cpp
     title: verify/yukicoder/sparse_segtree.test.cpp
   - icon: ':x:'
@@ -469,6 +475,7 @@ data:
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/sliding_window_aggregation.hpp
+  - src/geometry/manhattan_mst.hpp
   - src/geometry/convex_hull.hpp
   - src/number/eratosthenes.hpp
   - src/number/binom_mod.hpp
@@ -503,6 +510,7 @@ data:
   - verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - verify/library_checker/graph/enumerate_triangles.test.cpp
   - verify/library_checker/graph/maximum_independent_set.test.cpp
+  - verify/library_checker/graph/manhattan_mst.test.cpp
   - verify/library_checker/graph/enumerate_cliques.test.cpp
   - verify/library_checker/graph/shortest_path.test.cpp
   - verify/library_checker/matrix/linear_equation.test.cpp

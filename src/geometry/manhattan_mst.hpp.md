@@ -1,12 +1,6 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/size.hpp
-    title: src/algebra/size.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
   - icon: ':question:'
     path: src/algorithm/argsort.hpp
     title: src/algorithm/argsort.hpp
@@ -33,12 +27,12 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_add_range_sum.test.cpp
-    title: verify/aoj/data_structure/range_add_range_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/library_checker/graph/manhattan_mst.test.cpp
+    title: verify/library_checker/graph/manhattan_mst.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -133,30 +127,34 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 1 \"src/algebra/sum.hpp\"\ntemplate < class T > class sum_monoid {\n  public:\n\
-    \    using set = T;\n    static constexpr T op(const T &l, const T &r) { return\
-    \ l + r; }\n    static constexpr T id() { return T(0); }\n    static constexpr\
-    \ T inv(const T &x) { return -x; }\n    static constexpr T pow(const T &x, const\
-    \ ll n) { return x * n; }\n    static constexpr bool comm = true;\n};\n#line 2\
-    \ \"src/algebra/size.hpp\"\n\ntemplate < class M, class T >\nstruct with_size\
-    \ {\n  public:\n    struct VS {\n        using V = typename M::set;\n        mutable\
-    \ V value;\n        T size;\n    };\n    using set = VS;\n    static constexpr\
-    \ set op(const set& l, const set& r) {\n        return set{M::op(l.value, r.value),\
-    \ l.size + r.size};\n    }\n    static constexpr set id() {\n        return set{M::id(),\
-    \ 0};\n    }\n};\n#line 4 \"src/algebra/range_add_range_sum.hpp\"\n\ntemplate\
-    \ < class T > class range_add_range_sum {\n  public:\n    using value_structure\
-    \ = with_size< sum_monoid< T >, T >;\n    using operator_structure = sum_monoid<\
-    \ T >;\n  private:\n    using S = typename value_structure::set;\n    using F\
-    \ = typename operator_structure::set;\n  public:\n    static constexpr S op(const\
-    \ S& x, const F& f) {\n        return S{x.value + f * x.size, x.size};\n    }\n\
-    };\n"
-  code: "#include \"../../src/cp-template.hpp\"\n#include \"../../src/algebra/sum.hpp\"\
-    \n#include \"../../src/algebra/size.hpp\"\n\ntemplate < class T > class range_add_range_sum\
-    \ {\n  public:\n    using value_structure = with_size< sum_monoid< T >, T >;\n\
-    \    using operator_structure = sum_monoid< T >;\n  private:\n    using S = typename\
-    \ value_structure::set;\n    using F = typename operator_structure::set;\n  public:\n\
-    \    static constexpr S op(const S& x, const F& f) {\n        return S{x.value\
-    \ + f * x.size, x.size};\n    }\n};"
+    \ 2 \"src/geometry/manhattan_mst.hpp\"\n\ntemplate < class T >\nstd::vector< std::tuple<\
+    \ T, int, int > > manhattan_mst(std::vector< T > x, std::vector< T > y) {\n  \
+    \  int n = x.size();\n    std::vector<int> I(n);\n    std::iota(I.begin(), I.end(),\
+    \ 0);\n    std::vector< std::tuple< T, int, int > > edges;\n    for(int a : {0,\
+    \ 1}) {\n        for(int b : {0, 1}) {\n            std::sort(I.begin(), I.end(),\
+    \ [&](int i, int j) { return x[i] + y[i] < x[j] + y[j]; });\n            std::map<\
+    \ T, int > mp;\n            for(int i : I) {\n                for(auto it = mp.lower_bound(-y[i]);\
+    \ it != mp.end(); it = mp.erase(it)) {\n                    int j = it->second;\n\
+    \                    T dx = x[i] - x[j], dy = y[i] - y[j];\n                 \
+    \   if(dy <= dx) {\n                        edges.emplace_back(std::abs(dx) +\
+    \ std::abs(dy), i, j);\n                    } else break;\n                }\n\
+    \                mp[-y[i]] = i;\n            }\n            std::swap(x, y);\n\
+    \        }\n        for(T& xi : x) xi *= -1;\n    }\n    std::sort(edges.begin(),\
+    \ edges.end());\n    return edges;\n}\n"
+  code: "#include \"../../src/cp-template.hpp\"\n\ntemplate < class T >\nstd::vector<\
+    \ std::tuple< T, int, int > > manhattan_mst(std::vector< T > x, std::vector< T\
+    \ > y) {\n    int n = x.size();\n    std::vector<int> I(n);\n    std::iota(I.begin(),\
+    \ I.end(), 0);\n    std::vector< std::tuple< T, int, int > > edges;\n    for(int\
+    \ a : {0, 1}) {\n        for(int b : {0, 1}) {\n            std::sort(I.begin(),\
+    \ I.end(), [&](int i, int j) { return x[i] + y[i] < x[j] + y[j]; });\n       \
+    \     std::map< T, int > mp;\n            for(int i : I) {\n                for(auto\
+    \ it = mp.lower_bound(-y[i]); it != mp.end(); it = mp.erase(it)) {\n         \
+    \           int j = it->second;\n                    T dx = x[i] - x[j], dy =\
+    \ y[i] - y[j];\n                    if(dy <= dx) {\n                        edges.emplace_back(std::abs(dx)\
+    \ + std::abs(dy), i, j);\n                    } else break;\n                }\n\
+    \                mp[-y[i]] = i;\n            }\n            std::swap(x, y);\n\
+    \        }\n        for(T& xi : x) xi *= -1;\n    }\n    std::sort(edges.begin(),\
+    \ edges.end());\n    return edges;\n}"
   dependsOn:
   - src/cp-template.hpp
   - src/utility/rep_itr.hpp
@@ -166,19 +164,17 @@ data:
   - src/utility/heap.hpp
   - src/algorithm/bin_search.hpp
   - src/algorithm/argsort.hpp
-  - src/algebra/sum.hpp
-  - src/algebra/size.hpp
   isVerificationFile: false
-  path: src/algebra/range_add_range_sum.hpp
+  path: src/geometry/manhattan_mst.hpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-11-12 19:02:16+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/aoj/data_structure/range_add_range_sum.test.cpp
-documentation_of: src/algebra/range_add_range_sum.hpp
+  - verify/library_checker/graph/manhattan_mst.test.cpp
+documentation_of: src/geometry/manhattan_mst.hpp
 layout: document
 redirect_from:
-- /library/src/algebra/range_add_range_sum.hpp
-- /library/src/algebra/range_add_range_sum.hpp.html
-title: src/algebra/range_add_range_sum.hpp
+- /library/src/geometry/manhattan_mst.hpp
+- /library/src/geometry/manhattan_mst.hpp.html
+title: src/geometry/manhattan_mst.hpp
 ---

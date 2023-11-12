@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/range_add_range_minmax.hpp
     title: src/algebra/range_add_range_minmax.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
   - icon: ':question:'

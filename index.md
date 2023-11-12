@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/size.hpp
       title: src/algebra/size.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/sum.hpp
       title: src/algebra/sum.hpp
     - icon: ':warning:'
@@ -126,7 +126,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/sliding_window_aggregation.hpp
       title: src/data_structure/sliding_window_aggregation.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/sparse_segtree.hpp
       title: src/data_structure/sparse_segtree.hpp
     - icon: ':heavy_check_mark:'
@@ -135,7 +135,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/static_rect_add_rect_sum.hpp
       title: src/data_structure/static_rect_add_rect_sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
     - icon: ':heavy_check_mark:'
@@ -149,6 +149,9 @@ data:
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
+    - icon: ':x:'
+      path: src/geometry/manhattan_mst.hpp
+      title: src/geometry/manhattan_mst.hpp
     - icon: ':heavy_check_mark:'
       path: src/geometry/pointll.hpp
       title: src/geometry/pointll.hpp
@@ -244,7 +247,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/gaussian_integer.hpp
       title: src/number/gaussian_integer.hpp
     - icon: ':warning:'
@@ -423,6 +426,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/enumerate_triangles.test.cpp
       title: verify/library_checker/graph/enumerate_triangles.test.cpp
+    - icon: ':x:'
+      path: verify/library_checker/graph/manhattan_mst.test.cpp
+      title: verify/library_checker/graph/manhattan_mst.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/graph/maximum_independent_set.test.cpp
       title: verify/library_checker/graph/maximum_independent_set.test.cpp
@@ -567,10 +573,10 @@ data:
       title: verify/library_checker/string/rolling_hash.test.cpp
   - name: verify/yukicoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/gaussian_integer.test.cpp
       title: verify/yukicoder/gaussian_integer.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/sparse_segtree.test.cpp
       title: verify/yukicoder/sparse_segtree.test.cpp
     - icon: ':x:'
