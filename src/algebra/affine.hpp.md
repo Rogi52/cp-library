@@ -1,11 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_affine_range_sum.hpp
+    title: src/algebra/range_affine_range_sum.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
+    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+    title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/segtree.test.cpp
+    title: verify/library_checker/data_structure/segtree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -30,10 +45,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/algebra/affine.hpp
-  requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - src/algebra/range_affine_range_sum.hpp
+  timestamp: '2023-10-14 00:28:35+09:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
 documentation_of: src/algebra/affine.hpp
 layout: document
 redirect_from:

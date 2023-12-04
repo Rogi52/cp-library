@@ -1,11 +1,68 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':x:'
+    path: src/number/binom_mod.hpp
+    title: src/number/binom_mod.hpp
+  - icon: ':x:'
+    path: src/number/fps.hpp
+    title: src/number/fps.hpp
+  - icon: ':x:'
+    path: src/number/modfunc.hpp
+    title: src/number/modfunc.hpp
+  - icon: ':question:'
+    path: src/number/modint.hpp
+    title: modint
+  - icon: ':x:'
+    path: src/number/ntt.hpp
+    title: src/number/ntt.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_exp_sparse.test.cpp
+    title: verify/library_checker/number/fps_exp_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_inv_sparse.test.cpp
+    title: verify/library_checker/number/fps_inv_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_log_sparse.test.cpp
+    title: verify/library_checker/number/fps_log_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_pow_sparse.test.cpp
+    title: verify/library_checker/number/fps_pow_sparse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+    title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -376,13 +433,32 @@ data:
     \ g;\n    for(auto [i, v] : f) g.push_back({i - d, v * c});\n    fps h = pow(g,\
     \ inv(mint(2)).v, deg);\n    for(int i : rep(deg)) h[i] *= x;\n    for(int i :\
     \ revrep(deg)) h[i] = (i >= d / 2 ? h[i - d / 2] : 0);\n    return h;\n}\n"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
+  - src/number/fps.hpp
+  - src/number/ntt.hpp
+  - src/number/modint.hpp
+  - src/number/modfunc.hpp
+  - src/utility/random.hpp
+  - src/number/binom_mod.hpp
   isVerificationFile: false
   path: src/number/fps_sparse.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
 documentation_of: src/number/fps_sparse.hpp
 layout: document
 redirect_from:

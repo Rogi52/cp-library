@@ -3,40 +3,40 @@ data:
   libraryCategories:
   - name: src/algebra
     pages:
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/algebra/affine.hpp
       title: src/algebra/affine.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/cartesian_product_monoid.hpp
       title: src/algebra/cartesian_product_monoid.hpp
     - icon: ':warning:'
       path: src/algebra/index.hpp
       title: src/algebra/index.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/minmax.hpp
       title: src/algebra/minmax.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_add_range_minmax.hpp
       title: src/algebra/range_add_range_minmax.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_add_range_sum.hpp
       title: src/algebra/range_add_range_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_affine_range_sum.hpp
       title: src/algebra/range_affine_range_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_update_range_minmax.hpp
       title: src/algebra/range_update_range_minmax.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/range_update_range_sum.hpp
       title: src/algebra/range_update_range_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/set_monoid.hpp
       title: src/algebra/set_monoid.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/size.hpp
       title: src/algebra/size.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/algebra/sum.hpp
       title: src/algebra/sum.hpp
     - icon: ':warning:'
@@ -44,28 +44,28 @@ data:
       title: src/algebra/xor.hpp
   - name: src/algorithm
     pages:
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/algorithm/argsort.hpp
       title: src/algorithm/argsort.hpp
     - icon: ':warning:'
       path: src/algorithm/beam_search.hpp
       title: src/algorithm/beam_search.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/algorithm/enumrate_quotient.hpp
       title: src/algorithm/enumrate_quotient.hpp
     - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/algorithm/floor_sum.hpp
       title: src/algorithm/floor_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/lis.hpp
       title: Longest Increasing Subsequence
     - icon: ':warning:'
@@ -82,80 +82,80 @@ data:
       title: src/algorithm/ternary_search.hpp
   - name: src
     pages:
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/cp-template.hpp
       title: src/cp-template.hpp
   - name: src/data_structure
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/binary_trie.hpp
       title: src/data_structure/binary_trie.hpp
     - icon: ':warning:'
       path: src/data_structure/cht_add_monotone.hpp
       title: src/data_structure/cht_add_monotone.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/data_structure/cht_offline_get_min.hpp
       title: src/data_structure/cht_offline_get_min.hpp
     - icon: ':warning:'
       path: src/data_structure/cht_xy.hpp
       title: src/data_structure/cht_xy.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/disjoint_sparse_table.hpp
       title: src/data_structure/disjoint_sparse_table.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/data_structure/fenwick_tree.hpp
       title: src/data_structure/fenwick_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/heap_rich.hpp
       title: src/data_structure/heap_rich.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/lazy_segtree.hpp
       title: src/data_structure/lazy_segtree.hpp
     - icon: ':warning:'
       path: src/data_structure/offline_multiset.hpp
       title: src/data_structure/offline_multiset.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/range_freq.hpp
       title: src/data_structure/range_freq.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/sliding_window_aggregation.hpp
       title: src/data_structure/sliding_window_aggregation.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/sparse_segtree.hpp
       title: src/data_structure/sparse_segtree.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/data_structure/static_point_add_rect_sum.hpp
       title: src/data_structure/static_point_add_rect_sum.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/static_rect_add_rect_sum.hpp
       title: src/data_structure/static_rect_add_rect_sum.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/union_find.hpp
       title: src/data_structure/union_find.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data_structure/wavlet_matrix.hpp
       title: src/data_structure/wavlet_matrix.hpp
   - name: src/geometry
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/geometry/angle_sort.hpp
       title: src/geometry/angle_sort.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/geometry/base.hpp
       title: src/geometry/base.hpp
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/geometry/manhattan_mst.hpp
       title: src/geometry/manhattan_mst.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/geometry/pointll.hpp
       title: src/geometry/pointll.hpp
   - name: src/graph
@@ -163,36 +163,36 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs.hpp
       title: src/graph/bfs.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/chromatic_number.hpp
       title: src/graph/chromatic_number.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/clique.hpp
       title: src/graph/clique.hpp
     - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/max_flow.hpp
       title: src/graph/max_flow.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/maximum_independent_set.hpp
       title: src/graph/maximum_independent_set.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: src/graph/min_cost_flow.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
     - icon: ':warning:'
       path: src/graph/topological_sort.hpp
       title: src/graph/topological_sort.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/triangle.hpp
       title: src/graph/triangle.hpp
   - name: src/graph/tree
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/tree/cartesian_tree.hpp
       title: src/graph/tree/cartesian_tree.hpp
     - icon: ':warning:'
@@ -201,24 +201,24 @@ data:
     - icon: ':warning:'
       path: src/graph/tree/offline_level_ancestor.hpp
       title: Offline Level Ancestor
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/tree/rerooting.hpp
       title: src/graph/tree/rerooting.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/tree/tree.hpp
       title: src/graph/tree/tree.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/tree/tree_isomorphism.hpp
       title: src/graph/tree/tree_isomorphism.hpp
   - name: src/matrix
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/matrix/base.hpp
       title: src/matrix/base.hpp
     - icon: ':warning:'
       path: src/matrix/lgv.hpp
       title: "LGV \u516C\u5F0F"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/matrix/linear_equation.hpp
       title: src/matrix/linear_equation.hpp
     - icon: ':warning:'
@@ -226,7 +226,7 @@ data:
       title: "\u884C\u5217\u6728\u5B9A\u7406"
   - name: src/number
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/binom_mod.hpp
       title: src/number/binom_mod.hpp
     - icon: ':warning:'
@@ -235,63 +235,63 @@ data:
     - icon: ':warning:'
       path: src/number/czt.hpp
       title: src/number/czt.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/eratosthenes.hpp
       title: src/number/eratosthenes.hpp
     - icon: ':warning:'
       path: src/number/extgcd.hpp
       title: src/number/extgcd.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/famous_number.hpp
       title: src/number/famous_number.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/gaussian_integer.hpp
       title: src/number/gaussian_integer.hpp
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/modfunc.hpp
       title: src/number/modfunc.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/nim_product.hpp
       title: src/number/nim_product.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/ntt.hpp
       title: src/number/ntt.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/primitive_root.hpp
       title: src/number/primitive_root.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/sharp_p_subset_sum.hpp
       title: src/number/sharp_p_subset_sum.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/stern-brocot_tree.hpp
       title: src/number/stern-brocot_tree.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/number/tetration.hpp
       title: src/number/tetration.hpp
   - name: src/string
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
     - icon: ':warning:'
@@ -302,138 +302,138 @@ data:
       title: src/string/str_util.hpp
   - name: src/utility
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/utility/hash.hpp
       title: src/utility/hash.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/heap.hpp
       title: src/utility/heap.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/io.hpp
       title: src/utility/io.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/key_val.hpp
       title: src/utility/key_val.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/utility/random.hpp
       title: src/utility/random.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/rep_itr.hpp
       title: src/utility/rep_itr.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/vec_op.hpp
       title: src/utility/vec_op.hpp
-    - icon: ':warning:'
+    - icon: ':question:'
       path: src/utility/zip.hpp
       title: src/utility/zip.hpp
   verificationCategories:
   - name: .
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: example.test.cpp
       title: example.test.cpp
   - name: verify/aoj/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/binary_trie.test.cpp
       title: verify/aoj/data_structure/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/max_flow.test.cpp
       title: verify/aoj/data_structure/max_flow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/min_cost_flow.test.cpp
       title: verify/aoj/data_structure/min_cost_flow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/range_add_range_min.test.cpp
       title: verify/aoj/data_structure/range_add_range_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/range_add_range_sum.test.cpp
       title: verify/aoj/data_structure/range_add_range_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/range_update_range_min.test.cpp
       title: verify/aoj/data_structure/range_update_range_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/range_update_range_sum.test.cpp
       title: verify/aoj/data_structure/range_update_range_sum.test.cpp
   - name: verify/aoj/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/ccw.test.cpp
       title: verify/aoj/geometry/ccw.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/convex_cut.test.cpp
       title: verify/aoj/geometry/convex_cut.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/convex_diameter.test.cpp
       title: verify/aoj/geometry/convex_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/convex_hull.test.cpp
       title: verify/aoj/geometry/convex_hull.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/convex_judge.test.cpp
       title: verify/aoj/geometry/convex_judge.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/crosspoint_ss.test.cpp
       title: verify/aoj/geometry/crosspoint_ss.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/distance_ss.test.cpp
       title: verify/aoj/geometry/distance_ss.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/line_position.test.cpp
       title: verify/aoj/geometry/line_position.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/polygon_area.test.cpp
       title: verify/aoj/geometry/polygon_area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/polygon_contains.test.cpp
       title: verify/aoj/geometry/polygon_contains.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/projection.test.cpp
       title: verify/aoj/geometry/projection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/reflection.test.cpp
       title: verify/aoj/geometry/reflection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/aoj/geometry/segment_intersection.test.cpp
       title: verify/aoj/geometry/segment_intersection.test.cpp
   - name: verify/library_checker/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/count_subseq.test.cpp
       title: verify/library_checker/algorithm/count_subseq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/algorithm/lis.test.cpp
       title: verify/library_checker/algorithm/lis.test.cpp
   - name: verify/library_checker/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/binary_trie.test.cpp
       title: verify/library_checker/data_structure/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
       title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
       title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/fenwick_tree.test.cpp
       title: verify/library_checker/data_structure/fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/heap_rich.test.cpp
       title: verify/library_checker/data_structure/heap_rich.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/lazy_segtree.test.cpp
       title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/line_add_get_min.test.cpp
       title: verify/library_checker/data_structure/line_add_get_min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
       title: verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
       title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/data_structure/range_freq.test.cpp
       title: verify/library_checker/data_structure/range_freq.test.cpp
     - icon: ':x:'

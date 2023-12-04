@@ -1,12 +1,49 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':x:'
+    path: src/algorithm/enumrate_quotient.hpp
+    title: src/algorithm/enumrate_quotient.hpp
+  - icon: ':x:'
+    path: src/algorithm/floor_sum.hpp
+    title: src/algorithm/floor_sum.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':x:'
+    path: src/number/stern-brocot_tree.hpp
+    title: src/number/stern-brocot_tree.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
-  attributes: {}
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://yukicoder.me/problems/no/2262
+    links:
+    - https://yukicoder.me/problems/no/2262
   bundledCode: "#line 1 \"verify/yukicoder/stern-brocot_tree_search.test.cpp\"\n#define\
     \ PROBLEM \"https://yukicoder.me/problems/no/2262\"\n\n#line 2 \"src/cp-template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nusing\
@@ -211,11 +248,22 @@ data:
     \ g] = sbt_search(N, [&](std::pair<ll,ll> x) {\n        return count(x) >= K;\n\
     \    });\n\n    if(rev) std::swap(f, g);\n    std::cout << f << \"/\" << g <<\
     \ std::endl;\n}"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
+  - src/number/stern-brocot_tree.hpp
+  - src/algorithm/floor_sum.hpp
+  - src/algorithm/enumrate_quotient.hpp
   isVerificationFile: true
   path: verify/yukicoder/stern-brocot_tree_search.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/yukicoder/stern-brocot_tree_search.test.cpp

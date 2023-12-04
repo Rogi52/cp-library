@@ -1,12 +1,43 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/graph/min_cost_flow.hpp
+    title: src/graph/min_cost_flow.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/GRL_6_B
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/problems/GRL_6_B
   bundledCode: "#line 1 \"verify/aoj/data_structure/min_cost_flow.test.cpp\"\n#define\
     \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/GRL_6_B\"\n\n#line 2 \"\
     src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing ll\
@@ -201,12 +232,21 @@ data:
     \ g(n);\n    for(int i : rep(m)) {\n        int u = in(), v = in(), c = in(),\
     \ d = in();\n        g.add_edge(u, v, c, d);\n    }\n    auto [flow, cost] = g.flow(0,\
     \ n - 1, f);\n    print(flow == f ? cost : -1);\n}"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
+  - src/graph/min_cost_flow.hpp
   isVerificationFile: true
   path: verify/aoj/data_structure/min_cost_flow.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/min_cost_flow.test.cpp
 layout: document

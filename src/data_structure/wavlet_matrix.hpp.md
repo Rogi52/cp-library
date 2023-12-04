@@ -1,11 +1,38 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
+    title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -178,13 +205,22 @@ data:
     \ cnt == R - L ? T(-1) : quantile(L, R, cnt);\n    }\n    // min v > x\n    T\
     \ next(int L, int R, T x) {\n        int cnt = freq(L, R, x);\n        return\
     \ cnt == 0 ? T(-1) : quantile(L, R, cnt - 1);\n    }\n};\n"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/data_structure/wavlet_matrix.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/wavlet_matrix.test.cpp
 documentation_of: src/data_structure/wavlet_matrix.hpp
 layout: document
 redirect_from:

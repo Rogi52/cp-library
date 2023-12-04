@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/library_checker/data_structure/line_add_get_min.test.cpp
+    title: verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
+    title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/data_structure/cht_offline_get_min.hpp\"\ntemplate <\
@@ -65,9 +71,11 @@ data:
   isVerificationFile: false
   path: src/data_structure/cht_offline_get_min.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2022-03-21 19:55:46+09:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
 documentation_of: src/data_structure/cht_offline_get_min.hpp
 layout: document
 redirect_from:

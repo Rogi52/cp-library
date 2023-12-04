@@ -1,11 +1,71 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':x:'
+    path: src/number/binom_mod.hpp
+    title: src/number/binom_mod.hpp
+  - icon: ':x:'
+    path: src/number/fps.hpp
+    title: src/number/fps.hpp
+  - icon: ':x:'
+    path: src/number/modfunc.hpp
+    title: src/number/modfunc.hpp
+  - icon: ':question:'
+    path: src/number/modint.hpp
+    title: modint
+  - icon: ':x:'
+    path: src/number/ntt.hpp
+    title: src/number/ntt.hpp
+  - icon: ':x:'
+    path: src/number/poly.hpp
+    title: src/number/poly.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':x:'
+    path: src/utility/random.hpp
+    title: src/utility/random.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/number/bernoulli.test.cpp
+    title: verify/library_checker/number/bernoulli.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/montmort.test.cpp
+    title: verify/library_checker/number/montmort.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/partition.test.cpp
+    title: verify/library_checker/number/partition.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/stirling_1st.test.cpp
+    title: verify/library_checker/number/stirling_1st.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/number/stirling_2nd.test.cpp
+    title: verify/library_checker/number/stirling_2nd.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -376,13 +436,33 @@ data:
     \ mint >\nstd::vector<mint> montmort(int n) {\n    std::vector<mint> a(n + 1,\
     \ 0);\n    if(2 <= n) a[2] = 1;\n    if(3 <= n) a[3] = 2;\n    for(int i : rep(4,\
     \ n + 1)) a[i] = (a[i - 1] + a[i - 2]) * (i - 1);\n    return a;\n}"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
+  - src/number/poly.hpp
+  - src/number/ntt.hpp
+  - src/number/modint.hpp
+  - src/number/fps.hpp
+  - src/number/modfunc.hpp
+  - src/utility/random.hpp
+  - src/number/binom_mod.hpp
   isVerificationFile: false
   path: src/number/famous_number.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/number/montmort.test.cpp
+  - verify/library_checker/number/stirling_2nd.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
 documentation_of: src/number/famous_number.hpp
 layout: document
 redirect_from:

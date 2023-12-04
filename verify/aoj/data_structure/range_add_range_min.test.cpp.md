@@ -1,12 +1,52 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/minmax.hpp
+    title: src/algebra/minmax.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/algebra/range_add_range_minmax.hpp
+    title: src/algebra/range_add_range_minmax.hpp
+  - icon: ':question:'
+    path: src/algebra/sum.hpp
+    title: src/algebra/sum.hpp
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/data_structure/lazy_segtree.hpp
+    title: src/data_structure/lazy_segtree.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H
   bundledCode: "#line 1 \"verify/aoj/data_structure/range_add_range_min.test.cpp\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_H\"\n\n#line\
     \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
@@ -196,12 +236,24 @@ data:
     \ 0) {\n            int s = in(), t = in(), x = in(); t++;\n            st.apply(s,\
     \ t, x);\n        }\n        if(type == 1) {\n            int s = in(), t = in();\
     \ t++;\n            print(st.prod(s, t));\n        }\n    }\n\n}"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
+  - src/data_structure/lazy_segtree.hpp
+  - src/algebra/range_add_range_minmax.hpp
+  - src/algebra/minmax.hpp
+  - src/algebra/sum.hpp
   isVerificationFile: true
   path: verify/aoj/data_structure/range_add_range_min.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/data_structure/range_add_range_min.test.cpp
 layout: document

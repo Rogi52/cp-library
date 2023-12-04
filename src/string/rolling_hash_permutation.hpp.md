@@ -40,7 +40,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash_permutation.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-03-30 00:39:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/rolling_hash_permutation.hpp

@@ -1,11 +1,56 @@
 ---
 data:
-  _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/algorithm/argsort.hpp
+    title: src/algorithm/argsort.hpp
+  - icon: ':question:'
+    path: src/algorithm/bin_search.hpp
+    title: src/algorithm/bin_search.hpp
+  - icon: ':question:'
+    path: src/cp-template.hpp
+    title: src/cp-template.hpp
+  - icon: ':question:'
+    path: src/utility/heap.hpp
+    title: src/utility/heap.hpp
+  - icon: ':question:'
+    path: src/utility/io.hpp
+    title: src/utility/io.hpp
+  - icon: ':question:'
+    path: src/utility/key_val.hpp
+    title: src/utility/key_val.hpp
+  - icon: ':question:'
+    path: src/utility/rep_itr.hpp
+    title: src/utility/rep_itr.hpp
+  - icon: ':question:'
+    path: src/utility/vec_op.hpp
+    title: src/utility/vec_op.hpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/matrix/lgv.hpp
+    title: "LGV \u516C\u5F0F"
+  - icon: ':x:'
+    path: src/matrix/linear_equation.hpp
+    title: src/matrix/linear_equation.hpp
+  - icon: ':warning:'
+    path: src/matrix/matrix-tree.hpp
+    title: "\u884C\u5217\u6728\u5B9A\u7406"
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/library_checker/matrix/determinant.test.cpp
+    title: verify/library_checker/matrix/determinant.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/matrix/inverse.test.cpp
+    title: verify/library_checker/matrix/inverse.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/matrix/linear_equation.test.cpp
+    title: verify/library_checker/matrix/linear_equation.test.cpp
+  - icon: ':x:'
+    path: verify/library_checker/matrix/product.test.cpp
+    title: verify/library_checker/matrix/product.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -237,13 +282,28 @@ data:
     \ ll n) {\n    square_matrix res = unit(A.size());\n    while(n > 0) {\n     \
     \   if(n % 2 == 1) res *= A;\n        A *= A;\n        n /= 2;\n    }\n    return\
     \ res;\n}"
-  dependsOn: []
+  dependsOn:
+  - src/cp-template.hpp
+  - src/utility/rep_itr.hpp
+  - src/utility/io.hpp
+  - src/utility/key_val.hpp
+  - src/utility/vec_op.hpp
+  - src/utility/heap.hpp
+  - src/algorithm/bin_search.hpp
+  - src/algorithm/argsort.hpp
   isVerificationFile: false
   path: src/matrix/base.hpp
-  requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - src/matrix/matrix-tree.hpp
+  - src/matrix/lgv.hpp
+  - src/matrix/linear_equation.hpp
+  timestamp: '2023-11-01 14:59:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
 documentation_of: src/matrix/base.hpp
 layout: document
 redirect_from:

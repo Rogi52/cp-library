@@ -33,7 +33,7 @@ data:
   isVerificationFile: false
   path: src/algorithm/ternary_search.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-10-21 06:29:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/algorithm/ternary_search.hpp

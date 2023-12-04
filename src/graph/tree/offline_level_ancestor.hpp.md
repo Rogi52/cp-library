@@ -29,7 +29,7 @@ data:
   isVerificationFile: false
   path: src/graph/tree/offline_level_ancestor.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-05-06 10:57:02+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/tree/offline_level_ancestor.hpp

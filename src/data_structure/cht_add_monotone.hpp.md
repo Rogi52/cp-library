@@ -69,7 +69,7 @@ data:
   isVerificationFile: false
   path: src/data_structure/cht_add_monotone.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2022-03-21 11:21:36+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data_structure/cht_add_monotone.hpp
