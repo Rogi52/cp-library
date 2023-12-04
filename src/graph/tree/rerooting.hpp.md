@@ -288,8 +288,8 @@ data:
   timestamp: '2023-11-08 12:27:03+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/graph/tree/rerooting.test.cpp
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
 documentation_of: src/graph/tree/rerooting.hpp
 layout: document
 redirect_from:

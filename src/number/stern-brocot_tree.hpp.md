@@ -257,8 +257,8 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/yukicoder/stern-brocot_tree_search.test.cpp
   - verify/library_checker/number/stern-brocot_tree.test.cpp
+  - verify/yukicoder/stern-brocot_tree_search.test.cpp
 documentation_of: src/number/stern-brocot_tree.hpp
 layout: document
 redirect_from:

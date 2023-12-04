@@ -146,6 +146,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/geometry/angle_sort.hpp
       title: src/geometry/angle_sort.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/geometry/base.hpp
+      title: src/geometry/base.hpp
     - icon: ':warning:'
       path: src/geometry/convex_hull.hpp
       title: src/geometry/convex_hull.hpp
@@ -253,7 +256,7 @@ data:
     - icon: ':warning:'
       path: src/number/inv_all.hpp
       title: src/number/inv_all.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/modfunc.hpp
       title: src/number/modfunc.hpp
     - icon: ':question:'
@@ -268,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
     - icon: ':heavy_check_mark:'
@@ -283,7 +286,7 @@ data:
     - icon: ':question:'
       path: src/number/stern-brocot_tree.hpp
       title: src/number/stern-brocot_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/tetration.hpp
       title: src/number/tetration.hpp
   - name: src/string
@@ -352,6 +355,47 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aoj/data_structure/range_update_range_sum.test.cpp
       title: verify/aoj/data_structure/range_update_range_sum.test.cpp
+  - name: verify/aoj/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/ccw.test.cpp
+      title: verify/aoj/geometry/ccw.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/convex_cut.test.cpp
+      title: verify/aoj/geometry/convex_cut.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/convex_diameter.test.cpp
+      title: verify/aoj/geometry/convex_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/convex_hull.test.cpp
+      title: verify/aoj/geometry/convex_hull.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/convex_judge.test.cpp
+      title: verify/aoj/geometry/convex_judge.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/crosspoint_ss.test.cpp
+      title: verify/aoj/geometry/crosspoint_ss.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/distance_ss.test.cpp
+      title: verify/aoj/geometry/distance_ss.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/line_position.test.cpp
+      title: verify/aoj/geometry/line_position.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/polygon_area.test.cpp
+      title: verify/aoj/geometry/polygon_area.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/polygon_contains.test.cpp
+      title: verify/aoj/geometry/polygon_contains.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/projection.test.cpp
+      title: verify/aoj/geometry/projection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/reflection.test.cpp
+      title: verify/aoj/geometry/reflection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/aoj/geometry/segment_intersection.test.cpp
+      title: verify/aoj/geometry/segment_intersection.test.cpp
   - name: verify/library_checker/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -563,7 +607,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/stirling_2nd.test.cpp
       title: verify/library_checker/number/stirling_2nd.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/tetration.test.cpp
       title: verify/library_checker/number/tetration.test.cpp
   - name: verify/library_checker/string

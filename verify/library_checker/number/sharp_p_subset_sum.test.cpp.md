@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':question:'

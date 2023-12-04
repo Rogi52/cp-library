@@ -294,16 +294,16 @@ data:
   isVerificationFile: false
   path: src/matrix/base.hpp
   requiredBy:
-  - src/matrix/lgv.hpp
   - src/matrix/matrix-tree.hpp
+  - src/matrix/lgv.hpp
   - src/matrix/linear_equation.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/matrix/linear_equation.test.cpp
-  - verify/library_checker/matrix/product.test.cpp
   - verify/library_checker/matrix/determinant.test.cpp
   - verify/library_checker/matrix/inverse.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
 documentation_of: src/matrix/base.hpp
 layout: document
 redirect_from:

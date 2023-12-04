@@ -32,8 +32,8 @@ data:
   isVerificationFile: false
   path: src/algebra/set_monoid.hpp
   requiredBy:
-  - src/algebra/range_update_range_minmax.hpp
   - src/algebra/range_update_range_sum.hpp
+  - src/algebra/range_update_range_minmax.hpp
   timestamp: '2023-10-14 00:28:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

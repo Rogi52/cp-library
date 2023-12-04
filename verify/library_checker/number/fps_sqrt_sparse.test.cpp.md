@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':question:'

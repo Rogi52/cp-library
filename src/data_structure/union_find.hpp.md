@@ -36,8 +36,8 @@ data:
   timestamp: '2022-06-27 17:48:10+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/graph/manhattan_mst.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
+  - verify/library_checker/graph/manhattan_mst.test.cpp
 documentation_of: src/data_structure/union_find.hpp
 layout: document
 redirect_from:

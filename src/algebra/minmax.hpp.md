@@ -167,8 +167,8 @@ data:
   isVerificationFile: false
   path: src/algebra/minmax.hpp
   requiredBy:
-  - src/algebra/range_update_range_minmax.hpp
   - src/algebra/range_add_range_minmax.hpp
+  - src/algebra/range_update_range_minmax.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

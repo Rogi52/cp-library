@@ -247,8 +247,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
 documentation_of: src/data_structure/static_point_add_rect_sum.hpp
 layout: document
 redirect_from:

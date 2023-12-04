@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':question:'
@@ -482,14 +482,14 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
   - verify/library_checker/number/poly_division.test.cpp
   - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
-  - verify/library_checker/number/partition.test.cpp
   - verify/library_checker/number/stirling_2nd.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
 documentation_of: src/number/poly.hpp
 layout: document
 redirect_from:

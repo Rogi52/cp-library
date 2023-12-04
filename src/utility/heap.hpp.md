@@ -95,6 +95,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/geometry/base.hpp
+    title: src/geometry/base.hpp
   - icon: ':warning:'
     path: src/geometry/convex_hull.hpp
     title: src/geometry/convex_hull.hpp
@@ -158,7 +161,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':heavy_check_mark:'
@@ -167,7 +170,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':heavy_check_mark:'
@@ -179,7 +182,7 @@ data:
   - icon: ':question:'
     path: src/number/stern-brocot_tree.hpp
     title: src/number/stern-brocot_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   - icon: ':heavy_check_mark:'
@@ -216,6 +219,45 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aoj/data_structure/range_update_range_sum.test.cpp
     title: verify/aoj/data_structure/range_update_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/ccw.test.cpp
+    title: verify/aoj/geometry/ccw.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/convex_cut.test.cpp
+    title: verify/aoj/geometry/convex_cut.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/convex_diameter.test.cpp
+    title: verify/aoj/geometry/convex_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/convex_hull.test.cpp
+    title: verify/aoj/geometry/convex_hull.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/convex_judge.test.cpp
+    title: verify/aoj/geometry/convex_judge.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/crosspoint_ss.test.cpp
+    title: verify/aoj/geometry/crosspoint_ss.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/distance_ss.test.cpp
+    title: verify/aoj/geometry/distance_ss.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/line_position.test.cpp
+    title: verify/aoj/geometry/line_position.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/polygon_area.test.cpp
+    title: verify/aoj/geometry/polygon_area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/polygon_contains.test.cpp
+    title: verify/aoj/geometry/polygon_contains.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/projection.test.cpp
+    title: verify/aoj/geometry/projection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/reflection.test.cpp
+    title: verify/aoj/geometry/reflection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/aoj/geometry/segment_intersection.test.cpp
+    title: verify/aoj/geometry/segment_intersection.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/algorithm/count_subseq.test.cpp
     title: verify/library_checker/algorithm/count_subseq.test.cpp
@@ -411,7 +453,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_2nd.test.cpp
     title: verify/library_checker/number/stirling_2nd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
   - icon: ':heavy_check_mark:'
@@ -547,143 +589,157 @@ data:
   isVerificationFile: false
   path: src/utility/heap.hpp
   requiredBy:
-  - src/algorithm/selection.hpp
-  - src/algorithm/floor_sum.hpp
-  - src/algorithm/argsort.hpp
-  - src/algorithm/beam_search.hpp
-  - src/graph/tree/dp_on_tree.hpp
-  - src/graph/tree/rerooting.hpp
-  - src/graph/tree/tree.hpp
-  - src/graph/tree/tree_isomorphism.hpp
-  - src/graph/triangle.hpp
-  - src/graph/maximum_independent_set.hpp
-  - src/graph/clique.hpp
-  - src/graph/chromatic_number.hpp
-  - src/cp-template.hpp
-  - src/algebra/size.hpp
-  - src/algebra/range_add_range_sum.hpp
-  - src/algebra/index.hpp
-  - src/algebra/minmax.hpp
-  - src/algebra/range_update_range_minmax.hpp
-  - src/algebra/range_add_range_minmax.hpp
-  - src/algebra/range_update_range_sum.hpp
-  - src/matrix/lgv.hpp
-  - src/matrix/matrix-tree.hpp
-  - src/matrix/linear_equation.hpp
-  - src/matrix/base.hpp
-  - src/utility/io.hpp
-  - src/utility/random.hpp
-  - src/utility/hash.hpp
-  - src/data_structure/disjoint_sparse_table.hpp
-  - src/data_structure/sparse_segtree.hpp
-  - src/data_structure/heap_rich.hpp
-  - src/data_structure/offline_multiset.hpp
   - src/data_structure/fenwick_tree.hpp
-  - src/data_structure/static_rect_add_rect_sum.hpp
-  - src/data_structure/range_freq.hpp
-  - src/data_structure/wavlet_matrix.hpp
-  - src/data_structure/binary_trie.hpp
-  - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/static_point_add_rect_sum.hpp
+  - src/data_structure/range_freq.hpp
   - src/data_structure/sliding_window_aggregation.hpp
-  - src/geometry/manhattan_mst.hpp
-  - src/geometry/convex_hull.hpp
-  - src/number/eratosthenes.hpp
-  - src/number/binom_mod.hpp
-  - src/number/sharp_p_subset_sum.hpp
-  - src/number/binom_table.hpp
-  - src/number/prime.hpp
-  - src/number/poly.hpp
-  - src/number/modfunc.hpp
-  - src/number/fps.hpp
-  - src/number/gaussian_integer.hpp
+  - src/data_structure/disjoint_sparse_table.hpp
+  - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/wavlet_matrix.hpp
+  - src/data_structure/heap_rich.hpp
+  - src/data_structure/point_add_rect_sum.hpp
+  - src/data_structure/binary_trie.hpp
+  - src/data_structure/offline_multiset.hpp
+  - src/data_structure/sparse_segtree.hpp
   - src/number/nim_product.hpp
-  - src/number/tetration.hpp
-  - src/number/famous_number.hpp
-  - src/number/fps_sparse.hpp
+  - src/number/poly.hpp
+  - src/number/sharp_p_subset_sum.hpp
   - src/number/stern-brocot_tree.hpp
   - src/number/primitive_root.hpp
+  - src/number/tetration.hpp
+  - src/number/prime.hpp
+  - src/number/binom_mod.hpp
+  - src/number/fps.hpp
+  - src/number/gaussian_integer.hpp
+  - src/number/famous_number.hpp
+  - src/number/binom_table.hpp
+  - src/number/modfunc.hpp
+  - src/number/fps_sparse.hpp
+  - src/number/eratosthenes.hpp
   - src/string/rolling_hash.hpp
+  - src/matrix/base.hpp
+  - src/matrix/matrix-tree.hpp
+  - src/matrix/lgv.hpp
+  - src/matrix/linear_equation.hpp
+  - src/graph/tree/rerooting.hpp
+  - src/graph/tree/dp_on_tree.hpp
+  - src/graph/tree/tree_isomorphism.hpp
+  - src/graph/tree/tree.hpp
+  - src/graph/clique.hpp
+  - src/graph/maximum_independent_set.hpp
+  - src/graph/triangle.hpp
+  - src/graph/chromatic_number.hpp
+  - src/geometry/base.hpp
+  - src/geometry/convex_hull.hpp
+  - src/geometry/manhattan_mst.hpp
+  - src/utility/random.hpp
+  - src/utility/io.hpp
+  - src/utility/hash.hpp
+  - src/algebra/index.hpp
+  - src/algebra/range_add_range_minmax.hpp
+  - src/algebra/size.hpp
+  - src/algebra/range_update_range_sum.hpp
+  - src/algebra/range_add_range_sum.hpp
+  - src/algebra/range_update_range_minmax.hpp
+  - src/algebra/minmax.hpp
+  - src/algorithm/selection.hpp
+  - src/algorithm/argsort.hpp
+  - src/algorithm/beam_search.hpp
+  - src/algorithm/floor_sum.hpp
+  - src/cp-template.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/yukicoder/gaussian_integer.test.cpp
-  - verify/yukicoder/stern-brocot_tree_search.test.cpp
-  - verify/yukicoder/sparse_segtree.test.cpp
-  - verify/library_checker/algorithm/lis.test.cpp
-  - verify/library_checker/algorithm/count_subseq.test.cpp
-  - verify/library_checker/graph/chromatic_number.test.cpp
-  - verify/library_checker/graph/tree/rerooting.test.cpp
-  - verify/library_checker/graph/tree/jump_on_tree.test.cpp
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - verify/library_checker/graph/tree/lca.test.cpp
-  - verify/library_checker/graph/tree/diameter.test.cpp
-  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
-  - verify/library_checker/graph/enumerate_triangles.test.cpp
-  - verify/library_checker/graph/maximum_independent_set.test.cpp
-  - verify/library_checker/graph/manhattan_mst.test.cpp
-  - verify/library_checker/graph/enumerate_cliques.test.cpp
-  - verify/library_checker/graph/shortest_path.test.cpp
-  - verify/library_checker/matrix/linear_equation.test.cpp
-  - verify/library_checker/matrix/product.test.cpp
-  - verify/library_checker/matrix/determinant.test.cpp
-  - verify/library_checker/matrix/inverse.test.cpp
-  - verify/library_checker/data_structure/range_freq.test.cpp
-  - verify/library_checker/data_structure/wavlet_matrix.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/binary_trie.test.cpp
-  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - verify/library_checker/data_structure/heap_rich.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
-  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-  - verify/library_checker/data_structure/line_add_get_min.test.cpp
-  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
-  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/union_find.test.cpp
-  - verify/library_checker/geometry/angle_sort.test.cpp
-  - verify/library_checker/io/int128.test.cpp
-  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
-  - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/fps_log.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/nim_product.test.cpp
-  - verify/library_checker/number/primitive_root.test.cpp
-  - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/tetration.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/line_add_get_min.test.cpp
+  - verify/library_checker/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/segment_add_get_min.test.cpp
+  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/wavlet_matrix.test.cpp
+  - verify/library_checker/data_structure/heap_rich.test.cpp
+  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  - verify/library_checker/data_structure/rectangle_sum.test.cpp
+  - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/range_freq.test.cpp
+  - verify/library_checker/data_structure/segtree.test.cpp
+  - verify/library_checker/number/lcm_convolution.test.cpp
   - verify/library_checker/number/fps_pow.test.cpp
   - verify/library_checker/number/primality_test.test.cpp
-  - verify/library_checker/number/fps_composition.test.cpp
-  - verify/library_checker/number/stern-brocot_tree.test.cpp
-  - verify/library_checker/number/modsqrt.test.cpp
+  - verify/library_checker/number/poly_division.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
+  - verify/library_checker/number/primitive_root.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
   - verify/library_checker/number/fps_sqrt_sparse.test.cpp
   - verify/library_checker/number/fps_exp.test.cpp
-  - verify/library_checker/number/lcm_convolution.test.cpp
-  - verify/library_checker/number/factorize.test.cpp
-  - verify/library_checker/number/fps_sqrt.test.cpp
-  - verify/library_checker/number/fps_inv.test.cpp
-  - verify/library_checker/number/gcd_convolution.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/tetration.test.cpp
   - verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/modsqrt.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
+  - verify/library_checker/number/nim_product.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
   - verify/library_checker/number/stirling_2nd.test.cpp
+  - verify/library_checker/number/fps_pow_sparse.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/partition.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  - verify/library_checker/number/gcd_convolution.test.cpp
+  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  - verify/library_checker/number/stern-brocot_tree.test.cpp
   - verify/library_checker/string/rolling_hash.test.cpp
+  - verify/library_checker/matrix/linear_equation.test.cpp
+  - verify/library_checker/matrix/determinant.test.cpp
+  - verify/library_checker/matrix/inverse.test.cpp
+  - verify/library_checker/matrix/product.test.cpp
+  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  - verify/library_checker/graph/tree/diameter.test.cpp
+  - verify/library_checker/graph/tree/lca.test.cpp
+  - verify/library_checker/graph/tree/jump_on_tree.test.cpp
+  - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/graph/tree/cartesian_tree.test.cpp
+  - verify/library_checker/graph/shortest_path.test.cpp
+  - verify/library_checker/graph/manhattan_mst.test.cpp
+  - verify/library_checker/graph/enumerate_cliques.test.cpp
+  - verify/library_checker/graph/chromatic_number.test.cpp
+  - verify/library_checker/graph/maximum_independent_set.test.cpp
+  - verify/library_checker/graph/enumerate_triangles.test.cpp
+  - verify/library_checker/geometry/angle_sort.test.cpp
+  - verify/library_checker/io/int128.test.cpp
+  - verify/library_checker/algorithm/count_subseq.test.cpp
+  - verify/library_checker/algorithm/lis.test.cpp
+  - verify/yukicoder/sparse_segtree.test.cpp
+  - verify/yukicoder/gaussian_integer.test.cpp
+  - verify/yukicoder/stern-brocot_tree_search.test.cpp
   - verify/aoj/data_structure/min_cost_flow.test.cpp
-  - verify/aoj/data_structure/binary_trie.test.cpp
-  - verify/aoj/data_structure/range_add_range_sum.test.cpp
   - verify/aoj/data_structure/max_flow.test.cpp
+  - verify/aoj/data_structure/range_add_range_sum.test.cpp
   - verify/aoj/data_structure/range_add_range_min.test.cpp
   - verify/aoj/data_structure/range_update_range_sum.test.cpp
+  - verify/aoj/data_structure/binary_trie.test.cpp
   - verify/aoj/data_structure/range_update_range_min.test.cpp
+  - verify/aoj/geometry/line_position.test.cpp
+  - verify/aoj/geometry/convex_diameter.test.cpp
+  - verify/aoj/geometry/projection.test.cpp
+  - verify/aoj/geometry/polygon_area.test.cpp
+  - verify/aoj/geometry/ccw.test.cpp
+  - verify/aoj/geometry/crosspoint_ss.test.cpp
+  - verify/aoj/geometry/convex_judge.test.cpp
+  - verify/aoj/geometry/reflection.test.cpp
+  - verify/aoj/geometry/convex_hull.test.cpp
+  - verify/aoj/geometry/segment_intersection.test.cpp
+  - verify/aoj/geometry/convex_cut.test.cpp
+  - verify/aoj/geometry/distance_ss.test.cpp
+  - verify/aoj/geometry/polygon_contains.test.cpp
 documentation_of: src/utility/heap.hpp
 layout: document
 redirect_from:

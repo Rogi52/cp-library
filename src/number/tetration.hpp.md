@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':question:'
@@ -36,12 +36,12 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -223,7 +223,7 @@ data:
   path: src/number/tetration.hpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/number/tetration.test.cpp
 documentation_of: src/number/tetration.hpp
