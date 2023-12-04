@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
     title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -48,7 +48,7 @@ data:
   requiredBy:
   - src/algebra/range_affine_range_sum.hpp
   timestamp: '2023-10-14 00:28:35+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp

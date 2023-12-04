@@ -13,7 +13,7 @@ data:
   - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/tree/tree.hpp
     title: src/graph/tree/tree.hpp
   - icon: ':question:'

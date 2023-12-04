@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/tree/tree.hpp
     title: src/graph/tree/tree.hpp
   - icon: ':question:'

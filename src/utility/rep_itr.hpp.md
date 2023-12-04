@@ -44,7 +44,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data_structure/disjoint_sparse_table.hpp
     title: src/data_structure/disjoint_sparse_table.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/fenwick_tree.hpp
     title: src/data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -65,13 +65,13 @@ data:
   - icon: ':x:'
     path: src/data_structure/sparse_segtree.hpp
     title: src/data_structure/sparse_segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_point_add_rect_sum.hpp
     title: src/data_structure/static_point_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/static_rect_add_rect_sum.hpp
     title: src/data_structure/static_rect_add_rect_sum.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data_structure/wavlet_matrix.hpp
     title: src/data_structure/wavlet_matrix.hpp
   - icon: ':heavy_check_mark:'
@@ -83,13 +83,13 @@ data:
   - icon: ':x:'
     path: src/geometry/manhattan_mst.hpp
     title: src/geometry/manhattan_mst.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/chromatic_number.hpp
     title: src/graph/chromatic_number.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/clique.hpp
     title: src/graph/clique.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/maximum_independent_set.hpp
     title: src/graph/maximum_independent_set.hpp
   - icon: ':warning:'
@@ -98,13 +98,13 @@ data:
   - icon: ':x:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/tree/tree.hpp
     title: src/graph/tree/tree.hpp
   - icon: ':x:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/triangle.hpp
     title: src/graph/triangle.hpp
   - icon: ':x:'
@@ -276,52 +276,52 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/range_freq.test.cpp
     title: verify/library_checker/data_structure/range_freq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/rectangle_sum.test.cpp
     title: verify/library_checker/data_structure/rectangle_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segment_add_get_min.test.cpp
     title: verify/library_checker/data_structure/segment_add_get_min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/segtree.test.cpp
     title: verify/library_checker/data_structure/segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
     title: verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/union_find.test.cpp
     title: verify/library_checker/data_structure/union_find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/data_structure/wavlet_matrix.test.cpp
     title: verify/library_checker/data_structure/wavlet_matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/geometry/angle_sort.test.cpp
     title: verify/library_checker/geometry/angle_sort.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/chromatic_number.test.cpp
     title: verify/library_checker/graph/chromatic_number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/enumerate_cliques.test.cpp
     title: verify/library_checker/graph/enumerate_cliques.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/enumerate_triangles.test.cpp
     title: verify/library_checker/graph/enumerate_triangles.test.cpp
   - icon: ':x:'
     path: verify/library_checker/graph/manhattan_mst.test.cpp
     title: verify/library_checker/graph/manhattan_mst.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/maximum_independent_set.test.cpp
     title: verify/library_checker/graph/maximum_independent_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/shortest_path.test.cpp
     title: verify/library_checker/graph/shortest_path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/cartesian_tree.test.cpp
     title: verify/library_checker/graph/tree/cartesian_tree.test.cpp
   - icon: ':x:'
     path: verify/library_checker/graph/tree/diameter.test.cpp
     title: verify/library_checker/graph/tree/diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/jump_on_tree.test.cpp
     title: verify/library_checker/graph/tree/jump_on_tree.test.cpp
   - icon: ':x:'

@@ -131,40 +131,39 @@ data:
     \    std::vector< int > ids((int)a.size());\n    std::iota(ids.begin(), ids.end(),\
     \ 0);\n    std::sort(ids.begin(), ids.end(), [&](int i, int j) {\n        return\
     \ a[i] < a[j] || (a[i] == a[j] && i < j);\n    });\n    return ids;\n}\n#line\
-    \ 2 \"src/geometry/base.hpp\"\n\ntemplate < class T >\nstruct point {\n    T x,\
+    \ 2 \"src/geometry/base.hpp\"\n\ntemplate < class T > struct point {\n    T x,\
     \ y;\n    point() : x(0), y(0) {}\n    point(T x, T y) : x(x), y(y) {}\n    point(std::pair<\
-    \ T, T > p) : x(p.first), y(p.second) {}\n\n    point& operator+=(const point&\
-    \ p) { x += p.x, y += p.y; return *this; }\n    point& operator-=(const point&\
-    \ p) { x -= p.x, y -= p.y; return *this; }\n    point& operator*=(const T r) {\
-    \ x *= r, y *= r; return *this; }\n    point& operator/=(const T r) { x /= r,\
-    \ y /= r; return *this; }\n    point operator+(const point& p) const { return\
-    \ point(*this) += p; }\n    point operator-(const point& p) const { return point(*this)\
-    \ -= p; }\n    point operator*(const T r) const { return point(*this) *= r; }\n\
-    \    point operator/(const T r) const { return point(*this) /= r; }\n    point\
+    \ T, T > p) : x(p.first), y(p.second) {}\n    point& operator+=(const point& p)\
+    \ { x += p.x, y += p.y; return *this; }\n    point& operator-=(const point& p)\
+    \ { x -= p.x, y -= p.y; return *this; }\n    point& operator*=(const T r) { x\
+    \ *= r, y *= r; return *this; }\n    point& operator/=(const T r) { x /= r, y\
+    \ /= r; return *this; }\n    point operator+(const point& p) const { return point(*this)\
+    \ += p; }\n    point operator-(const point& p) const { return point(*this) -=\
+    \ p; }\n    point operator*(const T r) const { return point(*this) *= r; }\n \
+    \   point operator/(const T r) const { return point(*this) /= r; }\n    point\
     \ operator-() const { return {-x, -y}; }\n    bool operator==(const point& p)\
     \ const { return x == p.x and y == p.y; }\n    bool operator!=(const point& p)\
-    \ const { return x != p.x or  y != p.y; }\n\n    bool operator<(const point& p)\
-    \ const {\n        if(x == p.x) return y < p.y;\n        return x < p.x;\n   \
-    \ }\n\n    point< T > rot(double theta) {\n        static_assert(is_floating_point_v<\
-    \ T >);\n        double cos_ = std::cos(theta), sin_ = std::sin(theta);\n    \
-    \    return {cos_ * x - sin_ * y, sin_ * x + cos_ * y};\n    }\n};\ntemplate <\
-    \ class T > istream& operator>>(istream& is, point< T >& p) { return is >> p.x\
-    \ >> p.y; }\ntemplate < class T > ostream& operator<<(ostream& os, point< T >&\
-    \ p) { return os << p.x << \" \" << p.y; }\ntemplate < class T > T dot(const point<\
-    \ T >& a, const point< T >& b) { return a.x * b.x + a.y * b.y; }\ntemplate < class\
-    \ T > T det(const point< T >& a, const point< T >& b) { return a.x * b.y - a.y\
-    \ * b.x; }\ntemplate < class T > T norm(const point< T >& p) { return p.x * p.x\
-    \ + p.y * p.y; }\ntemplate < class T > double abs(const point< T >& p) { return\
-    \ std::sqrt(norm(p)); }\ntemplate < class T > double angle(const point< T >& p)\
-    \ { return std::atan2(p.y, p.x); }\ntemplate < class T >\nint sign(const T x)\
-    \ {\n    T e = (is_integral_v< T > ? 1 : 1e-8);\n    if(x <= -e) return -1;\n\
+    \ const { return x != p.x or  y != p.y; }\n    bool operator<(const point& p)\
+    \ const { return x == p.x ? y < p.y : x < p.x; }\n    point< T > rot(double theta)\
+    \ {\n        static_assert(is_floating_point_v< T >);\n        double cos_ = std::cos(theta),\
+    \ sin_ = std::sin(theta);\n        return {cos_ * x - sin_ * y, sin_ * x + cos_\
+    \ * y};\n    }\n};\ntemplate < class T > istream& operator>>(istream& is, point<\
+    \ T >& p) { return is >> p.x >> p.y; }\ntemplate < class T > ostream& operator<<(ostream&\
+    \ os, point< T >& p) { return os << p.x << \" \" << p.y; }\ntemplate < class T\
+    \ > T dot(const point< T >& a, const point< T >& b) { return a.x * b.x + a.y *\
+    \ b.y; }\ntemplate < class T > T det(const point< T >& a, const point< T >& b)\
+    \ { return a.x * b.y - a.y * b.x; }\ntemplate < class T > T norm(const point<\
+    \ T >& p) { return p.x * p.x + p.y * p.y; }\ntemplate < class T > double abs(const\
+    \ point< T >& p) { return std::sqrt(norm(p)); }\ntemplate < class T > double angle(const\
+    \ point< T >& p) { return std::atan2(p.y, p.x); }\ntemplate < class T > int sign(const\
+    \ T x) {\n    T e = (is_integral_v< T > ? 1 : 1e-8);\n    if(x <= -e) return -1;\n\
     \    if(x >= +e) return +1;\n    return 0;\n}\ntemplate < class T > bool equals(const\
-    \ T& a, const T& b) { return sign(a - b) == 0; }\ntemplate < class T > \nint ccw(const\
+    \ T& a, const T& b) { return sign(a - b) == 0; }\ntemplate < class T > int ccw(const\
     \ point< T >& a, point< T > b, point< T > c) {\n    b -= a, c -= a;\n    if(sign(det(b,\
     \ c)) == +1) return +1; // counter clockwise\n    if(sign(det(b, c)) == -1) return\
     \ -1; //         clockwise\n    if(sign(dot(b, c)) == -1) return +2; // c-a-b\n\
     \    if(norm(b) < norm(c)) return -2;     // a-b-c\n    return 0;            \
-    \                // a-c-b\n}\n\ntemplate < class T >\nstruct line {\n    point<\
+    \                // a-c-b\n}\n\ntemplate < class T > struct line {\n    point<\
     \ T > a, b;\n    line() {}\n    line(point< T > a, point< T > b) : a(a), b(b)\
     \ {}\n};\ntemplate < class T > point< T > projection(const line< T >& l, const\
     \ point< T >& p) {\n    static_assert(is_floating_point_v< T >);\n    return l.a\
@@ -246,7 +245,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/geometry/convex_hull.test.cpp
   requiredBy: []
-  timestamp: '2023-12-04 16:57:08+09:00'
+  timestamp: '2023-12-04 18:06:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/geometry/convex_hull.test.cpp

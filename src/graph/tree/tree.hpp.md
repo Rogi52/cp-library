@@ -36,7 +36,7 @@ data:
   - icon: ':x:'
     path: verify/library_checker/graph/tree/diameter.test.cpp
     title: verify/library_checker/graph/tree/diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/jump_on_tree.test.cpp
     title: verify/library_checker/graph/tree/jump_on_tree.test.cpp
   - icon: ':x:'
@@ -50,7 +50,7 @@ data:
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -300,7 +300,7 @@ data:
   - src/graph/tree/rerooting.hpp
   - src/graph/tree/tree_isomorphism.hpp
   timestamp: '2023-11-08 12:27:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/graph/tree/diameter.test.cpp
