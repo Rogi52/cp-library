@@ -1,12 +1,10 @@
 #include "../../src/cp-template.hpp"
 
-template < class T >
-struct point {
+template < class T > struct point {
     T x, y;
     point() : x(0), y(0) {}
     point(T x, T y) : x(x), y(y) {}
     point(std::pair< T, T > p) : x(p.first), y(p.second) {}
-
     point& operator+=(const point& p) { x += p.x, y += p.y; return *this; }
     point& operator-=(const point& p) { x -= p.x, y -= p.y; return *this; }
     point& operator*=(const T r) { x *= r, y *= r; return *this; }
@@ -18,12 +16,7 @@ struct point {
     point operator-() const { return {-x, -y}; }
     bool operator==(const point& p) const { return x == p.x and y == p.y; }
     bool operator!=(const point& p) const { return x != p.x or  y != p.y; }
-
-    bool operator<(const point& p) const {
-        if(x == p.x) return y < p.y;
-        return x < p.x;
-    }
-
+    bool operator<(const point& p) const { return x == p.x ? y < p.y : x < p.x; }
     point< T > rot(double theta) {
         static_assert(is_floating_point_v< T >);
         double cos_ = std::cos(theta), sin_ = std::sin(theta);
@@ -37,16 +30,14 @@ template < class T > T det(const point< T >& a, const point< T >& b) { return a.
 template < class T > T norm(const point< T >& p) { return p.x * p.x + p.y * p.y; }
 template < class T > double abs(const point< T >& p) { return std::sqrt(norm(p)); }
 template < class T > double angle(const point< T >& p) { return std::atan2(p.y, p.x); }
-template < class T >
-int sign(const T x) {
+template < class T > int sign(const T x) {
     T e = (is_integral_v< T > ? 1 : 1e-8);
     if(x <= -e) return -1;
     if(x >= +e) return +1;
     return 0;
 }
 template < class T > bool equals(const T& a, const T& b) { return sign(a - b) == 0; }
-template < class T > 
-int ccw(const point< T >& a, point< T > b, point< T > c) {
+template < class T > int ccw(const point< T >& a, point< T > b, point< T > c) {
     b -= a, c -= a;
     if(sign(det(b, c)) == +1) return +1; // counter clockwise
     if(sign(det(b, c)) == -1) return -1; //         clockwise
@@ -55,8 +46,7 @@ int ccw(const point< T >& a, point< T > b, point< T > c) {
     return 0;                            // a-c-b
 }
 
-template < class T >
-struct line {
+template < class T > struct line {
     point< T > a, b;
     line() {}
     line(point< T > a, point< T > b) : a(a), b(b) {}
