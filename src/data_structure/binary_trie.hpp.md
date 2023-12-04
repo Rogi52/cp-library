@@ -1,41 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/binary_trie.test.cpp
-    title: verify/aoj/data_structure/binary_trie.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/binary_trie.test.cpp
-    title: verify/library_checker/data_structure/binary_trie.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -192,23 +162,13 @@ data:
     \ ^ q] != -1) { u = node[u].to[p ^ q]; } else break;\n        }\n        return\
     \ v;\n    }\n    V size() {\n        return node[ROOT].cnt;\n    }\n    int empty()\
     \ {\n        return size() == 0;\n    }\n};\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/data_structure/binary_trie.test.cpp
-  - verify/aoj/data_structure/binary_trie.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data_structure/binary_trie.hpp
 layout: document
 redirect_from:

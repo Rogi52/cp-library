@@ -20,7 +20,7 @@ data:
   isVerificationFile: false
   path: src/number/extgcd.hpp
   requiredBy: []
-  timestamp: '2023-10-28 05:38:28+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/number/extgcd.hpp

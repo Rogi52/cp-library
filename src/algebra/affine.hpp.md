@@ -1,26 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_affine_range_sum.hpp
-    title: src/algebra/range_affine_range_sum.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-    title: verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-    title: verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/segtree.test.cpp
-    title: verify/library_checker/data_structure/segtree.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -45,15 +30,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/algebra/affine.hpp
-  requiredBy:
-  - src/algebra/range_affine_range_sum.hpp
-  timestamp: '2023-10-14 00:28:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
-  - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
-  - verify/library_checker/data_structure/segtree.test.cpp
+  requiredBy: []
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algebra/affine.hpp
 layout: document
 redirect_from:

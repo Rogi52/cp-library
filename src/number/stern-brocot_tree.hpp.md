@@ -1,41 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/stern-brocot_tree.test.cpp
-    title: verify/library_checker/number/stern-brocot_tree.test.cpp
-  - icon: ':x:'
-    path: verify/yukicoder/stern-brocot_tree_search.test.cpp
-    title: verify/yukicoder/stern-brocot_tree_search.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -242,23 +212,13 @@ data:
     \ /= 2;\n        while(x > 0) {\n            sbt_n.down(x * sgn);\n          \
     \  if(ng()) sbt_n.up(x);\n            x /= 2;\n        }\n        sbt_n.down(sgn);\n\
     \        if(over()) return sbt_n.upper_bound();\n        sgn *= -1;\n    }\n}"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/number/stern-brocot_tree.hpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - verify/library_checker/number/stern-brocot_tree.test.cpp
-  - verify/yukicoder/stern-brocot_tree_search.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/number/stern-brocot_tree.hpp
 layout: document
 redirect_from:

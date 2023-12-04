@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/graph/shortest_path.test.cpp
-    title: verify/library_checker/graph/shortest_path.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/graph/shortest_path.hpp\"\n// g <- pair < v , cost >\
@@ -66,10 +63,9 @@ data:
   isVerificationFile: false
   path: src/graph/shortest_path.hpp
   requiredBy: []
-  timestamp: '2022-05-05 17:09:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/graph/shortest_path.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/graph/shortest_path.hpp
 layout: document
 redirect_from:

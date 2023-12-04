@@ -1,80 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/binom_mod.hpp
-    title: src/number/binom_mod.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/fps.hpp
-    title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/modfunc.hpp
-    title: src/number/modfunc.hpp
-  - icon: ':question:'
-    path: src/number/modint.hpp
-    title: modint
-  - icon: ':heavy_check_mark:'
-    path: src/number/ntt.hpp
-    title: src/number/ntt.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/random.hpp
-    title: src/utility/random.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/number/famous_number.hpp
-    title: src/number/famous_number.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/bernoulli.test.cpp
-    title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/montmort.test.cpp
-    title: verify/library_checker/number/montmort.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/partition.test.cpp
-    title: verify/library_checker/number/partition.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/poly_all_product.test.cpp
-    title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/poly_division.test.cpp
-    title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/poly_taylor_shift.test.cpp
-    title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/stirling_1st.test.cpp
-    title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/stirling_2nd.test.cpp
-    title: verify/library_checker/number/stirling_2nd.test.cpp
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -460,36 +391,13 @@ data:
     \ >= 2) {\n        auto [n1, i1] = pq.top(); pq.pop();\n        auto [n2, i2]\
     \ = pq.top(); pq.pop();\n        fs[i1] *= fs[i2];\n        pq.push({n1 + n2,\
     \ i1});\n    }\n    return fs[pq.top().second];\n}\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/number/ntt.hpp
-  - src/number/modint.hpp
-  - src/number/fps.hpp
-  - src/number/modfunc.hpp
-  - src/utility/random.hpp
-  - src/number/binom_mod.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/number/poly.hpp
-  requiredBy:
-  - src/number/famous_number.hpp
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/stirling_2nd.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
-  - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
-  - verify/library_checker/number/poly_taylor_shift.test.cpp
+  requiredBy: []
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/number/poly.hpp
 layout: document
 redirect_from:

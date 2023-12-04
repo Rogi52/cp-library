@@ -23,7 +23,7 @@ data:
   isVerificationFile: false
   path: src/graph/bfs.hpp
   requiredBy: []
-  timestamp: '2022-10-02 19:03:12+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/bfs.hpp

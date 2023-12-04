@@ -1,50 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':x:'
-    path: src/graph/tree/rerooting.hpp
-    title: src/graph/tree/rerooting.hpp
-  - icon: ':x:'
-    path: src/graph/tree/tree.hpp
-    title: src/graph/tree/tree.hpp
-  - icon: ':question:'
-    path: src/utility/hash.hpp
-    title: src/utility/hash.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/random.hpp
-    title: src/utility/random.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-    title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -298,26 +259,13 @@ data:
     \ key.end());\n    key.erase(std::unique(key.begin(), key.end()), key.end());\n\
     \    vector<int> id(n);\n    for(int i : rep(n)) id[i] = std::lower_bound(key.begin(),\
     \ key.end(), dp[i]) - key.begin();\n    return {key.size(), id};\n};"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/graph/tree/rerooting.hpp
-  - src/graph/tree/tree.hpp
-  - src/utility/hash.hpp
-  - src/utility/random.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/graph/tree/tree_isomorphism.hpp
   requiredBy: []
-  timestamp: '2023-11-08 12:27:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/graph/tree/tree_isomorphism.hpp
 layout: document
 redirect_from:

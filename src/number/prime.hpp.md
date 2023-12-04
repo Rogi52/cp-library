@@ -1,59 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/modfunc.hpp
-    title: src/number/modfunc.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/random.hpp
-    title: src/utility/random.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/number/primitive_root.hpp
-    title: src/number/primitive_root.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/tetration.hpp
-    title: src/number/tetration.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/factorize.test.cpp
-    title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/primality_test.test.cpp
-    title: verify/library_checker/number/primality_test.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/primitive_root.test.cpp
-    title: verify/library_checker/number/primitive_root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/tetration.test.cpp
-    title: verify/library_checker/number/tetration.test.cpp
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -230,29 +182,13 @@ data:
     \ res.back().second++;\n        else res.push_back({pf[i], 1});\n    }\n    return\
     \ res;\n}\n\nu64 euler_phi(u64 n) {\n    std::vector<std::pair<u64,i32>> pf =\
     \ factor_pair(n);\n    for(auto [p, e] : pf) n -= n / p;\n    return n;\n}"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/number/modfunc.hpp
-  - src/utility/random.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/number/prime.hpp
-  requiredBy:
-  - src/number/primitive_root.hpp
-  - src/number/tetration.hpp
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/number/primality_test.test.cpp
-  - verify/library_checker/number/factorize.test.cpp
-  - verify/library_checker/number/primitive_root.test.cpp
-  - verify/library_checker/number/tetration.test.cpp
+  requiredBy: []
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/number/prime.hpp
 layout: document
 redirect_from:

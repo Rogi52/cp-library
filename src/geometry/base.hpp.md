@@ -1,74 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/ccw.test.cpp
-    title: verify/aoj/geometry/ccw.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/convex_cut.test.cpp
-    title: verify/aoj/geometry/convex_cut.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/convex_diameter.test.cpp
-    title: verify/aoj/geometry/convex_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/convex_hull.test.cpp
-    title: verify/aoj/geometry/convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/convex_judge.test.cpp
-    title: verify/aoj/geometry/convex_judge.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/crosspoint_ss.test.cpp
-    title: verify/aoj/geometry/crosspoint_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/distance_ss.test.cpp
-    title: verify/aoj/geometry/distance_ss.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/line_position.test.cpp
-    title: verify/aoj/geometry/line_position.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/polygon_area.test.cpp
-    title: verify/aoj/geometry/polygon_area.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/polygon_contains.test.cpp
-    title: verify/aoj/geometry/polygon_contains.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/projection.test.cpp
-    title: verify/aoj/geometry/projection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/reflection.test.cpp
-    title: verify/aoj/geometry/reflection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/geometry/segment_intersection.test.cpp
-    title: verify/aoj/geometry/segment_intersection.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -347,34 +284,13 @@ data:
     \ dist_max;\n}\ntemplate < class T > double diameter(const polygon< T >& p) {\n\
     \    static_assert(is_floating_point_v< T >);\n    return std::sqrt(diameter2(p));\n\
     }"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/geometry/base.hpp
   requiredBy: []
-  timestamp: '2023-12-04 16:57:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/aoj/geometry/line_position.test.cpp
-  - verify/aoj/geometry/convex_diameter.test.cpp
-  - verify/aoj/geometry/projection.test.cpp
-  - verify/aoj/geometry/polygon_area.test.cpp
-  - verify/aoj/geometry/ccw.test.cpp
-  - verify/aoj/geometry/crosspoint_ss.test.cpp
-  - verify/aoj/geometry/convex_judge.test.cpp
-  - verify/aoj/geometry/reflection.test.cpp
-  - verify/aoj/geometry/convex_hull.test.cpp
-  - verify/aoj/geometry/segment_intersection.test.cpp
-  - verify/aoj/geometry/convex_cut.test.cpp
-  - verify/aoj/geometry/distance_ss.test.cpp
-  - verify/aoj/geometry/polygon_contains.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/geometry/base.hpp
 layout: document
 redirect_from:

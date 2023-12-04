@@ -1,23 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/affine.hpp
-    title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/cartesian_product_monoid.hpp
-    title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/lazy_segtree.test.cpp
-    title: verify/library_checker/data_structure/lazy_segtree.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algebra/affine.hpp\"\ntemplate < class T > class affine\
@@ -54,17 +42,13 @@ data:
     \ = typename operator_structure::set;\n  public:\n    static constexpr S op(const\
     \ S &l, const F &r) {\n        return S(l.first * r.a + l.second * r.b, l.second);\n\
     \    }\n};\n"
-  dependsOn:
-  - src/algebra/affine.hpp
-  - src/algebra/sum.hpp
-  - src/algebra/cartesian_product_monoid.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/algebra/range_affine_range_sum.hpp
   requiredBy: []
-  timestamp: '2023-10-14 00:28:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/data_structure/lazy_segtree.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algebra/range_affine_range_sum.hpp
 layout: document
 redirect_from:

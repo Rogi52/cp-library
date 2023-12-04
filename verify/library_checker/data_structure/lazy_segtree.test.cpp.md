@@ -1,58 +1,12 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/affine.hpp
-    title: src/algebra/affine.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/cartesian_product_monoid.hpp
-    title: src/algebra/cartesian_product_monoid.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_affine_range_sum.hpp
-    title: src/algebra/range_affine_range_sum.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/sum.hpp
-    title: src/algebra/sum.hpp
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/data_structure/lazy_segtree.hpp
-    title: src/data_structure/lazy_segtree.hpp
-  - icon: ':question:'
-    path: src/number/modint.hpp
-    title: modint
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
-    links:
-    - https://judge.yosupo.jp/problem/range_affine_range_sum
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/data_structure/lazy_segtree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
     \n#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
@@ -282,26 +236,12 @@ data:
     \        int l = in(), r = in(); mint b = in(), c = in();\n            lzst.apply(l,\
     \ r, {b, c});\n        }\n        if(t == 1) {\n            int l = in(), r =\
     \ in();\n            print(lzst.prod(l, r).first);\n        }\n    }\n}\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/number/modint.hpp
-  - src/data_structure/lazy_segtree.hpp
-  - src/algebra/range_affine_range_sum.hpp
-  - src/algebra/affine.hpp
-  - src/algebra/sum.hpp
-  - src/algebra/cartesian_product_monoid.hpp
+  dependsOn: []
   isVerificationFile: true
   path: verify/library_checker/data_structure/lazy_segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/data_structure/lazy_segtree.test.cpp
 layout: document

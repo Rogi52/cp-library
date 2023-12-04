@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/algorithm/count_subseq.test.cpp
-    title: verify/library_checker/algorithm/count_subseq.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algorithm/count_subseq.hpp\"\ntemplate < class mint,\
@@ -26,10 +23,9 @@ data:
   isVerificationFile: false
   path: src/algorithm/count_subseq.hpp
   requiredBy: []
-  timestamp: '2023-05-06 10:54:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/algorithm/count_subseq.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algorithm/count_subseq.hpp
 layout: document
 redirect_from:

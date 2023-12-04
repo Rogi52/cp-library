@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/yukicoder/stern-brocot_tree_search.test.cpp
-    title: verify/yukicoder/stern-brocot_tree_search.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/algorithm/enumrate_quotient.hpp\"\n// x in [L, R), floor(N/x)\
@@ -22,10 +19,9 @@ data:
   isVerificationFile: false
   path: src/algorithm/enumrate_quotient.hpp
   requiredBy: []
-  timestamp: '2023-10-31 17:44:36+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - verify/yukicoder/stern-brocot_tree_search.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algorithm/enumrate_quotient.hpp
 layout: document
 redirect_from:

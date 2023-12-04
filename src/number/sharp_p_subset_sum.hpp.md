@@ -1,56 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/binom_mod.hpp
-    title: src/number/binom_mod.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/fps.hpp
-    title: src/number/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/number/modfunc.hpp
-    title: src/number/modfunc.hpp
-  - icon: ':question:'
-    path: src/number/modint.hpp
-    title: modint
-  - icon: ':heavy_check_mark:'
-    path: src/number/ntt.hpp
-    title: src/number/ntt.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/random.hpp
-    title: src/utility/random.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-    title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -342,28 +297,13 @@ data:
     \ 1, 0);\n    for(int s : S) c[s] += 1;\n    fps<mint> logf(T + 1);\n    for(int\
     \ i : rep(1, T + 1)) for(int j : rep(1, T / i + 1))\n        logf[i * j] += c[i]\
     \ * inv<mint>(j) * (j % 2 == 1 ? +1 : -1);\n    return exp(logf);\n}"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/number/fps.hpp
-  - src/number/ntt.hpp
-  - src/number/modint.hpp
-  - src/number/modfunc.hpp
-  - src/utility/random.hpp
-  - src/number/binom_mod.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/number/sharp_p_subset_sum.hpp
   requiredBy: []
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/number/sharp_p_subset_sum.hpp
 layout: document
 redirect_from:

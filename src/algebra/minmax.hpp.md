@@ -1,50 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_add_range_minmax.hpp
-    title: src/algebra/range_add_range_minmax.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/algebra/range_update_range_minmax.hpp
-    title: src/algebra/range_update_range_minmax.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_add_range_min.test.cpp
-    title: verify/aoj/data_structure/range_add_range_min.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/aoj/data_structure/range_update_range_min.test.cpp
-    title: verify/aoj/data_structure/range_update_range_min.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-    title: verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -155,26 +116,13 @@ data:
     \ using set = T;\n    static constexpr T op(const T &l, const T &r) { return std::max(l,\
     \ r); }\n    static constexpr T id() { return std::numeric_limits< T >::min();\
     \ }\n    static constexpr bool comm = true;\n};\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/algebra/minmax.hpp
-  requiredBy:
-  - src/algebra/range_add_range_minmax.hpp
-  - src/algebra/range_update_range_minmax.hpp
-  timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/library_checker/data_structure/disjoint_sparse_table.test.cpp
-  - verify/aoj/data_structure/range_add_range_min.test.cpp
-  - verify/aoj/data_structure/range_update_range_min.test.cpp
+  requiredBy: []
+  timestamp: '1970-01-01 00:00:00+00:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/algebra/minmax.hpp
 layout: document
 redirect_from:

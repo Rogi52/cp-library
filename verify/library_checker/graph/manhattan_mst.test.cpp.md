@@ -1,46 +1,12 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':question:'
-    path: src/algorithm/argsort.hpp
-    title: src/algorithm/argsort.hpp
-  - icon: ':question:'
-    path: src/algorithm/bin_search.hpp
-    title: src/algorithm/bin_search.hpp
-  - icon: ':question:'
-    path: src/cp-template.hpp
-    title: src/cp-template.hpp
-  - icon: ':question:'
-    path: src/data_structure/union_find.hpp
-    title: src/data_structure/union_find.hpp
-  - icon: ':x:'
-    path: src/geometry/manhattan_mst.hpp
-    title: src/geometry/manhattan_mst.hpp
-  - icon: ':question:'
-    path: src/utility/heap.hpp
-    title: src/utility/heap.hpp
-  - icon: ':question:'
-    path: src/utility/io.hpp
-    title: src/utility/io.hpp
-  - icon: ':question:'
-    path: src/utility/key_val.hpp
-    title: src/utility/key_val.hpp
-  - icon: ':question:'
-    path: src/utility/rep_itr.hpp
-    title: src/utility/rep_itr.hpp
-  - icon: ':question:'
-    path: src/utility/vec_op.hpp
-    title: src/utility/vec_op.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/enumerate_cliques
-    links:
-    - https://judge.yosupo.jp/problem/enumerate_cliques
+  attributes: {}
   bundledCode: "#line 1 \"verify/library_checker/graph/manhattan_mst.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n#line\
     \ 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
@@ -169,21 +135,11 @@ data:
     \ edges;\n    for(auto [w, u, v] : manhattan_mst(x, y)) {\n        if(uf.unite(u,\
     \ v) != -1) {\n            X += w;\n            edges.push_back({u, v});\n   \
     \     }\n    }\n\n    print(X);\n    for(auto [u, v] : edges) print(u, v);\n}\n"
-  dependsOn:
-  - src/cp-template.hpp
-  - src/utility/rep_itr.hpp
-  - src/utility/io.hpp
-  - src/utility/key_val.hpp
-  - src/utility/vec_op.hpp
-  - src/utility/heap.hpp
-  - src/algorithm/bin_search.hpp
-  - src/algorithm/argsort.hpp
-  - src/geometry/manhattan_mst.hpp
-  - src/data_structure/union_find.hpp
+  dependsOn: []
   isVerificationFile: true
   path: verify/library_checker/graph/manhattan_mst.test.cpp
   requiredBy: []
-  timestamp: '2023-11-12 19:02:16+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/library_checker/graph/manhattan_mst.test.cpp
