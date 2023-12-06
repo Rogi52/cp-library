@@ -33,7 +33,7 @@ data:
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':x:'
@@ -41,7 +41,7 @@ data:
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -286,7 +286,7 @@ data:
   requiredBy:
   - src/graph/tree/tree_isomorphism.hpp
   timestamp: '2023-11-08 12:27:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp

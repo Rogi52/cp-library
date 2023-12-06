@@ -25,7 +25,7 @@ data:
   - icon: ':question:'
     path: src/utility/key_val.hpp
     title: src/utility/key_val.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   - icon: ':question:'

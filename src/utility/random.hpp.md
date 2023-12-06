@@ -29,19 +29,19 @@ data:
   - icon: ':x:'
     path: src/graph/tree/tree_isomorphism.hpp
     title: src/graph/tree/tree_isomorphism.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':x:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':x:'
@@ -63,7 +63,7 @@ data:
   - icon: ':x:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
   - icon: ':x:'
@@ -143,7 +143,7 @@ data:
     title: verify/library_checker/string/rolling_hash.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -275,7 +275,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/graph/tree/tree_isomorphism.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/library_checker/number/fps_pow.test.cpp
   - verify/library_checker/number/primality_test.test.cpp

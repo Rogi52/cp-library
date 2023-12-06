@@ -116,7 +116,7 @@ data:
   - icon: ':warning:'
     path: src/graph/tree/dp_on_tree.hpp
     title: src/graph/tree/dp_on_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   - icon: ':question:'
@@ -128,19 +128,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/triangle.hpp
     title: src/graph/triangle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/base.hpp
     title: src/matrix/base.hpp
   - icon: ':warning:'
     path: src/matrix/lgv.hpp
     title: "LGV \u516C\u5F0F"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':warning:'
@@ -149,10 +149,10 @@ data:
   - icon: ':x:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':x:'
@@ -161,13 +161,13 @@ data:
   - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':x:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
   - icon: ':x:'
@@ -194,7 +194,7 @@ data:
   - icon: ':question:'
     path: src/utility/io.hpp
     title: src/utility/io.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/random.hpp
     title: src/utility/random.hpp
   _extendedVerifiedWith:
@@ -345,28 +345,28 @@ data:
   - icon: ':x:'
     path: verify/library_checker/graph/tree/lca.test.cpp
     title: verify/library_checker/graph/tree/lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':x:'
     path: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
     title: verify/library_checker/graph/tree/tree_isomorphism.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/io/int128.test.cpp
     title: verify/library_checker/io/int128.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/determinant.test.cpp
     title: verify/library_checker/matrix/determinant.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/inverse.test.cpp
     title: verify/library_checker/matrix/inverse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/linear_equation.test.cpp
     title: verify/library_checker/matrix/linear_equation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/matrix/product.test.cpp
     title: verify/library_checker/matrix/product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
   - icon: ':x:'

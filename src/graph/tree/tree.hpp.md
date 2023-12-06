@@ -26,7 +26,7 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/tree/rerooting.hpp
     title: src/graph/tree/rerooting.hpp
   - icon: ':x:'
@@ -42,7 +42,7 @@ data:
   - icon: ':x:'
     path: verify/library_checker/graph/tree/lca.test.cpp
     title: verify/library_checker/graph/tree/lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/graph/tree/rerooting.test.cpp
     title: verify/library_checker/graph/tree/rerooting.test.cpp
   - icon: ':x:'
