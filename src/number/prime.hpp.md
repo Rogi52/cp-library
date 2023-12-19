@@ -39,7 +39,7 @@ data:
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
   - icon: ':x:'
@@ -53,7 +53,7 @@ data:
     title: verify/library_checker/number/tetration.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/cp-template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
@@ -244,15 +244,15 @@ data:
   isVerificationFile: false
   path: src/number/prime.hpp
   requiredBy:
-  - src/number/primitive_root.hpp
   - src/number/tetration.hpp
+  - src/number/primitive_root.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/number/primality_test.test.cpp
-  - verify/library_checker/number/factorize.test.cpp
   - verify/library_checker/number/primitive_root.test.cpp
   - verify/library_checker/number/tetration.test.cpp
+  - verify/library_checker/number/primality_test.test.cpp
+  - verify/library_checker/number/factorize.test.cpp
 documentation_of: src/number/prime.hpp
 layout: document
 redirect_from:

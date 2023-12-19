@@ -31,7 +31,7 @@ data:
   - icon: ':question:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
   - icon: ':question:'

@@ -213,8 +213,8 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
   - verify/library_checker/data_structure/deque_operate_all_composite.test.cpp
+  - verify/library_checker/data_structure/queue_operate_all_composite.test.cpp
 documentation_of: src/data_structure/sliding_window_aggregation.hpp
 layout: document
 redirect_from:

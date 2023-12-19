@@ -204,17 +204,17 @@ data:
   isVerificationFile: false
   path: src/data_structure/fenwick_tree.hpp
   requiredBy:
-  - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/static_rect_add_rect_sum.hpp
+  - src/data_structure/static_point_add_rect_sum.hpp
   - src/data_structure/point_add_rect_sum.hpp
   - src/data_structure/offline_multiset.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
-  - verify/library_checker/data_structure/fenwick_tree.test.cpp
   - verify/library_checker/data_structure/rectangle_sum.test.cpp
   - verify/library_checker/data_structure/point_add_rect_sum.test.cpp
+  - verify/library_checker/data_structure/fenwick_tree.test.cpp
+  - verify/library_checker/data_structure/static_rect_add_rect_sum.test.cpp
 documentation_of: src/data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

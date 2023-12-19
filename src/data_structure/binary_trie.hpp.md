@@ -207,8 +207,8 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/library_checker/data_structure/binary_trie.test.cpp
   - verify/aoj/data_structure/binary_trie.test.cpp
+  - verify/library_checker/data_structure/binary_trie.test.cpp
 documentation_of: src/data_structure/binary_trie.hpp
 layout: document
 redirect_from:

@@ -235,8 +235,8 @@ data:
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/library_checker/number/lcm_convolution.test.cpp
   - verify/library_checker/number/gcd_convolution.test.cpp
+  - verify/library_checker/number/lcm_convolution.test.cpp
 documentation_of: src/number/eratosthenes.hpp
 layout: document
 redirect_from:

@@ -302,11 +302,11 @@ data:
   timestamp: '2023-11-08 12:27:03+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
   - verify/library_checker/graph/tree/diameter.test.cpp
-  - verify/library_checker/graph/tree/lca.test.cpp
   - verify/library_checker/graph/tree/jump_on_tree.test.cpp
+  - verify/library_checker/graph/tree/lca.test.cpp
   - verify/library_checker/graph/tree/rerooting.test.cpp
+  - verify/library_checker/graph/tree/tree_isomorphism.test.cpp
 documentation_of: src/graph/tree/tree.hpp
 layout: document
 redirect_from:

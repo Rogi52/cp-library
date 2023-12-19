@@ -117,6 +117,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/point_add_rect_sum.hpp
       title: src/data_structure/point_add_rect_sum.hpp
+    - icon: ':warning:'
+      path: src/data_structure/potentialized_union_find.hpp
+      title: src/data_structure/potentialized_union_find.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/range_freq.hpp
       title: src/data_structure/range_freq.hpp
@@ -274,13 +277,13 @@ data:
     - icon: ':question:'
       path: src/number/poly.hpp
       title: src/number/poly.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
     - icon: ':x:'
       path: src/number/primitive_root.hpp
       title: src/number/primitive_root.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
     - icon: ':x:'
@@ -526,16 +529,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/bernoulli.test.cpp
       title: verify/library_checker/number/bernoulli.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
       title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/factorize.test.cpp
       title: verify/library_checker/number/factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_composition.test.cpp
       title: verify/library_checker/number/fps_composition.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_exp.test.cpp
       title: verify/library_checker/number/fps_exp.test.cpp
     - icon: ':x:'

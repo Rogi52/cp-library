@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':x:'

@@ -54,10 +54,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/bernoulli.test.cpp
     title: verify/library_checker/number/bernoulli.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_composition.test.cpp
     title: verify/library_checker/number/fps_composition.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp.test.cpp
     title: verify/library_checker/number/fps_exp.test.cpp
   - icon: ':x:'
@@ -466,33 +466,33 @@ data:
   isVerificationFile: false
   path: src/number/fps.hpp
   requiredBy:
-  - src/number/poly.hpp
-  - src/number/sharp_p_subset_sum.hpp
   - src/number/famous_number.hpp
   - src/number/fps_sparse.hpp
+  - src/number/poly.hpp
+  - src/number/sharp_p_subset_sum.hpp
   timestamp: '2023-11-01 14:59:30+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/library_checker/number/fps_pow.test.cpp
-  - verify/library_checker/number/poly_division.test.cpp
-  - verify/library_checker/number/fps_exp_sparse.test.cpp
-  - verify/library_checker/number/fps_log.test.cpp
-  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
-  - verify/library_checker/number/fps_exp.test.cpp
-  - verify/library_checker/number/fps_sqrt.test.cpp
-  - verify/library_checker/number/montmort.test.cpp
-  - verify/library_checker/number/stirling_2nd.test.cpp
   - verify/library_checker/number/fps_pow_sparse.test.cpp
-  - verify/library_checker/number/fps_inv_sparse.test.cpp
-  - verify/library_checker/number/fps_log_sparse.test.cpp
-  - verify/library_checker/number/fps_composition.test.cpp
-  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/fps_sqrt_sparse.test.cpp
+  - verify/library_checker/number/fps_log.test.cpp
   - verify/library_checker/number/partition.test.cpp
-  - verify/library_checker/number/fps_inv.test.cpp
-  - verify/library_checker/number/poly_all_product.test.cpp
-  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/fps_sqrt.test.cpp
   - verify/library_checker/number/poly_taylor_shift.test.cpp
   - verify/library_checker/number/sharp_p_subset_sum.test.cpp
+  - verify/library_checker/number/fps_pow.test.cpp
+  - verify/library_checker/number/bernoulli.test.cpp
+  - verify/library_checker/number/fps_log_sparse.test.cpp
+  - verify/library_checker/number/stirling_1st.test.cpp
+  - verify/library_checker/number/fps_exp.test.cpp
+  - verify/library_checker/number/fps_inv_sparse.test.cpp
+  - verify/library_checker/number/poly_division.test.cpp
+  - verify/library_checker/number/stirling_2nd.test.cpp
+  - verify/library_checker/number/montmort.test.cpp
+  - verify/library_checker/number/fps_exp_sparse.test.cpp
+  - verify/library_checker/number/fps_inv.test.cpp
+  - verify/library_checker/number/fps_composition.test.cpp
+  - verify/library_checker/number/poly_all_product.test.cpp
 documentation_of: src/number/fps.hpp
 layout: document
 redirect_from:
