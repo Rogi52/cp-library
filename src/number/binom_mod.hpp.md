@@ -29,7 +29,7 @@ data:
   - icon: ':question:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/fps_sparse.hpp
     title: src/number/fps_sparse.hpp
   - icon: ':question:'
@@ -45,13 +45,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
     title: verify/library_checker/number/binom_coeff_prime_mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_exp_sparse.test.cpp
     title: verify/library_checker/number/fps_exp_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_inv_sparse.test.cpp
     title: verify/library_checker/number/fps_inv_sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/fps_log_sparse.test.cpp
     title: verify/library_checker/number/fps_log_sparse.test.cpp
   - icon: ':x:'
