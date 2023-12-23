@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/runtime_modint.hpp
     title: src/number/runtime_modint.hpp
   - icon: ':question:'

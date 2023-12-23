@@ -123,6 +123,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/range_freq.hpp
       title: src/data_structure/range_freq.hpp
+    - icon: ':warning:'
+      path: src/data_structure/rollback_union_find.hpp
+      title: src/data_structure/rollback_union_find.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/segtree.hpp
       title: src/data_structure/segtree.hpp
@@ -244,7 +247,7 @@ data:
     - icon: ':warning:'
       path: src/number/czt.hpp
       title: src/number/czt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/eratosthenes.hpp
       title: src/number/eratosthenes.hpp
     - icon: ':warning:'
@@ -256,7 +259,7 @@ data:
     - icon: ':question:'
       path: src/number/fps.hpp
       title: src/number/fps.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
     - icon: ':x:'
@@ -271,7 +274,7 @@ data:
     - icon: ':question:'
       path: src/number/modint.hpp
       title: modint
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/nim_product.hpp
       title: src/number/nim_product.hpp
     - icon: ':question:'
@@ -286,7 +289,7 @@ data:
     - icon: ':x:'
       path: src/number/primitive_root.hpp
       title: src/number/primitive_root.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
     - icon: ':x:'
@@ -562,34 +565,34 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_pow.test.cpp
       title: verify/library_checker/number/fps_pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_pow_sparse.test.cpp
       title: verify/library_checker/number/fps_pow_sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_sqrt.test.cpp
       title: verify/library_checker/number/fps_sqrt.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/fps_sqrt_sparse.test.cpp
       title: verify/library_checker/number/fps_sqrt_sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/gcd_convolution.test.cpp
       title: verify/library_checker/number/gcd_convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/lcm_convolution.test.cpp
       title: verify/library_checker/number/lcm_convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/modsqrt.test.cpp
       title: verify/library_checker/number/modsqrt.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/montmort.test.cpp
       title: verify/library_checker/number/montmort.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/nim_product.test.cpp
       title: verify/library_checker/number/nim_product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/partition.test.cpp
       title: verify/library_checker/number/partition.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
     - icon: ':x:'
