@@ -32,7 +32,7 @@ data:
     path: src/utility/vec_op.hpp
     title: src/utility/vec_op.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/primitive_root.hpp
     title: src/number/primitive_root.hpp
   - icon: ':x:'
@@ -42,10 +42,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/factorize.test.cpp
     title: verify/library_checker/number/factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primitive_root.test.cpp
     title: verify/library_checker/number/primitive_root.test.cpp
   - icon: ':x:'

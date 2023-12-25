@@ -60,6 +60,9 @@ data:
       path: src/algorithm/enumrate_quotient.hpp
       title: src/algorithm/enumrate_quotient.hpp
     - icon: ':warning:'
+      path: src/algorithm/event_segment.hpp
+      title: src/algorithm/event_segment.hpp
+    - icon: ':warning:'
       path: src/algorithm/find_local_min.hpp
       title: src/algorithm/find_local_min.hpp
     - icon: ':x:'
@@ -71,6 +74,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/mo.hpp
       title: src/algorithm/mo.hpp
+    - icon: ':warning:'
+      path: src/algorithm/offline_dynamic_data_structure.hpp
+      title: src/algorithm/offline_dynamic_data_structure.hpp
     - icon: ':warning:'
       path: src/algorithm/selection.hpp
       title: src/algorithm/selection.hpp
@@ -286,13 +292,13 @@ data:
     - icon: ':question:'
       path: src/number/prime.hpp
       title: src/number/prime.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/primitive_root.hpp
       title: src/number/primitive_root.hpp
     - icon: ':heavy_check_mark:'
       path: src/number/runtime_modint.hpp
       title: src/number/runtime_modint.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/sharp_p_subset_sum.hpp
       title: src/number/sharp_p_subset_sum.hpp
     - icon: ':x:'
@@ -595,19 +601,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_all_product.test.cpp
       title: verify/library_checker/number/poly_all_product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_division.test.cpp
       title: verify/library_checker/number/poly_division.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/poly_taylor_shift.test.cpp
       title: verify/library_checker/number/poly_taylor_shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/primality_test.test.cpp
       title: verify/library_checker/number/primality_test.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/primitive_root.test.cpp
       title: verify/library_checker/number/primitive_root.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
       title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     - icon: ':x:'

@@ -173,10 +173,10 @@ data:
   - icon: ':question:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/primitive_root.hpp
     title: src/number/primitive_root.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
   - icon: ':x:'
@@ -432,19 +432,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_all_product.test.cpp
     title: verify/library_checker/number/poly_all_product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_division.test.cpp
     title: verify/library_checker/number/poly_division.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/poly_taylor_shift.test.cpp
     title: verify/library_checker/number/poly_taylor_shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primality_test.test.cpp
     title: verify/library_checker/number/primality_test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/primitive_root.test.cpp
     title: verify/library_checker/number/primitive_root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
   - icon: ':x:'
