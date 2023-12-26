@@ -1,3 +1,5 @@
+const std::size_t INF = ~std::size_t(0);
+
 struct lowlink {
     using size_t = std::size_t;
     std::vector<std::vector<std::pair<size_t, size_t>>> graph;
@@ -28,17 +30,17 @@ struct lowlink {
                     child_cnt++;
                     dfs(to, v);
                     low[v] = std::min(low[v], low[to]);
-                    is_articulation |= p != -1 and ord[v] <= low[to];
+                    is_articulation |= p != INF and ord[v] <= low[to];
                     if(ord[v] < low[to]) bridge.push_back(std::minmax({v, to}));
                 } else {
                     low[v] = std::min(low[v], ord[to]);
                 }
             }
 
-            is_articulation |= p == -1 and child_cnt >= 2;
+            is_articulation |= p == INF and child_cnt >= 2;
             if(is_articulation) articulation.push_back(v);
         };
-        for(size_t v = 0; v < graph.size(); v++) if(not used[v]) dfs(v, -1);
+        for(size_t v = 0; v < graph.size(); v++) if(not used[v]) dfs(v, INF);
     }
 };
 
@@ -53,17 +55,17 @@ struct two_edge_connected_components : lowlink {
     std::vector<size_t> id;
     std::vector<std::vector<size_t>> group, tree;
 
-    explicit two_edge_connected_components(const size_t n) : lowlink(n), id(n, -1) {}
+    explicit two_edge_connected_components(const size_t n) : lowlink(n), id(n, INF) {}
 
     void build() override {
         lowlink::build();
 
         size_t c = 0;
         function<void(size_t,size_t)> dfs = [&](size_t v, size_t p) -> void {
-            id[v] = (p != -1 and low[v] <= ord[p] ? id[p] : c++);
-            for(auto [to, _] : graph[v]) if(id[to] == -1) dfs(to, v);
+            id[v] = (p != INF and low[v] <= ord[p] ? id[p] : c++);
+            for(auto [to, _] : graph[v]) if(id[to] == INF) dfs(to, v);
         };
-        for(size_t i = 0; i < graph.size(); i++) if(id[i] == -1) dfs(i, -1);
+        for(size_t i = 0; i < graph.size(); i++) if(id[i] == INF) dfs(i, INF);
 
         group.resize(c);
         for(size_t i = 0; i < graph.size(); i++) group[id[i]].push_back(i);
@@ -111,7 +113,7 @@ struct biconnected_components : lowlink {
             }
         };
 
-        for(size_t i = 0; i < graph.size(); i++) if(not used[i]) dfs(i, -1);
+        for(size_t i = 0; i < graph.size(); i++) if(not used[i]) dfs(i, INF);
     }
 };
 
@@ -122,22 +124,22 @@ struct block_cut_tree : biconnected_components {
     using biconnected_components::bc;
 
     using size_t = std::size_t;
-    std::vector<int> rev;
+    std::vector<size_t> rev;
     std::vector<std::vector<size_t>> group, tree;
 
-    explicit block_cut_tree(const size_t n) : biconnected_components(n), rev(n, -1) {}
+    explicit block_cut_tree(const size_t n) : biconnected_components(n), rev(n, INF) {}
 
     void build() override {
         biconnected_components::build();
 
         size_t c = bc.size();
         for(size_t v : articulation) rev[v] = c++;
-        std::vector<size_t> last(c, -1);
+        std::vector<size_t> last(c, INF);
         tree.resize(c);
         for(size_t i = 0; i < bc.size(); i++) {
             for(auto [u, v, _] : bc[i]) {
                 for(size_t x : {u, v}) {
-                    if(rev[x] != -1 and bc.size() <= rev[x]) {
+                    if(rev[x] != INF and bc.size() <= rev[x]) {
                         if(std::exchange(last[rev[x]], i) != i) {
                             tree[rev[x]].push_back(i);
                             tree[i].push_back(rev[x]);
@@ -148,7 +150,9 @@ struct block_cut_tree : biconnected_components {
                 }
             }
         }
+
         group.resize(c);
-        for(size_t i = 0; i < graph.size(); i++) group[rev[i]].push_back(i);
+        for(size_t i = 0; i < graph.size(); i++)
+            if(rev[i] != INF) group[rev[i]].push_back(i);
     }
 };
