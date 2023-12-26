@@ -77,5 +77,10 @@
 "verify/library_checker/number/poly_taylor_shift.test.cpp": "2023-11-01 14:59:30 +0900",
 "verify/library_checker/number/primality_test.test.cpp": "2023-11-01 14:59:30 +0900",
 "verify/library_checker/number/primitive_root.test.cpp": "2023-11-01 14:59:30 +0900",
-"verify/library_checker/number/sharp_p_subset_sum.test.cpp": "2023-11-01 14:59:30 +0900"
+"verify/library_checker/number/sharp_p_subset_sum.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/library_checker/number/stern-brocot_tree.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/library_checker/number/stirling_1st.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/library_checker/number/stirling_2nd.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/library_checker/number/tetration.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/library_checker/string/rolling_hash.test.cpp": "2023-11-01 14:59:30 +0900"
 }
