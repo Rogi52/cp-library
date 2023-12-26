@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/size.hpp
     title: src/algebra/size.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
   - icon: ':question:'

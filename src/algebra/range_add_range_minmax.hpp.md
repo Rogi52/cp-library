@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algebra/minmax.hpp
     title: src/algebra/minmax.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algebra/sum.hpp
     title: src/algebra/sum.hpp
   - icon: ':question:'

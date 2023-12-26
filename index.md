@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algebra/size.hpp
       title: src/algebra/size.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/algebra/sum.hpp
       title: src/algebra/sum.hpp
     - icon: ':warning:'
@@ -138,7 +138,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data_structure/sliding_window_aggregation.hpp
       title: src/data_structure/sliding_window_aggregation.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data_structure/sparse_segtree.hpp
       title: src/data_structure/sparse_segtree.hpp
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/number/fps_sparse.hpp
       title: src/number/fps_sparse.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/number/gaussian_integer.hpp
       title: src/number/gaussian_integer.hpp
     - icon: ':warning:'
@@ -638,10 +638,10 @@ data:
       title: verify/library_checker/string/rolling_hash.test.cpp
   - name: verify/yukicoder
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/gaussian_integer.test.cpp
       title: verify/yukicoder/gaussian_integer.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/yukicoder/sparse_segtree.test.cpp
       title: verify/yukicoder/sparse_segtree.test.cpp
     - icon: ':x:'
