@@ -130,6 +130,9 @@ data:
       path: src/data_structure/range_freq.hpp
       title: src/data_structure/range_freq.hpp
     - icon: ':warning:'
+      path: src/data_structure/rollback_array.hpp
+      title: src/data_structure/rollback_array.hpp
+    - icon: ':warning:'
       path: src/data_structure/rollback_union_find.hpp
       title: src/data_structure/rollback_union_find.hpp
     - icon: ':heavy_check_mark:'
