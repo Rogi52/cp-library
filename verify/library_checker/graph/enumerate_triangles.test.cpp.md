@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/triangle.hpp
     title: src/graph/triangle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'

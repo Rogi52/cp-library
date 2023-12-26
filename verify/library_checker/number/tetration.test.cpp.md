@@ -10,13 +10,13 @@ data:
   - icon: ':question:'
     path: src/cp-template.hpp
     title: src/cp-template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
   - icon: ':question:'
@@ -39,9 +39,9 @@ data:
     title: src/utility/vec_op.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tetration_mod
@@ -223,7 +223,7 @@ data:
   path: verify/library_checker/number/tetration.test.cpp
   requiredBy: []
   timestamp: '2023-11-01 14:59:30+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/library_checker/number/tetration.test.cpp
 layout: document

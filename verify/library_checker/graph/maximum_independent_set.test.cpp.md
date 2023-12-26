@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/maximum_independent_set.hpp
     title: src/graph/maximum_independent_set.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'

@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: src/graph/tree/tree.hpp
     title: src/graph/tree/tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'

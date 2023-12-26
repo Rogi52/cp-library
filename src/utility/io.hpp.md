@@ -140,7 +140,7 @@ data:
   - icon: ':warning:'
     path: src/matrix/matrix-tree.hpp
     title: "\u884C\u5217\u6728\u5B9A\u7406"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/binom_mod.hpp
     title: src/number/binom_mod.hpp
   - icon: ':warning:'
@@ -149,10 +149,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/eratosthenes.hpp
     title: src/number/eratosthenes.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/famous_number.hpp
     title: src/number/famous_number.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/fps.hpp
     title: src/number/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -161,16 +161,16 @@ data:
   - icon: ':x:'
     path: src/number/gaussian_integer.hpp
     title: src/number/gaussian_integer.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modfunc.hpp
     title: src/number/modfunc.hpp
   - icon: ':heavy_check_mark:'
     path: src/number/nim_product.hpp
     title: src/number/nim_product.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/poly.hpp
     title: src/number/poly.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/prime.hpp
     title: src/number/prime.hpp
   - icon: ':heavy_check_mark:'
@@ -179,16 +179,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/number/sharp_p_subset_sum.hpp
     title: src/number/sharp_p_subset_sum.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/number/stern-brocot_tree.hpp
     title: src/number/stern-brocot_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/number/tetration.hpp
     title: src/number/tetration.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/utility/hash.hpp
     title: src/utility/hash.hpp
   - icon: ':question:'
@@ -444,19 +444,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/sharp_p_subset_sum.test.cpp
     title: verify/library_checker/number/sharp_p_subset_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stern-brocot_tree.test.cpp
     title: verify/library_checker/number/stern-brocot_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_1st.test.cpp
     title: verify/library_checker/number/stirling_1st.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/stirling_2nd.test.cpp
     title: verify/library_checker/number/stirling_2nd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/number/tetration.test.cpp
     title: verify/library_checker/number/tetration.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/library_checker/string/rolling_hash.test.cpp
     title: verify/library_checker/string/rolling_hash.test.cpp
   - icon: ':x:'

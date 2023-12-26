@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/linear_equation.hpp
     title: src/matrix/linear_equation.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/number/modint.hpp
     title: modint
   - icon: ':question:'
