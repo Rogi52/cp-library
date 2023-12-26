@@ -82,5 +82,7 @@
 "verify/library_checker/number/stirling_1st.test.cpp": "2023-11-01 14:59:30 +0900",
 "verify/library_checker/number/stirling_2nd.test.cpp": "2023-11-01 14:59:30 +0900",
 "verify/library_checker/number/tetration.test.cpp": "2023-11-01 14:59:30 +0900",
-"verify/library_checker/string/rolling_hash.test.cpp": "2023-11-01 14:59:30 +0900"
+"verify/library_checker/string/rolling_hash.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/yukicoder/gaussian_integer.test.cpp": "2023-11-01 14:59:30 +0900",
+"verify/yukicoder/sparse_segtree.test.cpp": "2023-11-01 14:59:30 +0900"
 }
