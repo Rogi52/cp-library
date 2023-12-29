@@ -223,10 +223,23 @@ data:
     \   maxi = i, maxj = j;\n        }\n    } while(i != is or j != js);\n    return\
     \ dist_max;\n}\ntemplate < class T > double diameter(const polygon< T >& p) {\n\
     \    static_assert(is_floating_point_v< T >);\n    return std::sqrt(diameter2(p));\n\
-    }\n#line 6 \"verify/aoj/geometry/distance_ss.test.cpp\"\n\nint main() {\n    printer::precision(20);\n\
-    \    int q = in();\n    for(int q_ : rep(q)) {\n        point<ld> p0 = in(), p1\
-    \ = in(), p2 = in(), p3 = in();\n        segment<ld> s1(p0, p1), s2(p2, p3);\n\
-    \        print(distance_ss(s1, s2));\n    }\n}\n"
+    }\n\ntemplate < class T > struct circle {\n    point< T > p;\n    T r;\n    circle()\
+    \ = default;\n    circle(point< T > p, T r) : p(p), r(r) {}\n};\ntemplate < class\
+    \ T > istream& operator>>(istream& is, circle< T >& c) { return is >> c.p >> c.r;\
+    \ }\ntemplate < class T > int intersect_cc(circle< T > c1, circle< T > c2) {\n\
+    \    if(c1.r < c2.r) std::swap(c1, c2);\n    T d = abs(c1.p - c2.p);\n    if(sign(c1.r\
+    \ + c2.r - d) == -1) return 4;\n    if(equals(c1.r + c2.r, d)) return 3;\n   \
+    \ if(sign(c1.r - c2.r - d) == -1) return 2;\n    if(equals(c1.r - c2.r, d)) return\
+    \ 1;\n    return 0;\n}\ntemplate < class T > std::pair<point< T >, point< T >>\
+    \ cross_point_cc(const circle< T >& c1, const circle< T >& c2) {\n    T d = abs(c1.p\
+    \ - c2.p);\n    T a = std::acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r\
+    \ * d));\n    T t = angle(c2.p - c1.p);\n    point< T > p1 = c1.p + point< T >(std::cos(t\
+    \ + a), std::sin(t + a)) * c1.r;\n    point< T > p2 = c1.p + point< T >(std::cos(t\
+    \ - a), std::sin(t - a)) * c1.r;\n    return {p1, p2};\n}\n#line 6 \"verify/aoj/geometry/distance_ss.test.cpp\"\
+    \n\nint main() {\n    printer::precision(20);\n    int q = in();\n    for(int\
+    \ q_ : rep(q)) {\n        point<ld> p0 = in(), p1 = in(), p2 = in(), p3 = in();\n\
+    \        segment<ld> s1(p0, p1), s2(p2, p3);\n        print(distance_ss(s1, s2));\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_D\"\
     \n#define ERROR 0.00000001\n\n#include \"../../../src/cp-template.hpp\"\n#include\
     \ \"../../../src/geometry/base.hpp\"\n\nint main() {\n    printer::precision(20);\n\
@@ -246,7 +259,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/geometry/distance_ss.test.cpp
   requiredBy: []
-  timestamp: '2023-12-04 18:06:49+09:00'
+  timestamp: '2023-12-30 07:17:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/geometry/distance_ss.test.cpp

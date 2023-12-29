@@ -221,14 +221,26 @@ data:
     \   maxi = i, maxj = j;\n        }\n    } while(i != is or j != js);\n    return\
     \ dist_max;\n}\ntemplate < class T > double diameter(const polygon< T >& p) {\n\
     \    static_assert(is_floating_point_v< T >);\n    return std::sqrt(diameter2(p));\n\
-    }\n#line 5 \"verify/aoj/geometry/ccw.test.cpp\"\n\nint main() {\n    using Int\
-    \ = i64;\n    point<Int> p0 = in(), p1 = in();\n\n    int q = in();\n    for(int\
-    \ q_ : rep(q)) {\n        point<Int> p2 = in();\n        switch(ccw(p0, p1, p2))\
-    \ {\n            case +1: print(\"COUNTER_CLOCKWISE\"); break;\n            case\
-    \ -1: print(\"CLOCKWISE\");         break;\n            case +2: print(\"ONLINE_BACK\"\
-    );       break;\n            case -2: print(\"ONLINE_FRONT\");      break;\n \
-    \           case  0: print(\"ON_SEGMENT\");        break;\n        }\n    }\n\
-    }\n"
+    }\n\ntemplate < class T > struct circle {\n    point< T > p;\n    T r;\n    circle()\
+    \ = default;\n    circle(point< T > p, T r) : p(p), r(r) {}\n};\ntemplate < class\
+    \ T > istream& operator>>(istream& is, circle< T >& c) { return is >> c.p >> c.r;\
+    \ }\ntemplate < class T > int intersect_cc(circle< T > c1, circle< T > c2) {\n\
+    \    if(c1.r < c2.r) std::swap(c1, c2);\n    T d = abs(c1.p - c2.p);\n    if(sign(c1.r\
+    \ + c2.r - d) == -1) return 4;\n    if(equals(c1.r + c2.r, d)) return 3;\n   \
+    \ if(sign(c1.r - c2.r - d) == -1) return 2;\n    if(equals(c1.r - c2.r, d)) return\
+    \ 1;\n    return 0;\n}\ntemplate < class T > std::pair<point< T >, point< T >>\
+    \ cross_point_cc(const circle< T >& c1, const circle< T >& c2) {\n    T d = abs(c1.p\
+    \ - c2.p);\n    T a = std::acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r\
+    \ * d));\n    T t = angle(c2.p - c1.p);\n    point< T > p1 = c1.p + point< T >(std::cos(t\
+    \ + a), std::sin(t + a)) * c1.r;\n    point< T > p2 = c1.p + point< T >(std::cos(t\
+    \ - a), std::sin(t - a)) * c1.r;\n    return {p1, p2};\n}\n#line 5 \"verify/aoj/geometry/ccw.test.cpp\"\
+    \n\nint main() {\n    using Int = i64;\n    point<Int> p0 = in(), p1 = in();\n\
+    \n    int q = in();\n    for(int q_ : rep(q)) {\n        point<Int> p2 = in();\n\
+    \        switch(ccw(p0, p1, p2)) {\n            case +1: print(\"COUNTER_CLOCKWISE\"\
+    ); break;\n            case -1: print(\"CLOCKWISE\");         break;\n       \
+    \     case +2: print(\"ONLINE_BACK\");       break;\n            case -2: print(\"\
+    ONLINE_FRONT\");      break;\n            case  0: print(\"ON_SEGMENT\");    \
+    \    break;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \n\n#include \"../../../src/cp-template.hpp\"\n#include \"../../../src/geometry/base.hpp\"\
     \n\nint main() {\n    using Int = i64;\n    point<Int> p0 = in(), p1 = in();\n\
@@ -251,7 +263,7 @@ data:
   isVerificationFile: true
   path: verify/aoj/geometry/ccw.test.cpp
   requiredBy: []
-  timestamp: '2023-12-04 18:06:49+09:00'
+  timestamp: '2023-12-30 07:17:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aoj/geometry/ccw.test.cpp
