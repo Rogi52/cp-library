@@ -153,3 +153,28 @@ template < class T > double diameter(const polygon< T >& p) {
     static_assert(is_floating_point_v< T >);
     return std::sqrt(diameter2(p));
 }
+
+template < class T > struct circle {
+    point< T > p;
+    T r;
+    circle() = default;
+    circle(point< T > p, T r) : p(p), r(r) {}
+};
+template < class T > istream& operator>>(istream& is, circle< T >& c) { return is >> c.p >> c.r; }
+template < class T > int intersect_cc(circle< T > c1, circle< T > c2) {
+    if(c1.r < c2.r) std::swap(c1, c2);
+    T d = abs(c1.p - c2.p);
+    if(sign(c1.r + c2.r - d) == -1) return 4;
+    if(equals(c1.r + c2.r, d)) return 3;
+    if(sign(c1.r - c2.r - d) == -1) return 2;
+    if(equals(c1.r - c2.r, d)) return 1;
+    return 0;
+}
+template < class T > std::pair<point< T >, point< T >> cross_point_cc(const circle< T >& c1, const circle< T >& c2) {
+    T d = abs(c1.p - c2.p);
+    T a = std::acos((c1.r * c1.r + d * d - c2.r * c2.r) / (2 * c1.r * d));
+    T t = angle(c2.p - c1.p);
+    point< T > p1 = c1.p + point< T >(std::cos(t + a), std::sin(t + a)) * c1.r;
+    point< T > p2 = c1.p + point< T >(std::cos(t - a), std::sin(t - a)) * c1.r;
+    return {p1, p2};
+}
