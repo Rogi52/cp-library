@@ -126,6 +126,9 @@ data:
     - icon: ':warning:'
       path: src/data_structure/potentialized_union_find.hpp
       title: src/data_structure/potentialized_union_find.hpp
+    - icon: ':warning:'
+      path: src/data_structure/radix_heap.hpp
+      title: src/data_structure/radix_heap.hpp
     - icon: ':heavy_check_mark:'
       path: src/data_structure/range_freq.hpp
       title: src/data_structure/range_freq.hpp
