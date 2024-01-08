@@ -53,6 +53,9 @@ data:
     - icon: ':question:'
       path: src/algorithm/bin_search.hpp
       title: src/algorithm/bin_search.hpp
+    - icon: ':warning:'
+      path: src/algorithm/concave_max_plus_convolution.hpp
+      title: src/algorithm/concave_max_plus_convolution.hpp
     - icon: ':heavy_check_mark:'
       path: src/algorithm/count_subseq.hpp
       title: src/algorithm/count_subseq.hpp
@@ -80,6 +83,9 @@ data:
     - icon: ':warning:'
       path: src/algorithm/selection.hpp
       title: src/algorithm/selection.hpp
+    - icon: ':warning:'
+      path: src/algorithm/smawk.hpp
+      title: src/algorithm/smawk.hpp
     - icon: ':warning:'
       path: src/algorithm/sqrt_decomp.hpp
       title: src/algorithm/sqrt_decomp.hpp
