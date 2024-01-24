@@ -200,6 +200,9 @@ data:
       path: src/graph/dijkstra.hpp
       title: src/graph/dijkstra.hpp
     - icon: ':warning:'
+      path: src/graph/eulerian_trail.hpp
+      title: src/graph/eulerian_trail.hpp
+    - icon: ':warning:'
       path: src/graph/lowlink.hpp
       title: src/graph/lowlink.hpp
     - icon: ':heavy_check_mark:'
