@@ -214,6 +214,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/min_cost_flow.hpp
       title: src/graph/min_cost_flow.hpp
+    - icon: ':warning:'
+      path: src/graph/minimum_spanning_tree.hpp
+      title: src/graph/minimum_spanning_tree.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/shortest_path.hpp
       title: src/graph/shortest_path.hpp
