@@ -18,7 +18,7 @@ struct erasable {
     erasable() {}
     erasable(std::vector< T >& a) : c(a.begin(), a.end()) {}
     void push(T x) { c.push(x); }
-    int size() { return c.size() - rm_c.size(); }
+    int size() const { return c.size() - rm_c.size(); }
     int empty() { return size() == 0; }
     T pop() { set(); return std_ex::pop(c); }
     T top() { set(); return c.top(); }
