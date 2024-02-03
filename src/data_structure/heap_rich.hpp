@@ -90,5 +90,5 @@ template < class T, class compare, class compare_rev > struct topk_sum {
     size_type size() const { return in.size() + out.size(); }
 };
 
-template < class T > using mink_sum = topk_sum< T, greater< T >, less< T > >;
-template < class T > using maxk_sum = topk_sum< T, less< T >, greater< T > >;
+template < class T > using maxk_sum = topk_sum< T, greater< T >, less< T > >;
+template < class T > using mink_sum = topk_sum< T, less< T >, greater< T > >;
