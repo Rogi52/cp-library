@@ -85,7 +85,7 @@ template < class T, class compare, class compare_rev > struct topk_sum {
         }
         balance();
     }
-    void set_k(size_type new_k) { k = new_k; }
+    void set_k(size_type new_k) { k = new_k; balance(); }
     size_type get_k() const { return k; }
     size_type size() const { return in.size() + out.size(); }
 };
