@@ -14,3 +14,17 @@ vector<vector<int>> next_pos(const vector<int>& a, int k) {
     }
     return pos;
 }
+
+using size_type = int;
+template < class container > bool is_subsequence(const container& s, const container& t) {
+    const size_type n = s.size();
+    const size_type m = t.size();
+    if(n == 0) return true;
+    if(m == 0) return false;
+    size_type j = 0;
+    for(size_type i = 0; i < n; i++, j++) {
+        while(j < m and s[i] != t[j]) j++;
+        if(m <= j) return false;
+    }
+    return true;
+}
