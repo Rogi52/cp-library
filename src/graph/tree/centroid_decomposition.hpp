@@ -43,3 +43,23 @@ struct c_tree {
         }; rec(rec, 0, -1);
     }
 };
+
+// https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
+// tree.decomposition([&](int c, int cp, vector<bool>& active) {
+//     vector<i64> freq = {1};
+//     for(int cto : tree.g[c]) if(active[cto]) {
+//         vector<i64> curr;
+//         auto get_freq = [&](auto self, int v, int p, int d) -> void {
+//             while(int(freq.size()) <= d) freq.push_back(0); freq[d]++;
+//             while(int(curr.size()) <= d) curr.push_back(0); curr[d]++;
+//             for(int to : tree.g[v])
+//                 if(to != p and active[to]) self(self, to, v, d + 1);
+//         }; get_freq(get_freq, cto, c, 1);
+
+//         auto curr_conv = atcoder::convolution_ll(curr, curr);
+//         for(int i : rep(min<int>(N, curr_conv.size()))) ans[i] -= curr_conv[i];
+//     }
+//     auto freq_conv = atcoder::convolution_ll(freq, freq);
+//     for(int i : rep(min<int>(N, freq_conv.size()))) ans[i] += freq_conv[i];
+// });
+// for(int i = 1; i <= N - 1; i++) cout << ans[i] / 2 << " "; cout << endl;
