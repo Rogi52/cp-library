@@ -90,7 +90,7 @@ struct tree_graph {
     std::vector<std::pair<int,int>> ascend(int u, int v) {
         assert(heavy_light_decomposed);
         std::vector<std::pair<int,int>> res;
-        while(nxt[u] != nxt[v]) res.push_back({down[u] + 1, down[nxt[v]]}), u = par[nxt[u]];
+        while(nxt[u] != nxt[v]) res.push_back({down[u] + 1, down[nxt[u]]}), u = par[nxt[u]];
         if(u != v) res.push_back({down[u] + 1, down[v] + 1});
         return res;
     }
