@@ -28,3 +28,18 @@ template < class container > bool is_subsequence(const container& s, const conta
     }
     return true;
 }
+
+template < class container > int lcs(const container& s, const container& t) {
+    const int n = s.size();
+    const int m = t.size();
+    vector dp(n + 1, vector(m + 1, 0));
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            if(s[i] == t[j])
+                dp[i + 1][j + 1] = dp[i][j] + 1;
+            else
+                dp[i + 1][j + 1] = std::max(dp[i + 1][j], dp[i][j + 1]);
+        }
+    }
+    return dp[n][m];
+}
