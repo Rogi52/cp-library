@@ -18,11 +18,13 @@ template< class mint > struct fps_sparse : std::vector<std::pair<int, mint>> {
     }
 };
 
+// https://atcoder.jp/contests/arc067/submissions/50732123
 template < class mint >
 fps<mint>& operator*=(fps<mint>& f, const fps_sparse<mint>& g) {
-    for(int i : revrep(f.size())) for(auto [j, gj] : g) 
-        if(i + j < f.size()) f[i + j] += f[i] * gj;
-    return f;
+    fps<mint> h(f.size());
+    for(int i : rep(f.size())) for(auto [j, gj] : g)
+        if(i + j < f.size()) h[i + j] += f[i] * gj;
+    return f = h;
 }
 
 template < class mint >
