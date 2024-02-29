@@ -54,3 +54,17 @@ template < class mint >
 mint homo(int n, int k) {
     return comb<mint>(n + k - 1, k);
 }
+
+template < class mint > struct power {
+    mint a;
+    std::vector<mint> data = {1};
+    power() {}
+    power(const mint a) : a(a) {}
+    // a^n
+    mint get(const int n) {
+        assert(0 <= n);
+        while(int(data.size()) <= n)
+            data.push_back(data.back() * a);
+        return data[n];
+    }
+};
