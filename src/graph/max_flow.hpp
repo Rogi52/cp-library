@@ -7,6 +7,7 @@ template < class Cap > struct mf_graph {
         assert(0 <= to and to < n);
         assert(0 <= cap);
         int m = pos.size();
+        pos.push_back({from, g[from].size()});
         int from_id = g[from].size();
         int to_id = g[to].size() + (from == to);
         g[from].push_back(_edge{to, to_id, cap});
