@@ -15,6 +15,12 @@ struct scc_graph {
         assert(0 <= to and to < n);
         g[from].push_back(to);
     }
+    void add_vertex(const size_type k) {
+        assert(0 <= k);
+        g.resize(n + k);
+        ids.resize(n + k);
+        n = n + k;
+    }
 
     void build() {
         int now_ord = 0;
