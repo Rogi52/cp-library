@@ -66,7 +66,7 @@ struct tree_graph {
         size[v] = 1;
         for(auto& e : g[v]) {
             if(e.to == par[v]) {
-                if(std::ssize(g[v]) >= 2 and e.to == g[v][0].to) {
+                if(int(g[v].size()) >= 2 and e.to == g[v][0].to) {
                     std::swap(g[v][0], g[v][1]);
                 } else continue;
             }
