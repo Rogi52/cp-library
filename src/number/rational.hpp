@@ -24,6 +24,7 @@ template < class integer > struct rational {
             reduce();
         }
     }
+    rational(const integer n) : rational(n, 1) {}
 
     friend rational operator+(const rational& a) { return rational(+a.sign, a.upper, a.lower); }
     friend rational operator-(const rational& a) { return rational(-a.sign, a.upper, a.lower); }
