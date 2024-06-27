@@ -25,7 +25,7 @@ template < class integer > struct rational {
         }
     }
 
-    friend rational operator+(const rational& a) { return *this; }
+    friend rational operator+(const rational& a) { return rational(+a.sign, a.upper, a.lower); }
     friend rational operator-(const rational& a) { return rational(-a.sign, a.upper, a.lower); }
     friend rational operator+(const rational& a, const rational& b) { return rational((a.sign * a.upper) * b.lower + a.lower * (b.sign * b.upper), a.lower * b.lower); }
     friend rational operator-(const rational& a, const rational& b) { return rational((a.sign * a.upper) * b.lower - a.lower * (b.sign * b.upper), a.lower * b.lower); }
