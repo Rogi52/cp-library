@@ -32,7 +32,7 @@ template < class integer > struct rational {
     friend rational operator*(const rational& a, const rational& b) { return rational(a.sign * b.sign, a.upper * b.upper, a.lower * b.lower); }
     friend rational operator/(const rational& a, const rational& b) { return rational(a.sign * b.sign, a.upper * b.lower, a.lower * b.upper); }
     friend bool operator==(const rational& a, const rational& b) { return a.sign == b.sign and a.upper == b.upper and a.lower == b.lower; }
-    friend bool operator!=(const rational& a, const ratonnal& b) { return a.sign != b.sign or  a.upper != b.upper or  a.lower != b.lower; }
+    friend bool operator!=(const rational& a, const rational& b) { return a.sign != b.sign or  a.upper != b.upper or  a.lower != b.lower; }
     friend bool operator<(const rational& a, const rational& b) {
         if(a.sign != b.sign)
             return a.sign == -1;
