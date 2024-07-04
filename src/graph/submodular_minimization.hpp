@@ -2,6 +2,11 @@
 
 // ICPC2023 Yokohama Regional H
 // https://onlinejudge.u-aizu.ac.jp/beta/review.html#ICPCOOC2023/8680925
+
+// https://atcoder.jp/contests/abc193/submissions/55213018
+// | O(n^2)-time & O(n^2)-space [頂点数の2乗]
+// | グラフの二部性はユーザー側が使う必要がある
+// | コスト側は任せてOK
 template < class Cost > class sm_min {
   public:
     using size_t = std::size_t;
