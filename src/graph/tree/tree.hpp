@@ -169,7 +169,7 @@ struct tree_graph {
         return -1;
     }
     int in_subtree(int r, int v) {
-        return down[v] < down[r] and up[r] <= up[v];
+        return down[r] < down[v] and up[v] <= up[r];
     }
 };
 
