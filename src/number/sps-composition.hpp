@@ -55,3 +55,19 @@ vector< T > sps_poly(int n, vector< T > f, vector< T > s) {
     }
     return sps_egf< T, N >(n, g, s);
 }
+
+template < class T, int N >
+vector< T > sps_log(int n, vector< T > s) {
+    const int m = 1 << n;
+    assert(s.size() == m);
+    assert(s[0] == T(1));
+    vector f(n + 1, T(0));
+    T fact = 1;
+    for(int i = 1; i <= n; i++) {
+        f[i] = -fact;
+        fact *= T(i);
+    }
+    s[0] = T(0);
+    for(auto& e : s) e = -e;
+    return sps_egf< T, N >(n, f, s);
+}
